@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.2 (Python 3.9.5 on win32)" generated="20210809 15:03:32.562" rpa="false" schemaversion="2">
+<suite id="s1" name="test LoginHCM" source="C:\Projects\Oracle\Oracle HCM\TestSuites\Regression\test_LoginHCM.robot">
+<kw name="Before Suite" library="SetupAndTeardown" type="SETUP">
+<kw name="Launch Browser" library="CommonKeywords">
+<arg>${URL}</arg>
+<arg>${Browser}</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Browser}' == 'Chrome'</arg>
+<arg>Launch Chrome</arg>
+<arg>${URL}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Launch Chrome" library="CommonKeywords">
+<arg>${URL}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${ChromeOptions}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210809 15:03:33.660" level="INFO">${ChromeOptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001E05ECB5670&gt;</msg>
+<status status="PASS" starttime="20210809 15:03:33.659" endtime="20210809 15:03:33.660"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${ChromeOptions}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210809 15:03:33.660" endtime="20210809 15:03:33.660"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${ChromeOptions}</arg>
+<arg>add_argument</arg>
+<arg>--start-maximized</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210809 15:03:33.661" endtime="20210809 15:03:33.661"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${ChromeOptions}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210809 15:03:33.661" endtime="20210809 15:03:33.661"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${ChromeOptions}</arg>
+<arg>add_argument</arg>
+<arg>--disable-notifications</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210809 15:03:33.661" endtime="20210809 15:03:33.662"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${ChromeOptions}</arg>
+<arg>add_experimental_option</arg>
+<arg>useAutomationExtension</arg>
+<arg>${FALSE}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210809 15:03:33.662" endtime="20210809 15:03:33.662"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${Options}</var>
+<arg>${ChromeOptions}</arg>
+<arg>to_capabilities</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210809 15:03:33.663" level="INFO">${Options} = {'browserName': 'chrome', 'version': '', 'platform': 'ANY', 'goog:chromeOptions': {'useAutomationExtension': False, 'extensions': [], 'args': ['--disable-extensions', '--start-maximized', '--incognito...</msg>
+<status status="PASS" starttime="20210809 15:03:33.662" endtime="20210809 15:03:33.663"/>
+</kw>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<arg>desired_capabilities=${Options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210809 15:03:33.663" level="INFO">Opening browser 'Chrome' to base url 'https://ehtc-dev2.fa.ca2.oraclecloud.com/'.</msg>
+<status status="PASS" starttime="20210809 15:03:33.663" endtime="20210809 15:03:39.134"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:33.659" endtime="20210809 15:03:39.134"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:33.658" endtime="20210809 15:03:39.134"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Browser}' == 'Firefox'</arg>
+<arg>Launch Firefox</arg>
+<arg>${URL}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20210809 15:03:39.135" endtime="20210809 15:03:39.135"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:33.658" endtime="20210809 15:03:39.136"/>
+</kw>
+<kw name="Set Screenshot Directory" library="Selenium2Library">
+<arg>./Screenshots</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20210809 15:03:39.136" endtime="20210809 15:03:39.137"/>
+</kw>
+<kw name="Set Selenium Timeout" library="Selenium2Library">
+<arg>10s</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" starttime="20210809 15:03:39.137" endtime="20210809 15:03:39.140"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:33.657" endtime="20210809 15:03:39.140"/>
+</kw>
+<test id="s1-t1" name="Scenario: Oracle HCM login">
+<kw name="Login Using" library="Login">
+<arg>HR_USER</arg>
+<kw name="Get Password" library="Helpers">
+<var>${password}</var>
+<arg>${user_id}</arg>
+<msg timestamp="20210809 15:03:39.145" level="INFO">MXCloud!23</msg>
+<msg timestamp="20210809 15:03:39.145" level="INFO">${password} = MXCloud!23</msg>
+<status status="PASS" starttime="20210809 15:03:39.144" endtime="20210809 15:03:39.145"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Password:${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210809 15:03:39.145" endtime="20210809 15:03:39.146"/>
+</kw>
+<kw name="Login" library="CommonKeywords">
+<arg>${txt_userid}</arg>
+<arg>${user_id}</arg>
+<arg>${txt_pass}</arg>
+<arg>${password}</arg>
+<arg>${btn_submit}</arg>
+<kw name="Wait And Set Text" library="CommonKeywords">
+<arg>${txt_userid}</arg>
+<arg>${user_id}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>20</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210809 15:03:39.150" endtime="20210809 15:03:39.223"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>${value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210809 15:03:39.224" level="INFO">Typing text 'HR_USER' into text field 'id:userid'.</msg>
+<status status="PASS" starttime="20210809 15:03:39.223" endtime="20210809 15:03:39.414"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:39.148" endtime="20210809 15:03:39.414"/>
+</kw>
+<kw name="Wait And Set Text" library="CommonKeywords">
+<arg>${txt_pass}</arg>
+<arg>${password}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>20</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210809 15:03:39.415" endtime="20210809 15:03:39.463"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>${value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210809 15:03:39.464" level="INFO">Typing text 'MXCloud!23' into text field 'id:password'.</msg>
+<status status="PASS" starttime="20210809 15:03:39.463" endtime="20210809 15:03:39.607"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:39.414" endtime="20210809 15:03:39.607"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${btn_submit}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>20</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210809 15:03:39.608" endtime="20210809 15:03:39.645"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210809 15:03:39.646" level="INFO">Clicking element 'id:btnActive'.</msg>
+<status status="PASS" starttime="20210809 15:03:39.646" endtime="20210809 15:03:44.377"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:39.607" endtime="20210809 15:03:44.378"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:39.147" endtime="20210809 15:03:44.378"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210809 15:03:47.379" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210809 15:03:44.379" endtime="20210809 15:03:47.379"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:39.143" endtime="20210809 15:03:47.380"/>
+</kw>
+<kw name="And Log To Console" library="BuiltIn">
+<arg>DONE</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210809 15:03:47.381" endtime="20210809 15:03:47.382"/>
+</kw>
+<kw name="After Test" library="SetupAndTeardown" type="TEARDOWN">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20210809 15:03:47.385" endtime="20210809 15:03:47.386"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:47.384" endtime="20210809 15:03:47.387"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:39.140" endtime="20210809 15:03:47.388"/>
+</test>
+<kw name="After Suite" library="SetupAndTeardown" type="TEARDOWN">
+<kw name="End Web Test" library="CommonKeywords">
+<kw name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210809 15:03:47.394" endtime="20210809 15:03:50.028"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:47.393" endtime="20210809 15:03:50.029"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:47.393" endtime="20210809 15:03:50.030"/>
+</kw>
+<status status="PASS" starttime="20210809 15:03:32.566" endtime="20210809 15:03:50.030"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="test LoginHCM">test LoginHCM</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,10 @@
+{
+    "Recruiter user": "KIANM",
+    "Requisition ID": "107665",
+    "Candidate Last Name": "tester",
+    "Message Use": "Blank Message",
+    "Recipient Name": "Hee Jun Wilson",
+    "Email subject": "Review candidate application for job requisition ID 107665",
+    "Candidate Name": "tester, johny",
+    "Email body": "Hello Auto,\n\nPlease review below candidate application for job requisition ID 106718.\n\nCandidate Name: ${CandidateDisplayName} \nCandidate Number: ${CandidateNumber} \nCandidate Status: ${CandidateStatus} \n\nThank you."
+}

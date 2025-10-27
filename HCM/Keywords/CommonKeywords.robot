@@ -1,0 +1,268 @@
+*** Settings ***
+Library  String
+Library   ../Keywords/CommonKeywords.py
+Library    FakerLibrary
+Library    AutoItLibrary
+Resource  ../Locators/Logout.robot
+Library  ../Helpers/Helpers.py
+Resource  ../Helpers/Config.robot
+
+*** Keywords ***
+Launch Browser
+    [Arguments]  ${URL}  ${Browser}
+    Run Keyword If  '${Browser}' == 'Chrome'  Launch Chrome  ${URL}
+    Run Keyword If  '${Browser}' == 'Firefox'  Launch Firefox  ${URL}
+
+Launch Chrome
+    [Arguments]  ${URL}
+    ${ChromeOptions} =     Evaluate     sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${ChromeOptions}     add_argument    --disable-extensions
+    Call Method    ${ChromeOptions}     add_argument    --start-maximized
+    Call Method    ${ChromeOptions}     add_argument    --incognito
+    Call Method    ${ChromeOptions}     add_argument    --disable-notifications
+    Call Method    ${ChromeOptions}     add_experimental_option      useAutomationExtension    ${FALSE}
+    ${Options}=     Call Method         ${ChromeOptions}    to_capabilities
+    Open Browser  ${URL}  Chrome    desired_capabilities=${Options}
+
+
+Launch Firefox
+    [Arguments]  ${URL}
+    Log To Console  'Firefox launch'
+
+Launch HCM
+    [Arguments]  ${file_name}
+    ${sauce_url}=  createSauceURL  ${sauce_username}  ${sauce_access_key}
+    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${file_name}
+    Open browser  ${URL}  remote_url=${sauce_url}   desired_capabilities=${cap}
+
+Launch HCM Analytics
+    [Arguments]  ${file_name}
+    ${sauce_url}=  createSauceURL  ${sauce_username}  ${sauce_access_key}
+    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${file_name}
+    Open browser  ${URL_Analytics}  remote_url=${sauce_url}   desired_capabilities=${cap}
+
+End Web Test
+   Close All Browsers
+
+Login
+    [Arguments]  ${txt_userid}  ${user_id}  ${txt_pass}  ${password}  ${btn_submit}
+    Wait And Set Text  ${txt_userid}  ${user_id}
+    Wait And Set Text  ${txt_pass}  ${password}
+    Wait And Click Element  ${btn_submit}
+
+Logout
+    Wait And Click Element  ${profile_downarrow}
+    Wait And Click Element  ${btn_signout}
+    Wait And Click Element  ${signout_confirm}
+    Sleep  5s
+    Capture Page Screenshot
+
+
+Wait And Set Text
+    [Arguments]  ${locator}  ${value}
+    Wait Until Element Is Visible  ${locator}  20
+    Input Text  ${locator}  ${value}
+
+Wait And Click Element
+    [Arguments]  ${locator}
+    Wait Until Element Is Visible  ${locator}  30
+    Click Element      ${locator}
+
+
+Wait And Double Click Element
+    [Arguments]  ${locator}
+    Wait Until Element Is Visible  ${locator}  10
+    Double Click Element  ${locator}
+
+
+Wait And Select From DropDown
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  timeout=10
+    Select From List By Value	${field}  ${value}
+
+Wait Then Click And Set Text
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  10
+    Click Element  ${field}
+    Press Keys	${field}  CTRL+a
+    Press Keys	${field}  BACKSPACE
+    Sleep  1s
+    Input Text  ${field}  ${value}
+
+
+Wait And Send Keys
+    [Arguments]  ${field}  ${keys}
+    Wait Until Element Is Visible  ${field}  10
+    Press Keys	${field}  ${keys}
+
+Wait And Get Text
+    [Arguments]  ${field}
+    Wait Until Element Is Visible  ${field}  10
+    ${text}=  Get Text  ${field}
+    [return]  ${text}
+
+
+Wait And Get Value
+    [Arguments]  ${field}
+    Wait Until Element Is Visible  ${field}  10
+    ${value}=  Get Value  ${field}
+    [return]  ${value}
+
+
+Assert Field Value
+    [Arguments]  ${field}  ${value}
+    Log To Console  ${field}_${value}
+    Wait Until Page Contains Element  ${field}
+    Element Attribute Value Should Be  ${field}  value  ${value}
+
+
+Copy Value To Clipboard
+    [Arguments]  ${field}
+    Wait Until Element Is Visible  ${field}
+    Click Element  ${field}
+    Press Keys	${field}  CTRL+a
+    Press Keys	${field}  CTRL+c
+
+Assert Field Value from clipboard
+    [Arguments]  ${field}  ${value}
+    Copy Value To Clipboard  ${field}
+    ${result}=  Get Clipboard Value
+    Should Be True  '${value}'=='${result}'
+
+
+FakerLibrary Words Generation
+    ${word}=    FakerLibrary.Unix Time
+    Log To Console    words: ${word}
+    [return]  ${word}
+
+Attach File
+    [Arguments]  ${file}
+    Set Global Variable  ${base_path_directory}  ${CURDIR}
+    ${base_path}=  Fetch From Left  ${base_path_directory}  Keywords
+    ${file_path}=  Catenate  SEPARATOR=  ${base_path}  TestData\\  ${file}
+    Wait For Active Window  Open
+    Send    ${file_path}
+    Sleep   5s
+    Control Click   Open    &Open   [CLASS:Button; INSTANCE:1]  LEFT
+    Sleep  10s
+
+Select Required Value
+    [Arguments]  ${xpath}  ${value}
+    ${matching_elements}=  Get WebElements   ${xpath}
+    FOR  ${element}  IN  @{matching_elements}
+        ${text}=    Get Text  ${element}
+        IF  '${text}'=='${value}'
+            Wait And Click Element  ${element}
+            Exit For Loop
+        END
+    END
+
+
+Select Required Value with Text
+    [Arguments]  ${xpath}  ${value}
+    ${matching_elements}=  Get WebElements   ${xpath}
+    FOR  ${element}  IN  @{matching_elements}
+        ${text}=    Get Element Attribute  ${element}  innerHTML
+        IF  '${text}'=='${value}'
+            Click Element  ${element}
+            Exit For Loop
+        END
+    END
+
+
+Wait And Input Text From Input
+    [Arguments]   ${xpath}  ${value}
+     Wait Until Element Is Visible  ${xpath}   20s   Element Is Not Visible
+     #Sleep  2s
+     Click Element  ${xpath}
+     IF  '${value}' != ""
+         Sleep  2s
+         Input Text  ${xpath}  ${value}
+     END
+
+Wait And Select Value From Input
+    [Arguments]  ${xpath}  ${value}
+    IF  '${value}' != ""
+    ${matching_elements}=  Get WebElements   ${xpath}
+    FOR  ${element}  IN  @{matching_elements}
+    Sleep  1s
+        ${text}=    Get Element Attribute  ${element}  innerHTML
+        Log  text is ${text} and value is ${value}
+        IF  '${text}'=='${value}'
+            Click Element  ${element}
+            Sleep  1s
+            Exit For Loop
+        END
+    END
+    END
+
+Wait And Select Containing Value From Input
+    [Arguments]  ${xpath}  ${value}
+    IF  '${value}' != ""
+    ${matching_elements}=  Get WebElements   ${xpath}
+    FOR  ${element}  IN  @{matching_elements}
+    Sleep  3s
+        ${text}=    Get Element Attribute  ${element}  innerHTML
+        ${check}=   Run Keyword And Return Status  Should Contain  ${text}  ${value}
+        IF  "${check}"=="True"
+            Click Element  ${element}
+            Sleep  1s
+            Exit For Loop
+        END
+    END
+    END
+
+Wait And Verify Page Contains Text
+    [Arguments]  ${text}  ${time_out}  ${error_message}
+    ${checker}=  RUN KEYWORD And Return Status  Wait Until Page Contains    ${text}  ${time_out}  ${error_message}
+    IF  '${checker}' == 'False'
+        Wait Until Page Contains    ${text}  ${time_out}  ${error_message}
+    END
+
+Capture Page Screenshot And Retry If Required
+    ${checker}=  RUN KEYWORD And Return Status  capture page screenshot
+    IF  '${checker}' == 'False'
+        ${checker_again}=  RUN KEYWORD And Return Status  capture page screenshot
+        IF  '${checker_again}' == 'False'
+            capture page screenshot
+        END
+    END
+
+Wait Then delete And Set Text
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  10
+    Click Element  ${field}
+    Press Keys	${field}  DELETE
+    Sleep  1s
+    Wait And Send Keys  ${field}  ${value}
+
+Wait And Verify Page Contains Element
+    [Arguments]  ${text}  ${time_out}  ${error_message}
+    ${checker}=  RUN KEYWORD And Return Status  Wait Until Page Contains Element   ${text}  ${time_out}  ${error_message}
+    IF  '${checker}' == 'False'
+        Wait Until Page Contains Element   ${text}  ${time_out}  ${error_message}
+    END
+
+Logout From Profile
+    Wait And Click Element  ${profile_image}
+    Wait And Click Element  ${btn_signout}
+    Wait And Click Element  ${signout_confirm}
+    Sleep  5s
+    Capture Page Screenshot
+
+Verify Page Has Hyperlink
+    [Arguments]  ${text}
+    Wait Until Page Contains  ${text}  20s  ${text} is not displayed
+    ${xpath}=   Catenate  SEPARATOR=  //a[text()='${text}']
+    Page Should Contain Element  xpath:${xpath}
+    ${attribute_value}=  Get Element Attribute  xpath:${xpath}  href
+    Capture Page Screenshot and Retry If Required
+    IF  '${attribute_value}'==""
+        Fail  Link ${text} has broken hyperlink
+    END
+
+Get incremented Date
+    [Arguments]  ${days}
+    ${incremented_date}=   DateTime.Get Current Date    increment=${days} days
+    ${incremented_date} =  Convert Date  ${incremented_date}  result_format=%d/%m/%Y
+    [return]  ${incremented_date}

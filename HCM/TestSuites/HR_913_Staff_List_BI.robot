@@ -1,0 +1,57 @@
+*** Settings ***
+Resource  ../Keywords/CommonKeywords.robot
+Resource  ../Helpers/SetupAndTeardown.robot
+Resource  ../PageObjects/Login.robot
+Resource  ../PageObjects/HomePage.robot
+Library  ../Helpers/Helpers.py
+Library  ../Helpers/Excel_Helpers.py
+Resource  ../PageObjects/ReportsAndAnalytics.robot
+Resource  ../PageObjects/Catalog.robot
+
+Documentation  Download Staff List BI Report
+...            Prerequisite:  HR81 - Create an employee record
+...            Environment Specific Data:  Login User
+...            Reusable Data:  Report Name
+...            Dynamic Data:  Hired Employee Number
+
+*** Settings ***
+
+Suite Setup  Before Suite
+Suite Teardown  After Suite
+Test Teardown  After Test
+
+*** Variables ***
+${json_path}    ./TestData/td_HR_913_Staff_List_BI.json
+${csv_path}  ./CSV/td_HR_913_Staff_List_BI.csv
+*** Test Cases ***
+
+Scenario: HR-913 Staff List BI
+    [Tags]  CoreHRTestCase  ReadOnly
+    generatejson  ${csv_path}  ${json_path}
+    ${data}=  readJson  ${json_path}
+    Log  Step 1 - 4
+    Login Using  ${data}[Login User]
+    Log  Step 5 - 7
+    click on Nevigator
+    Select On Tools
+    Click Link Reports and Analytics
+    Log  Step 8
+    Click Browse Catalog Button
+    Log  Step 9 - 15
+    Expand Shared Folders
+    Expand Custom
+    Expand Metrolinx
+    Expand Reports
+    Expand HR Reports
+    Select Folder  ${data}[Folder Name]
+    Log  Step 16
+    Select And Open Report  ${data}[Report Name]
+    Log  Step 17
+    #Delete existing report
+    delete_File  HR-REP-129_MX_Employee_List_Report
+    Select Aplly Button Frame
+    Sleep  5s
+    Click Apply Button
+    Verify Report Completed Message
+    Sleep  20s
+    Validate Employee Number in StaffList BI Report  HR-REP-129_MX_Employee_List_Report  Employee Number  Employee Number  ${data}[Employee Number]

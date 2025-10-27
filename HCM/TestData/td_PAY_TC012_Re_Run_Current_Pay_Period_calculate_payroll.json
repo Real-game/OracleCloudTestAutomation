@@ -1,0 +1,10 @@
+{
+    "LoginUser": "vijay.c.hulagur@accenture.com",
+    "LegislativeDataGroup": "CA Legislative Data Group",
+    "FLowPattern": "Calculate Payroll",
+    "PayrollFlow": "Auto_Test_ReRun_Calculate Payroll",
+    "Payroll": "Biweekly",
+    "PayrollPeriod": "1 2017 Biweekly | 2016-12-17 | 2016-12-30",
+    "RunType": "Regular",
+    "Log Name": "FlowEssJobDefn"
+}

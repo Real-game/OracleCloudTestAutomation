@@ -1,0 +1,9 @@
+{
+    "Recruiter Username": "KIANM",
+    "Pool Name": "Talent Pool",
+    "Candidate Name": "Ciria, Vaska (19000)",
+    "Move to Phase": "Short List",
+    "Action": "Send Message",
+    "Use": "Blank Message",
+    "Custom Mail": "Hello Candidate,\\n\\nYou have been added to Candidate Pool - ${CandidatePoolName}\\n\\nThanks."
+}

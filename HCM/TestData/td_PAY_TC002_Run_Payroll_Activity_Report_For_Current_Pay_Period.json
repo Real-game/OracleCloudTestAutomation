@@ -1,0 +1,12 @@
+{
+    "LoginUser": "senthil.n.thangaraj@accenture.com",
+    "LegislativeDataGroup": "CA Legislative Data Group",
+    "FLowPattern": "Run Payroll Activity Report",
+    "PayrollFlow": "Auto_Test_Payroll_Activity_report",
+    "StartDate": "11-Dec-2021",
+    "EndDate": "04-Jan-2022",
+    "Scope": "Detail",
+    "ReportCategory": "Payroll Activity Report",
+    "Log Name": "FlowEssJobDefn",
+    "EstimatedTime": "35"
+}

@@ -1,0 +1,11 @@
+{
+    "Login User": "David.weisse",
+    "Plan": "Pay for Performance",
+    "Cycle": "Test_Auto",
+    "Batch Process": "Transfer Workforce Compensation Data to HR",
+    "Radio Button": "Create a new run",
+    "Action": "Allocate Workforce Compensation",
+    "Action Reason": "PFP Pay Increase",
+    "Element Posting Date": "Date displayed on worksheet, else display error",
+    "Mark Assignments as Processed": "Yes"
+}

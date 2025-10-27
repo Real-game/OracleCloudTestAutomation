@@ -1,0 +1,65 @@
+*** Settings ***
+Resource  ../Keywords/CommonKeywords.robot
+Resource  ../Helpers/SetupAndTeardown.robot
+Resource  ../PageObjects/Login.robot
+Resource  ../PageObjects/HomePage.robot
+Library  ../Helpers/Helpers.py
+Resource  ../PageObjects/ReportsAndAnalytics.robot
+Resource  ../PageObjects/Catalog.robot
+Resource  ../PageObjects/AnalyticsHomePage.robot
+Documentation  Cultural Census (2 reports - Detailed and Summary)
+...            Prerequisite:  SME Intervention Needed to provide document type
+...            Environment Specific Data:  Login User
+...            Reusable Data:  Folder Name, Report Name1, Report Name2
+...            Dynamic Data:  Not Applicable
+
+*** Settings ***
+Suite Setup  Before Suite
+Suite Teardown  After Suite
+Test Teardown  After Test
+
+*** Variables ***
+${json_path}    ./TestData/td_HR_908_Cultural_Census_2_reports_Detailed_and_Summary.json
+${csv_path}  ./CSV/td_HR_908_Cultural_Census_2_reports_Detailed_and_Summary.csv
+
+*** Test Cases ***
+Scenario: Cultural Census (2 reports - Detailed and Summary)
+    [Tags]  CoreHRTestCase  ReadOnly
+    generatejson  ${csv_path}  ${json_path}
+    ${data}=  readJson  ${json_path}
+    Log  Step 1 - 4
+    Login Using  ${data}[Login User]
+    Log  Step 5 - 7
+    click on Nevigator
+    Select On Tools
+    Click Link Reports and Analytics
+    Log  Step 8
+    Click Browse Catalog Button
+    Log  Step 9 - 15
+    Expand Shared Folders
+    Expand Custom
+    Expand Metrolinx
+    Expand Reports
+    Expand HR Reports
+    Select Folder  ${data}[Folder Name]
+    Log  Step 16
+    Select And Open Report  ${data}[Report Name1]
+    Log  Step 17
+    Select Aplly Button Frame
+    Sleep  5s
+    Click Apply Button
+    Verify Report Completed Message
+    unselect frame
+    Log  Step 18 - 19
+    Click On Catalog Link
+    #Validate data
+    Log  Step 20
+    Select And Open Report  ${data}[Report Name2]
+    Log  Step 21
+    Select Aplly Button Frame
+    Sleep  5s
+    Click Apply Button
+    Verify Report Completed Message
+    Sleep  7s
+    Log  Step 22
+    #Validate data

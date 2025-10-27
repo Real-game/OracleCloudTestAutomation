@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.2 (Python 3.9.5 on win32)" generated="20220802 13:07:26.183" rpa="false" schemaversion="2">
+<suite id="s1" name="TC16 Manager Delete Performance Goals" source="C:\Users\akash.parasram.dhage\Downloads\HCM\HCM_Auto\HCM_Git_04_04\OracleCloudTestAutomation\HCM\TestSuites\TC16_Manager_Delete_Performance_Goals.robot">
+<kw name="Before Suite" library="SetupAndTeardown" type="SETUP">
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${file_name}</var>
+<arg>${SUITE NAME}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20220802 13:07:27.863" level="INFO">${file_name} = TC16 Manager Delete Performance Goals</msg>
+<status status="PASS" starttime="20220802 13:07:27.863" endtime="20220802 13:07:27.863"/>
+</kw>
+<if>
+<branch type="IF" condition="'${local_execution_flag}'=='True'">
+<kw name="Launch Browser" library="CommonKeywords">
+<arg>${URL}</arg>
+<arg>${local_execution_browser}</arg>
+<status status="NOT RUN" starttime="20220802 13:07:27.864" endtime="20220802 13:07:27.864"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:07:27.864" endtime="20220802 13:07:27.864"/>
+</branch>
+<status status="PASS" starttime="20220802 13:07:27.863" endtime="20220802 13:07:27.864"/>
+</if>
+<if>
+<branch type="IF" condition="'${sauce_execution_flag}'=='True'">
+<kw name="Launch HCM" library="CommonKeywords">
+<arg>${file_name}</arg>
+<kw name="Create Sauce URL" library="Helpers">
+<var>${sauce_url}</var>
+<arg>${sauce_username}</arg>
+<arg>${sauce_access_key}</arg>
+<msg timestamp="20220802 13:07:27.864" level="INFO">${sauce_url} = https://akashdhage:27b9b509-924c-4369-b0cf-cf744da80db9@ondemand.saucelabs.com/wd/hub</msg>
+<status status="PASS" starttime="20220802 13:07:27.864" endtime="20220802 13:07:27.864"/>
+</kw>
+<kw name="Get Capabilities" library="Helpers">
+<var>${cap}</var>
+<arg>${sauce_execution_browserName}</arg>
+<arg>${sauce_execution_browserVersion}</arg>
+<arg>${sauce_execution_platformName}</arg>
+<arg>${file_name}</arg>
+<msg timestamp="20220802 13:07:27.865" level="INFO">${cap} = {'browserName': 'Chrome', 'browserVersion': 'latest', 'platformName': 'Windows 10', 'sauce:options': {'name': 'TC16 Manager Delete Performance Goals'}}</msg>
+<status status="PASS" starttime="20220802 13:07:27.864" endtime="20220802 13:07:27.865"/>
+</kw>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${URL}</arg>
+<arg>remote_url=${sauce_url}</arg>
+<arg>desired_capabilities=${cap}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220802 13:07:27.865" level="INFO">Opening browser 'firefox' to base url 'https://fa-ehtc-dev9-saasfaprod1.fa.ocs.oraclecloud.com/' through remote server at 'https://akashdhage:27b9b509-924c-4369-b0cf-cf744da80db9@ondemand.saucelabs.com/wd/hub'.</msg>
+<status status="PASS" starttime="20220802 13:07:27.865" endtime="20220802 13:07:46.257"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:27.864" endtime="20220802 13:07:46.257"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:27.864" endtime="20220802 13:07:46.257"/>
+</branch>
+<status status="PASS" starttime="20220802 13:07:27.864" endtime="20220802 13:07:46.257"/>
+</if>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220802 13:07:46.257" endtime="20220802 13:07:47.052"/>
+</kw>
+<kw name="Set Screenshot Directory" library="Selenium2Library">
+<arg>./Screenshots</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20220802 13:07:47.052" endtime="20220802 13:07:47.054"/>
+</kw>
+<kw name="Set Selenium Timeout" library="Selenium2Library">
+<arg>10s</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" starttime="20220802 13:07:47.055" endtime="20220802 13:07:48.178"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:27.863" endtime="20220802 13:07:48.178"/>
+</kw>
+<test id="s1-t1" name="Scenario: Manager deletes Performance Goals of his direct report">
+<kw name="Generatejson" library="Helpers">
+<arg>${csv_path}</arg>
+<arg>${json_path}</arg>
+<status status="PASS" starttime="20220802 13:07:48.181" endtime="20220802 13:07:48.200"/>
+</kw>
+<kw name="Read Json" library="Helpers">
+<var>${data}</var>
+<arg>${json_path}</arg>
+<msg timestamp="20220802 13:07:48.206" level="INFO">${data} = {'Login User': 'SPENCERP', 'Person Name': 'Kyle Andrei Chan', 'FY Year': 'FY22-23', 'Action Menu': 'Transfer', 'Manager Name': 'David Weisse', 'Goal Name': 'Test Goal Automation Manager'}</msg>
+<status status="PASS" starttime="20220802 13:07:48.200" endtime="20220802 13:07:48.206"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 1-3</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:07:48.207" level="INFO">Step 1-3</msg>
+<status status="PASS" starttime="20220802 13:07:48.206" endtime="20220802 13:07:48.207"/>
+</kw>
+<kw name="Login Using" library="Login">
+<arg>${data}[Login User]</arg>
+<kw name="Get Password" library="Helpers">
+<var>${password}</var>
+<arg>${user_id}</arg>
+<msg timestamp="20220802 13:07:48.215" level="INFO">@ccEntur#123</msg>
+<msg timestamp="20220802 13:07:48.215" level="INFO">${password} = @ccEntur#123</msg>
+<status status="PASS" starttime="20220802 13:07:48.208" endtime="20220802 13:07:48.215"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Password:${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220802 13:07:48.215" endtime="20220802 13:07:48.216"/>
+</kw>
+<kw name="Login" library="CommonKeywords">
+<arg>${txt_userid}</arg>
+<arg>${user_id}</arg>
+<arg>${txt_pass}</arg>
+<arg>${password}</arg>
+<arg>${btn_submit}</arg>
+<kw name="Wait And Set Text" library="CommonKeywords">
+<arg>${txt_userid}</arg>
+<arg>${user_id}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>20</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:07:48.217" endtime="20220802 13:07:50.062"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>${value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220802 13:07:50.063" level="INFO">Typing text 'SPENCERP' into text field 'id:userid'.</msg>
+<status status="PASS" starttime="20220802 13:07:50.062" endtime="20220802 13:07:53.203"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:48.216" endtime="20220802 13:07:53.203"/>
+</kw>
+<kw name="Wait And Set Text" library="CommonKeywords">
+<arg>${txt_pass}</arg>
+<arg>${password}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>20</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:07:53.204" endtime="20220802 13:07:55.182"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>${value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220802 13:07:55.183" level="INFO">Typing text '@ccEntur#123' into text field 'id:password'.</msg>
+<status status="PASS" starttime="20220802 13:07:55.183" endtime="20220802 13:07:58.051"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:53.203" endtime="20220802 13:07:58.051"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${btn_submit}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:07:58.053" endtime="20220802 13:07:59.772"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:07:59.773" level="INFO">Clicking element 'id:btnActive'.</msg>
+<status status="PASS" starttime="20220802 13:07:59.772" endtime="20220802 13:08:03.418"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:58.052" endtime="20220802 13:08:03.418"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:48.216" endtime="20220802 13:08:03.418"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:08:06.425" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220802 13:08:03.418" endtime="20220802 13:08:06.425"/>
+</kw>
+<status status="PASS" starttime="20220802 13:07:48.207" endtime="20220802 13:08:06.426"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 4 - 5</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:08:06.427" level="INFO">Step 4 - 5</msg>
+<status status="PASS" starttime="20220802 13:08:06.426" endtime="20220802 13:08:06.427"/>
+</kw>
+<kw name="Click on My Team in My Team" library="HomePage">
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${navigator}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:08:06.429" endtime="20220802 13:08:08.056"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:08:08.058" level="INFO">Clicking element 'xpath: //a[contains(@class,'TabletNavigatorIcon')]'.</msg>
+<status status="PASS" starttime="20220802 13:08:08.057" endtime="20220802 13:08:10.389"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:06.428" endtime="20220802 13:08:10.390"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${nvg_my_team}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:08:10.392" endtime="20220802 13:08:14.103"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:08:14.104" level="INFO">Clicking element 'xpath: //div[@title='My Team']'.</msg>
+<status status="PASS" starttime="20220802 13:08:14.104" endtime="20220802 13:08:15.931"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:10.391" endtime="20220802 13:08:15.931"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${nvg_my_team_option}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:08:15.932" endtime="20220802 13:08:17.537"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:08:17.537" level="INFO">Clicking element 'xpath: //a[@title='My Team']'.</msg>
+<status status="PASS" starttime="20220802 13:08:17.537" endtime="20220802 13:08:19.460"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:15.931" endtime="20220802 13:08:19.460"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${my_team_checker}</var>
+<arg>Wait Until Page Contains</arg>
+<arg>My Team</arg>
+<arg>20s</arg>
+<arg>My Team page is not displayed</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>My Team</arg>
+<arg>20s</arg>
+<arg>My Team page is not displayed</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220802 13:08:19.461" endtime="20220802 13:08:21.665"/>
+</kw>
+<msg timestamp="20220802 13:08:21.665" level="INFO">${my_team_checker} = True</msg>
+<status status="PASS" starttime="20220802 13:08:19.460" endtime="20220802 13:08:21.665"/>
+</kw>
+<if>
+<branch type="IF" condition="'${my_team_checker}'=='False'">
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>My Team</arg>
+<arg>20s</arg>
+<arg>My Team page is not displayed</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20220802 13:08:21.666" endtime="20220802 13:08:21.666"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:08:21.666" endtime="20220802 13:08:21.666"/>
+</branch>
+<status status="PASS" starttime="20220802 13:08:21.666" endtime="20220802 13:08:21.666"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:08:26.678" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220802 13:08:21.666" endtime="20220802 13:08:26.678"/>
+</kw>
+<kw name="Capture Page Screenshot And Retry If Required" library="CommonKeywords">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:08:28.506" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-128.png"&gt;&lt;img src="Screenshots/selenium-screenshot-128.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:08:26.680" endtime="20220802 13:08:28.507"/>
+</kw>
+<msg timestamp="20220802 13:08:28.507" level="INFO">${checker} = True</msg>
+<status status="PASS" starttime="20220802 13:08:26.679" endtime="20220802 13:08:28.507"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker}' == 'False'">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker_again}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220802 13:08:28.507" endtime="20220802 13:08:28.507"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker_again}' == 'False'">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20220802 13:08:28.507" endtime="20220802 13:08:28.507"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:08:28.507" endtime="20220802 13:08:28.507"/>
+</branch>
+<status status="NOT RUN" starttime="20220802 13:08:28.507" endtime="20220802 13:08:28.507"/>
+</if>
+<status status="NOT RUN" starttime="20220802 13:08:28.507" endtime="20220802 13:08:28.507"/>
+</branch>
+<status status="PASS" starttime="20220802 13:08:28.507" endtime="20220802 13:08:28.507"/>
+</if>
+<status status="PASS" starttime="20220802 13:08:26.678" endtime="20220802 13:08:28.507"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:06.428" endtime="20220802 13:08:28.508"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 6</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:08:28.508" level="INFO">Step 6</msg>
+<status status="PASS" starttime="20220802 13:08:28.508" endtime="20220802 13:08:28.508"/>
+</kw>
+<kw name="Select Employee By Name" library="MyTeamOverview">
+<arg>${data}[Person Name]</arg>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:08:30.520" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220802 13:08:28.509" endtime="20220802 13:08:30.520"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>link:${value}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:08:30.521" endtime="20220802 13:08:33.094"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:08:33.095" level="INFO">Clicking element 'link:Kyle Andrei Chan'.</msg>
+<status status="PASS" starttime="20220802 13:08:33.095" endtime="20220802 13:08:35.065"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:30.521" endtime="20220802 13:08:35.065"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:08:40.073" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220802 13:08:35.065" endtime="20220802 13:08:40.073"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:08:41.620" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-129.png"&gt;&lt;img src="Screenshots/selenium-screenshot-129.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:08:40.074" endtime="20220802 13:08:41.620"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:28.509" endtime="20220802 13:08:41.620"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 7</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:08:41.621" level="INFO">Step 7</msg>
+<status status="PASS" starttime="20220802 13:08:41.621" endtime="20220802 13:08:41.622"/>
+</kw>
+<kw name="Click Show More" library="MyTeamOverview">
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${href_showmore}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:08:41.622" endtime="20220802 13:08:43.573"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:08:43.573" level="INFO">Clicking element 'link:Show More'.</msg>
+<status status="PASS" starttime="20220802 13:08:43.573" endtime="20220802 13:08:45.900"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:41.622" endtime="20220802 13:08:45.900"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:08:48.908" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220802 13:08:45.900" endtime="20220802 13:08:48.908"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:08:50.671" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-130.png"&gt;&lt;img src="Screenshots/selenium-screenshot-130.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:08:48.908" endtime="20220802 13:08:50.671"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:41.622" endtime="20220802 13:08:50.672"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 8</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:08:50.673" level="INFO">Step 8</msg>
+<status status="PASS" starttime="20220802 13:08:50.672" endtime="20220802 13:08:50.673"/>
+</kw>
+<kw name="Click On Performance On Employment Info Page" library="MyTeamOverview">
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${href_performance}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:08:50.674" endtime="20220802 13:08:52.665"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:08:52.665" level="INFO">Clicking element 'link:Performance'.</msg>
+<status status="PASS" starttime="20220802 13:08:52.665" endtime="20220802 13:08:54.612"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:50.674" endtime="20220802 13:08:54.612"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Performance</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220802 13:08:56.497" level="INFO">Current page contains text 'Performance'.</msg>
+<status status="PASS" starttime="20220802 13:08:54.613" endtime="20220802 13:08:56.497"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:08:58.512" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220802 13:08:56.497" endtime="20220802 13:08:58.512"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:09:00.190" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-131.png"&gt;&lt;img src="Screenshots/selenium-screenshot-131.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:08:58.512" endtime="20220802 13:09:00.190"/>
+</kw>
+<status status="PASS" starttime="20220802 13:08:50.673" endtime="20220802 13:09:00.190"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 9</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:09:00.191" level="INFO">Step 9</msg>
+<status status="PASS" starttime="20220802 13:09:00.191" endtime="20220802 13:09:00.191"/>
+</kw>
+<kw name="Click on Current Financial Year Goal Plan" library="Performance">
+<arg>${data}[FY Year]</arg>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>link: ${f_y_year} Goal Plan</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:09:00.192" endtime="20220802 13:09:02.533"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:09:02.533" level="INFO">Clicking element 'link: FY22-23 Goal Plan'.</msg>
+<status status="PASS" starttime="20220802 13:09:02.533" endtime="20220802 13:09:04.822"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:00.191" endtime="20220802 13:09:04.822"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:09:09.824" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:04.822" endtime="20220802 13:09:09.824"/>
+</kw>
+<kw name="Capture Page Screenshot And Retry If Required" library="CommonKeywords">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:09:11.304" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-132.png"&gt;&lt;img src="Screenshots/selenium-screenshot-132.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:09:09.825" endtime="20220802 13:09:11.304"/>
+</kw>
+<msg timestamp="20220802 13:09:11.304" level="INFO">${checker} = True</msg>
+<status status="PASS" starttime="20220802 13:09:09.824" endtime="20220802 13:09:11.304"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker}' == 'False'">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker_again}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:11.305" endtime="20220802 13:09:11.305"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker_again}' == 'False'">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:11.305" endtime="20220802 13:09:11.305"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:09:11.305" endtime="20220802 13:09:11.305"/>
+</branch>
+<status status="NOT RUN" starttime="20220802 13:09:11.305" endtime="20220802 13:09:11.305"/>
+</if>
+<status status="NOT RUN" starttime="20220802 13:09:11.304" endtime="20220802 13:09:11.305"/>
+</branch>
+<status status="PASS" starttime="20220802 13:09:11.304" endtime="20220802 13:09:11.305"/>
+</if>
+<status status="PASS" starttime="20220802 13:09:09.824" endtime="20220802 13:09:11.305"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:00.191" endtime="20220802 13:09:11.305"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 10</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:09:11.306" level="INFO">Step 10</msg>
+<status status="PASS" starttime="20220802 13:09:11.306" endtime="20220802 13:09:11.306"/>
+</kw>
+<kw name="Click Performance Goals" library="Performance">
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${performance_goals}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:09:11.307" endtime="20220802 13:09:13.255"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:09:13.256" level="INFO">Clicking element 'link: Performance Goals'.</msg>
+<status status="PASS" starttime="20220802 13:09:13.255" endtime="20220802 13:09:15.292"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:11.306" endtime="20220802 13:09:15.292"/>
+</kw>
+<kw name="Wait And Verify Page Contains Text" library="CommonKeywords">
+<arg>Performance Goals</arg>
+<arg>20s</arg>
+<arg>Performance Goals page not found</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker}</var>
+<arg>Wait Until Page Contains</arg>
+<arg>${text}</arg>
+<arg>${time_out}</arg>
+<arg>${error_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>${text}</arg>
+<arg>${time_out}</arg>
+<arg>${error_message}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220802 13:09:15.293" endtime="20220802 13:09:16.263"/>
+</kw>
+<msg timestamp="20220802 13:09:16.263" level="INFO">${checker} = True</msg>
+<status status="PASS" starttime="20220802 13:09:15.292" endtime="20220802 13:09:16.263"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker}' == 'False'">
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>${text}</arg>
+<arg>${time_out}</arg>
+<arg>${error_message}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:16.263" endtime="20220802 13:09:16.263"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:09:16.263" endtime="20220802 13:09:16.263"/>
+</branch>
+<status status="PASS" starttime="20220802 13:09:16.263" endtime="20220802 13:09:16.263"/>
+</if>
+<status status="PASS" starttime="20220802 13:09:15.292" endtime="20220802 13:09:16.263"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:09:21.268" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:16.263" endtime="20220802 13:09:21.268"/>
+</kw>
+<kw name="Capture Page Screenshot And Retry If Required" library="CommonKeywords">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:09:23.299" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-133.png"&gt;&lt;img src="Screenshots/selenium-screenshot-133.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:09:21.269" endtime="20220802 13:09:23.299"/>
+</kw>
+<msg timestamp="20220802 13:09:23.300" level="INFO">${checker} = True</msg>
+<status status="PASS" starttime="20220802 13:09:21.268" endtime="20220802 13:09:23.300"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker}' == 'False'">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker_again}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:23.300" endtime="20220802 13:09:23.300"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker_again}' == 'False'">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:23.300" endtime="20220802 13:09:23.300"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:09:23.300" endtime="20220802 13:09:23.300"/>
+</branch>
+<status status="NOT RUN" starttime="20220802 13:09:23.300" endtime="20220802 13:09:23.300"/>
+</if>
+<status status="NOT RUN" starttime="20220802 13:09:23.300" endtime="20220802 13:09:23.300"/>
+</branch>
+<status status="PASS" starttime="20220802 13:09:23.300" endtime="20220802 13:09:23.300"/>
+</if>
+<status status="PASS" starttime="20220802 13:09:21.268" endtime="20220802 13:09:23.300"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:11.306" endtime="20220802 13:09:23.300"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 11-12</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:09:23.301" level="INFO">Step 11-12</msg>
+<status status="PASS" starttime="20220802 13:09:23.301" endtime="20220802 13:09:23.301"/>
+</kw>
+<kw name="Delete Goal" library="Performance">
+<arg>${data}[Goal Name]</arg>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:09:26.306" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:23.303" endtime="20220802 13:09:26.306"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>xpath: //a[text()="${goal}"]/following::img[1]</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:09:26.307" endtime="20220802 13:09:27.989"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:09:27.989" level="INFO">Clicking element 'xpath: //a[text()="Test Goal Automation Manager"]/following::img[1]'.</msg>
+<status status="PASS" starttime="20220802 13:09:27.989" endtime="20220802 13:09:29.732"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:26.306" endtime="20220802 13:09:29.732"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:09:32.742" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:29.732" endtime="20220802 13:09:32.742"/>
+</kw>
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${delete_goal_created_by_employee}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:09:32.743" endtime="20220802 13:09:34.424"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:09:34.424" level="INFO">Clicking element 'xpath: //td[text()="Delete Goal"]'.</msg>
+<status status="PASS" starttime="20220802 13:09:34.424" endtime="20220802 13:09:36.234"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:32.742" endtime="20220802 13:09:36.234"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${warning_yes_button}</arg>
+<arg>20s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:09:36.234" endtime="20220802 13:09:41.736"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:09:44.751" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:41.736" endtime="20220802 13:09:44.751"/>
+</kw>
+<kw name="Capture Page Screenshot And Retry If Required" library="CommonKeywords">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:09:46.579" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-134.png"&gt;&lt;img src="Screenshots/selenium-screenshot-134.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:09:44.752" endtime="20220802 13:09:46.579"/>
+</kw>
+<msg timestamp="20220802 13:09:46.579" level="INFO">${checker} = True</msg>
+<status status="PASS" starttime="20220802 13:09:44.752" endtime="20220802 13:09:46.579"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker}' == 'False'">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker_again}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:46.579" endtime="20220802 13:09:46.579"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker_again}' == 'False'">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:46.580" endtime="20220802 13:09:46.580"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:09:46.579" endtime="20220802 13:09:46.580"/>
+</branch>
+<status status="NOT RUN" starttime="20220802 13:09:46.579" endtime="20220802 13:09:46.580"/>
+</if>
+<status status="NOT RUN" starttime="20220802 13:09:46.579" endtime="20220802 13:09:46.580"/>
+</branch>
+<status status="PASS" starttime="20220802 13:09:46.579" endtime="20220802 13:09:46.580"/>
+</if>
+<status status="PASS" starttime="20220802 13:09:44.751" endtime="20220802 13:09:46.580"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:23.303" endtime="20220802 13:09:46.580"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 13</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:09:46.581" level="INFO">Step 13</msg>
+<status status="PASS" starttime="20220802 13:09:46.580" endtime="20220802 13:09:46.581"/>
+</kw>
+<kw name="Select Warning Yes Button" library="Performance">
+<kw name="Wait And Click Element" library="CommonKeywords">
+<arg>${warning_yes_button}</arg>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${locator}</arg>
+<arg>30</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220802 13:09:46.582" endtime="20220802 13:09:50.613"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220802 13:09:50.614" level="INFO">Clicking element 'xpath: //a[@accesskey="Y"]'.</msg>
+<status status="PASS" starttime="20220802 13:09:50.613" endtime="20220802 13:09:52.391"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:46.581" endtime="20220802 13:09:52.391"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:09:55.401" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:52.392" endtime="20220802 13:09:55.401"/>
+</kw>
+<kw name="Capture Page Screenshot And Retry If Required" library="CommonKeywords">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220802 13:09:57.315" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshots/selenium-screenshot-135.png"&gt;&lt;img src="Screenshots/selenium-screenshot-135.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220802 13:09:55.402" endtime="20220802 13:09:57.315"/>
+</kw>
+<msg timestamp="20220802 13:09:57.315" level="INFO">${checker} = True</msg>
+<status status="PASS" starttime="20220802 13:09:55.401" endtime="20220802 13:09:57.315"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker}' == 'False'">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${checker_again}</var>
+<arg>capture page screenshot</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:57.316" endtime="20220802 13:09:57.316"/>
+</kw>
+<if>
+<branch type="IF" condition="'${checker_again}' == 'False'">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20220802 13:09:57.316" endtime="20220802 13:09:57.316"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:09:57.316" endtime="20220802 13:09:57.316"/>
+</branch>
+<status status="NOT RUN" starttime="20220802 13:09:57.316" endtime="20220802 13:09:57.316"/>
+</if>
+<status status="NOT RUN" starttime="20220802 13:09:57.315" endtime="20220802 13:09:57.316"/>
+</branch>
+<status status="PASS" starttime="20220802 13:09:57.315" endtime="20220802 13:09:57.316"/>
+</if>
+<status status="PASS" starttime="20220802 13:09:55.401" endtime="20220802 13:09:57.316"/>
+</kw>
+<status status="PASS" starttime="20220802 13:09:46.581" endtime="20220802 13:09:57.316"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220802 13:10:02.320" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220802 13:09:57.317" endtime="20220802 13:10:02.320"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Step 14</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220802 13:10:02.321" level="INFO">Step 14</msg>
+<status status="PASS" starttime="20220802 13:10:02.321" endtime="20220802 13:10:02.322"/>
+</kw>
+<kw name="Page Should Not Contain" library="Selenium2Library">
+<arg>${data}[Goal Name]</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<msg timestamp="20220802 13:10:15.977" level="INFO">Current page does not contain text 'Test Goal Automation Manager'.</msg>
+<status status="PASS" starttime="20220802 13:10:02.322" endtime="20220802 13:10:15.977"/>
+</kw>
+<kw name="After Test" library="SetupAndTeardown" type="TEARDOWN">
+<if>
+<branch type="IF" condition="'${local_execution_flag}'=='True'">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="NOT RUN" starttime="20220802 13:10:15.979" endtime="20220802 13:10:15.979"/>
+</kw>
+<status status="NOT RUN" starttime="20220802 13:10:15.979" endtime="20220802 13:10:15.980"/>
+</branch>
+<status status="PASS" starttime="20220802 13:10:15.979" endtime="20220802 13:10:15.980"/>
+</if>
+<if>
+<branch type="IF" condition="'${sauce_execution_flag}'=='True'">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<arg>Execute Javascript</arg>
+<arg>sauce:job-result=passed</arg>
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<kw name="Execute Javascript" library="Selenium2Library">
+<arg>sauce:job-result=passed</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220802 13:10:15.981" level="INFO">Executing JavaScript:
+sauce:job-result=passed
+Without any arguments.</msg>
+<status status="PASS" starttime="20220802 13:10:15.981" endtime="20220802 13:10:16.750"/>
+</kw>
+<status status="PASS" starttime="20220802 13:10:15.980" endtime="20220802 13:10:16.750"/>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Execute Javascript</arg>
+<arg>sauce:job-result=failed</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20220802 13:10:16.750" endtime="20220802 13:10:16.750"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220802 13:10:16.750" endtime="20220802 13:10:17.299"/>
+</kw>
+<status status="PASS" starttime="20220802 13:10:15.980" endtime="20220802 13:10:17.299"/>
+</branch>
+<status status="PASS" starttime="20220802 13:10:15.980" endtime="20220802 13:10:17.299"/>
+</if>
+<status status="PASS" starttime="20220802 13:10:15.978" endtime="20220802 13:10:17.299"/>
+</kw>
+<tag>ModifyData</tag>
+<tag>PMPTalentTestCase</tag>
+<status status="PASS" starttime="20220802 13:07:48.179" endtime="20220802 13:10:17.300"/>
+</test>
+<kw name="After Suite" library="SetupAndTeardown" type="TEARDOWN">
+<kw name="End Web Test" library="CommonKeywords">
+<kw name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220802 13:10:17.303" endtime="20220802 13:10:17.303"/>
+</kw>
+<status status="PASS" starttime="20220802 13:10:17.303" endtime="20220802 13:10:17.303"/>
+</kw>
+<status status="PASS" starttime="20220802 13:10:17.302" endtime="20220802 13:10:17.303"/>
+</kw>
+<doc>Manager deletes Performance Goals of his direct report
+Prerequisite: TC12_Manager_Creates_Performance_Goals.robot
+Environment Specific Data: Login User, Manager Name and Person Name
+Reusable Data: Action Menu
+Dynamic Data: Goal Name, FY Year</doc>
+<status status="PASS" starttime="20220802 13:07:26.185" endtime="20220802 13:10:17.303"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">ModifyData</stat>
+<stat pass="1" fail="0" skip="0">PMPTalentTestCase</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC16 Manager Delete Performance Goals">TC16 Manager Delete Performance Goals</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220802 13:07:27.436" level="ERROR">Error in file 'C:\Users\akash.parasram.dhage\Downloads\HCM\HCM_Auto\HCM_Git_04_04\OracleCloudTestAutomation\HCM\Keywords\CommonKeywords.robot' on line 5: Importing library 'AutoItLibrary' failed: com_error: (-2147319779, 'Library not registered.', None, None)
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\AutoItLibrary\__init__.py", line 46, in &lt;module&gt;
+    win32com.client.gencache.EnsureModule("{F8937E53-D444-4E71-9275-35B64210CC3B}", 0, 1, 0)
+  File "C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages\win32com\client\gencache.py", line 598, in EnsureModule
+    module = MakeModuleForTypelib(
+  File "C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages\win32com\client\gencache.py", line 315, in MakeModuleForTypelib
+    makepy.GenerateFromTypeLibSpec(
+  File "C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages\win32com\client\makepy.py", line 257, in GenerateFromTypeLibSpec
+    tlb = pythoncom.LoadRegTypeLib(typelibCLSID, major, minor, lcid)
+PYTHONPATH:
+  C:\Users\akash.parasram.dhage\Downloads\HCM\HCM_Auto\HCM_Git_04_04\OracleCloudTestAutomation\HCM
+  C:\Program Files\Python39\python39.zip
+  C:\Program Files\Python39\DLLs
+  C:\Program Files\Python39\lib
+  C:\Program Files\Python39
+  C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages
+  C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages\win32
+  C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages\win32\lib
+  C:\Users\akash.parasram.dhage\AppData\Roaming\Python\Python39\site-packages\Pythonwin
+  C:\Program Files\Python39\lib\site-packages
+  C:\Program Files\Python39\lib\site-packages\win32
+  C:\Program Files\Python39\lib\site-packages\win32\lib
+  C:\Program Files\Python39\lib\site-packages\Pythonwin</msg>
+</errors>
+</robot>

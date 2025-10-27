@@ -1,0 +1,2 @@
+﻿Recruiter Username,Pool Name,Candidate Name,Move to Phase,Action,Use,Custom Mail
+KIANM,Talent Pool,"Ciria, Vaska (19000)",Short List,Send Message,Blank Message,"Hello Candidate,\n\nYou have been added to Candidate Pool - ${CandidatePoolName}\n\nThanks."
