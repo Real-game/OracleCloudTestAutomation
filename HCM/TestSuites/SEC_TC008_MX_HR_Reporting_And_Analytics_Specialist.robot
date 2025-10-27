@@ -9,8 +9,8 @@ Resource  ../PageObjects/ReportsAndAnalytics.robot
 Resource  ../PageObjects/Catalog.robot
 Documentation  MX HR Reporting and  Analytics Specialist
 ...            Prerequiste:  HR-81 and Require an user with MX HR Reporting and  Analytics Specialist Role
-...            Environment Specific Data:  Login User, Person Number
-...            Reusable Data: Person Name,Homepage Option1,Homepage Option2,Homepage Option3,My Client Apps,Action Menu1,Parent Action,Child Action
+...            Environment Specific Data:  Login User; Person Number
+...            Reusable Data: Person Name;Homepage Option1;Homepage Option2;Homepage Option3;My Client Apps;Action Menu1;Parent Action;Child Action
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC008_MX_HR_Reporting_And_Analytics_Specialist.csv
 
 *** Test Cases ***
 Scenario: MX HR Reporting and Analytics Specialist
-    [Tags]  SecurityRoleTestCase  ReadOnly
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

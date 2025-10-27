@@ -55,9 +55,9 @@ Click Submit
     Sleep  7s
     Capture Page Screenshot And Retry If Required
 
-Click 1 of 1 participants responded
+Click participants responded
     [Arguments]  ${performance_doc}
-    Wait And Click Element  xpath: //a[text()="${performance_doc}"]/following::a[text()="1 of 1 participants responded"]
+    Wait And Click Element  xpath: //a[text()="${performance_doc}"]/following::a[contains(text(),"participants responded")]
     Wait And Verify Page Contains Text  Manage Participant Feedback:  20s  Manage Participant Feedback: page not found
     Sleep  3s
     Capture Page Screenshot And Retry If Required

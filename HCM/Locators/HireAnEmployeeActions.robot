@@ -7,3 +7,6 @@ ${work_relationship_info_action}      xpath: //span[text()='Work Relationship In
 ${payroll_details_action}      xpath: //span[text()='Payroll Details']
 ${salary_action}     xpath: //span[text()='Salary']
 ${continue_button}   xpath: //span[text()='u']
+
+${warning_popup}    xpath: //div[text()='Warning']
+${Warning_span_yes}     xpath: //button[text()='Yes']

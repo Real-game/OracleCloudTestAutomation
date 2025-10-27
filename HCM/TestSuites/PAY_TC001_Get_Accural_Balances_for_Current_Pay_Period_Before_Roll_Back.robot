@@ -9,7 +9,7 @@ Resource  ../PageObjects/ScheduleAndMonitorAbsenceProcess.robot
 Documentation  Run 'Get Accrual balnces' before payroll rollback for upgrade testing
 ...            Prerequisite:  No data dependancy
 ...            Environment Specific Data:  Login User
-...            Reusable Data: Plan Type,Business Unit,Time Range,Execution Time(min),Refresh Cycle(sec)
+...            Reusable Data: Plan Type;Business Unit;Time Range;Execution Time(min);Refresh Cycle(sec)
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -20,14 +20,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PAY_TC001_Get_Accural_Balances_for_Current_Pay_Period_Before_Roll_Back.json
 ${csv_path}  ./CSV/td_PAY_TC001_Get_Accural_Balances_for_Current_Pay_Period_Before_Roll_Back.csv
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Run 'Get Accrual balnces' before payroll rollback for upgrade testing
-    [Tags]  PayrollAbsenceTestCase  ReadOnly
+    [Tags]  PayrollAbsenceTestCase  ReadOnly  PRDemo
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Login User]
     Log  Step 4
     click on homepage
     Log  Step 5

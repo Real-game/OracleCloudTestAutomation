@@ -7,8 +7,8 @@ Resource  ../PageObjects/PersonalInformation.robot
 Resource  ../PageObjects/PersonManagement.robot
 Documentation  Quick Actions - Update Employee Person Information
 ...            Prerequisite:  Employee details should get from ORC
-...            Environment Specific Data: Login User,Employee Name
-...            Reusable Data: Group,Country of Birth,Region of Birth,Town of Birth,Blood Type
+...            Environment Specific Data: HR Login; Employee Login Name
+...            Reusable Data: Group; Country of Birth; Region of Birth; Town of Birth; Blood Type
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -19,14 +19,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_HR_95_Quick_Actions_Update_Employee_Person_Information.json
 ${csv_path}  ./CSV/td_HR_95_Quick_Actions_Update_Employee_Person_Information.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Quick Actions - Update Employee Person Information
-    [Tags]  CoreHRTestCase  ModifyData
+    [Tags]  CoreHRTestCase  ModifyData  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Login]
     Log  Step 4
     click on homepage
     Log  Step 5 - 6
@@ -34,7 +38,7 @@ Scenario: Quick Actions - Update Employee Person Information
     Log  Step 7
     Click Option under Employment Section  ${data}[Group]
     Log  Step 8
-    Search for a person  ${data}[Employee Name]
+    Search for a person  ${common_data}[Employee Login Name]
     Log  Step 9
     Select Personal Information
     Log  Step 10

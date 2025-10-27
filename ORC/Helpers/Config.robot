@@ -15,4 +15,4 @@ ${ext_URL}  https://fa-ehtc-dev9-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/Candid
 #${ext_URL}  https://ehtc-dev3.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1
 ${sauce_username}  Senthilthangaraj
 ${sauce_access_key}  7d27eace-fa6e-494f-9b99-549328c0ad99
-${vm_execution_flag}  False
+${vm_execution_flag}  True

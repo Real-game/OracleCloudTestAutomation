@@ -15,3 +15,20 @@ Select an Action in hire an employee page
     Sleep  2s
     Capture Page Screenshot
     Wait And Click Element  ${continue_button}
+
+Verify Hire an Employee page has option
+    [Arguments]  ${text}
+    Wait Until Page Contains  ${text}  20s  ${text} is not displayed
+    ${xpath}=   Catenate  SEPARATOR=  //span[text()='${text}']
+    Page Should Contain Element  xpath:${xpath}
+    scroll element into view  ${xpath}
+    Capture Page Screenshot and Retry If Required
+
+Verify Page throws Warning
+    ${warning_check}=  Run Keyword and Return Status  wait until element is visible  ${warning_popup}  10s
+    IF  '${warning_check}'=='True'
+            Capture Page Screenshot And Retry If Required
+            Wait And Click Element  ${Warning_span_yes}
+    END
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required

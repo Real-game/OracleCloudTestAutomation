@@ -1,9 +1,15 @@
 {
-    "Login User": "akash.parasram.dhage@accenture.com",
-    "Action": "Transfer",
-    "Action Reason": "Transfer",
-    "Employee Number": "17252",
-    "Employee Name": "",
-    "Effective Start Date": "01-Feb-2022",
-    "Position": "92100179"
+    "Login User": "s.raavi@accenture.com",
+    "Employment Section": "Transfer",
+    "Employee Number": "06368",
+    "Additional Assignment Info": "Yes",
+    "Maintain Manager Info": "Yes",
+    "Salary Info": "Yes",
+    "Compensation Info": "Yes",
+    "Reassign reports Info": "Yes",
+    "Add Direct report Info": "Yes",
+    "Comments Info": "Yes",
+    "Transfer Start Date": "14-Nov-2022",
+    "Reason for Transfer": "Lateral Move",
+    "Position Code": "92100329"
 }

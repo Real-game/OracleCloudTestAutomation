@@ -7,8 +7,8 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/PersonManagement.robot
 Documentation  MX Learning Administrator
 ...            Prerequisite:  HR-81 and Require an user with MX Learning Administrator Role
-...            Environment Specific Data:  Login User, Person Number
-...            Reusable Data: Person Name,Homepage Option1,Homepage Option2,Homepage Option3,Client group Apps1,Client group Apps2,Client group quick option1,Client group quick option2,Parent Action,Child Action
+...            Environment Specific Data:  Login User; Person Number
+...            Reusable Data: Person Name;Homepage Option1;Homepage Option2;Homepage Option3;Client group Apps1;Client group Apps2;Client group quick option1;Client group quick option2;Parent Action;Child Action
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC006_MX_Learning_Administrator.csv
 *** Test Cases ***
 
 Scenario: MX Learning Administrator
-    [Tags]  SecurityRoleTestCase  ReadOnly
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

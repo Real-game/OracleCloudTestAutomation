@@ -31,12 +31,12 @@ Fill personal details in Hire an Employee page
 
 Fill Addresses
     [Arguments]  ${address_type_value}  ${address_line_1_value}  ${city_value}  ${postal_code_value}
-    Sleep  2s
+    Sleep  5s
     Wait And Click Element  ${country_drop_down}
-    Sleep  1s
-    ${country_xpath}=  Catenate  SEPARATOR=  //div[text()='  Canada  ']
+    Sleep  10s
+    ${country_xpath}=  Catenate  SEPARATOR=  //div[text()='Canada']
     Wait And Click Element  xpath: ${country_xpath}
-    Sleep  2s
+    Sleep  5s
     Wait And Click Element  ${address_type_drop_down}
     Sleep  2s
     ${address_xpath}=  Catenate  SEPARATOR=  //li[text()='  ${address_type_value}  ']
@@ -100,10 +100,10 @@ Fill Assignment Details in Hire an employee page
 
 Fill Salary Details
     Wait And Click Element  ${salary_basis_drop_down}
-    Sleep  2s
+    Sleep  5s
     ${bus_xpath}=  Catenate  SEPARATOR=  //div[text()='Salaried']
     Wait And Click Element  xpath: ${bus_xpath}
-    Sleep  3s
+    Sleep  5s
     Wait And Input Text From Input   ${salary_amount_input}   5000
     Sleep  2s
     Wait And Click Element  ${submit_button}

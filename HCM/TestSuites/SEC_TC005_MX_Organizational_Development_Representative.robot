@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC005_MX_Organizational_Development_Representative.csv
 
 *** Test Cases ***
 Scenario: Security Testing - MX Organizational Development Representative
-    [Tags]  SecurityRoleTestCase  Read Only
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3

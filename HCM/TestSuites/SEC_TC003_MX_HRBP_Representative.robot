@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC003_MX_HRBP_Representative.csv
 
 *** Test Cases ***
 Scenario: Security Testing - MX HRBP Representative
-    [Tags]  SecurityRoleTestCase  Read Only
+    [Tags]  SecurityRoleTestCase  Read Only  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3

@@ -1,7 +1,7 @@
 *** Settings ***
 Library  String
 Library   ../Keywords/CommonKeywords.py
-#Library    FakerLibrary
+Library    FakerLibrary
 Library  AutoItLibrary
 Library  OperatingSystem
 Resource  ../Locators/Logout.robot
@@ -119,9 +119,7 @@ Wait Then Click And Set Text
     [Arguments]  ${field}  ${value}
     Wait Until Element Is Visible  ${field}  10
     Click Element  ${field}
-    Sleep    1s
     Press Keys	${field}  CTRL+a
-    Sleep    1s
     Press Keys	${field}  BACKSPACE
     Sleep  1s
     Input Text  ${field}  ${value}
@@ -136,14 +134,14 @@ Wait And Get Text
     [Arguments]  ${field}
     Wait Until Element Is Visible  ${field}  10
     ${text}=  Get Text  ${field}
-    RETURN    ${text}
+    [return]  ${text}
 
 
 Wait And Get Value
     [Arguments]  ${field}
     Wait Until Element Is Visible  ${field}  10
     ${value}=  Get Value  ${field}
-    RETURN    ${value}
+    [return]  ${value}
 
 
 Assert Field Value
@@ -170,7 +168,7 @@ Assert Field Value from clipboard
 FakerLibrary Words Generation
     ${word}=    FakerLibrary.Unix Time
     Log To Console    words: ${word}
-    RETURN    ${word}
+    [return]  ${word}
 
 
 Attach File
@@ -190,7 +188,6 @@ Attach File
 
 Select Required Value
     [Arguments]  ${xpath}  ${value}
-    Sleep  2s
     ${matching_elements}=  Get WebElements   ${xpath}
     FOR  ${element}  IN  @{matching_elements}
         ${text}=    Get Text  ${element}
@@ -218,23 +215,3 @@ Wait And Verify Page Contains Text
     IF  '${checker}' == 'False'
         Wait Until Page Contains    ${text}  ${time_out}  ${error_message}
     END
-
-Wait Then delete And Set Text
-    [Arguments]  ${field}  ${value}
-    Wait Until Element Is Visible  ${field}  10
-    Click Element  ${field}
-    Press Keys	${field}  DELETE
-    Sleep  1s
-    Wait And Send Keys  ${field}  ${value}
-
-Wait and clear and send keys
-    [Arguments]  ${field}  ${value}
-    Wait Until Element Is Visible  ${field}  10
-    Click Element  ${field}
-    Press Keys	${field}  CTRL+a
-    Press Keys	${field}  BACKSPACE
-    Sleep  1s
-    Input text  ${field}  ${value}
-    Sleep  2s
-    Scroll element into view  ${field}
-    Wait Then delete And Set Text  ${field}  ${value}

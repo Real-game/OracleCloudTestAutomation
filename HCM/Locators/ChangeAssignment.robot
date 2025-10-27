@@ -27,3 +27,9 @@ ${payroll_details_other_info_section}  xpath://h2[text()="Other Info"]
 ${dropdown_payroll}  xpath: (//label[text()="Payroll"]/following::input)[1]
 
 ${dropdown_time_card}  xpath: (//label[text()="Time Card Required for Payroll"]/following::input)[1]
+
+${checkbox_maintain_managers}  xpath: //span[text()='Maintain Managers']
+${position_textbox}  xpath: //label[text()='Position']/parent::div//following-sibling::div//input[@type='text']
+${yes_button_hire_detail}         xpath: //span[text()='Y']
+${edit_but}  xpath: //a[@title='Edit']
+${maintain_manager_dropdown}  xpath: //td[text()='Maintain Managers']//following::label[text()='Name']//parent::div//following-sibling::div//a

@@ -9,12 +9,14 @@ Resource  ../Locators/HomePage.robot
 Click on Open Journeys tab
     Wait Until Page Contains  Open  20s  Open tab is not displayed in My journeys page
     Wait And Click Element  ${open_journeys}
+    Capture Page Screenshot And Retry If Required
 
 Click on Journey
     [Arguments]  ${journey_name}
     Wait Until Page Contains  ${journey_name}  20s  Journey is listed in the open journeys tab
     Capture Page Screenshot
     ${journey_xpath}=  Catenate  SEPARATOR=  //span[@title='    ${journey_name}  ']
+    Scroll To Element  ${journey_xpath}
     Click Element  xpath: ${journey_xpath}
     Wait Until Page Contains  Tasks  20s  Journeys list page is not displayed
     Capture Page Screenshot
@@ -49,6 +51,8 @@ Click on Direct Reports
      Wait And Click Element  ${reports}
      Wait And Click Element  ${direct_reports_radio}
      Wait And Click Element  ${reports_radio_overlay}
+     Sleep  5s
+     Capture Page Screenshot And Retry If Required
 
 
 
@@ -87,3 +91,4 @@ Get MX Cultural Census Task List
     ELSE
         Fail  No tasks are listed in the task list page
     END
+    Capture Page Screenshot And Retry If Required

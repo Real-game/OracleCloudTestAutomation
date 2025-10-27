@@ -8,8 +8,8 @@ Resource  ../PageObjects/PerformanceTemplates.robot
 Documentation  Data setup for creating performance document
 ...            Prerequisite:  Not Applicable
 ...            Environment Data:  Login User
-...            Reusable Data:  Role1, Employee Questionnaires, Role2, Manager Questionnaires
-...            Dynamic Data: Document Period Name, Review Period, Short Name and Document Template(Depend on your requirement)
+...            Reusable Data:  Role1; Employee Questionnaires; Role2; Manager Questionnaires
+...            Dynamic Data: Document Period Name; Review Period; Short Name and Document Template(Depend on your requirement)
 
 *** Settings ***
 Suite Setup  Before Suite
@@ -22,7 +22,7 @@ ${csv_path}  ./CSV/td_DC10_Data_setup_for_creating_performance_document.csv
 
 *** Test Cases ***
 Scenario: Data setup for creating performance document
-    [Tags]  PMPTalentTestCase  ModifyData
+    [Tags]  PMPTalentTestCase  ModifyData  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3
@@ -54,3 +54,5 @@ Scenario: Data setup for creating performance document
         Log  Step 21
     END
     Click Save And Close Performance Template
+    wait until page does not contain  Error  10s  Error Displayed
+

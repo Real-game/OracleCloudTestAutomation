@@ -3,6 +3,8 @@ Library  String
 Library   ../Keywords/CommonKeywords.py
 Library    FakerLibrary
 Library    AutoItLibrary
+Library    DateTime
+#Library    ConvertDate
 Resource  ../Locators/Logout.robot
 Library  ../Helpers/Helpers.py
 Resource  ../Helpers/Config.robot
@@ -17,9 +19,12 @@ Launch Chrome
     [Arguments]  ${URL}
     ${ChromeOptions} =     Evaluate     sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${ChromeOptions}     add_argument    --disable-extensions
-    Call Method    ${ChromeOptions}     add_argument    --start-maximized
+    #Call Method    ${ChromeOptions}     add_argument    --start-maximized
     Call Method    ${ChromeOptions}     add_argument    --incognito
     Call Method    ${ChromeOptions}     add_argument    --disable-notifications
+    Call Method    ${ChromeOptions}     add_argument    --disable-popup-blocking
+    call Method    ${ChromeOptions}     add_argument    --ignore-certificate-errors
+    call Method    ${ChromeOptions}     add_argument    --ignore-ssl-errors
     Call Method    ${ChromeOptions}     add_experimental_option      useAutomationExtension    ${FALSE}
     ${Options}=     Call Method         ${ChromeOptions}    to_capabilities
     Open Browser  ${URL}  Chrome    desired_capabilities=${Options}
@@ -32,13 +37,13 @@ Launch Firefox
 Launch HCM
     [Arguments]  ${file_name}
     ${sauce_url}=  createSauceURL  ${sauce_username}  ${sauce_access_key}
-    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${file_name}
+    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${sauce_execution_resolution}  ${file_name}
     Open browser  ${URL}  remote_url=${sauce_url}   desired_capabilities=${cap}
 
 Launch HCM Analytics
     [Arguments]  ${file_name}
     ${sauce_url}=  createSauceURL  ${sauce_username}  ${sauce_access_key}
-    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${file_name}
+    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion} ${sauce_execution_platformName} ${sauce_execution_resolution} ${file_name}
     Open browser  ${URL_Analytics}  remote_url=${sauce_url}   desired_capabilities=${cap}
 
 End Web Test
@@ -53,6 +58,13 @@ Login
 Logout
     Wait And Click Element  ${profile_downarrow}
     Wait And Click Element  ${btn_signout}
+    ${check}=  Run Keyword And Return Status  Page Should Contain  Warning
+    IF  ${check}==True
+        ${check1}=  Run Keyword And Return Status  Wait And Click Element  xpath://button[text()="Yes"]
+        IF  ${check1}==False
+            Wait And Click Element  xpath: //div[text()='Warning']//ancestor::td//following-sibling::td//span//button[text()='Yes']
+        END
+    END
     Wait And Click Element  ${signout_confirm}
     Sleep  5s
     Capture Page Screenshot
@@ -65,7 +77,7 @@ Wait And Set Text
 
 Wait And Click Element
     [Arguments]  ${locator}
-    Wait Until Element Is Visible  ${locator}  30
+    Wait Until Element Is Visible  ${locator}  20
     Click Element      ${locator}
 
 
@@ -266,3 +278,72 @@ Get incremented Date
     ${incremented_date}=   DateTime.Get Current Date    increment=${days} days
     ${incremented_date} =  Convert Date  ${incremented_date}  result_format=%d/%m/%Y
     [return]  ${incremented_date}
+
+Get Text Count with tag
+    [Arguments]  ${tag}  ${text}
+    ${count}=  get element count  xpath: //${tag}\[text()="${text}"]
+    [Return]  ${count}
+
+Wait And Verify Text Value
+    [Arguments]  ${element}  ${expected_text_value}
+    IF  '${expected_text_value}'!=''
+        Wait Until Element Is Visible  ${element}
+        Scroll Element Into View  ${element}
+        ${actual_text_value}=  Get Element Attribute  ${element}  innerHTML
+        ${check}=  Run Keyword And Return Status  Should be Equal  ${expected_text_value}  ${actual_text_value}
+        IF  '${check}'=='False'
+            Capture Page Screenshot
+            Fail  Expected text is ${expected_text_value} and actual text is ${actual_text_value}
+        END
+    END
+
+Select Required Frame
+    [Arguments]  ${xpath}
+    ${list}=  Get WebElements  ${xpath}
+    ${count}=  Get Length  ${list}
+    FOR  ${element}  IN  @{list}
+        ${check}=  Run Keyword And Return Status  Wait Until Element Is Visible  ${element}  15s
+        IF  '${check}'=='True'
+            Select Frame  ${element}
+            Exit For Loop
+        END
+    END
+
+Click Required Element
+    [Arguments]  ${xpath}
+    ${list}=  Get WebElements  ${xpath}
+    ${count}=  Get Length  ${list}
+    FOR  ${element}  IN  @{list}
+        ${check}=  Run Keyword And Return Status  Wait Until Element Is Visible  ${element}  15s
+        IF  '${check}'=='True'
+            Scroll element into view  ${element}
+            wait and click element  ${element}
+            Exit For Loop
+        END
+    END
+
+Verify the element presence
+    [Arguments]  ${xpath}
+    ${check}=  Set Variable  False
+    ${list}=  Get WebElements  ${xpath}
+    ${count}=  Get Length  ${list}
+    FOR  ${element}  IN  @{list}
+        ${check_value}=  Run Keyword And Return Status  Wait Until Element Is Visible  ${element}  15s
+        IF  '${check_value}'=='True'
+            ${check}=  Set Variable  True
+            Exit For Loop
+        END
+    END
+    [return]  ${check}
+
+Wait and clear and send keys
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  10
+    Click Element  ${field}
+    Press Keys	${field}  CTRL+a
+    Press Keys	${field}  BACKSPACE
+    Sleep  1s
+    Input text  ${field}  ${value}
+    Sleep  2s
+    Scroll element into view  ${field}
+    Wait Then delete And Set Text  ${field}  ${value}

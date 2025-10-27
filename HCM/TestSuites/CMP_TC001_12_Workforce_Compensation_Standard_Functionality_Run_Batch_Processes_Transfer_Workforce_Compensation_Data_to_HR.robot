@@ -7,10 +7,11 @@ Resource  ../PageObjects/Compensation.robot
 Resource  ../PageObjects/MonitorProcesses.robot
 Resource  ../PageObjects/ProcessWorkforceCompensationChangeStatements.robot
 Resource  ../PageObjects/RunGradeStepProgression.robot
+Resource  ../PageObjects/Payroll.robot
 Documentation  Workforce Compensation - Standard Functionality - Run Batch Processes - Transfer Workforce Compensation Data to HR
 ...            Prerequisite:  CMP_TC001.10
-...            Environment Specific Data:  Login User
-...            Reusable Data:  Plan,Cycle,Batch Process,Radio Button,Action,Action Reason,Element Posting Date,Mark Assignments as Processed
+...            Environment Specific Data:  Manager Login(PFP_common_test_data.csv)
+...            Reusable Data:  Plan(PFP_common_test_data.csv);Cycle(PFP_common_test_data.csv);Batch Process;Radio Button;Action;Action Reason;Element Posting Date;Mark Assignments as Processed
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -21,14 +22,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_CMP_TC001_12_Workforce_Compensation_Standard_Functionality_Run_Batch_Processes_Transfer_Workforce_Compensation_Data_to_HR.json
 ${csv_path}  ./CSV/td_CMP_TC001_12_Workforce_Compensation_Standard_Functionality_Run_Batch_Processes_Transfer_Workforce_Compensation_Data_to_HR.csv
+${common_json_path}  ./TestData/PFP_common_test_data.json
+${common_csv_path}  ./CSV/PFP_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Workforce Compensation - Standard Functionality - Run Batch Processes - Transfer Workforce Compensation Data to HR
     [Tags]  PFPTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Specialist Login]
     Log  Step 4
     click on homepage
     Go To My Client Group
@@ -40,9 +45,9 @@ Scenario: Workforce Compensation - Standard Functionality - Run Batch Processes 
     Log  Step 8 - 9
     Select Radio Button On Plan Details  ${data}[Radio Button]
     Log  Step 10
-    Select Plan  ${data}[Plan]
+    Select Plan  ${common_data}[Plan]
     Log  Step 11
-    Select Cycle  ${data}[Cycle]
+    Select Cycle  ${common_data}[Cycle]
     Log  Step 12
     Select Action Value  ${data}[Action]
     Log  Step 13
@@ -80,3 +85,14 @@ Scenario: Workforce Compensation - Standard Functionality - Run Batch Processes 
     Log  Step 24
     Click Monitor Process Button
     Monitor Status Of Given Process Id  ${process_id}
+    click on homepage
+    Sleep  3s
+    Click on Payroll Calculation under Payroll via Navigator
+    Click Search Person on Left Side Panel
+    Enter Person number and search in Keywords field  ${data}[Person Number]
+    Sleep  3s
+    Wait And Click Element  xpath: //button[@title="Actions"]
+    Wait And Click Element  xpath: //td[text()="Element Entries"]
+    Sleep  5s
+    Capture Page Screenshot And Retry If Required
+    Sleep  5s

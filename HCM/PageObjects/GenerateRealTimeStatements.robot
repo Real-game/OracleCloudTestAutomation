@@ -32,3 +32,8 @@ Click OK button for Confirmation
     Wait And Click Element  ${confirmation_ok}
     Sleep  3s
     Capture Page Screenshot And Retry If Required
+
+Click OK button for Job ID Confirmation
+    Wait And Click Element  ${job_id_confirmation}
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required

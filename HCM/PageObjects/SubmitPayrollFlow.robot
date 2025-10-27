@@ -34,13 +34,19 @@ Select Run Type from dropdown
     [Arguments]  ${runtype}
     Wait And Click Element  ${run_type_dropdown}
     Sleep  3s
-    Wait And Click Element  xpath: //td[text()="${runtype}"]
+    #Wait And Click Element  xpath: //td[text()="${runtype}"]
+    ${status}=  Run Keyword And Return Status  Wait And Click Element  xpath: //td[text()="${runtype}"]
+    IF  "${status}"=="False"
+        Wait And Click Element  ${run_type_dropdown}
+        Sleep  3s
+        Wait And Click Element  xpath: //td[text()="${runtype}"]
+    END
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
 Click on Submit
     Wait And Click Element  ${submit_button}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Enter Effective Date as
@@ -103,4 +109,34 @@ Enter Process End Date
     [Arguments]  ${process_date}
     Wait And Set Text  ${process_end_date}  ${process_date}
     Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Select Payroll Relationship Group from dropdown
+    [Arguments]  ${objectName}
+    Wait And Click Element  ${payroll_relationship_group_field}
+    Sleep  1s
+    ${status}=  Run Keyword And Return Status  Wait And Set Text  ${payroll_relationship_group_field}  ${objectName}
+    IF  "${status}"=="False"
+        Wait And Set Text  ${payroll_relationship_group_field}  ${objectName}
+    END
+    Sleep  1s
+    Capture Page Screenshot And Retry If Required
+
+Select Payroll Period Value from dropdown
+    [Arguments]  ${payrollperiod}
+    Wait And Click Element  ${payroll_period_field}
+    Sleep  1s
+    ${status}=  Run Keyword And Return Status  Wait And Set Text  ${payroll_period_field}  ${payrollperiod}
+    IF  "${status}"=="False"
+        Wait And Set Text  ${payroll_period_field}  ${payrollperiod}
+    END
+    Sleep  1s
+    Capture Page Screenshot And Retry If Required
+
+Enter Process Start and End Date
+    [Arguments]  ${process_start_date}  ${process_end_date}
+    Wait And Set Text  ${process_start_date_prepayment}  ${process_start_date}
+    Sleep  2s
+    Wait And Set Text  ${process_end_date_prepayment}  ${process_end_date}
+    Sleep  2s
     Capture Page Screenshot And Retry If Required

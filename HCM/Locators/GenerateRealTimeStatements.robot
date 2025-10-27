@@ -4,3 +4,4 @@ ${manager_hierarchy}  xpath: //label[text()="Manager Hierarchy"]/following::inpu
 ${template_dropdown}  xpath: //label[text() = "Template"]/following::a[contains(@id,'drop')]
 ${generate_real_time_statements_button}  xpath: //button[text() = 'Generate Real Time Statements']
 ${confirmation_ok}  xpath: //button[@title = "OK"]
+${job_id_confirmation}  xpath: (//button[@_afrpdo='ok'])[1]

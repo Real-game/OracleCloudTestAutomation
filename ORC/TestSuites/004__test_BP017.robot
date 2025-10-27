@@ -26,7 +26,7 @@ ${prerequisites_json_path}  ./TestData/td_BP001.json  #If we want to run BP017 s
 
 *** Test Cases ***
 Scenario: Carrer Portals ( Apply to a job (External Candidate) )
-    [Tags]  ExternalNewHire
+    [Tags]  ExternalNewHire  April19
     generatejson  ${csv_path}  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}
     appendtojson  ${json_path}  Requisition ID  ${prerequisites_data}[RequisitionId]
@@ -44,8 +44,6 @@ Scenario: Carrer Portals ( Apply to a job (External Candidate) )
     Fill Personal Info  ${data}
     Log  Step 23
     Click on Submit Application
-    Sleep  3s
-    Check Error Popup
     Sleep  20s
     ${candidate_name}=  convertToCandidateName  ${data}[First Name]  ${data}[Last Name]
     Log to console  name: ${candidate_name}

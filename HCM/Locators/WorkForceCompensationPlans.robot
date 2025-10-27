@@ -7,3 +7,7 @@ ${checkbox_path}    xpath://textarea[text()="Salary Range Missing"]/preceding::i
 ${configure_alerts_Go_to_task}    xpath: #//span[text()='Configure Alerts']/ancestor::td/following-sibling::td//a[@title='Go to Task']
 
 ${probation_checkbox}    xpath: //textarea[text()='Probation']/preceding::input[1]
+
+${worksheet_display}    xpath: //*[text()="Worksheet Display"]
+
+${alert_link}       xpath: //*[text()="Alerts"]

@@ -13,7 +13,7 @@ ${status_dropdown}    xpath: //label[text()='Status']/parent::div/following-sibl
 ${save_button}    xpath: //span[text()="Save"]
 ${back_arrow}    xpath: //a[@title="Done"]
 
-${comment_input_box}    xpath: //body[@class="cke_editable cke_editable_themed cke_contents_ltr cke_show_borders"]
+${comment_input_box}    xpath: //div[@aria-label="Editor editing area: main"]/p
 ${iframe_disaster_recovery_project}    xpath: (//a[text()="Disaster Recovery Project"]/following::iframe[@class="cke_wysiwyg_frame cke_reset"])[1]
 ${iframe_xcel_infrastructure_modernization_project}    xpath: (//a[text()="Xcel Infrastructure Modernization Project"]/following::iframe[@class="cke_wysiwyg_frame cke_reset"])[1]
 ${iframe_enhancement_delivery_process}    xpath: (//a[text()="Enhancement Delivery Process"]/following::iframe[@class="cke_wysiwyg_frame cke_reset"])[1]
@@ -29,7 +29,7 @@ ${select_recent_search_result}  xpath://table/tr[2]
 ${submit_button}    xpath: //a[@accesskey="m" and @role="button"]
 
 ${review_period_dropdown}  xpath: //a[contains(@id,'mv04Sel')]
-${review_period_value}  xpath: //ul[contains(@id,'mv04Sel')]//following::li[@class='x1l2' or @class='x1l2 p_AFSelected']
+${review_period_value}  xpath: //ul[contains(@aria-label,'Review Period')]//li
 ${share_and_release}  xpath: //span[text()='Share and Release']
 ${submit_option}  xpath: //a[@accesskey='m']
 
@@ -37,6 +37,7 @@ ${performance_review_dropdown}  xpath: (//label[text()="Review Period"]/followin
 ${performance_review_value}  xpath: //ul[contains(@id,':wd04Sel')]//child::li
 
 ${acknowledge_document}  xpath: //span[text()='Acknowledge Document']
+${continue_acknowledge_document}  xpath: //span[text()='Continue']
 
 ${edit_overall_feedback}  xpath: //span[text()="Edit"]
 ${iframe_participant_comments}    xpath: (//label[text()="Participant Comments"]/following::iframe[@class="cke_wysiwyg_frame cke_reset"])
@@ -93,7 +94,7 @@ ${show_additional_info}  xpath: //a[text()='Show Additional Info']
 ${click_here}  xpath: //h2[text()='Performance Management Process Stage']//following::div[contains(@id,'pd07Pse:pd04Btn')]//a[@role='button']
 ${met_with_manager_dropdown}  xpath: //a[contains(@id,'dc_soc1::drop')]
 ${iframe_provide_performance_comments}  xpath: //iframe[@class='cke_wysiwyg_frame cke_reset']
-${comments_text_box}  xpath: //body[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']
+${comments_text_box}  xpath: //div[@aria-label="Editor editing area: main"]/p
 ${manager_comments_expand}  xpath: //h2[contains(text(),'Manager Comments')]//following::a/img[@title='Expand']
 ${checkin_comments}  xpath: //label[text()='Please provide your check-in comments here.']//preceding-sibling::div
 
@@ -104,3 +105,4 @@ ${load_more_option}  xpath: //a[text()='Load More Items']
 
 ${document_filter_completed}  xpath: //td[@title='Document Status']//ancestor::h3//following-sibling::div//a[text()='Completed']
 ${performance_documents_link}  link: Performance Documents
+${overall_feedback_save_button}  xpath: //span[text()='ave']

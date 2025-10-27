@@ -69,10 +69,12 @@ Fill Phone Details
     Wait And Input Text From Input   ${phone_number_input_field}   ${phone_number_value}
     Sleep  1s
     Wait And Click Element  ${next_button}
-    Sleep  2s
+    Sleep  5s
 
 Fill Assignment Details in Hire an employee page
     [Arguments]  ${position_name}
+    wait until element is visible  ${business_unit_drop_down}  20s
+    scroll element into view  ${business_unit_drop_down}
     Wait And Click Element  ${business_unit_drop_down}
     Sleep  2s
     ${bus_xpath}=  Catenate  SEPARATOR=  //span[text()='Metrolinx BU']
@@ -87,12 +89,13 @@ Fill Assignment Details in Hire an employee page
     Sleep  5s
 
 Fill Salary Details
+    wait until element is visible  ${salary_basis_drop_down}  20s
     Wait And Click Element  ${salary_basis_drop_down}
     Sleep  2s
     ${sal_xpath}=  Catenate  SEPARATOR=  //span[text()='Salaried']
     Wait And Click Element  xpath: ${sal_xpath}
     Sleep  7s
-    ${checker}=  RUN KEYWORD And Return Status  Wait And Set Text  ${salary_amount_input}  98765
+    ${checker}=  RUN KEYWORD And Return Status  Wait And Set Text  ${salary_amount_input}  80000
     IF  '${checker}' == 'False'
         Wait And Set Text  ${salary_amount_input}  98765
     END
@@ -101,8 +104,14 @@ Fill Salary Details
     Sleep  7s
 
 Review and Submit
+    wait until element is visible  ${submit_button}  20s
     Wait And Click Element  ${submit_button}
-    Sleep  5s
+    Sleep  6s
+    ${checker}=  Run Keyword and Return Status  element should be visible  ${warning_pop_up_yes_btn}  Warning popup not shown
+    IF  '${checker}'=='False'
+        Wait And Click Element  ${submit_button}
+        Sleep  5s
+    END
     Wait And Click Element  ${warning_pop_up_yes_btn}
     Sleep  20s
     #Page Should Not Contain  Error

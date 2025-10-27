@@ -8,7 +8,7 @@ Resource  ../PageObjects/DocumentRecords.robot
 Documentation  Data Creation for Mandatory Vaccination Reports for an Employee
 ...            Prerequisite:  Not Applicable
 ...            Environment Data:  Login User
-...            Reusable Data: Document Type,Vaccination Status,Fully Vaccinated Status,Read COVID attestaion and Data provided,File Name
+...            Reusable Data: Document Type;Vaccination Status;Fully Vaccinated Status;Read COVID attestaion and Data provided;File Name
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_DC08_Data_Creation_For_Mandatory_Vaccination_Reports_For_A
 *** Test Cases ***
 
 Scenario: Data Creation for Mandatory Vaccination Reports for an Employee
-    [Tags]  BenefitsTestCase  ModifyData
+    [Tags]  BenefitsTestCase  ModifyData  22D-NoData
     generatejson    ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3
@@ -49,7 +49,6 @@ Scenario: Data Creation for Mandatory Vaccination Reports for an Employee
     Upload file in Add Document page  ${data}[File Name]
     Log  Step 13
     Click on Submit button
-    wait until page does not contain  Error  10s  Page throughing Error
-
-
-
+    Wait Until Page Contains  Document Records  20s  Document Records page is not displayed
+    ${xpath}=  Catenate  SEPARATOR=  //span[text()='    ${data}[Document Type]  ']
+    Wait Until Page Contains Element  xpath: ${xpath}  20s  Uploaded document is not displayed in Document Records page

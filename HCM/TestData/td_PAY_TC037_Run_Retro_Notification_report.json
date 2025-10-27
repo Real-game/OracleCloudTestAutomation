@@ -1,9 +1,8 @@
 {
-    "LoginUser": "vijay.c.hulagur@accenture.com",
     "LegislativeDataGroup": "CA Legislative Data Group",
     "FLowPattern": "Run Retroactive Notification Report",
     "PayrollFlow": "Auto_Test_RNR",
     "Payroll": "Biweekly",
-    "ProcessDate": "04-Jan-2022",
+    "ProcessDate": "02-Nov-2022",
     "Log Name": "FlowEssJobDefn"
 }

@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC023_MX_Manager_Self_Service.csv
 
 *** Test Cases ***
 Scenario: Security Testing - MX Manager Self Service
-    [Tags]  SecurityRoleTestCase  Read Only
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3

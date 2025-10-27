@@ -37,7 +37,20 @@ Verify Checkbox Checked
     ${status}=  Run Keyword And Return Status  checkbox should be selected  xpath://textarea[text()="${alert_name}"]/preceding::input[1]
     Log To Console  ${status}
     IF  "${status}"!="True"
-        Wait And Click Element  xpath://textarea[text()="${alert_name}"]/preceding::input[1]
-        #Fail  Alert not enabled
+        #Wait And Click Element  xpath://textarea[text()="${alert_name}"]/preceding::input[1]
+        Fail  Alert not enabled
     END
 
+Click on Worksheet Display
+    Sleep   3s
+    Scroll Element Into View    ${worksheet_display}
+    Wait And Click Element   ${worksheet_display}
+    Sleep  20s
+    Capture Page Screenshot And Retry If Required
+
+Click on Alerts in Task List
+    Sleep   3s
+    Scroll Element Into View    ${alert_link}
+    Wait And Click Element   ${alert_link}
+    Sleep  20s
+    Capture Page Screenshot And Retry If Required

@@ -8,8 +8,8 @@ Resource  ../PageObjects/Termination.robot
 Resource  ../PageObjects/PersonManagement.robot
 Documentation  Terminating an Employee - Using Quick Actions
 ...            Prerequisite:  Data from Staff List BI is used with the retention period greater than 30 days.
-...            Environment Specific Data:  Login User, Person Number, Proposed Manager
-...            Reusable Data:  Action, Comments, Proposed Manager
+...            Environment Specific Data:  Login User; Person Number; Proposed Manager
+...            Reusable Data:  Action; Comments; Proposed Manager
 ...            Dynamic Data:  Person Number
 
 
@@ -51,4 +51,14 @@ Scenario: Terminating an Employee - Using Quick Actions
     Add Comments on Terminate page  ${data}[Comments]
     Log  Step 14
     Click Submit Button
+    Sleep  150s
+    Log  Step 15 - 16
+    click on homepage
+    Go to my client group person management
+    Log  Step 17 - 20
+    Click Include terminated Work relationship and set effective date And Search Person  ${data}[Person Number]
+    Log  Step 21 - 22
+    Check Employee Assignment Status has Inactive  ${data}[Person Number]
+    Log  Step 23
+    Verify Termination date is visible  ${data}[Person Number]
 

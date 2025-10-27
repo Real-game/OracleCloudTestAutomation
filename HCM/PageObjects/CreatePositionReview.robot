@@ -6,11 +6,11 @@ Resource  ../Locators/CreatePositionReview.robot
 *** Keywords ***
 
 Review Details And Submit
-    [Arguments]  ${data}
+    [Arguments]  ${data}  ${common_data}
     element should contain  ${review_effective_start_date}  ${data}[Effective Start Date]
-    element should contain  ${review_business_unit}     ${data}[Business Unit]
-    element should contain  ${review_name}    ${data}[Name]
-    element should contain  ${review_code}    ${data}[Code]
+    element should contain  ${review_business_unit}     ${common_data}[Business Unit]
+    element should contain  ${review_name}    ${common_data}[Position Name]
+    element should contain  ${review_code}    ${common_data}[Position Code]
     element should contain  ${review_status}   ${data}[Status]
     element should contain  ${review_department}  ${data}[Department]
     element should contain  ${review_job}  ${data}[Job]

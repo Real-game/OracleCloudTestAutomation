@@ -90,7 +90,7 @@ Under Each Goal Give Test Comments
     FOR  ${i}  IN RANGE  1  ${count}
         Log to console  Comment:${i}
         Sleep  3s
-        select frame  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]
+#        select frame  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]
         Sleep  3s
         Wait And Set Text  ${comment_input_box}  ${comment}
         unselect frame
@@ -100,7 +100,7 @@ Under Each Goal Give Test Comments
 
 Click Save And Close
     Wait And Click Element  ${save_and_close}
-    Sleep  10s
+    Sleep  20s
     Capture Page Screenshot And Retry If Required
 
 Click Back Arrow To Comeback To Employee Self Evaluation Page
@@ -183,8 +183,8 @@ Select Employee's Current task
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
-Select Acknowledge Document
-    Wait And Click Element  ${acknowledge_document}
+Continue Acknowledge Document
+    Wait And Click Element  ${continue_acknowledge_document}
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
@@ -195,11 +195,11 @@ Click Edit Button On Overall Feedback
 
 Fill Comments Under Participant Comments Section
     [Arguments]  ${comment}
-    Wait Until Element Is Visible    ${iframe_participant_comments}
-    Select Frame    ${iframe_participant_comments}
+#    Wait Until Element Is Visible    ${iframe_participant_comments}
+#    Select Frame    ${iframe_participant_comments}
     Sleep  3s
     Wait And Set Text  ${comment_input_box}  ${comment}
-    unselect frame
+#    unselect frame
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
@@ -260,6 +260,7 @@ Select Warning Yes Button
 Click on Current Financial Year Goal Plan
     [Arguments]  ${f_y_year}
     Wait And Click Element  link: ${f_y_year} Goal Plan
+#    Wait And Click Element  link: AT23B_${f_y_year} Annual Review Senior Managers
     Sleep  5s
     Capture Page Screenshot And Retry If Required
 
@@ -334,11 +335,11 @@ Select Goal Status
 
 Enter Goal Comments
     [Arguments]  ${comment}
-    Wait Until Element Is Visible  ${goal_comment_iframe}
-    select frame  ${goal_comment_iframe}
+#    Wait Until Element Is Visible  ${goal_comment_iframe}
+#    select frame  ${goal_comment_iframe}
     Sleep  2s
     Wait And Set Text  ${comment_input_box}  ${comment}
-    unselect frame
+#    unselect frame
     Sleep  2s
     Capture Page Screenshot And Retry If Required
 
@@ -521,23 +522,27 @@ Select met with your manager dropdown
 Enter Comments for performance document by Employee
     [Arguments]  ${comments}
     IF  '${comments}'!=''
-        Wait Until Element Is Visible  ${iframe_provide_performance_comments}
-        select frame  ${iframe_provide_performance_comments}
-        Sleep  2s
+#        Wait Until Element Is Visible  ${iframe_provide_performance_comments}
+#        select frame  ${iframe_provide_performance_comments}
+        Sleep  3s
         scroll element into view  ${comments_text_box}
+        Sleep  2s
+        Wait And Click Element   ${comments_text_box}
+        Sleep  2s
         Wait And Set Text  ${comments_text_box}  ${comments}
-        unselect frame
+#        unselect frame
     END
     Capture Page Screenshot And Retry If Required
 
 Expand Performance Documents Manager Comments section
     scroll element into view  ${manager_comments_expand}
     Wait And Click Element  ${manager_comments_expand}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Check Manager Comments in performance document
     [Arguments]  ${manager_comments}
+    Sleep  2s
     scroll element into view  ${checkin_comments}
     element should be visible  ${checkin_comments}
     ${manager_comments_check}=  get text  ${checkin_comments}
@@ -559,7 +564,7 @@ Expand Performance Documents Employee Comments section
 
 Check Employee Comments in performance document
     [Arguments]  ${meeting_check_in}  ${comments}
-    ${employee_Comments_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::label[contains(text(),'Check-In comments')]//preceding-sibling::div
+    ${employee_Comments_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::label[contains(text(),'Check-In comments')]//preceding-sibling::div/p[1]
     ${employee_check_in_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::span[text()='${meeting_check_in}']
     scroll element into view  ${employee_Comments_xpath}
     element should be visible  ${employee_check_in_xpath}
@@ -570,6 +575,7 @@ Check Employee Comments in performance document
         FAIL  Employee Check In details not displayed
     END
     Log  Comments given by Employee : ${employee_check_in}
+    Sleep  2s
     ${employee_comment}=  get text  ${employee_Comments_xpath}
     IF  '${employee_comment}'=='${comments}'
         Log  Verification Completed Successfully for the Comments Provided by Employee
@@ -589,8 +595,8 @@ Select Option About Your Meeting
 
 Add Comment To Questionnaire
     [Arguments]  ${comment}
-    wait until element is visible  ${iframe_count}  20s
-    select frame  ${iframe_count}
+#    wait until element is visible  ${iframe_count}  20s
+#    select frame  ${iframe_count}
     Sleep  3s
     Wait And Set Text  ${comment_input_box}  ${comment}
     unselect frame
@@ -671,4 +677,10 @@ Click Save Button
 Submit Manager Employee Evaluation
     Wait And Click Element  ${submit_button}
     Sleep  7s
+    Capture Page Screenshot And Retry If Required
+
+Verify Transferred Performance Document
+    [Arguments]  ${person_name}  ${document_name}
+    ${document_xpath}=  Catenate  SEPARATOR=  //a[text()='${person_name}']//ancestor::table[1]/preceding-sibling::span//a[text()='${document_name}']
+    Wait And Verify Page Contains Element  ${document_xpath}  20s  Transeferred Performance Document ${document_name} of Employee ${person_name} is visible
     Capture Page Screenshot And Retry If Required

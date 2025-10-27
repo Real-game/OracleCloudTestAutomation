@@ -27,7 +27,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 
 Scenario: Convert PW to Employee ( Convert Pending Worker to Employee )
-    [Tags]  ExternalNewHire
+    [Tags]  ExternalNewHire  April19
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}

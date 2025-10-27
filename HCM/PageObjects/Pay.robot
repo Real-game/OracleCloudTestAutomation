@@ -46,7 +46,8 @@ Click Save
     Capture Page Screenshot And Retry If Required
 
 Verify Warning Message
-    ${status}=  Run Keyword and Return Status  element should not contain  ${warning_message}  details already exists  Bank Account Already Found
+    ${error_message}=  Set variable   A bank account with the given details already exists and is owned by another person
+    ${status}=  Run Keyword and Return Status  PAGE SHOULD NOT CONTAIN  ${error_message}
     Log To Console  ${status}
     IF  "${status}"!="True"
         Capture Page Screenshot And Retry If Required
@@ -55,7 +56,8 @@ Verify Warning Message
     END
 
 Verify Warning Message With Negative Scenario
-    ${status}=  Run Keyword and Return Status  element should contain  ${warning_message}  details already exists  Bank Account Already Found
+    ${error_message}=  Set variable   A bank account with the given details already exists and is owned by another person
+    ${status}=  Run Keyword and Return Status  PAGE SHOULD CONTAIN  ${error_message}
     Log To Console  ${status}
     IF  "${status}"!="True"
         Capture Page Screenshot And Retry If Required
@@ -165,3 +167,9 @@ Verify Presence Of Payslip
     Wait Until Page Contains Element  ${payslip_doc_link}  20s  Payslip is not visible
     Capture Page Screenshot
     Click Element  ${payslip_doc_link}
+
+Click Warning Ok for Delete record
+    Mouse Over  ${Warning_ok_delete}
+    Wait And Click Element  ${Warning_ok_delete}
+    Sleep  5s
+    Capture Page Screenshot And Retry If Required

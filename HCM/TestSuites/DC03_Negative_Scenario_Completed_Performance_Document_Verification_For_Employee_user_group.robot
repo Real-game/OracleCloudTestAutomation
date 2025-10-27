@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_DC03_Negative_Scenario_Completed_Performance_Document_Veri
 
 *** Test Cases ***
 Scenario: Negative Scenario to check Active Performance Document
-    [Tags]  NegativeTestCase  ReadOnly
+    [Tags]  NegativeTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3

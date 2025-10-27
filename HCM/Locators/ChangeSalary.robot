@@ -6,7 +6,7 @@ ${employment_search_result}  xpath: //table/tr[2]
 ${propose_new_salary_button}  xpath: //button[text()="Propose New Salary"]
 
 ${select_date_icon}  xpath: //a[@title="Select Date"]
-${select_current_date}  xpath: //td[@class="x11x p_AFSelected"]
+${select_current_date}  xpath: //td[@class="x11y p_AFSelected"]
 
 ${action_drop_down}  xpath: //a[@title="Search: Action"]
 

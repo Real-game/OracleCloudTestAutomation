@@ -10,24 +10,19 @@ Resource  ../PageObjects/ExternalCandidatePersonalInfo.robot
 *** Keywords ***
 Search Requisition
     [Arguments]  ${id}
-    Wait until element is visible  ${ext_search_input}  20s  External Website Search Input not displayed
-    Scroll element into view  ${ext_search_input}
     Wait And Set Text  ${ext_search_input}  ${id}
     Wait And Click Element  ${search_btn}
     Sleep  3s
-    Pin Requisition  ${id}
+    Pin Requisition
 
 Pin Requisition
-    [Arguments]  ${id}
     ${status}=  Run Keyword And Return Status  Page Should Not Contain Element  ${validator}
     IF  "${status}"=="True"
-        ${pin_btn} =  Catenate  SEPARATOR=   //a[contains(@href,'${id}')]/following-sibling::div/button[contains(@title,'Add')]
         ${flag}=  Run Keyword And Return Status  Page Should Contain Element  ${pin_btn}
         IF  "${flag}"=="True"
             Wait And Click Element  ${pin_btn}
             Sleep  3s
         END
-        ${text_ext} =  Catenate  SEPARATOR=   //a[contains(@href,'${id}')]/child::div/search-result-item-header/div/span
         ${text}=  Get Text  ${text_ext}
         Click on My Jobs
         Search and Click Requisition  ${text}
@@ -37,13 +32,12 @@ Pin Requisition
 
 Click on My Jobs
     Wait And Click Element  ${myjobs_btn}
-    Sleep  3s
 
 Search and Click Requisition
     [Arguments]  ${text}
-    ${list}=  Get WebElement  ${myjobs_list}
+    ${list}=  Get WebElements  ${myjobs_list}
     FOR  ${element}  IN  ${list}
-        ${string}=  Get Element Attribute  ${element}  innerHTML
+        ${string}=  Get Element Attribute  ${element}  title
         IF  "${text}"=="Vice President, I&IT Infrastructure"
             Wait And Click Element  ${element}
             Sleep  3s
@@ -60,7 +54,7 @@ Click on Apply Now
     Sleep  5s
 
 Click on View All Jobs
-    Wait And Click Element  ${alljobs_btn}
+    Wait And Click Element  ${viewalljobs_btn}
     Sleep  2s
 
 Click on Filter
@@ -248,9 +242,7 @@ Take action on Job Offer
         Wait And Click Element  ${esh_offer_accept}
         Wait Until Page Contains  Accept Job Offer  20s
         Wait And Set Text  ${esh_esign}  ${name}
-        Sleep  3s
         Wait And Click Element  ${esh_accept_btn}
-        Sleep  3s
     ELSE
         Wait And Click Element  ${esh_offer_decline}
         Wait Until Page Contains  Decline Job Offer
@@ -271,27 +263,17 @@ Select Date of Birth Value under Personal Info
         Log to Console  ${year}
         ${month} =  set variable  ${given_date_text_split}[1]
         Log to Console  ${month}
-
+        ${day_value_select} =  Catenate  SEPARATOR=   //*[text()="${given_date_text_split}[0]"]
         Wait And Click Element   ${month_dropdown}
         Sleep  2s
-#        select required value  ${month_input_select}   ${month}
-#        Sleep  2s
-        ${month_value_select} =  Catenate  SEPARATOR=   //*[contains(text(),"${month}")]
+        Wait And Set Text  ${month_input_select}   ${month}
+        Sleep  2s
+        ${month_value_select} =  Catenate  SEPARATOR=   //oj-highlight-text[contains(@text,"${month}")]
         Wait And Click Element  ${month_value_select}
         Sleep  2s
         Wait And Click Element  ${day_dropdown}
-        ${day_value_select} =  Catenate  SEPARATOR=   //*[text()="${given_date_text_split}[0]"]
-        FOR  ${i}  IN RANGE  20
-            Sleep  1s
-            ${checker}=  RUN KEYWORD And Return Status  Wait until element is visible  ${day_value_select}  10s  Country Code is not visible
-            IF  '${checker}' == 'True'
-                Wait And Click Element  ${day_value_select}
-                Exit For Loop
-            END
-            Execute JavaScript    window.document.evaluate("//*[contains(@id,'lovDropdown_single-select')]/oj-list-view", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollBy(0, 150)
-        END
         Sleep  2s
-#        Wait And Click Element  ${day_value_select}
+        Wait And Click Element  ${day_value_select}
         Sleep  2s
         Wait And Set Text  ${year_input_value}  ${year}
         Sleep  2s
@@ -300,7 +282,6 @@ Select Date of Birth Value under Personal Info
 
 Enter National Identifier details under Personal Info
     [Arguments]  ${sin}
-    Sleep    2s
     Wait And Click Element  ${select_Add_national_identifier}
     Sleep  3s
     Select Identifier Country
@@ -343,19 +324,9 @@ Select Identifier Country
     IF  "${status}"=="False"
         wait and click element  ${identifier_country_dropdown}
         Sleep  2s
-        ${country_value_select} =  Catenate  SEPARATOR=   (//*[text()="Canada"])[1]
-        FOR  ${i}  IN RANGE  20
-            Sleep  1s
-            ${checker}=  RUN KEYWORD And Return Status  Wait until element is visible  ${country_value_select}  10s  Country Code is not visible
-            IF  '${checker}' == 'True'
-                Wait And Click Element  ${country_value_select}
-                Exit For Loop
-            END
-            Execute JavaScript    window.document.evaluate("//*[contains(@id,'lovDropdown_single-select')]/oj-list-view", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollBy(0, 150)
-        END
-#        Wait And Set Text  ${country_search_input}  Canada
-#        Sleep  2s
-#        Wait And Click Element  xpath: //div[@aria-label="Canada"]
+        Wait And Set Text  ${country_search_input}  Canada
+        Sleep  2s
+        Wait And Click Element  xpath: //div[@aria-label="Canada"]
         Sleep  2s
     END
     capture page screenshot

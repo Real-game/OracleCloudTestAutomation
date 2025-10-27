@@ -16,7 +16,7 @@ ${vaccination_status_dropdown}  xpath: //label[text()='Vaccination Status']//fol
 ${fully_vaccinated_november_dropdown}  xpath: //a[contains(@id,'df2_DocumentsOfRecordDFF1IteratormxIntentToVaccinate_DisplayGLB_MX_COVID_VACCINATION_PROOF::lovIconId')]
 ${read_covid_attestation_data_provided}  xpath: //a[contains(@id,'df2_DocumentsOfRecordDFF1IteratormxEmployeeConsentGLB_MX_COVID_VACCINATION_PROOF::lovIconId')]
 
-${Attach_img}  xpath:  //a[@title='Add File']
+${Attach_img}  xpath:  //span[text()='Drag files here or click to add attachment']/parent::a
 ${Attach_file}  xpath: //td[text()='Add File']
 ${submit_option}  xpath: //a[@accesskey='m']
 

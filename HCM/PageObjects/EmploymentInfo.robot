@@ -46,6 +46,7 @@ Verify Employment Info Page
 
 Expand Employment History
     Sleep  3s
+    Wait And Verify Page Contains Element  ${expand_employment_history}  10s  Employment history expand option not displayed
     scroll element into view  ${expand_employment_history}
     Wait And Click Element  ${expand_employment_history}
     Sleep  3s
@@ -74,3 +75,21 @@ Verify Sections of Employment Details for Employee Role
     Wait And Verify Page Contains Element  ${managers_section_header}  20s  Managers details is not present
     Wait And Verify Page Contains Element  ${additional_assigment_section_header}  20s  Additional Assigment Info details is not present
     Wait And Verify Page Contains Element  ${employment_history_section_header}  20s  Employment History details is not present
+
+Verify Employment History has Transfer
+    scroll element into view  ${first_row_employment_history}
+    ${value}=  wait and get text  ${first_row_employment_history}
+    IF  '${value}'=='Transfer'
+        Capture Page Screenshot And Retry If Required
+    ELSE
+        FAIL
+    END
+
+Verify Employment History has Temporary Assignment
+    scroll element into view  ${first_row_employment_history}
+    ${value}=  wait and get text  ${first_row_employment_history}
+    IF  '${value}'=='Temporary Assignment'
+        Capture Page Screenshot And Retry If Required
+    ELSE
+        FAIL
+    END

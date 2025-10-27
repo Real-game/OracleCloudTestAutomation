@@ -52,3 +52,10 @@ Verify Suspended checkbox is disabled
     END
     Sleep  3s
     Capture Page Screenshot And Retry If Required
+
+Set Effective Date in Synchronize Grade Step Rates
+    [Arguments]  ${effective_date_value}
+    Wait And Set Text  ${effective_date}  ${effective_date_value}
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+

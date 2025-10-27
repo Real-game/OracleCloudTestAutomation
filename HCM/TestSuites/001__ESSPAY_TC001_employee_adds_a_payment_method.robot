@@ -7,7 +7,7 @@ Resource  ../PageObjects/Pay.robot
 Documentation  Employee Adds a Payment Method with a new bank account
 ...            Prerequisite:  Not applicable
 ...            Environment Specific Data:  Login User
-...            Reusable Data:  Account Number, Bank, Branch Code, What do you want to call this payment method?, Payment Method, Payment Amount, Search Bank Account and Payment Amount Type
+...            Reusable Data:  Account Number; Bank; Branch Code; What do you want to call this payment method?; Payment Method; Payment Amount; Search Bank Account and Payment Amount Type
 ...            Dynamic Data: Account Number and Search Bank Account(last 4 digit of account number)
 
 *** Settings ***
@@ -18,14 +18,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_ESSPAY_TC001_employee_adds_a_payment_method.json
 ${csv_path}  ./CSV/td_ESSPAY_TC001_employee_adds_a_payment_method.csv
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Employee Adds a Payment Method
-    [Tags]  PayrollTestCase  ModifyData
+    [Tags]  PayrollTestCase  ModifyData  PAY22D
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[ESSPAY Login User]
     Log  Step 4
     click on homepage
     Log  Step 5

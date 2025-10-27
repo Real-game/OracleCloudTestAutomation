@@ -27,7 +27,7 @@ Scenario: Candidate search for jobs using filters
     Log  Step 2
     Click on View All Jobs
     Log  Step 3
-#    Click on Filter
+    Click on Filter
     Log  Step 4
     Apply WorkLocations  ${data}[Sort By Work Locations]
     Log  Step 5

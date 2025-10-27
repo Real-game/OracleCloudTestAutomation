@@ -22,29 +22,34 @@ Click on Absence Records link
 
 Add a Absence Record
     [Arguments]  ${absence_type_value}  ${absence_start_date_value}  ${absence_end_date_value}  ${absence_reason_value}
+    Sleep  5s
     Click Element  ${absence_type_drop_down}
     ${xpath}=  Catenate  SEPARATOR=  //li[text()='  ${absence_type_value}  ']
     Click Element  xpath: ${xpath}
+    Sleep  10s
     Wait Until Page Contains  Start Date  20s  Start date field and its section are not displayed
     Click Element  ${start_date_input}
-    Sleep  5s
+    Sleep  7s
     Input Text  ${start_date_input}  ${absence_start_date_value}
-    Sleep  5s
+    Sleep  7s
     Click Element  ${end_date_input}
-    Sleep  5s
+    Sleep  7s
     Input Text  ${end_date_input}  ${absence_end_date_value}
-    Sleep  5s
+    Sleep  7s
     Click Element  ${end_date_time_input}
+    Sleep  3s
     Click Element  ${reason_drop_down}
     ${reason_xpath}=  Catenate  SEPARATOR=  //li[text()='   ${absence_reason_value}  ']
     Click Element  xpath: ${reason_xpath}
-    Sleep  3s
+    Sleep  5s
     Click Element  ${submit_button}
     Wait Until Page Contains  Confirmation  25s  Confirmation pop up is displayed
     Capture Page Screenshot
     Click Element  ${ok_button}
     Wait Until Page Contains  Manage Absences and Entitlements  20s  Manage Absences and Entitlements page is not displayed
-    Wait Until Page Contains   ${absence_type_value}  ${absence_start_date_value}  ${absence_end_date_value}  20s  Added Absence record is not displayed
+    Wait Until Page Contains   ${absence_type_value}  20s  Added Absence type is not displayed
+    Wait Until Page Contains   ${absence_start_date_value}  20s  Added Absence start date is not displayed
+    Wait Until Page Contains   ${absence_end_date_value}  20s  Added Absence end date is not displayed
 
 
 

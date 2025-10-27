@@ -20,6 +20,5 @@ Verify Preview Job Offer Page
     Sleep  6s
 
 Click on back button in Preview offer page
-    Sleep  5s
     Click Element  ${back button}
     Sleep  2s

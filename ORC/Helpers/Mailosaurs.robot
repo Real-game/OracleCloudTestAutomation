@@ -42,7 +42,7 @@ Email Verification
     ${text} =  Get Text  //body
     ${c}=    Get Lines Containing String    ${text}   one-time pass code
     Switch Window  ${list}[0]
-    RETURN    ${c}
+    [Return]  ${c}
 
 Mailinator Email Verification
     [Arguments]  ${email}
@@ -55,7 +55,7 @@ Mailinator Email Verification
     ${c}=    Get Lines Containing String    ${txt}   one-time pass code
     ${list}=  Get Window Handles
     Switch Window  ${list}[0]
-    RETURN    ${c}
+    [Return]  ${c}
 
 Open Mailinator Mailbox
     [Arguments]  ${email}
@@ -90,7 +90,7 @@ Email Verification E2E
     ${text} =  Get Text  //body
     ${c}=    Get Lines Containing String    ${text}   one-time pass code
     Switch Window  ${list}[1]
-    RETURN    ${c}
+    [Return]  ${c}
 
 Mailinator Respond to Job Offer
     [Arguments]  ${email}
@@ -181,7 +181,7 @@ Respond to Offer
     Wait And Click Element   xpath://span[@class="il"]
     ${text} =  Get Text  //body
     ${c}=    Get Lines Containing String    ${text}   one-time pass code
-    RETURN    ${c}
+    [Return]  ${c}
 
 Search for schedule Interview mail
     Sleep  3s

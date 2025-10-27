@@ -27,11 +27,9 @@ Fill When and Why
         Wait And Click Element  ${emp_type_dropdown}
         Wait And Click Element  xpath: //li[text()="${data}[Employee Type]"]
         Sleep  2s
-    END
-    IF  "${data}[Action]"!=""
-        Wait And Click Element  ${emp_action_dropdown}
-        Sleep  2s
-        Select Required Value  ${action_name_temp}  ${data}[Action]
+#        Wait And Click Element  ${emp_action_dropdown}
+#        Sleep  2s
+#        Select Required Value  ${action_name_temp}  ${data}[Action]
         Sleep  3s
     END
     Capture page Screenshot
@@ -198,7 +196,7 @@ Fill Additional Info
     Sleep  3s
     IF  "${data}[OMERS]"!=""
         Wait And Click Element  ${omers_drop_down}
-        Sleep  5s
+        Sleep  2s
         Select Required Value  ${omers_drop_down_list}  ${data}[OMERS]
     ELSE
         Wait And Click Element  ${omers_drop_down}
@@ -276,14 +274,6 @@ Fill Assignment Info for Transfer
         Click Element  xpath:${proposed_person_xpath}
         Sleep  2s
     END
-    IF  "${data}[Sync from Position]"!=""
-        Sleep  2s
-        Wait And Click Element  ${sync_position_dropdown}
-        Sleep  3s
-        ${sync_position_xpath}=  Catenate  SEPARATOR=  //li[text()='${data}[Sync from Position]']
-        Wait and Click Element  xpath: ${sync_position_xpath}
-        Sleep  3s
-    END
     ${text}=  Get Element Attribute  ${business_unit_field}  value
     IF  "${text}"!="Metrolinx BU"
         Fail
@@ -301,7 +291,6 @@ Fill Assignment Info for Transfer
         Fail
         END
     END
-    Sleep  25s
     Capture page Screenshot
     Wait And Click Element  ${continue}
 

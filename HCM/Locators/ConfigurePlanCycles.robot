@@ -10,5 +10,6 @@ ${short_name_input_field}  xpath: //label[text()='Short Name']/parent::td/follow
 ${HR_data_extraction_date_input_field}  xpath: //label[text()='HR Data Extraction Date']/parent::td/following-sibling::td//input
 ${ok_button}   xpath: //button[@accesskey='K']
 ${save_and_close_button}  xpath: //a[@accesskey='S']
+${plan_cycles}  xpath:  //*[text()="Plan Cycles"]
 
 

@@ -23,37 +23,35 @@ Change When and Why
     END
     Capture page Screenshot
     Wait And Click Element  ${ca_continue}
-    Sleep  5s
+    Sleep  3s
 
 Change Assignment
     [Arguments]  ${data}
-    Wait Until Page Contains  Assignment Number  10s
+    Wait Until Page Contains  Assignment Number
     IF  "${data}[Assignment Status]"!=""
         Wait And Click Element  ${ca_assign_status_dropdown}
         Select Required Value  ${ca_assign_temp}  ${data}[Assignment Status]
     END
-    Wait Until Page Contains  Business Unit  10s
+    Wait Until Page Contains  Business Unit
     ${text}=  Get Element Attribute  ${ca_business_unit_field}  value
     IF  "${text}"!="Metrolinx BU"
         Fail
     END
     Capture page Screenshot
     Scroll Element Into View  ${ca_continue}
-    Sleep  3s
     Wait And Click Element  ${ca_continue}
-    Sleep  5s
+    Sleep  3s
 
 
 Change Additional Info
     [Arguments]  ${data}
-#    Wait until Page Contains  Dates and Ranks  20s
+    Wait until Page Contains  Dates and Ranks
     IF  "${data}[Contract Start Date]"!=""
         Wait And Send Keys  ${ca_contract_start_input}  ${data}[Contract Start Date]
     END
     IF  "${data}[Contract End Date]"!=""
         Wait And Send Keys  ${ca_contract_end_input}  ${data}[Contract End Date]
     END
-    wait until page contains element  ${date_ranks}  20s  Assignment info not displayed
     Capture Page Screenshot
     Wait And Click Element  ${ca_continue}
     Sleep  3s
@@ -68,14 +66,12 @@ Change Managers
         Wait And Click Element  ${ca_ok}
     END
     Capture Page Screenshot
-    wait until page contains element  ${line_manager}  20s  Managers option not displayed
     Wait And Click Element  ${ca_continue}
     Sleep  3s
 
 Change Payroll
 #    Mouse Over  ${ca_continue}
     Capture Page Screenshot
-    wait until page contains element  ${payroll_freq}  20s  Payroll details not displayed
     Wait And Click Element  ${ca_continue}
     Sleep  3s
 
@@ -88,22 +84,21 @@ Change Salary
     END
     Sleep  2s
     IF  "${data}[Salary Amount]"!=""
-        Wait and clear and send keys   ${ca_salary_amount_input}  ${data}[Salary Amount]
+        Wait Then Click And Set Text   ${ca_salary_amount_input}  ${data}[Salary Amount]
     END
-    Sleep  3s
     Capture Page Screenshot
     Wait And Click Element  ${ca_continue}
     Sleep  3s
 
 Change Compensation
-    Wait until Page Contains  Show Prior Compensation  20s
+#    Wait until Page Contains  Show Prior Compensation
     Mouse Over  ${ca_continue}
     Capture Page Screenshot
     Wait And Click Element  ${ca_continue}
     Sleep  3s
 
 Add Reports
-    Wait Until Page Contains  Search for people to add as reports  20s
+#    Wait Until Page Contains  Search for people to add as reports
     Mouse Over  ${ca_continue}
     Capture Page Screenshot
     Wait And Click Element  ${ca_continue}

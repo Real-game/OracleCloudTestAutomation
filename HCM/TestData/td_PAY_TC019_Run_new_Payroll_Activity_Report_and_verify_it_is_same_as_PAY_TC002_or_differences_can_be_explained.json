@@ -1,5 +1,4 @@
 {
-    "LoginUser": "vijay.c.hulagur@accenture.com",
     "LegislativeDataGroup": "CA Legislative Data Group",
     "FLowPattern": "MLX Payroll Activity Report",
     "PayrollFlow": "Auto_Test_MLX_Payroll Activity_Report",
@@ -7,5 +6,6 @@
     "EndDate": "04-Jan-2022",
     "Scope": "Detail",
     "ReportCategory": "MLX Payroll Activity Reports",
-    "Log Name": " FlowEssJobDefn"
+    "Log Name": "FlowEssJobDefn",
+    "Object Name": "Autotest_06368"
 }

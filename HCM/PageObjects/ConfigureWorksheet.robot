@@ -15,8 +15,9 @@ Select configure task layout for given task display name
     Capture Page Screenshot And Retry If Required
 
 Select Detail Table
+    Sleep  5s
     Wait And Click Element  ${detail_table}
-    Sleep  2s
+    Sleep  10s
     Capture Page Screenshot And Retry If Required
 
 Expand Detail Columns options in Configure Worksheet Page Laoyout
@@ -33,12 +34,14 @@ Select Dynamic coulmn of user defined column
     Sleep  2s
     scroll element into view  ${user_define_column_xpath}
     mouse over  ${user_define_column_xpath}
-    Wait And Click Element  ${user_define_column_xpath}
     Sleep  2s
+    Wait And Click Element  ${user_define_column_xpath}
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Modify Column result value
     [Arguments]  ${input}
+    Sleep  2s
     ${column_result_xpath}=  Catenate   SEPARATOR=  (//textarea[contains(@id,'txttExprResultDisp::content')])[1]
     mouse over  ${column_result_xpath}
     Wait And Set Text  ${column_result_xpath}  ${input}

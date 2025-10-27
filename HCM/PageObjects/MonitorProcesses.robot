@@ -53,6 +53,8 @@ Monitor Status Of Process
 Click refresh untill process status is completed
     [Arguments]  ${process_status_xpath}
 #    Wait And Click Element  ${tasks_refresh_button}
+    ${xpath}=  Catenate  SEPARATOR=  (//a[@title="${process_status_xpath}"]/following::span)[1]
+    Wait And Verify Page Contains Element  ${xpath}  20s  Process Status not displayed
     Sleep  5s
     FOR  ${i}  IN RANGE  90
         mouse over  xpath: (//a[@title="${process_status_xpath}"]/following::span)[1]

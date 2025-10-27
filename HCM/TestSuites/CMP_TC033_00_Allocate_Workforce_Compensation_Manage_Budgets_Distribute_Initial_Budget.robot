@@ -8,9 +8,9 @@ Resource  ../PageObjects/WorkForceCompensation.robot
 Resource  ../PageObjects/WorkForceCompensationPlans.robot
 Resource  ../PageObjects/ManageBudgets.robot
 Documentation  Allocate Workforce Compensation - Manage Budgets - Distribute Initial Budget
-...            Prerequisite:  User with Proxy manager access, CMP_TC001.01 - Workforce Compensation - Configuration - Create new plan cycle, CMP_TC001.10 - Workforce Compensation - Standard Functionality - Run Batch Processes - Start Workforce Compensation Cycle
-...            Environment Specific Data: Login User
-...            Reusable Data:  Budget Pool,Reason,Budget Amount,Distribution Option
+...            Prerequisite:  User with Proxy manager access; CMP_TC001.01 - Workforce Compensation - Configuration - Create new plan cycle; CMP_TC001.10 - Workforce Compensation - Standard Functionality - Run Batch Processes - Start Workforce Compensation Cycle
+...            Environment Specific Data: Manager Login(PFP_common_test_data.csv)
+...            Reusable Data:  Budget Pool;Reason;Budget Amount;Distribution Option
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -21,14 +21,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_CMP_TC033_00_Allocate_Workforce_Compensation_Manage_Budgets_Distribute_Initial_Budget.json
 ${csv_path}  ./CSV/td_CMP_TC033_00_Allocate_Workforce_Compensation_Manage_Budgets_Distribute_Initial_Budget.csv
+${common_json_path}  ./TestData/PFP_common_test_data.json
+${common_csv_path}  ./CSV/PFP_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Allocate Workforce Compensation - Manage Budgets - Distribute Initial Budget
     [Tags]  PFPTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Manager Login]
     Log  Step 4
     click on homepage
     Log  Step 5

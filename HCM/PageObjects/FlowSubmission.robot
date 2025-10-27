@@ -205,11 +205,11 @@ Expand the Output And Log Files
 
 Input Person Number
     [Arguments]  ${person_number}
+    Wait And Click Element  ${person_number_input}
+    Sleep  1s
     ${status}=  Run Keyword And Return Status  Wait And Set Text  ${person_number_input}  ${person_number}
     IF  "${status}"=="False"
         Wait And Set Text  ${person_number_input}  ${person_number}
     END
     Sleep  1s
     Capture Page Screenshot And Retry If Required
-
-

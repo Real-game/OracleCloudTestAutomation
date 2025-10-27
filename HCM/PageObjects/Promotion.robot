@@ -34,6 +34,8 @@ Fill details of When and Why
     [Arguments]  ${date}  ${way}  ${reason}
     Wait And Set Text  ${promotion_start_date}   ${date}
     Sleep  3s
+    Clear Element Text  ${promotion_way_dropdown}
+    Sleep  3s
     Wait And Click Element  ${promotion_way_dropdown}
     Sleep  3s
     Wait and Click Element  xpath: //div[text()='${way}']

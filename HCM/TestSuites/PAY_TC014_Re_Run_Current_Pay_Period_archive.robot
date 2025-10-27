@@ -5,12 +5,12 @@ Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/Login.robot
 Library  ../Helpers/Helpers.py
 Resource  ../PageObjects/HomePage.robot
-Resource  ../PageObjects/Payroll.robot
 Resource  ../PageObjects/FlowSubmission.robot
+Resource  ../PageObjects/Payroll.robot
 Documentation  Re-run 'Archive Periodic Payroll results' by submitting a flow
 ...            Prerequisite:  Not applicable
 ...            Environment Specific Data:  Login User
-...            Reusable Data:  Flow Pattern, Start Date, End Date, Payroll, Log Name
+...            Reusable Data:  Flow Pattern; Start Date; End Date; Payroll; Log Name
 ...            Dynamic Data: Payroll Flow should be unique and should not be used in past for each run
 
 *** Settings ***
@@ -21,14 +21,17 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PAY_TC014_Re_Run_Current_Pay_Period_archive.json
 ${csv_path}  ./CSV/td_PAY_TC014_Re_Run_Current_Pay_Period_archive.csv
-
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 *** Test Cases ***
 Scenario: Re-run 'Archive Periodic Payroll results' by submitting a flow
     [Tags]  PayrollTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Login User]
     Log  Step 4-5
     Click on Payroll from Navigator
     Log  Step 6
@@ -41,9 +44,9 @@ Scenario: Re-run 'Archive Periodic Payroll results' by submitting a flow
     ${unique_flow_name}=  get_process_name  ${data}[Payroll Flow]
     Set Payroll Flow  ${unique_flow_name}
     Log  Step 10
-    Set Process Start Date  ${data}[Start Date]
+    Set Process Start Date  ${common_data}[Start Date]
     Log  Step 11
-    Set Process End Date  ${data}[End Date]
+    Set Process End Date  ${common_data}[End Date]
     Log  Step 12
     Select Payroll  ${data}[Payroll]
     Log  Step 13

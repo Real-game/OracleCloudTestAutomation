@@ -7,8 +7,8 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/PersonManagement.robot
 Documentation  MX HR Leader
 ...            Prerequiste:  HR-81 and Require an user with MX HR Leader Role
-...            Environment Specific Data:  Login User, Person Number
-...            Reusable Data: Person Name,Homepage Option1,Homepage Option2,Homepage Option3,Client group Apps1,Client group Apps2,Client group quick option1,Client group quick option2,Action Menu1,Parent Action,Child Action,Benefits Apps,Tools Apps
+...            Environment Specific Data:  Login User; Person Number
+...            Reusable Data: Person Name;Homepage Option1;Homepage Option2;Homepage Option3;Client group Apps1;Client group Apps2;Client group quick option1;Client group quick option2;Action Menu1;Parent Action;Child Action;Benefits Apps;Tools Apps
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -22,7 +22,7 @@ ${csv_path}  ./CSV/td_SEC_TC010_MX_HR_Leader.csv
 
 *** Test Cases ***
 Scenario: MX HR Leader
-    [Tags]  SecurityRoleTestCase  ReadOnly
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

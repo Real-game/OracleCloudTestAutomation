@@ -1,7 +1,7 @@
 *** Settings ***
 Library  Selenium2Library
 Library  ../Helpers/Helpers.py
-Resource  ../Locators/HomePage.robot
+Resource  ../Locators/HomePage.Robot
 Resource  ../Keywords/CommonKeywords.robot
 
 *** Keywords ***
@@ -43,7 +43,7 @@ Apply MX Accruals Bank Validation Report
 
 click on homepage
     wait and click element  ${icon_home}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Go to my client group absence
@@ -359,7 +359,9 @@ Click on Show More and Verify Quick Action Section
 Click on Show More and Verify Talent Quick Action Section
     Wait And Click Element  ${href_showmore}
     Page Should Contain Element  ${talent_section}
+    Sleep  3s
     Wait And Click Element  ${show_less}
+    Sleep  5s
 
 Verify My Team, My client groups, Benefits Administrations and Tools Tab
     Sleep  2s
@@ -369,7 +371,7 @@ Verify My Team, My client groups, Benefits Administrations and Tools Tab
     Verify Page Has Hyperlink  Tools
 
 Verify My CLient Groups apps for Rewards Representative
-    Sleep  2s
+    Sleep  5s
     Verify Page Has Hyperlink  Person Management
     Verify Page Has Hyperlink  Compensation
     Verify Page Has Hyperlink  Goals
@@ -431,6 +433,7 @@ Click on Tools
 Verify Homepage have Apps
     [Arguments]  ${option1}
     IF  "${option1}"!=""
+        Sleep  2s
         Verify Page Has Hyperlink  ${option1}
     END
     Sleep  2s
@@ -544,7 +547,7 @@ Verify My Team tab apps for MX Employee Self Service
     Verify Page Has Hyperlink  Performance
     Verify Page Has Hyperlink  MX Complement and Vacancy Report
     Verify Page Has Hyperlink  MX Employee List
-    Verify Page Has Hyperlink  MX Employee Vacation Leave Balance Report
+    Verify Page Has Hyperlink  MX Employee Leave Balance Report
     Verify Page Has Hyperlink  MX Employee Sick Absences Report
     Verify Page Has Hyperlink  MX Departures Report
     Verify Page Has Hyperlink  MX Mandatory Vaccination Report
@@ -594,3 +597,57 @@ Click on an Employee and Check Details
     Wait And Verify Page Contains Element  ${additional_assigment_section_header}  20s  Additional Assigment Info details is not present
     Wait And Verify Page Contains Element  ${employment_history_section_header}  20s  Employment History details is not present
     Sleep  3s
+
+Click on Payroll Calculation under Payroll via Navigator
+    Wait And Click Element  ${navigator}
+    Wait And Click Element  ${payroll_header}
+    Sleep  2s
+    ${checker}=  Run Keyword and Return Status  Wait And Click Element  ${payroll_calcualtion}
+    IF  '${checker}'=='False'
+        Wait And Click Element  ${payroll_header}
+        Sleep  2s
+        Wait And Click Element  ${payroll_calcualtion}
+    END
+    Wait And Verify Page Contains Text  Payroll Calculation  20s  Career and performance page is not displayed
+    Capture Page Screenshot And Retry If Required
+
+Click on Quick Actions - Person and search
+    [Arguments]  ${personnumber}
+    Wait And Click Element  ${quick_action_person_link}
+    Wait And Set Text  ${search_text_box}  ${personnumber}
+    Sleep  2s
+    Wait And Click Element  xpath: //div[text() = "${personnumber}"]
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Click on Quick Actions - Document Records and search
+    [Arguments]  ${personnumber}
+    Wait And Click Element  ${quick_action_document_records}
+    Wait And Set Text  ${search_text_box}  ${personnumber}
+    Sleep  2s
+    Wait And Click Element  xpath: //div[text() = "${personnumber}"]
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Search for Person in Responsive UI
+    [Arguments]  ${personnumber}
+    Wait And Set Text  ${search_text_box}  ${personnumber}
+    Sleep  2s
+    Wait And Click Element  xpath: //div[text() = "${personnumber}"]
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Go to my client group Payroll
+    [Arguments]  ${group}
+    wait and click element  ${href_my_client}
+    Sleep  3s
+    Wait And Click Element  ${href_showmore}
+    Sleep  3s
+    ${mcg_xpath}=  Catenate   SEPARATOR=  //h4[text()='Payroll']//following::a[text()='${group}']
+    Wait And Click Element  ${mcg_xpath}
+    Wait Until Page Contains  ${group}  20s  ${group} page is not displayed
+    Sleep  2s
+    Capture Page Screenshot
+#    Wait And Click Element  ${href_calculationcards_payroll}
+#    Sleep  5s
+#    Capture Page Screenshot

@@ -1,9 +1,10 @@
 {
-    "LoginUser": "raghavi.uthayakumar@accenture.com",
     "LegislativeDataGroup": "CA Legislative Data Group",
-    "FLowPattern": "Calculate Accruals and Balances",
+    "FLowPattern": "Calculate Prepayments",
     "PayrollFlow": "Auto_Test_Calculate Accruals Balances",
-    "EffectiveDate": "22-Dec-2021",
+    "ProcessStartDate": "01-Oct-2022",
+    "ProcessEndDate": "14-Oct-2022",
     "Payroll": "Biweekly",
-    "Log Name": "FlowEssJobDefn"
+    "Log Name": "FlowEssJobDefn",
+    "FLowPatternName": "Calculate PrePayments"
 }

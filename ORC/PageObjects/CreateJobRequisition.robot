@@ -32,7 +32,6 @@ Create a Requisition
     Sleep  3s
     Upload file  ${input_data2}[File Name]
     Save and close
-    Sleep  5s
 
 Upload file
     [Arguments]  ${file}
@@ -55,8 +54,9 @@ Filling details in How block
     Wait And Click Element   ${xpath_value}
     IF  "${input_data}[Use]" == "Position"
         Wait And Send Keys    ${pos_input_box}   ${input_data}[position_id]
-        Sleep  5s
-        Wait And Click Element   ${selected_value}
+        Sleep  3s
+        ${xpath_position}=  Catenate  SEPARATOR=  //span[text()="${input_data}[position_id]"]
+        Wait And Click Element   ${xpath_position}
         Sleep  2s
         Capture Page Screenshot
     ELSE IF  "${input_data}[Use]" == "Existing Requisition"
@@ -171,8 +171,8 @@ Review Requisition Structure section
 
 Add Details Info section
     Sleep  2s
-    Wait And Set Text   ${work_contract_input}  No
-#    Wait And Set Text   ${work_contract_input}  Yes - Short Term Contract
+#    Wait And Set Text   ${work_contract_input}  No
+    Wait And Set Text    ${work_contract_input}    Yes - Short Term Contract
     Press Keys	${work_contract_input}  ENTER
     Sleep  2s
     Wait And Click Element  ${minimum_salary_input}

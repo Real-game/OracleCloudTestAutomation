@@ -9,7 +9,7 @@ Resource  ../PageObjects/JobRequisitionOverview.robot
 Resource  ../PageObjects/JobApplications.robot
 Resource  ../PageObjects/CandidatePage.robot
 Resource  ../PageObjects/MoveCandidate.robot
-Resource  ../PageObjects/AddToLinkedRequisition.robot
+Resource  ../PageObjects/AddToLinkedRequisition.Robot
 
 
 
@@ -45,7 +45,7 @@ Scenario: Add the candidates from pipeline requisition to the linked requisition
     Click on Save
     Click on Details
     Click on Actions and Select  ${data}
-    Add to Linked Requisition  ${data}[Standard Requisition ID]
+    Add to Linked Requisition
     Click on Activity Button
 #    Execute javascript  window.scrollTo(0,document.body.scrollHeight)
     Verify linked requisition in job application  ${data}[Standard Requisition ID]

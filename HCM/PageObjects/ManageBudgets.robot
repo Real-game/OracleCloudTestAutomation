@@ -19,6 +19,7 @@ Adjust the budget
     Wait Until Page Contains  ${budget_pool_option}  20s  Budget pool option is not displayed
     ${budget_pool_xpath}=  Catenate  SEPARATOR=  //li[text()='  ${budget_pool_option}   ']
     Click Element  xpath: ${budget_pool_xpath}
+    Sleep  2s
     Click Element  ${reason_drop_down}
     Wait Until Page Contains  ${budget_reason_option}  20s  Budget pool option is not displayed
     ${budget_reason_xpath}=  Catenate  SEPARATOR=  //li[text()='  ${budget_reason_option}   ']

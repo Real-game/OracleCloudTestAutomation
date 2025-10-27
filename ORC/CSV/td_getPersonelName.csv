@@ -1,11 +1,12 @@
 ${Id};${LoginUser};Username,User Role,Name
-1;KIANM;KIANM,Recruiter Username,Suvojit Weng
-2;DILSHADK;DILSHADK,EA or AA User and Collaborator,Mady Gobin
-3;SANJAYPI;SANJAYPI,Hiring manager,Aniane Plummer-Pryce
-4;SHARONT;SHARONT,HRBP,Obrian ford
-5;MENELEOC;MENELEOC,Internal Candidate,Nithen Patel
-6;CONSTANCET;CONSTANCET,Journeys Specialist User,Mengyao Arbuckle
-7;DOAAM;DOAAM,Internal Candidate New Hire User,KALPIT Sampathkumar
-8;JOHNSC;JOHNSC,,Ummé Hadley
-9;SPENCERP;SPENCERP,,Aditya D Onroy
+1;ELLENL;ELLENL,Hiring manager user,Maytal Byrne-Nearing
+2;KIANM;KIANM,Recruiter Username,Areza Huang
+3;DILSHADK;DILSHADK,EA or AA User and Collaborator,Madeleine Amoye
+4;BOLAA;BOLAA,HRBP,Jun Jun Kadhum
+5;MENELEOC;MENELEOC,Internal Candidate,Tatyana Afrane
+6;CONSTANCET;CONSTANCET,Journeys Specialist User,Mathuran Lau
+7;DOAAM;DOAAM,Internal Candidate New Hire User,Chigo Purabia
+8;MENNOV;MENNOV,Line manager user,Musoddiq Rosa dos Santos
+11;JOHNSC;JOHNSC,,Shylah Parpit
+12;SPENCERP;SPENCERP,,Branavan Romas
 10;RECRUA;RECRUA,Recruiting Agent,

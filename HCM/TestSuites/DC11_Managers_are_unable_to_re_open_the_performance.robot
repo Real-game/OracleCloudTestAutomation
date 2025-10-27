@@ -8,7 +8,7 @@ Resource  ../PageObjects/Performance.robot
 Documentation  Managers are unable to re-open the performance
 ...            Prerequisite:  TC01_Employee_Self_Evaluation.robot
 ...            Environment Specific Data:  Login User and Person Name
-...            Reusable Data:  Review Period, Document, Action, Action Menu
+...            Reusable Data:  Review Period; Document; Action; Action Menu
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***

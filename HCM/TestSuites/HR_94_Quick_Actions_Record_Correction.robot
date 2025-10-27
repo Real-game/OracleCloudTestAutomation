@@ -9,7 +9,7 @@ Resource  ../PageObjects/EmploymentInfo.robot
 Resource  ../PageObjects/EmploymentHistoryRecordCorrection.robot
 Documentation  Quick Actions - Record Correction
 ...            Prerequisite:  Not Applicable
-...            Environment Specific Data:  Login User and Person Name
+...            Environment Specific Data:  HR Login; Person Name
 ...            Reusable Data:  Hourly Paid or Salaried
 ...            Dynamic Data:  Not Applicable
 
@@ -21,14 +21,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_HR_94_Quick_Actions_Record_Correction.json
 ${csv_path}  ./CSV/td_HR_94_Quick_Actions_Record_Correction.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Quick Actions - Record Correction
-    [Tags]  CoreHRTestCase  ModifyData
+    [Tags]  CoreHRTestCase  ModifyData  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Login]
     Log  Step 4
     click on homepage
     Log  Step 5-6
@@ -49,4 +53,5 @@ Scenario: Quick Actions - Record Correction
     Click Save
     Log  Step 15
     Click Submit
-    page should not contain  Error
+#    page should not contain  Error
+    wait until page does not contain  Error  10s  Error Displayed

@@ -8,12 +8,11 @@ Resource  ../PageObjects/UserDefinedTable.robot
 
 Documentation  Workforce Compensation - Configuration - Modify Engagement Percentages To Be Allocated Based On Division
 ...            Prerequisite:  Not Applicable
-...            Environment Data:  Login User
-...            Reusable Data: Compensation Option,Name,Range Or Match option,Action,User Defined Row Name,User Defined Value
+...            Environment Data:  HR Specialist Login(PFP_common_test_data.csv)
+...            Reusable Data: Compensation Option;Name;Range Or Match option;Action;User Defined Row Name;User Defined Value
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
-
 Suite Setup  Before Suite
 Suite Teardown  After Suite
 Test Teardown  After Test
@@ -21,14 +20,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_CMP_TC001_05_Workforce_Compensation_Configuration_Modify_Engagement_Percentages_To_Be_Allocated_Based_On_Division.json
 ${csv_path}  ./CSV/td_CMP_TC001_05_Workforce_Compensation_Configuration_Modify_Engagement_Percentages_To_Be_Allocated_Based_On_Division.csv
-*** Test Cases ***
+${common_json_path}  ./TestData/PFP_common_test_data.json
+${common_csv_path}  ./CSV/PFP_common_test_data.csv
 
+*** Test Cases ***
 Scenario: Workforce Compensation - Configuration - Modify Engagement Percentages To Be Allocated Based On Division
-    [Tags]  PFPTestCase  ModifyData
+    [Tags]  PFPTestCase  ModifyData  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[LoginUser]
+    Login Using  ${common_data}[HR Specialist Login]
     Log  Step 4
     click on homepage
     Log  Step 5

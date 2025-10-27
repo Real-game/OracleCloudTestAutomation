@@ -8,8 +8,8 @@ Resource  ../PageObjects/PersonManagement.robot
 Resource  ../PageObjects/AbsenceRecords.robot
 Documentation  role to test on MX Health and Wellness Representative
 ...            Prerequiste:  Not Applicable
-...            Environment Specific Data:  Login User,Person Name,Person Number
-...            Reusable Data: Action Menu1,Action Menu2,Personal and Employment Select Sub Menu
+...            Environment Specific Data:  Login User;Person Name;Person Number
+...            Reusable Data: Action Menu1;Action Menu2;Personal and Employment Select Sub Menu
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -24,7 +24,7 @@ ${edit}  xpath: //span[text()="Edit"]
 
 *** Test Cases ***
 Scenario: role to test on MX Health and Wellness Representative
-    [Tags]  SecurityRoleTestCase  ReadOnly
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

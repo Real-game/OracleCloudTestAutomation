@@ -15,6 +15,7 @@ Click On Edit Then Update Position
 
 Check Effective Date
     ${date}=  get_current_date_dd_mmm_yyyy
+    Wait Until Element Is Visible   ${get_effective_date_selected}      10s
     element attribute value should be  ${get_effective_date_selected}  value  ${date}
     Capture Page Screenshot
 

@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC002_MX_Total_Rewards_Representative.csv
 
 *** Test Cases ***
 Scenario: Security Testing - MX Total Rewards Representative
-    [Tags]  SecurityRoleTestCase  Read Only
+    [Tags]  SecurityRoleTestCase  Read Only  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3
@@ -35,7 +35,6 @@ Scenario: Security Testing - MX Total Rewards Representative
     Log  Step 6
     Go To My Client Group
     Log  Step 7
-    #Verify My client groups apps
     Verify My CLient Groups apps for Rewards Representative
     Verify Quick Actions Link for Rewards Representative
     Log  Step 8 - 11

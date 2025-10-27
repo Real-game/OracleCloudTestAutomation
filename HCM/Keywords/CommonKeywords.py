@@ -1,10 +1,12 @@
 import json
+import time
 from pathlib import Path
 
 from SeleniumLibrary.base import keyword
 from robot.libraries.BuiltIn import BuiltIn
 from datetime import date
 from datetime import datetime
+from datetime import timedelta
 import datetime
 import clipboard
 
@@ -141,3 +143,19 @@ def days_in_month(month, year):
             return 29
         return 28
     return 30
+
+@keyword
+def add_days_to_date_dd_mmm_yyyy(inputDate, daysToAdd):
+    originalDate = datetime.datetime.strptime(inputDate, "%d-%b-%Y")
+    requiredDate = originalDate + timedelta(days=int(daysToAdd))
+    return str(requiredDate.strftime("%d-%b-%Y"))
+
+
+@keyword
+def get_current_date_mm_dd_yyyy():
+    return str(date.today().strftime("%m/%d/%Y"))
+
+@keyword
+def get_yesterday_date_mm_dd_yyyy():
+    yesterday = date.today() - timedelta(days=1)
+    return str(yesterday.strftime("%m/%d/%Y"))

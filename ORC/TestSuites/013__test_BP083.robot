@@ -21,7 +21,7 @@ ${prerequisites_json_path}  ./TestData/td_BP017.json  #If we want to run BP042 s
 
 *** Test Cases ***
 Scenario: Additional Information Provided for Candidate (Candidate provide personal info (External))
-    [Tags]  ExternalNewHire
+    [Tags]  ExternalNewHire   April19
     generatejson  ${csv_path}  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}
     appendtojson  ${json_path}  Email  ${prerequisites_data}[Email]

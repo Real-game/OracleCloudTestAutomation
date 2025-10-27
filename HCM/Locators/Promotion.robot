@@ -12,7 +12,7 @@ ${continue}  xpath: //button[@title="Continue"]
 
 ${promotion_start_date}  xpath: //input[@placeholder='dd-mmm-yyyy' and contains(@id,'ipDt')]
 ${promotion_way}  xpath: //input[contains(@id,'sis1:aidis')]
-${promotion_way_dropdown}  xpath: //a[contains(@id,'sis1:aidis')]
+${promotion_way_dropdown}  xpath: //label[contains(text(),'the way to promote?')]/parent::div/following-sibling::div//input[2]
 ${promotion_reason_dropdown}  xpath: //input[contains(@id,'aridis')]
 
 ${select_position}  xpath:(//input[@placeholder='Select a value'])[2]

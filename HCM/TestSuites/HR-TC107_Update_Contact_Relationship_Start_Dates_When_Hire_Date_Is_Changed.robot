@@ -31,7 +31,7 @@ Scenario: HR Specialist update contact relationship start date when hire date is
     Search for a person  ${data}[Person Number]
     Log  Step 9
     Click Adderess Edit Icon
-    Select Start Date  ${data}[Start Date]
+    Select Start Date
     Click Submit
     Log  Step 10
     click on homepage

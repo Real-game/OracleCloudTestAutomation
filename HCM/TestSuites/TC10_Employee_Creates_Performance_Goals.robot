@@ -7,12 +7,11 @@ Resource  ../PageObjects/Performance.robot
 Resource  ../PageObjects/CareerAndPerformance.robot
 Documentation  Employee-Creates Performance Goals
 ...            Prerequisite:  Require Active Performance Document
-...            Environment Specific Data:  Login User
-...            Reusable Data: Goal Description, Goal Status and Comments
-...            Dynamic Data: Review Period, Review Section, Goal Plan, Goal Name, Start Date and End Date
+...            Environment Specific Data:  Employee Login(PMP_Talent_common_test_data.csv)
+...            Reusable Data: Goal Description; Goal Status; Comments
+...            Dynamic Data: Review Period; Review Section; Goal Plan; Goal Name; Start Date; End Date
 
 *** Settings ***
-
 Suite Setup  Before Suite
 Suite Teardown  After Suite
 Test Teardown  After Test
@@ -20,16 +19,19 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PMP_TC10_Employee_Creates_Performance_Goals.json
 ${csv_path}  ./CSV/td_PMP_TC10_Employee_Creates_Performance_Goals.csv
+${common_json_path}  ./TestData/PMP_Talent_common_test_data.json
+${common_csv_path}  ./CSV/PMP_Talent_common_test_data.csv
 
 *** Test Cases ***
-
 Scenario: Employee-Creates Performance Goals
     [Tags]  PMPTalentTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     ${goal_name}=  get_process_name  ${data}[Goal Name]
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Employee Login]
     Log  Step 4
     click on homepage
     Click on Me

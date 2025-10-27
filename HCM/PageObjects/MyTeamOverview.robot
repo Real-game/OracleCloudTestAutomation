@@ -8,8 +8,8 @@ Resource  ../Locators/MyTeamOverview.robot
 Select Employee By Name
     [Arguments]  ${value}
     Sleep  2s
-    Click Element  ${search_text_box}
-    Input Text  ${search_text_box}  ${value}
+    Click Element  ${search_text_box_my_team}
+    Input Text  ${search_text_box_my_team}  ${value}
     Sleep  2s
     Click Element  ${search_button}
     Wait Until Page Contains  ${value}  20s  Searched person: ${value} is not listed
@@ -33,6 +33,7 @@ Upload file
     IF  "${file}"!=""
         Wait And Click Element  ${Attach_img}
         Wait And Click Element  ${Attach_file}
+        Sleep  5s
         Attach File  ${file}
         execute javascript  window.scrollTo(0,document.body.scrollHeight)
         Capture Page Screenshot

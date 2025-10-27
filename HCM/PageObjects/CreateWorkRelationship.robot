@@ -13,9 +13,9 @@ Advance Search For Person With Filters
     wait until page contains  Hide Filters  20s
     Wait And Click Element  ${inactive_checkbox}
     Sleep  3s
-    Wait And Click Element  ${calender_icon}
-    Sleep  3s
-    Wait And Click Element  ${select_current_date}
+#    Wait And Click Element  ${calender_icon}
+#    Sleep  3s
+#    Wait And Click Element  ${select_current_date}
     Sleep  3s
     mouse over  link: ${emp_name}
     Wait And Click Element  link: ${emp_name}

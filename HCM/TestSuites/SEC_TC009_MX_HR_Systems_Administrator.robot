@@ -8,8 +8,8 @@ Resource  ../PageObjects/PersonManagement.robot
 Resource  ../PageObjects/AbsenceRecords.robot
 Documentation  MX HR Systems Administrator
 ...            Prerequiste:  Not Applicable
-...            Environment Specific Data:  Login User, Person Number
-...            Reusable Data: Person Name,Action Menu1,Action Menu2,Action Menu3,Action Menu4,Personal and Employment Select Sub Menu,Edit Menu1,Edit Menu2,Edit Menu3
+...            Environment Specific Data:  Login User; Person Number
+...            Reusable Data: Person Name;Action Menu1;Action Menu2;Action Menu3;Action Menu4;Personal and Employment Select Sub Menu;Edit Menu1;Edit Menu2;Edit Menu3
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC009_MX_HR_Systems_Administrator.csv
 
 *** Test Cases ***
 Scenario: MX HR Systems Administrator
-    [Tags]  SecurityRoleTestCase  ReadOnly
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

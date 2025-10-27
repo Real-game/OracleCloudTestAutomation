@@ -19,3 +19,10 @@ ${first_process_id}  xpath: (//tr[@_afrrk="0"]//td//span)[1]
 
 ${process_start_date}  xpath: //div[@title="Process Start Date"]//input[@placeholder="dd-mmm-yyyy"]
 ${process_end_date}  xpath: //div[@title="Process End Date"]//input[@placeholder="dd-mmm-yyyy"]
+
+${payroll_relationship_group_dropdown}  xpath: (//label[text()="Payroll Relationship Group"]/following::a)[1]
+${payroll_relationship_group_field}  xpath: //label[text()='Payroll Relationship Group']/preceding-sibling::input
+${payroll_period_field}  xpath: //label[text()='Payroll Period']/preceding-sibling::input
+
+${process_start_date_prepayment}  xpath: //label[text()="Process Start Date"]/preceding-sibling::input
+${process_end_date_prepayment}  xpath: //label[text()="Process End Date"]/preceding-sibling::input

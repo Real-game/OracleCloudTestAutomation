@@ -19,6 +19,7 @@ ${csv_path}  ./CSV/td_BP066.csv
 *** Test Cases ***
 
 Scenario: Candidate Pool, Talent Community (Candidate Pool)
+    [Tags]  ExternalNewHire  Demo
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1

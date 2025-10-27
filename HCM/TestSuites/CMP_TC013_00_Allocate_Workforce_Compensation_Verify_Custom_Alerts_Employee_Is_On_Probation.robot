@@ -8,8 +8,8 @@ Resource  ../PageObjects/WorkForceCompensationPlans.robot
 
 Documentation  Allocate Workforce Compensation - Verify custom alerts - Employee is on probation
 ...            Prerequisite:  Not Applicable
-...            Environment Specific Data:  Login User
-...            Reusable Data:  Plan,Task Name,Alert Name
+...            Environment Specific Data:  Manager Login(PFP_common_test_data.csv)
+...            Reusable Data:  Plan(PFP_common_test_data.csv);Task Name;Alert Name
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -20,14 +20,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_CMP_TC013_00_Allocate_Workforce_Compensation_Verify_Custom_Alerts_Employee_Is_On_Probation.json
 ${csv_path}  ./CSV/td_CMP_TC013_00_Allocate_Workforce_Compensation_Verify_Custom_Alerts_Employee_Is_On_Probation.csv
+${common_json_path}  ./TestData/PFP_common_test_data.json
+${common_csv_path}  ./CSV/PFP_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Allocate Workforce Compensation - Verify custom alerts - Employee is on probation
-    [Tags]  PFPTestCase  ModifyData
+    [Tags]  PFPTestCase  ModifyData  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Manager Login]
     Log  Step 4
     click on homepage
     Go To My Client Group
@@ -35,8 +39,9 @@ Scenario: Allocate Workforce Compensation - Verify custom alerts - Employee is o
     Log  Step 5-6
     Click on WorkForce Compensation Plans
     Log  Step 7
-    Click Given Plan Link  ${data}[Plan]
+    Click Given Plan Link  ${common_data}[Plan]
     Log  Step 8 - 9
-    Click Go To Task From given Worksheet Task List  ${data}[Task Name]
+#    Click Go To Task From given Worksheet Task List  ${data}[Task Name]
+    Click on Alerts in Task List
     Log  Step 10 - 11
     Verify Checkbox Checked  ${data}[Alert Name]

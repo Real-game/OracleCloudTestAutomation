@@ -29,9 +29,11 @@ Search employee number in person management
     Input Text  ${search_number}  ${number}
     Sleep  2s
     Wait and click element  ${search_button}
-    ${employee_xpath}=  Catenate  SEPARATOR=  //span[text()='   ${number}   ']/parent::td/preceding-sibling::td//a[@class='xmu']
+    Sleep  2s
+    ${employee_xpath}=  Catenate  SEPARATOR=  (//span[text()='${number}']/parent::td/preceding-sibling::td//a)[1]
     ${checker}=  Run Keyword and Return Status  Click Element  xpath: ${employee_xpath}
     IF  '${checker}'=='False'
+        scroll element into view  ${employee_xpath}
         Click Element  xpath: ${employee_xpath}
     END
     Wait And Verify Page Contains Text  Employment  20s  Person Management detail Page is not displayed
@@ -99,7 +101,6 @@ Enter Effective Start Date
 Assignment End Warning
     Wait And Click Element  ${status_ok}
     Capture Page Screenshot
-
 
 Select Assignment Status
     [Arguments]  ${assign}
@@ -274,6 +275,7 @@ Get Employment Info
     ${department}=  Get Element Attribute  ${get_department}  title
     ${location}=  Get Element Attribute  ${get_location}  title
     ${bargaining_unit}=  Get Element Attribute  ${get_bargaining_unit}  title
+    Capture Page Screenshot And Retry If Required
     [return]  ${position}  ${job}  ${grade}  ${department}  ${location}  ${bargaining_unit}
 
 Select Recalculate Seniority Dates
@@ -351,7 +353,7 @@ Select Submit Button
 
 Select Yes Button
     Wait And Click Element  ${yes_button}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot
 
 Check The Box Include terminated Work relationship And Search Person
@@ -402,8 +404,14 @@ Select date
 
 Select Accruals Status
     [Arguments]  ${status}
+    Sleep  5s
     Mouse Over  ${plan_balances_status}
-    Wait And Click Element  ${plan_balances_status}
+    ${checker}=  Run Keyword and Return Status  Wait And Click Element  ${plan_balances_status}
+    IF  '${checker}'=='False'
+        Sleep  3s
+        Wait And Click Element  ${plan_balances_status}
+    END
+#    Wait And Click Element  ${plan_balances_status}
     Sleep  3s
     Select Required Value  ${plan_balances_status_menu}  ${status}
     Sleep  3s
@@ -605,12 +613,12 @@ Select Plan Participation Status
     Capture Page Screenshot And Retry If Required
 
 Verify Enrollment End date has Value
-    ${enrollment_end_date_xpath}=  Catenate  SEPARATOR=  //h2[text()='Plan Balances']//following::tr[@class='xem p_AFSelected' or  @class='xem']
+    ${enrollment_end_date_xpath}=  Catenate  SEPARATOR=  //div[contains(@id,'r3:0:AT2:_ATp:ATt2::db')]/table[1]/tbody[1]/tr
     ${count}=  get element count  ${enrollment_end_date_xpath}
     Log  Count:${count}
     FOR  ${i}  IN RANGE  1  ${count}
         Sleep  2s
-        ${end_date_xpath}=  Catenate  SEPARATOR=  (//h2[text()='Plan Balances']//following::tr[@class='xem p_AFSelected' or  @class='xem'][${i}]//following::td//span[@class='x2hf'])[5]
+        ${end_date_xpath}=  Catenate  SEPARATOR=  //div[contains(@id,'r3:0:AT2:_ATp:ATt2::db')]/table[1]/tbody[1]/tr[${i}]/td[6]/span[1]
         mouse over  ${end_date_xpath}
         element should be visible  ${end_date_xpath}
         Sleep  3s
@@ -618,7 +626,12 @@ Verify Enrollment End date has Value
     Log  Enrollment End Date is set to all plans
 
 Take Plan Balances Table Screenshot
-    mouse over  ${scroll_plan_balances_table_view}
+    ${checker}=  Run Keyword and Return Status  mouse over  ${scroll_plan_balances_table_view}
+    IF  '${checker}'=='False'
+        Sleep  3s
+        mouse over  ${scroll_plan_balances_table_view}
+    END
+#    mouse over  ${scroll_plan_balances_table_view}
     Capture Page Screenshot And Retry If Required
     Sleep  3s
 
@@ -637,8 +650,218 @@ Click on Person link
     Wait Until Page Contains  Extra Information  20s  Person Management page is not displayed
     Capture Page Screenshot
 
-
 Click on Vacation Elector link
     Click Element  ${vacation_elector_link}
     Wait Until Page Contains Element  ${vacation_elector_value}  20s  Vacation elector value is not displayed
     Capture Page Screenshot
+
+Check Absence Plan Present in Plan participation
+    Wait And Verify Page Contains Element  ${absence_plan_name}  20s  Absence Plans are available for the Employee
+    scroll element into view  ${absence_plan_name}
+    element should be visible  ${absence_plan_name}
+    Capture Page Screenshot And Retry If Required
+
+Click Person Information
+    Wait And Click Element  ${personal_information}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Date Of Birth has Value
+    scroll element into view  ${date_of_birth_value}
+    Wait And Verify Page Contains Element  ${date_of_birth_value}  20s  Date Of Birth hasn't Value
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Social Insurance Number has value
+    scroll element into view  ${sin_number_value}
+    Wait And Verify Page Contains Element  ${sin_number_value}  20s  Social Insurance Number has not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Home and Primary address has value
+    scroll element into view  ${primary_mailing_value}
+    Wait And Verify Page Contains Element  ${primary_mailing_value}  20s  Primary Mailing address is displayed nothing
+    scroll element into view  ${home_address_value}
+    Wait And Verify Page Contains Element  ${home_address_value}  20s  Home address is displayed nothing
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Click Assignment details option
+    Wait And Click Element  ${assignment_details_option}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Verify Assignment status has given value
+    [Arguments]  ${value}
+    scroll element into view  ${assignment_status_value}
+    element text should be  ${assignment_status_value}  ${value}  Assignment status is inactive
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Working hours has value
+    Wait And Verify Page Contains Element  ${working_hours}  20s  Working hours for employee is not displayed
+    scroll element into view  ${working_hours}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Standard working hours has value
+    Wait And Verify Page Contains Element  ${standard_working_hours}  20s  Standard Working hours for employee is not displayed
+    scroll element into view  ${standard_working_hours}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check People Group has value
+    Wait And Verify Page Contains Element  ${people_group}  20s  People Group for employee is not displayed
+    scroll element into view  ${people_group}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Assignment Category has value
+    Wait And Verify Page Contains Element  ${assignment_category}  20s  Assignment category for employee is not displayed
+    scroll element into view  ${assignment_category}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Primary flag has value
+    Wait And Verify Page Contains Element  ${primary_flag}  20s  Assignment category for employee is not displayed
+    scroll element into view  ${primary_flag}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Search Person Number and input effective Date
+    [Arguments]  ${person_number}  ${effective_date}
+    Sleep  5s
+    Click Element  ${search_number}
+    Input Text  ${search_number}  ${person_number}
+    Sleep  2s
+    ${effective_date_future}  add_days_to_date_dd_mmm_yyyy  ${effective_date}  3
+    Select Effective Date  ${effective_date_future}
+    Wait and click element  ${search_button}
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Fetch Assignment Status
+    [Arguments]  ${assignment_number}
+    ${assigment_status_xpath}=  Catenate  SEPARATOR=  //span[text()='${assignment_number}']/parent::td/following-sibling::td[2]/span
+    Scroll Element Into View  ${assigment_status_xpath}
+    ${assigment_status} =  Get Text  ${assigment_status_xpath}
+    Element Should Contain  ${assigment_status_xpath}  Inactive  Assigment Status is not active for Temporary Assignment
+    Capture Page Screenshot And Retry If Required
+
+Verify Termination date is visible
+    [Arguments]  ${number}
+    ${date}=  Get Current Date Dd Mmm Yyyy
+    ${termination_date_xpath}=  Catenate  SEPARATOR=  (//span[text()='${number}'])[2]/preceding::span[text()='${date}']
+    scroll element into view  ${termination_date_xpath}
+    ELEMENT SHOULD BE VISIBLE  ${termination_date_xpath}
+    Sleep  2s
+    capture page screenshot
+
+Click Include terminated Work relationship and set effective date And Search Person
+    [Arguments]  ${number}
+    Wait And Click Element  ${include_terminated_work_relationship}
+    Sleep  3s
+    ${effective_date}=  get incremented date  1
+    Wait And Set Text  ${effective_as_of_date}  ${effective_date}
+    Sleep  2s
+    Wait Then Click And Set Text  ${search_number}  ${number}
+    Sleep  2s
+    Wait and click element  ${search_button}
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Check Employee Assignment Status has Inactive
+    [Arguments]  ${number}
+    ${assignment_status_option}=  Catenate  SEPARATOR=  (//span[text()='${number}'])[2]/preceding::span[text()='Inactive - Payroll Eligible']
+    scroll element into view  ${assignment_status_option}
+    element should be visible  ${assignment_status_option}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Get Person Number in Person Management Page
+    [Arguments]  ${last_name}  ${first_name}
+    ${person_name}=  Catenate  ${last_name}, ${first_name}
+    Log  ${person_name}
+    Wait and click element  ${search_name}
+    Input Text  ${search_name}  ${person_name}
+    Sleep  3s
+    Wait and click element  ${search_button}
+    Sleep  3s
+    ${Person_number_xpath}=  Catenate  SEPARATOR=  //a[text()='${person_name}']/following::span[1]
+    Wait Until Page Contains Element  xpath: ${Person_number_xpath}  20s  New Person is not added
+    ${person_num_value}=  get text  ${Person_number_xpath}
+    [return]  ${person_num_value}
+
+Click Extra Information
+    Wait And Click Element  ${extra_information}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Click Adjustment Dates under Extra Information
+    Wait And Click Element  ${adjustment_dates}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Vacation Entitlement Adjustment Date has value
+    scroll element into view  ${vacation_adjustment_date}
+    Wait And Verify Page Contains Element  ${vacation_adjustment_date}  20s  Vacation Entitlement Adjustment Date has not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Click Person under Employment
+    scroll element into view  ${person_employment}
+    Wait And Click Element  ${person_employment}
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Get Home Address text under Personal Info
+    scroll element into view  ${home_address}
+    ${city_name}=  get text  ${home_address}
+    Log to console  city: ${city_name}
+    ${city_name}=  String.Split String  ${city_name}  \n
+    Log to console  city: ${city_name}[2]
+    ${city_name}=  getCityName  ${city_name}[2]
+    Log to console  City Name: ${city_name}
+    Capture Page Screenshot And Retry If Required
+    [return]  ${city_name}
+
+Verify Warning message and click Yes
+    ${checker}=  Run Keyword and Return Status  element should be visible  ${wanringYes}
+    IF  '${checker}'=='True'
+        click element  ${wanringYes}
+    END
+    Capture Page Screenshot And Retry If Required
+
+Search employee number with job in person management
+    [Arguments]  ${number}  ${job}
+    Sleep  5s
+    Click Element  ${search_number}
+    Input Text  ${search_number}  ${number}
+    Sleep  2s
+    Wait and click element  ${search_button}
+    Sleep  2s
+    ${employee_xpath}=  Catenate  SEPARATOR=  (//span[text()='${number}']/parent::td/following-sibling::td//span[text()='${job}']//parent::td/preceding-sibling::td//a)[1]
+    ${checker}=  Run Keyword and Return Status  Click Element  xpath: ${employee_xpath}
+    IF  '${checker}'=='False'
+        scroll element into view  ${employee_xpath}
+        Click Element  xpath: ${employee_xpath}
+    END
+    Wait And Verify Page Contains Text  Employment  20s  Person Management detail Page is not displayed
+    Capture Page Screenshot And Retry If Required
+
+Check Seniority Dates
+    Wait Until Page Contains  Seniority Dates  20s  Seniority Dates calculation page is not displayed
+    ${date}=  get_current_date_dd_mmm_yyyy
+    Log  date: ${date}
+    Wait And Click Element  ${recalculate_seniority}
+    Sleep  30s
+    Wait Until Page Contains  Seniority dates were last calculated on ${date}.  20s  Recalculation seniority dates take more time to complete
+    scroll element into view  ${length_of_service}
+    ${service_length}=  get text  ${length_of_service}
+    IF  "${service_length}"=="0 Years 0 Months 1 Days"
+        Capture Page Screenshot And Retry If Required
+    ELSE
+        FAIL
+    END
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required

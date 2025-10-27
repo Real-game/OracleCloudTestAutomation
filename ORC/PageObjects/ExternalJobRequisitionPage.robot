@@ -13,12 +13,8 @@ Enter Email
     Wait and Send Keys  ${email_input}  ${mail}
     Sleep  2s
     Wait And Click Element  ${checkbox}
-    Sleep  3s
-    wait and click element  ${email_input}
-    Sleep  2s
-    scroll element into view  ${next_btn}
     Wait And Click Element  ${next_btn}
-    Sleep  5s
+    Sleep  3s
     ${status}=  Run Keyword And Return Status  Page Should Contain  Confirm Your Identity
     IF  "${status}"=="True"
         Sleep  5s
@@ -31,7 +27,7 @@ Enter Email
 #        Wait And Click Element  ${keep_me_signed_btn}
         Wait And Click Element  ${verify_btn}
     END
-    Sleep  10s
+    Sleep  5s
     Capture Page Screenshot
 
 Enter Email E2E

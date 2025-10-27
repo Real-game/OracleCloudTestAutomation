@@ -9,9 +9,8 @@ Create Interview
     [Arguments]  ${start_time_text}   ${end_time_text}   ${meeting_duration_value}   ${web_conference_link_text}     ${interviewer_name}
     Wait Until Element Is Visible    ${create_interview_page_title}      30     Create Interview page title is not displayed
     Capture Page Screenshot
-    Sleep  3s
-    Click Element   ${interview_dates_calendar_icon}
-    Sleep  3s
+    Wait And Click Element     ${interview_dates_calendar_icon}
+    Sleep  5s
     ${current_date}=  Get Current Date Dd Mmm Yyyy
     Log  Current Date: ${current_date}
     ${calendar_value}=  Split String    ${current_date}  -
@@ -27,7 +26,6 @@ Create Interview
             IF  "${status1}"=="True"
 #                Select Required Value  ${date_value}    ${calendar_value}[0]
                 Wait And Click Element  //td[text()="${date}" and @data-afr-adfday='cm']
-
                 Exit For Loop
             ELSE
                 Wait And Click Element  ${next_month}
@@ -71,6 +69,8 @@ Create Interview
     Wait Until Element Is Visible    ${meeting_duration_drop_down}      20     Meeting duration is not displayed
     Scroll Element Into View   ${meeting_duration_drop_down}
     Execute javascript  window.scrollTo(0,document.body.scrollHeight)
+    Scroll element into view    ${meeting_duration_drop_down}
+    Sleep    2s
     Click Element   ${meeting_duration_drop_down}
     Sleep  1s
 #    Select Required Value  ${meeting_duration_options}    ${meeting_duration_value}

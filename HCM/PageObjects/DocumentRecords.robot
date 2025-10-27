@@ -2,6 +2,7 @@
 Library  Selenium2Library
 Resource  ../Keywords/CommonKeywords.robot
 Resource  ../Locators/DocumentRecords.robot
+Library  ../Helpers/Helpers.py
 
 *** Keywords ***
 
@@ -9,7 +10,9 @@ View Document Types
     [Arguments]  ${doc_type}
     Sleep  2s
     Wait And Click Element  ${remove_payroll_filter}
+    Sleep  2s
     Wait And Click Element  ${remove_expired_filter}
+    Sleep  2s
     Wait And Click Element  ${href_show_filters}
     Sleep  2s
     #Wait And Click Element  ${doc_type_drop_down}
@@ -66,6 +69,7 @@ Upload file in Add Document page
     [Arguments]  ${file}
     IF  "${file}"!=""
         Wait And Click Element  ${Attach_img}
+        Wait Until Page Contains Element  ${Attach_file}  20s  Attach file link is not displayed
         scroll element into view  ${Attach_file}
         Wait And Click Element  ${Attach_file}
         Sleep  5s
@@ -78,3 +82,48 @@ Click on Submit button
     Wait And Click Element  ${submit_option}
     Sleep  5s
     Capture Page Screenshot
+
+Clear Document Type Filter
+    Sleep  5s
+    ${xpath}=  Catenate  SEPARATOR=  //img[contains(@title,'Remove Filter:')]
+    scroll element into view  ${xpath}
+    ${count}=  get element count  ${xpath}
+    Log  ${count}
+    ${count}=  Evaluate  ${count}+${1}
+    Log  ${count}
+    FOR  ${i}  IN RANGE  1  ${count}
+        ${xpath_list}=  Catenate  SEPARATOR=  (//img[contains(@title,'Remove Filter:')])[1]
+        Wait And Click Element   ${xpath_list}
+        Sleep  2s
+    END
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Click on View Document Detail
+    ${status}=  run keyword and return status  wait until page contains element  ${view_more_details_link}  10s  Employee has no Document attached
+    IF  '${status}'=='True'
+        ${xpath_list}=  Catenate  SEPARATOR=  (//a[@title='View More Details'])[1]
+        Wait And Click Element  ${xpath_list}
+        wait until page contains  Document Details  10s  Document Details not displayed
+    ELSE
+        FAIL  Employee has no Document attached
+    END
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+View Document Attached Date
+    ${xpath_list}=  Catenate  SEPARATOR=  (//div[@title='Attachment List']//span)[2]
+    scroll element into view   ${xpath_list}
+    ${text}=  get text  ${xpath_list}
+    Log  ${text}
+    ${date}=  getRecordDate  ${text}
+    log  ${date}
+    ${status}=  checkDate  ${date}
+    IF  ${status}==True
+        log  Value (${date}) is Date Time Object
+    ELSE
+        log  Value (${date}) is not Date Time Object
+        FAIL
+    END
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required

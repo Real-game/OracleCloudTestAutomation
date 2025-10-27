@@ -1,9 +1,6 @@
 {
-    "Login User": "akash.parasram.dhage@accenture.com",
     "Flow Pattern": "Generate Cheque Payments",
     "Payroll Flow": "test4",
-    "Start Date": "22-Dec-21",
-    "End Date": "04-Jan-22",
     "Payroll": "Biweekly",
     "Log Name": "Make Check Payments",
     "Organization Payment Method": "Cheque",

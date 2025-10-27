@@ -11,7 +11,7 @@ Search And Select Person
     Wait And Send Keys  ${search_input_person_name}  ${value}
     Sleep  3s
     Wait And Click Element  ${select_recent_search_result}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Click Tax Credit Information
@@ -82,4 +82,64 @@ Verify No Error Message Displayed
     END
     Log To Console  Passed without error and details saved successfully
     Sleep  5s
+    Capture Page Screenshot And Retry If Required
+
+Expand Federal section
+    ${federal_expand_check}=  Run Keyword and Return Status  Wait And Verify Page Contains Element  ${federal_expand}  20s  Federal section already expanded
+    IF  '${federal_expand_check}'=='True'
+        Wait And Click Element  ${federal_expand}
+        Sleep  2s
+    END
+    Capture Page Screenshot And Retry If Required
+
+Check Federal Total Claim amount has value
+    scroll element into view  ${federal_total_claim_amount_value}
+    Wait And Verify Page Contains Element  ${federal_total_claim_amount_value}  20s  Federal Total Claim amount value is not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Expand Regional section
+    ${regional_expand_check}=  Run Keyword and Return Status  ELEMENT SHOULD BE VISIBLE  ${regional_expand}  Regional section already expanded
+    IF  '${regional_expand_check}'=='True'
+        Wait And Click Element  ${regional_expand}
+        Sleep  2s
+    END
+    Capture Page Screenshot And Retry If Required
+
+Check Regional Total Claim amount has value
+    scroll element into view  ${regional_total_claim_amount_value}
+    Wait And Verify Page Contains Element  ${regional_total_claim_amount_value}  20s  Regional Total Claim amount value is not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Expand Association section
+    Sleep  5s
+    ${association_expand_check}=  Run Keyword and Return Status  ELEMENT SHOULD BE VISIBLE  ${association_expand}  Associations section already expanded
+    IF  '${association_expand_check}'=='True'
+        Wait And Click Element  ${association_expand}
+        Sleep  10s
+    END
+    Capture Page Screenshot And Retry If Required
+
+Check Association Tax Reporting Unit has value
+    scroll element into view  ${association_tax_report_unit_value}
+    Wait And Verify Page Contains Element  ${association_tax_report_unit_value}  20s  Associations Tax Reporting Unit value is not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Association Assignment has value
+    scroll element into view  ${association_assignment_value}
+    Wait And Verify Page Contains Element  ${association_assignment_value}  20s  Associations Assignment value is not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Check Association Province of Employment has value
+    scroll element into view  ${association_province_of_employment_value}
+    Wait And Verify Page Contains Element  ${association_province_of_employment_value}  20s  Associations Province of Employment value is not displayed
+    Sleep  2s
+    Capture Page Screenshot And Retry If Required
+
+Verify Page has Absences Card
+    Wait And Verify Page Contains Element  ${absence_card}  10s  Absences card not displayed
+    scroll element into view  ${absence_card}
     Capture Page Screenshot And Retry If Required

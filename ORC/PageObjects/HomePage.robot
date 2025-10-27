@@ -7,7 +7,7 @@ Resource  ../Keywords/CommonKeywords.robot
 *** Keywords ***
 click on homepage
     click element  ${icon_home}
-    Sleep  5s
+    Sleep  2s
     Capture Page Screenshot
 
 
@@ -458,11 +458,9 @@ Go to me Journeys
 
 Go to my client groups show more
     wait and click element  ${href_my_client}
-    Sleep  3s
     Mouse Over  ${mcg_show_more}
-    Sleep  2s
     Click Link  ${mcg_show_more}
-    Sleep  5s
+    Sleep  3s
     Capture Page Screenshot
 
 Click on Pending Employees
@@ -471,7 +469,6 @@ Click on Pending Employees
     Capture Page Screenshot
 
 Click on Manage Job Offers
-    wait until page contains element  ${Manage_job_offer}  10s
     Scroll element into view  ${Manage_job_offer}
     Wait And Click Element  ${Manage_job_offer}
     ${checker}=  RUN KEYWORD And Return Status  Wait until Element Contains  ${header}  Job Offers

@@ -1,6 +1,9 @@
 {
-    "LoginUser": "David.weisse",
     "Compensation Option": "Act as Proxy Manager",
-    "Proxy Manager Name": "Kseniya Jain",
-    "Filter Value": "NU"
+    "Filter Value": "E",
+    "Eligiblity Status": "Eligible",
+    "LFTRI %": "0.63",
+    "CSAT %": "0.51",
+    "Total Increase Override": "2.8",
+    "Proration Override": "73.34"
 }

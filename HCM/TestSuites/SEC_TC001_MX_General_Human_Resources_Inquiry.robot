@@ -7,8 +7,8 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/PersonManagement.robot
 Documentation  MX General Human Resources Inquiry
 ...            Prerequiste:  HR-81 and Require an user with MX General Human Resources Inquiry Role
-...            Environment Specific Data:  Login User, Person Number
-...            Reusable Data: Person Name,Homepage Option1,Homepage Option2,Homepage Option3,Client group Apps1,Client group Apps2,Client group quick option1,Client group quick option2,Parent Action,Child Action
+...            Environment Specific Data:  Login User; Person Number
+...            Reusable Data: Person Name;Homepage Option1;Homepage Option2;Homepage Option3;Client group Apps1;Client group Apps2;Client group quick option1;Client group quick option2;Parent Action;Child Action
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC001_MX_General_Human_Resources_Inquiry.csv
 *** Test Cases ***
 
 Scenario: MX General Human Resources Inquiry
-    [Tags]  SecurityRoleTestCase  ReadOnly
+    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3
@@ -45,3 +45,9 @@ Scenario: MX General Human Resources Inquiry
     Select action Dropdown  ${data}[Parent Action]  ${data}[Child Action]
     Log  Step 14
     Verify Edit option is not visible
+    Log  Step 15
+    click on homepage
+    Log  Step 16
+    Go To My Client Group
+    Log  Step 17
+    Click on Quick Actions - Person and search  ${data}[Person Number]

@@ -6,8 +6,8 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/CreateWorkRelationship.robot
 Documentation  Quick Actions -Rehire Manual (Current Date)
 ...            Prerequisite:  Functional to pick ex-employee person number - in dynamic test data input sheet
-...            Environment Specific Data:  Login User, Person Number and Person Name
-...            Reusable Data:  Relationship Start Date, Legal Employer, Way To Relationship, Why Adding Relationship, Business Unit, Tax Reporting Unit, Time Card Required, Currency, Salary Basis and Salary Amount
+...            Environment Specific Data:  HR Login; Person Number; Person Name
+...            Reusable Data:  Relationship Start Date; Legal Employer; Way To Relationship; Why Adding Relationship; Business Unit; Tax Reporting Unit; Time Card Required; Currency; Salary Basis; Salary Amount
 ...            Dynamic Data:  Position ID
 
 *** Settings ***
@@ -18,14 +18,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_HR_84_Quick_Actions_Rehire_Manual_Current_Date.json
 ${csv_path}  ./CSV/td_HR_84_Quick_Actions_Rehire_Manual_Current_Date.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Quick Actions -Rehire Manual (Current Date)
     [Tags]  CoreHRTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Login]
     Log  Step 4
     click on homepage
     Log  Step 5 - 6
@@ -44,7 +48,7 @@ Scenario: Quick Actions -Rehire Manual (Current Date)
     wait until page contains  Person Number  20s
     Click Continue Button
     Log  Step 17-19
-    Fill Employment Details For Create Work Relationship    ${data}[Business Unit]  ${data}[Position ID]
+    Fill Employment Details For Create Work Relationship    ${common_data}[Business Unit]  ${data}[Position ID]
     Log  Step 20-21
     Click Continue Button
     wait until page contains  NAICS Override Code  20s

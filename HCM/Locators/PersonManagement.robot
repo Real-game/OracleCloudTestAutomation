@@ -130,3 +130,24 @@ ${scroll_plan_balances_table_view}  xpath: //h2[text()="Qualified Entitlements"]
 ${person_option}    xpath: (//td[text()='Person'])[2]
 ${vacation_elector_link}  xpath: //a[text()='Vacation Elector']
 ${vacation_elector_value}   xpath: //span[contains(@id,'VacationElector')][@title='Yes'][text()='Yes']
+
+${absence_plan_name}  xpath: //h2[text()='Plan Balances']//following::a[contains(@id,'ATt2:0:cl2')]
+${date_of_birth_value}  xpath: //label[text()='Date of Birth']//parent::td//following-sibling::td
+${sin_number_value}  xpath: //h1[text()='National Identifiers']/following::span[contains(text(),'Social Insurance Number')]
+${primary_mailing_value}  xpath: //label[text()='Primary Mailing']//parent::td//following-sibling::td//span/br[1]
+${home_address_value}  xpath: //label[text()='Home Address']//parent::td//following-sibling::td//span/br[1]
+
+${assignment_details_option}  xpath: (//a[text()='Assignment Details'])[1]
+${assignment_status_value}  xpath: //label[text()='Assignment Status']//parent::td//following-sibling::td
+${working_hours}  xpath: (//label[text()='Working Hours']//parent::td//following-sibling::td//span)[1]/span
+${standard_working_hours}  xpath: //label[text()='Derived Standard Working Hours']//parent::td//following-sibling::td
+${people_group}  xpath: (//label[text()='People Group']//parent::td//following-sibling::td//span)[1]/span
+${assignment_category}  xpath: //label[text()='Assignment Category']//parent::td//following-sibling::td//span
+${primary_flag}  xpath: //label[text()='Primary']//parent::td//following-sibling::td//span
+${effective_as_of_date}  xpath: //input[@placeholder='dd-mmm-yyyy']
+${extra_information}  xpath: (//a[text()='Extra Information'])[1]
+${adjustment_dates}  xpath: //a[text()='Adjustment Dates']
+${vacation_adjustment_date}  xpath: (//label[text()='Vacation Entitlement Adjustment Date']//parent::td//following-sibling::td//span)[2]
+${person_employment}  xpath: //h4[text()='Employment']//following::a[text()='Person']
+${home_address}  xpath: //label[text()='Home Address']//parent::td//following-sibling::td//span
+${wanringYes}  xpath: (//div[text()='Warning'])[2]/following::button[text()='Yes']

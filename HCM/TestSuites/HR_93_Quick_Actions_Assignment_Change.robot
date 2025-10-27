@@ -5,9 +5,9 @@ Resource  ../PageObjects/Login.robot
 Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/ChangeAssignment.robot
 Documentation  Assignment Change - Quick Actions
-...            Prerequisite:  HR-81
-...            Environment Specific Data:  Login User and Person Name
-...            Reusable Data:  Probation Period Value and Probation Period Unit
+...            Prerequisite:  Person number from ORC as a Converted Employee
+...            Environment Specific Data:  HR Login; Person Name
+...            Reusable Data:  Probation Period Value; Probation Period Unit
 ...            Dynamic Data:  Assignment Number
 
 *** Settings ***
@@ -18,14 +18,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_HR_93_Quick_Actions_Assignment_Change.json
 ${csv_path}  ./CSV/td_HR_93_Quick_Actions_Assignment_Change.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Assignment Change - Quick Actions
     [Tags]  CoreHRTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Login]
     Log  Step 4
     click on homepage
     Log  Step 5-6

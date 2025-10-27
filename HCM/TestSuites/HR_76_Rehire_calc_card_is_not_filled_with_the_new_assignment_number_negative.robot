@@ -6,7 +6,7 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/CalculationCards.robot
 Documentation  Add duplicate calculation card to assignment number
 ...            Prerequisite:  HR_76_Rehire_calc_card_is_not_filled_with_the_new_assignment_number
-...            Environment Specific Data:  Login User and Person Number (Use same which is used in HR_76)
+...            Environment Specific Data:  HR Login; Person Number (Use same which is used in HR_76)
 ...            Reusable Data:  Start Date
 ...            Dynamic Data:  Assignment(Use same which is used in HR_76)
 
@@ -18,14 +18,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_HR_76_Rehire_calc_card_is_not_filled_with_the_new_assignment_number_negative.json
 ${csv_path}  ./CSV/td_HR_76_Rehire_calc_card_is_not_filled_with_the_new_assignment_number_negative.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Add duplicate calculation card to assignment number
     [Tags]  CoreHRTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Login]
     Log  Step 4
     click on homepage
     Log  Step 5 - 6

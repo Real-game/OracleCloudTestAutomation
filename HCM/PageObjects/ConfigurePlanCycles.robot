@@ -21,7 +21,9 @@ Create Plan Cycle
     Wait And Input Text From Input  ${plan_access_end_date_input_field}  ${plan_access_end_date_value}
     Wait And Input Text From Input  ${short_name_input_field}  ${short_name_value}
     Wait And Input Text From Input  ${HR_data_extraction_date_input_field}  ${HR_data_extraction_value}
+    Sleep  5s
     Wait And Click Element  ${ok_button}
+    Sleep  5s
     Wait Until Page Contains  Save and Close  20s  Save and close button is not displayed
     Wait And Click Element  ${save_and_close_button}
     Sleep  4s
@@ -31,3 +33,8 @@ Verify Plan Cycle
     Wait Until Page Contains  Plan Cycles  20s  Configure Plan Cycles page is not displayed
     Capture Page Screenshot
 
+Click on Plan cycles
+    Sleep   3s
+    Wait And Click Element   ${plan_cycles}
+    Sleep  20s
+    Capture Page Screenshot And Retry If Required

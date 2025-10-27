@@ -40,7 +40,7 @@ Click Adderess Edit Icon
     Capture Page Screenshot
 
 Select Start Date
-    [Arguments]  ${date}
+    ${date}=  Get Current Date Dd Mmm Yyyy
     Wait And Set Text  ${href_address_change_start_date}  ${date}
     Sleep  3s
     Capture Page Screenshot
@@ -169,9 +169,17 @@ Enter Postal Code
 
 Click on My Compensation
     Wait Until Page Contains  My Compensation  20s  My Compensation in Personal Information page is not displayed
+    Sleep  2s
     Scroll Element Into View  ${my_compensation}
     Capture Page Screenshot
+    Sleep  2s
     Wait And Click Element  ${my_compensation}
     Wait Until Page Contains  Current Salary  20s  My Compensation page is not displayed
     Capture Page Screenshot
 
+Search for a person Number
+    [Arguments]  ${person}
+    Wait And Send Keys  ${search_person}  ${person}
+    Wait And Click Element  ${select_first_row}
+    Sleep  5s
+    Capture Page Screenshot

@@ -51,7 +51,7 @@ Continue
 
 Submit Details
     Wait And Click Element  ${submit_button}
-    Sleep  20s
+    Sleep  60s
     capture page screenshot
 
 Search And Select Person From Result
@@ -96,5 +96,35 @@ Select Time Card
     Wait And Click Element  ${dropdown_time_card}
     Sleep  3s
     Wait And Click Element  xpath:(//li[text()="${time_card}"])[2]
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Verify And Select Maintain Manager Checkbox
+    Sleep  3s
+    mouse over  ${checkbox_maintain_managers}
+    page should contain element  ${checkbox_maintain_managers}  Maintain Managers Option Not Found
+    Wait And Click Element  ${checkbox_maintain_managers}
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Change Position Code in Change Assignment
+    [Arguments]  ${position_id}
+    Wait And Input Text From Input  ${position_textbox}   ${position_id}
+    ${pos_xpath}=  Catenate  SEPARATOR=  //span[text()='  ${position_id}  ']
+    Wait And Click Element  xpath: ${pos_xpath}
+    Sleep  5s
+    ${checker}=  Run Keyword and Return Status  Page Should Contain Element  ${yes_button_hire_detail}
+    IF  "${checker}"=="True"
+        Wait And Click Element  ${yes_button_hire_detail}
+    END
+    Sleep  3s
+    Capture Page Screenshot And Retry If Required
+
+Verify Maintain Manager has Multiple option
+    Wait And Click Element  ${edit_but}
+    Sleep  2s
+    Wait And Click Element  ${maintain_manager_dropdown}
+    ${row_xpath}=  Catenate  SEPARATOR=  //tr[@role='row']
+    page should contain element  ${row_xpath}  Manager Details Not Found
     Sleep  3s
     Capture Page Screenshot And Retry If Required

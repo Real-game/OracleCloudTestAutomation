@@ -1,12 +1,10 @@
 {
-    "Login User": "akash.parasram.dhage@accenture.com",
     "Flow Pattern": "MX Generate Direct Deposit Payments",
     "Payroll Flow": "test4",
-    "Start Date": "22-Dec-21",
-    "End Date": "04-Jan-22",
     "Payroll": "Biweekly",
     "Log Name": "Make EFT Payments",
     "Organization Payment Method": "EFT",
     "Consolidation Group": "Metrolinx Consolidation Group",
-    "Task Name": "Generate Direct Deposit Payments"
+    "Task Name": "Generate Direct Deposit Payments",
+    "Process Configuration Group": "Payroll_Process_Threads"
 }

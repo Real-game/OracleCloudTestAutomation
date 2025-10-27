@@ -78,7 +78,7 @@ Click on Actions and Select
         Click Element  xpath: ${xpath_value}
         Sleep  3s
         Wait And Click Element  ${warning_yes}
-        Wait Until Page Contains  Confirmation  350s
+        Wait Until Page Contains  Confirmation  300s
         Capture Page Screenshot
     ELSE IF  "${data}[Offer Action]"=="Preview Offer"
         Sleep  10s
@@ -102,14 +102,14 @@ Click on Actions and Select
         Select Required Value  ${actions_table}  ${data}[Offer Action]
         Sleep  3s
         Capture Page Screenshot
-#    ELSE IF  "${data}[Offer Action]"=="Move to HR"
-#        Wait And Click Element  ${actions_btn}
-#        Sleep  3s
-#        Select Required Value  ${actions_table}  ${data}[Offer Action]
-#        Sleep  3s
-#        Wait And Click Element  ${warning_yes}
-#        Wait Until Page Contains  Confirmation  50s
-#        Capture Page Screenshot
+    ELSE IF  "${data}[Offer Action]"=="Move to HR"
+        Wait And Click Element  ${actions_btn}
+        Sleep  3s
+        Select Required Value  ${actions_table}  ${data}[Offer Action]
+        Sleep  3s
+        Wait And Click Element  ${warning_yes}
+        Wait Until Page Contains  Confirmation  50s
+        Capture Page Screenshot
     END
 
 Click on Activity Button

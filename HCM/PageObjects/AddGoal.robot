@@ -50,8 +50,8 @@ Set Status
 
 Set Comments
     [Arguments]  ${comments_details}
-    Wait Until Element Is Visible    ${iframe_add_goal_comments}
-    Select Frame    ${iframe_add_goal_comments}
+#    Wait Until Element Is Visible    ${iframe_add_goal_comments}
+#    Select Frame    ${iframe_add_goal_comments}
     Sleep  3s
     Wait And Set Text  ${comments_text_box}  ${comments_details}
     unselect frame

@@ -104,3 +104,9 @@ ${header_compensation}  xpath: //h1[text()='Compensation']
 ${employment_info_quick_actions}  xpath: //div[@id='show_more_groupNode_my_information']//a[text()='Employment Info']
 
 ${employee_reporting_to_manager}  xpath: (//span/div[@title='Employees']//td[@valign='top']/div/div/a)[1]
+${payroll_header}  xpath: //div[@title='Payroll']//div[1]
+${payroll_calcualtion}  xpath: //span[text()='Payroll Calculation']
+
+${quick_action_person_link}  xpath: //a[text()='Person']
+${quick_action_document_records}  xpath: //a[text()='Document Records']
+${search_text_box}  xpath: //input[@placeholder='Search for a Person']

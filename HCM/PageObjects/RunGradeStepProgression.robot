@@ -39,6 +39,7 @@ Click Submit Button
 Click Ok To Confirm
     Wait And Click Element  ${ok_popup_button}
     Sleep  3s
+    Capture Page Screenshot And Retry If Required
 
 Get And Return Process Id
     Sleep  3s
@@ -56,3 +57,13 @@ Select Warning Button
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
+Set the Effective Date
+    [Arguments]  ${effective_date_value}
+    Click Element  ${effective_date}
+    Input Text  ${effective_date}  ${effective_date_value}
+    Sleep  3s
+
+Verify Presence of Actions and Action Reasons Section
+    Wait And Verify Page Contains Element  ${actions_and_action_reasons_section}  15s  Actions and Action Reasons Section is not present
+    scroll element into view  ${actions_and_action_reasons_section}
+    Capture Page Screenshot And Retry If Required

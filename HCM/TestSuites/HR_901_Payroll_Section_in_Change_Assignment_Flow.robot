@@ -6,7 +6,7 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/ChangeAssignment.robot
 Documentation  Payroll Section in Change Assignment Flow
 ...            Prerequisite:  Not Applicable
-...            Environment Specific Data:  Login User and Person Number
+...            Environment Specific Data:  HR Login; Person Number
 ...            Reusable Data:  Person Number
 ...            Dynamic Data:  Not Applicable
 
@@ -18,14 +18,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_HR_901_Payroll_Section_in_Change_Assignment_Flow.json
 ${csv_path}  ./CSV/td_HR_901_Payroll_Section_in_Change_Assignment_Flow.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Payroll Section in Change Assignment Flow
     [Tags]  CoreHRTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[HR Login]
     Log  Step 4
     click on homepage
     Log  Step 5-6

@@ -9,8 +9,8 @@ Resource  ../PageObjects/AddGoal.robot
 
 Documentation  Performance Document Self Evaluation by Employee
 ...            Prerequisite:  TC12 Manager should have already created Performance Goal with name provided
-...            Environment Data:  Login User is environment specific, Employee Name
-...            Reusable Data: FY Year, Goal Name, Status, Comments
+...            Environment Data:  Employee Login(PMP_Talent_common_test_data.csv); Employee Name
+...            Reusable Data: FY Year; Goal Name; Status; Comments
 ...            Dynamic Data: Not Applicable
 
 *** Settings ***
@@ -21,14 +21,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_TC13_Employee_Edit_Performance_Goals.json
 ${csv_path}  ./CSV/td_TC13_Employee_Edit_Performance_Goals.csv
+${common_json_path}  ./TestData/PMP_Talent_common_test_data.json
+${common_csv_path}  ./CSV/PMP_Talent_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Performance Document Self Evaluation by Employee
     [Tags]  PMPTalentTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Employee Login]
     Log  Step 4
     click on homepage
     Click Career And Performance

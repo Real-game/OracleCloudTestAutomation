@@ -27,7 +27,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 
 Scenario: Create Job Requisition in Draft status
-    [Tags]  ExternalNewHire
+    [Tags]  ExternalNewHire  April19
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}

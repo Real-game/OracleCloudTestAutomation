@@ -69,8 +69,11 @@ Select Primary Location
 
 Click Save And Close Button
     Wait And Click Element  ${save_and_close_button}
+    Sleep  5s
+    Capture Page Screenshot And Retry If Required
 
 Get Requisition Id
+    Wait And Verify Page Contains Element  ${requisition_confirmation_message}  20s  Requisition ID is not displayed
     ${text}=  Wait And Get Text  ${requisition_confirmation_message}
     Sleep  3s
     Capture Page Screenshot And Retry If Required

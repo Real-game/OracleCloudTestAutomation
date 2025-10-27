@@ -24,6 +24,18 @@ Before Suite
     Set Screenshot Directory  ./Screenshots
     Set Selenium Timeout    10s
 
+Before Suite for Unifier Test
+    ${file_name}=  Get Variable value  ${SUITE NAME}
+    IF  '${local_execution_flag}'=='True'
+        Launch Browser  ${Unifier_URL}  ${local_execution_browser}
+    END
+    IF  '${sauce_execution_flag}'=='True'
+        Launch HCM  ${file_name}
+    END
+    MAXIMIZE BROWSER WINDOW
+    Set Screenshot Directory  ./Screenshots
+    Set Selenium Timeout    10s
+
 Before Suite Analytics
     ${file_name}=  Get Variable value  ${SUITE NAME}
     IF  '${local_execution_flag}'=='True'
@@ -42,6 +54,7 @@ After Suite
 After Test
     IF  '${local_execution_flag}'=='True'
             Run Keyword If Test Failed  Capture Page Screenshot
+#            Close Browser
     END
     IF  '${sauce_execution_flag}'=='True'
             Run Keyword If Test Passed  Execute Javascript  sauce:job-result=passed

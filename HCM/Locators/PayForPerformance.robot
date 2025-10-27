@@ -9,3 +9,5 @@ ${first_employee_name}   xpath: ((//span[text()='Significantly Exceeds' or text(
 ${columns_hidden_text}  xpath: //*[text()='Columns Hidden']
 ${first_employee_rating}   xpath: (//span[text()='Significantly Exceeds' or text()='Achieves' or text()='Goes Beyond'])[1]
 ${ineligible_employee}  xpath: //span[text()='Ineligible']
+${ineligible_check_box}   xpath: //input[@_adftrueval='Ineligible']
+${eligible_employee}  xpath: //span[text()='Eligible']

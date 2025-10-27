@@ -3,15 +3,15 @@ Resource  ../Keywords/CommonKeywords.robot
 Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/Login.robot
 Resource  ../PageObjects/HomePage.robot
-Resource  ../PageObjects/PayrollDetail.robot
 Resource  ../PageObjects/FlowSubmission.robot
+Resource  ../PageObjects/PayrollDetail.robot
 Resource  ../PageObjects/SubmitPayrollFlow.robot
 Resource  ../PageObjects/MonitorProcesses.robot
 Library    OperatingSystem
 
 Documentation  Run Payroll Activity Report for Current Pay Period
 ...            Prerequisite:  Not Applicable
-...            Environment Data:  Login User is environment specific, Legislative Data Group,FLow Pattern,Payroll Flow,Start Date,End Date,Scope,Report Category,Log Name and Estimated Time
+...            Environment Data:  Login User is environment specific; Legislative Data Group;FLow Pattern;Payroll Flow;Start Date;End Date;Scope;Report Category;Log Name and Estimated Time
 ...            Reusable Data: Not Applicable
 ...            Dynamic Data: System Environment Variable
 
@@ -24,14 +24,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PAY_TC002_Run_Payroll_Activity_Report_For_Current_Pay_Period.json
 ${csv_path}  ./CSV/td_PAY_TC002_Run_Payroll_Activity_Report_For_Current_Pay_Period.csv
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 *** Test Cases ***
 
 Scenario: Run Payroll Activity Report for Current Pay Period
     [Tags]  PayrollTestCase  ReadOnly
     generatejson    ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[LoginUser]
+    Login Using  ${common_data}[Login User]
     ${updatedProcessName}=  get_process_name  ${data}[PayrollFlow]
     Log To Console  Process Name is ${updatedProcessName}
     click on homepage
@@ -48,7 +52,7 @@ Scenario: Run Payroll Activity Report for Current Pay Period
     Click on Submit
     select refresh untill process status is completed  ${data}[FLowPattern]  ${data}[EstimatedTime]
     Wait And Click Element  xpath: //span[text()="${data}[FLowPattern]"]
-    Wait And Verify Page Contains Text  Run Payroll Activity Report - Report  40s  Run Payroll Activity Report - Report Page is not loaded
+    Wait And Verify Page Contains Text  Run Payroll Activity Report  40s  Run Payroll Activity Report Page is not loaded
     Sleep  5s
     Expand the Output And Log Files
     ${user_home}=    Get Environment Variable    UserProfile

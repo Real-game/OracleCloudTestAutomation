@@ -1,9 +1,6 @@
 {
-    "Login User": "akash.parasram.dhage@accenture.com",
     "Flow Pattern": "Generate Payslips",
     "Payroll Flow": "testvd3",
-    "Start Date": "01-Feb-22",
-    "End Date": "18-Feb-22",
     "Payroll": "Biweekly",
     "Log Name": "FlowEssJobDefn"
 }

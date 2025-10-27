@@ -13,7 +13,7 @@ ${href_manager_name}  xpath://div[@class='x3hh x1a']//span[@class='xkg xnd']
 #${href_person_number}  xpath:(//div[@class='xk4 xk6 p_AFReadOnly']//div[@class='xv5 xk7'])[2]
 #${href_projected_end_date}  xpath:(//div[@class='xk4 xk6 p_AFReadOnly']//div[@class='xv5 xk7'])[1]
 
-${expand_employment_history}  xpath:(//img[@title='Expand'])[2]
+${expand_employment_history}  xpath://td[div/h2[text()='Employment History']]//following-sibling::td//img[@title='Expand']
 ${first_row_employment_history}  xpath:(//h2[text()='Employment History']//following::a[contains(@id,'onePse:hro1Lnk')])[1]
 
 ${assigment_section_header}  xpath: //h2[text()='Assignment']

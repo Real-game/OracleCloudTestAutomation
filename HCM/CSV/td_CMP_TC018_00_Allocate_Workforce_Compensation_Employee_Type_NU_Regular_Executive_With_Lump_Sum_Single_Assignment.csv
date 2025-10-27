@@ -1,2 +1,2 @@
-LoginUser,Compensation Option,Proxy Manager Name,Filter Value,Eligiblity Status
-David.weisse,"Act as Proxy Manager","Kseniya Jain","NU",Eligible
+Compensation Option,Filter Value,Eligiblity Status,LFTRI %,CSAT %,Total Increase Override,Proration Override
+"Act as Proxy Manager","E",Eligible,0.63,0.51,2.8,73.34
