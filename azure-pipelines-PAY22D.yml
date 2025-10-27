@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+    - feature/E2E
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    timeoutInMinutes: 0
+    pool:
+      name: WorkForce
+    steps:
+    - task: PowerShell@2
+      displayName: 'Run Scripts'
+      inputs:
+        targetType: inline
+        script: |
+          cd HCM
+          robot --outputdir ./Results -x outputxunit.xml --include PAY22D .\TestSuites\
+          exit 0
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Pipeline Artifact'
+      inputs:
+        targetPath: HCM/Results
+        artifact: Reports
+      condition: succeededOrFailed()
+
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: JUnit
+        testResultsFiles: '**\*.xml'
+      condition: succeededOrFailed()
+      displayName: 'Publish results'
+

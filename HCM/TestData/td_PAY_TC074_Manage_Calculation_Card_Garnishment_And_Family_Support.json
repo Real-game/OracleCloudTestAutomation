@@ -1,0 +1,11 @@
+{
+    "Person Number": "06392",
+    "Calculation Card Name": "Involuntary Deductions",
+    "Calculation Component Name 1": "Garnishment",
+    "Reference Code 1": "Garnishment",
+    "Calculation Component Name 2": "Family Support",
+    "Reference Code 2": "Family Support",
+    "Display Name on Value 1": "Court Order Amount",
+    "Amount": "10",
+    "Display Name on Value 2": "Child Support Order Amount"
+}

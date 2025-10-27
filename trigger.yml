@@ -1,0 +1,34 @@
+trigger:
+  branches:
+    include:
+    - feature/E2E
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      name: WorkForce
+    steps:
+    - task: PowerShell@2
+      displayName: 'Run Scripts'
+      inputs:
+        targetType: inline
+        script: |
+          cd HCM
+          python Trigger.py RandomSequence
+          exit 0
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Pipeline Artifact'
+      inputs:
+        targetPath: HCM/Results
+        artifact: Reports
+      condition: succeededOrFailed()
+
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: JUnit
+        testResultsFiles: '**\*.xml'
+      condition: succeededOrFailed()
+      displayName: 'Publish results'
+

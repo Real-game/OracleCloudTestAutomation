@@ -1,0 +1,2 @@
+${Id};${Login_User};${site_id_value};${customer_site_record_number_value};${customer_number_value};${customer_id_value};${customer_name_value};${profile_class_value};${site_name_value};${site_id_value};${address_1_value};${city_value};${province_value};${postal_code_value};${country_value};${address_2_value};${site_purpose_value};${site_currency_value};${status_value}
+1;V-ACC-Vijay.Hulagur@metrolinx.com;111218;CSST-0000970;R-5723;252628;7804733 CANADA INC. O/A ABC AUTO BODY;REALTY;218552;111218;240 First Ave;Toronto;ON;M4M 1X4;CA;Deleted;BILL_TO;CAD;Active

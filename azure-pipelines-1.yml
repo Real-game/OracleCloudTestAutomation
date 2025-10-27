@@ -1,0 +1,40 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- feature/E2E
+
+pool: WorkForce
+
+steps:
+
+
+- powershell: |
+            cd HCM
+            robot   --outputdir ./Results -x outputxunit.xml ./TestSuites/PAY_TC016_Re_Run_Current_Pay_Period_cheques.robot
+  displayName: 'Run Scripts'
+
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    targetPath: HCM/Results
+    artifact: Report
+  condition: succeededOrFailed()
+
+
+
+- task: AllureGenerate@1
+  inputs:
+    resultsDir: 'allure-results'
+    targetDir: 'allure-report/$(Build.BuildNumber)'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: JUnit
+    searchFolder: 'C:\vsts-agent-win-x64-2.204.0\_work\4\s\HCM\Results'
+    testResultsFiles: 'outputxunit.xml'
+  condition: succeededOrFailed()
+  displayName: 'Publish results'

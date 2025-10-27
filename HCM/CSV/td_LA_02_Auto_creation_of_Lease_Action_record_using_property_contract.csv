@@ -1,0 +1,2 @@
+${Id};${login_user};${property_workspace_name};${MX_cre_file_number};${contract_type};${contract_name};${contract_rent_structure};${status};${tenant_entity_type};${landlord_entity_type};${short_description};${contract_option_type};${renewal_extension_date};${option_status}
+1;V-ACC-Senthil.Thangaraj@metrolinx.com;155 CORNWALL ROAD;R-62700;LEASE;First Iteration lease record;A/R;Active;TENANT;LANDLORD;Option/Critical Line Item Details First;EXTENSION;09/24/2023;AVAILABLE

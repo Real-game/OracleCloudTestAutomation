@@ -1,0 +1,20 @@
+{
+    "Login User": "V-ACC-Vijay.Hulagur@metrolinx.com",
+    "Property Workspace Name": "155 CORNWALL ROAD",
+    "MX CRE File": "R-62700",
+    "Contract Name": "Auto_TestP8",
+    "Contract Type": "LEASE",
+    "Contract Rent Structure": "A/P",
+    "Status": "Inactive",
+    "Original Contract Start Date": "09/05/2022",
+    "Current Term Start Date": "09/10/2022",
+    "Current Term Expiry Date": "10/30/2022",
+    "Tenant Entity Type": "TENANT",
+    "Landlord Entity Type": "LANDLORD",
+    "Process Rent": "Yes",
+    "Tax Classification": "APHST",
+    "CAPEX-OPEX": "OPEX",
+    "Business Line": "Subways",
+    "Cost Center": "0130",
+    "": null
+}

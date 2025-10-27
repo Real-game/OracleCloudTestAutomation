@@ -1,0 +1,36 @@
+trigger:
+  branches:
+    include:
+    - feature/E2E
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      name: WorkForce
+    steps:
+    - task: PowerShell@2
+      displayName: 'Run Scripts'
+      inputs:
+        targetType: inline
+        script: |
+          cd HCM
+          robot --outputdir ./Results -x outputxunit.xml --include PRDemo .\TestSuites\         
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Pipeline Artifact'
+      inputs:
+        targetPath: HCM/Results
+        artifact: Report
+      condition: succeededOrFailed()
+    - task: AllureGenerate@1
+      inputs:
+        resultsDir: 'allure-results'
+        targetDir: 'allure-report/$(Build.BuildNumber)'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: JUnit
+        searchFolder: 'C:\vsts-agent-win-x64-2.204.0\_work\4\s\HCM\Results'
+        testResultsFiles: 'outputxunit.xml'
+      condition: succeededOrFailed()
+      displayName: 'Publish results'
+
