@@ -13,7 +13,12 @@ Click on Create board orders button
     Sleep  20s
     Wait Until Element Is Visible  ${create_board_order_button}  30s  Create board orders button is not displayed
     Click Element  ${create_board_order_button}
-    Wait Until Element Is Visible  ${select_business_process_origin_drop_down}  600s  Select business origin drop down is not displayed
+#    Select frame  ${board_order_frame}
+    Sleep    10s
+    wait and click element    xpath: //div[@id="createdlgbody"]
+    Sleep    15s
+#    wait and click element    xpath: (//span[text()='Select Business Process Origin']/parent::b/parent::label/parent::div/parent::oj-label/following-sibling::oj-select-single)[1]
+    Wait Until Element Is Visible  ${select_business_process_origin_drop_down}  60s  Select business origin drop down is not displayed
     Capture Page Screenshot
     Click Element  ${select_business_process_origin_drop_down}
     Sleep  15s

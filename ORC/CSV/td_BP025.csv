@@ -1,7 +1,7 @@
 ﻿Recruiter user,Requisition ID,Candidate Last Name,Message Use,Recipient Name,Email subject,Candidate Name,Email body
-KIANM,105416,Pipeline,Blank Message,kate CAMPBELL,Review candidate application for job requisition ID 105416,"Requisition, Pipeline","Hello Auto,
+KIANM,113772,Greek,Blank Message,Harsuminder Ching,Review candidate application for job requisition ID 113772,"Watson, Greek","Hello Auto,
 
-Please review below candidate application for job requisition ID 103035.
+Please review below candidate application for job requisition ID 110813.
 
 Candidate Name: ${CandidateDisplayName} 
 Candidate Number: ${CandidateNumber} 

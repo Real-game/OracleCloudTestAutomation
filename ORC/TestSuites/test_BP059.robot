@@ -37,20 +37,23 @@ Scenario: Job Application Flow - Internal Candidates(Refer a candidate and Refer
 #    Withdraw an active job application  ${data}[Job Id]
 #    Verify the requisition is shown as withdrawn after withdrawn  ${data}[Job Id]
 #    Navigate back in Current jobs job application page
-    Click on Search
+#    Click on Search
     Search for the job and click on actions  ${data}[Job Id]
     Click on Refer A candidate option
     Refer a Candidate   ${data}[Email Address]   ${data}[Candidate Title]   ${data}[Candidate First Name]   ${data}[Candidate Last Name]    ${data}[Mobile Number Code]  ${data}[Mobile Number Prefix]  ${data}[Mobile Number Suffix]
+    Upload Resume    ${data}[File]
     Submit the candidate referral
     Sleep  7s
-    Search for the job and click on actions  ${data}[Job Id]
+#    Click on Jobs Done button
+    Refer Job Action
+#    Search for the job and click on actions  ${data}[Job Id]
     Click on Refer An Employee option
     Refer an Employee   ${data}[Employee Title]  ${data}[Notes]
     Submit the Employee referral
     Sleep  10s
     Click on Jobs Done button
     Click on Referral tab
-    Verify the submitted referral  ${data}[Job Id]   ${data}[Candidate First Name]
+    Verify the submitted referral  ${data}[Job Id]   ${data}[Employee Title]
     click on homepage
     Logout
 

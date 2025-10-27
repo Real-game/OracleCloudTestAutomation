@@ -1,5 +1,7 @@
 *** Settings ***
+Resource  ../Helpers/Config.robot
 Library  ../Helpers/Helpers.py
+Library   ../Helpers/Mailosaur.py    ${API_KEY}
 Resource  ../Keywords/CommonKeywords.robot
 Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/ExternalSiteHomepage.robot
@@ -28,7 +30,7 @@ Scenario: Manage Application (Candidate withdrawn application status & delete pr
     Log  Step 2
     Click on Manage Profile
     Log  Step 3 - 5
-    Login with email  ${data}[Email]
+    Login with Mailosaur mail  ${data}[Email]
     Log  Step 6 - 7
     Change Status  ${data}[Requisition_ID To Withdraw]
     Log  Step 13

@@ -45,7 +45,7 @@ Scenario: Manager should not be able to add a new performance goal on a complete
     Log  Step 8
     Click on clear Document status filter
     Log  Step 9
-    Search For Person  ${data}[Manager Name]
+    Search For Person  ${data}[Employee Name]
     Select Document  ${data}[Review Section]
 #    Select Employee Self Evaluation Section  ${data}[Manager Name]  ${data}[Review Section]
     Log  Step 10

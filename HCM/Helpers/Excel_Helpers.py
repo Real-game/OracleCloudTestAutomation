@@ -41,7 +41,7 @@ def delete_File(file_name):
 
 #Validating presence of file in downloads folder
 def validate_file_presence(file_name):
-    default_download_path = os.path.expanduser("~") + "/Downloads/" + file_name + ".xls"
+    default_download_path = os.path.expanduser("~") + "/Downloads/" + file_name + ".xlsx"
 
     if os.path.exists(default_download_path):
         return  "Present"

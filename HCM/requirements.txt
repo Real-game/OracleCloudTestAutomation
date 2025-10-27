@@ -3,7 +3,7 @@ allure-robotframework==2.8.40
 attrs==21.2.0
 certifi==2020.12.5
 chardet==4.0.0
-chromedriver-py==90.0.4430.24
+chromedriver-py==136.0.7103.113
 clipboard==0.0.4
 colorama==0.4.4
 configparser==5.0.2
@@ -26,9 +26,10 @@ text-unidecode==1.3
 urllib3==1.26.4
 webdriver-manager==3.4.1
 wrapt==1.12.1
-wheel==0.38.4
 pandas==1.3.4
 xlrd==2.0.1
 openpyxl==3.0.10
 convertdate==2.4.0
-robotframework-autoitlibrary==1.2.6
+robotframework-pabot==4.0.6
+robotframework-datadriver==1.11.2
+mailosaur==7.18.0

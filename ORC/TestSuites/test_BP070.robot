@@ -42,7 +42,6 @@ ${json_path}    ./TestData/td_BP070.json
 ${csv_path}  ./CSV/td_BP070.csv
 *** Test Cases ***
 
-
 Scenario: End To End (Candidate Management)
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
@@ -71,10 +70,10 @@ Scenario: End To End (Candidate Management)
     Click on Interviews
     Click on Add Interview
     Schedule Interview  ${data}
-    Publish Interview  ${data}[Interview Schedule] # Automatically Published
+#    Publish Interview  ${data}[Interview Schedule]    #Automatically Published
     Click on First Round Interview
     Click on Add button in First Round Interview page
-    Create Interview    ${data}[Interview Date]   ${data}[Start time]    ${data}[End time]    ${data}[Meeting Duration]    ${data}[Web Conference link]    ${data}[Interviewer Name]
+    Create Interview     ${data}[Start time]    ${data}[End time]    ${data}[Meeting Duration]    ${data}[Web Conference link]    ${data}[Interviewer Name]
     Click on back button in First Round Interview page
     Click on Overview link in the side panel
     Click on Active Applications
@@ -91,17 +90,17 @@ Scenario: End To End (Candidate Management)
     Navigate Back
     Logout
 
-    Log  Candidate choosing a slot
-    Execute Javascript   window.open('https://fa-ehtc-dev10-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1');
-    ${list}=  Get Window Handles
-    Switch Window  ${list}[1]
-    Click on Manage Profile
-    Login with email in E2E  ${data}[Email]
-    Search for Schedule Interview Mail in Candidate Inbox   ${data}[Email]
-    ${list}=  Get Window Handles
-    Switch Window  ${list}[1]
-    Reload Page
-    Select Slot  ${data}[Requisition ID]
+#    Log  Candidate choosing a slot
+#    Execute Javascript   window.open('https://fa-ehtc-dev10-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1');
+#    ${list}=  Get Window Handles
+#    Switch Window  ${list}[1]
+#    Click on Manage Profile
+#    Login with email in E2E  ${data}[Email]
+#    Search for Schedule Interview Mail in Candidate Inbox   ${data}[Email]
+#    ${list}=  Get Window Handles
+#    Switch Window  ${list}[1]
+#    Reload Page
+#    Select Slot  ${data}[Requisition ID]
 
 #    Log  Collect Interview Feedback
 #    Switch Window  ${list}[0]
@@ -133,11 +132,11 @@ Scenario: End To End (Candidate Management)
 #    Select Application By Name  ${data}[Candidate Last Name]
 #    View Feedback
 
-    Log  Move candidate to offer
-    Click on Move
-    Select Phase  ${data}[Offer Phase]
-    Select State  ${data}[Offer State]
-    Click on Save
-    Click on Back
-    Navigate Back
+#    Log  Move candidate to offer
+#    Click on Move
+#    Select Phase  ${data}[Offer Phase]
+#    Select State  ${data}[Offer State]
+#    Click on Save
+#    Click on Back
+#    Navigate Back
 

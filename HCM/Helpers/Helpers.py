@@ -105,7 +105,7 @@ def dateCompare(refrence_date, input_date):
 
 @keyword
 def getCityName(txt):
-    x=txt[:-11]
+    x=txt[:-13]
     x=str.title(x)
     return x
 

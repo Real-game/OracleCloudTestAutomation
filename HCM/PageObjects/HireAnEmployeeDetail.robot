@@ -90,13 +90,13 @@ Fill Assignment Details in Hire an employee page
     END
     Sleep  5s
     Wait And Click Element  ${continue_field_button}
-    Sleep  5s
+    Sleep  10s
     Wait And Click Element  ${continue_field_button}
-    Sleep  5s
+    Sleep  10s
     Wait And Click Element  ${continue_field_button}
-    Sleep  5s
+    Sleep  10s
     Wait And Click Element  ${continue_field_button}
-    Sleep  5s
+    Sleep  10s
 
 Fill Salary Details
     Wait And Click Element  ${salary_basis_drop_down}

@@ -24,7 +24,7 @@ ${edit}  xpath: //span[text()="Edit"]
 
 *** Test Cases ***
 Scenario: role to test on MX Health and Wellness Representative
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3
@@ -32,7 +32,9 @@ Scenario: role to test on MX Health and Wellness Representative
     Log  Step 4
     click on homepage
     Log  Step 5 - 6
-    ${my_client_group_app_and_quick_actions_list}=  Create List  Hiring  Person Management  Profiles  Talent Profile  Absence Records  View Compensation History
+    Go To My Client Group
+#    ${my_client_group_app_and_quick_actions_list}=  Create List  Hiring  Person Management  Profiles  Talent Profile  Absence Records  View Compensation History
+    ${my_client_group_app_and_quick_actions_list}=  Create List  Hiring  Person Management  Profiles  Absence Records  View Compensation History
     FOR  ${tab}  IN  @{my_client_group_app_and_quick_actions_list}
         Verify Tab Or App And Hyperlink  ${tab}
         Log To Console  ${tab} tab found with hyperlink

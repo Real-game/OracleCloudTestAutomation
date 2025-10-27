@@ -14,8 +14,8 @@ Verify overall salary amount in Element Entries table
     Mouse Over  ${source_sort_descending_icon}
     Click Element  ${source_sort_descending_icon}
     Sleep  5s
-    ${xpath}=  Catenate  SEPARATOR=  //span[text()='50,000.00']
-    #${xpath}=  Catenate  SEPARATOR=  //span[text()='${overall_salary_amount_value}']
+#    ${xpath}=  Catenate  SEPARATOR=  //span[text()='50,000.00']
+    ${xpath}=  Catenate  SEPARATOR=  //span[text()='${overall_salary_amount_value}']
     Wait Until Page Contains Element  xpath: ${xpath}   30s  Captured overall salary amount is not displayed
     Capture Page Screenshot
 

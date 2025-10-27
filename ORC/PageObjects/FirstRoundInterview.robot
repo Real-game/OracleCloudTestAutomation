@@ -8,14 +8,14 @@ Resource  ../Locators/FirstRoundInterview.robot
 Click on Add button in First Round Interview page
     Wait Until Element Is Visible    ${fri_add_button}      20     Add button is not displayed
     Capture Page Screenshot
-    Wait and Click Element   ${fri_add_button}
-    Sleep    2s
-    ${checker}=    run keyword and return status    page should contain   ${create_interview_title}
-    IF    '${checker}'=='False'
-         Wait and click element    ${fri_add_button}
-         Sleep    2s
+    Click Element   ${fri_add_button}
+    Sleep  3s
+    ${checker}=  Run Keyword And Return Status  Page Should Contain Element  xpath: //div[@title='Create Interview']
+    IF  "${checker}"=="False"
+        Wait And Click Element  ${fri_add_button}
+        Sleep  3s
     END
-    Sleep    3s
+
 
 Click on back button in First Round Interview page
     Wait Until Element Is Visible    ${back_button}      60     Back button is not displayed

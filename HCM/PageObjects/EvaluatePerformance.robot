@@ -70,7 +70,8 @@ Click View Feedback
 
 View Participant Comments
     [Arguments]  ${comment}
-    element should be visible  xpath: //div[text()="${comment}"]
+    Sleep    10s
+    element should be visible    xpath: //*[text()="${comment}"]
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 

@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC006_MX_Learning_Administrator.csv
 *** Test Cases ***
 
 Scenario: MX Learning Administrator
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

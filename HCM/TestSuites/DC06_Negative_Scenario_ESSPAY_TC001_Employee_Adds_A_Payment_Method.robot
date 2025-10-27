@@ -41,7 +41,7 @@ Scenario: Employee Adds a Duplicate Payment Method
     Log  Step 8
     Add Account Number  ${data}[Account Number]
     Log  Step 9
-    Select Bank  ${data}[Bank]
+#    Select Bank  ${data}[Bank]
     Log  Step 10
     Select Branch Code  ${data}[Branch Code]
     Log  Step 11

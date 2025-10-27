@@ -18,10 +18,12 @@ Search And Select Person
 
 Check Payroll Salary And Compensation Then Click Contiue
     Sleep  3s
-#    Wait And Click Element  ${select_payroll_details}
-#    Wait And Click Element  ${select_salary}
-#    Wait And Click Element  ${select_compensation}
-#    Sleep  3s
+    Wait And Click Element  ${select_payroll_details}
+    Sleep  3s
+    Wait And Click Element  ${select_salary}
+    Sleep  3s
+    Wait And Click Element  ${select_compensation}
+    Sleep  3s
     Wait And Click Element  ${selection_continue_button}
     Sleep  3s
     capture page screenshot
@@ -51,7 +53,14 @@ Fill Details In When and Why
     IF  "${assignment_status}"!=""
         Wait And Click Element  ${source_assignment_status_dropdown}
         Sleep  3s
-        wait and click element  xpath://li[text()='${assignment_status}']
+        ${checker}=  RUN KEYWORD And Return Status  Wait And Click Element  xpath://li[text()='${assignment_status}']
+        IF  '${checker}' == 'False'
+            Wait And Click Element  ${source_assignment_status_dropdown}
+            Sleep  3s
+            Wait And Click Element  xpath://li[text()='${assignment_status}']
+            Sleep  2s
+            capture page screenshot
+        END
         Sleep  3s
     END
     capture page screenshot
@@ -67,12 +76,14 @@ Select Position On Assignment Page
     ${pos_xpath}=  Catenate  SEPARATOR=  //span[text()='  ${value}  ']
     Wait And Click Element  xpath: ${pos_xpath}
 #    Wait And Click Element  ${select_recent_search_result}
-    Sleep  3s
+    Sleep  5s
     ${checker}=  Run Keyword and Return Status  Page Should Contain Element  ${yes_button}
     IF  "${checker}"=="True"
+        scroll element into view  ${yes_button}
+        Sleep  2s
         Wait And Click Element  ${yes_button}
     END
-    Sleep  3s
+    Sleep  5s
     capture page screenshot
 
 Select Payroll Details

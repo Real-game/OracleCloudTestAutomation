@@ -30,11 +30,13 @@ Current term Expiry Date cannot be earlier than Current term Start Date for Prop
     [Tags]  LeaseActionTestCase  ModifyData
 
 *** Keywords ***
-Validate the error message of Current term Expiry Date cannot be earlier than Current term Start Date for Property Contract
+#Scenario : Validate the error message of Current term Expiry Date cannot be earlier than Current term Start Date for Property Contract
+Create a lease action record
     [Arguments]  ${login_user}  ${property_workspace_name}  ${Lease_Action_Progress}  ${Date_Completed}  ${Completion_Action_Details_Comment}
     Log  Step 1
     Unifier Login Using  ${login_user}
     Log  Step 2
+    Click on home icon in landing Page
     Click on + Icon and Select Property Workspace  ${property_workspace_name}
     Select Lease Actions form CRE Portfolio Mgmt
     Click on Create lease actions button

@@ -24,7 +24,7 @@ Scenario: View and Update Owned Properties
     #generatejson  ${csv_path}  ${json_path}
     #${data}=  readJson  ${json_path}
     Log  Step 1
-    Unifier Login Using  V-ACC-Raghavi.Uthayakumar@metrolinx.com
+    Unifier Login Using  V-ACC-Senthil.Thangaraj@metrolinx.com
     Log  Step 2
     Click on home icon in landing Page
     Click on + Icon and Select Property Workspace  155 CORNWALL ROAD

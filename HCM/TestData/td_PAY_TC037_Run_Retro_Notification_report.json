@@ -1,8 +1,8 @@
 {
     "LegislativeDataGroup": "CA Legislative Data Group",
     "FLowPattern": "Run Retroactive Notification Report",
-    "PayrollFlow": "Auto_Test_RNR",
+    "PayrollFlow": "Auto_Test_2A",
     "Payroll": "Biweekly",
-    "ProcessDate": "02-Nov-2022",
+    "ProcessDate": "08-Aug-2024",
     "Log Name": "FlowEssJobDefn"
 }

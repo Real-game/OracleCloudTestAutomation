@@ -22,17 +22,17 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}  ./TestData/td_BP002.json
 ${csv_path}  ./CSV/td_BP002.csv
-${prerequisites_json_path}  ./TestData/td_BP001.json  #If we want to run BP002 seperately - Update BP001 Json
+#${prerequisites_json_path}  ./TestData/td_BP001.json  #If we want to run BP002 seperately - Update BP001 Json
 ${common_json_path}    ./TestData/td_User_Details.json
 ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 Scenario: Update Job Requisition
     [Tags]  ExternalNewHire
     generatejson  ${csv_path}  ${json_path}
-    ${prerequisites_data}=  readJson  ${prerequisites_json_path}
-    appendtojson  ${json_path}  Requisition ID  ${prerequisites_data}[RequisitionId]
-    generatecsv  ${json_path}  ${csv_path}
-    generatejson  ${csv_path}  ${json_path}
+#    ${prerequisites_data}=  readJson  ${prerequisites_json_path}
+#    appendtojson  ${json_path}  Requisition ID  ${prerequisites_data}[RequisitionId]
+#    generatecsv  ${json_path}  ${csv_path}
+#    generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
     ${common_data}=  readJson  ${common_json_path}

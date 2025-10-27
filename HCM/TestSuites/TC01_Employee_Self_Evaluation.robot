@@ -6,10 +6,10 @@ Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/CareerAndPerformance.robot
 Resource  ../PageObjects/Performance.robot
 Documentation  Performance Document Self Evaluation by Employee
-...            Prerequisite:  Require a new annual performance document and then assign the performance document.[DC10, TC117 and TC12]
-...            Environment Specific Data:  Login User
-...            Reusable Data:  Comment, FY Year, Rating, Status
-...            Dynamic Data: Performace Doc
+...            Prerequisite:  Require a new annual performance document and then assign the performance document.[DC10; TC117 and TC12]
+...            Environment Specific Data:  Employee Login(PMP_Talent_common_test_data.csv)
+...            Reusable Data:  Comment; FY Year; Rating; Status
+...            Dynamic Data: Performace Doc(PMP_Talent_common_test_data.csv)
 
 *** Settings ***
 Suite Setup  Before Suite
@@ -19,21 +19,26 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_TC01_Employee_Self_Evaluation.json
 ${csv_path}  ./CSV/td_TC01_Employee_Self_Evaluation.csv
+${common_json_path}  ./TestData/PMP_Talent_common_test_data.json
+${common_csv_path}  ./CSV/PMP_Talent_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Performance Document Self Evaluation by Employee
     [Tags]  PMPTalentTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Employee Login]
     Log  Step 4
     click on homepage
     Click Career And Performance
     Log  Step 5
     Click Performance
     Log  Step 6
-    Click Current Financial Year Annual Review Manager  ${data}[Performace Doc]
+    Select Employee Performance Review Period  ${common_data}[Review Period]
+    Click Current Financial Year Annual Review Manager  ${common_data}[Performace Doc]
     Log  Step 7
     Click Performance Goals
     Log  Step 8

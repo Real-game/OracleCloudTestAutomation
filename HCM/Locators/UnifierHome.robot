@@ -13,7 +13,7 @@ ${property_contracts_tab}   xpath: //a[@title="CRE Portfolio Mgmt."]//parent::di
 ${property_contracts_header}   xpath: //h1[text()='Property Contracts']
 
 
-${owned_properties_link}   xpath: (//span[text()='Owned Properties'])[1]
+${owned_properties_link}   xpath: (//span[text()='Owned Properties'])
 ${owned_properties_header}   xpath: //h1[text()='Owned Properties']
 ${tasks_header}   xpath: //h1[text()='Tasks']
 ${contracts_receivables_header}   xpath: //h1[text()='Contract Receivables']
@@ -41,7 +41,8 @@ ${customers_sites_link}     xpath: (//span[text()='Customer+Site'])[1]
 
 ${cre_cost_management_link}     xpath: (//li//span[text()='CRE Cost Mgmt.'])
 ${cre_cost_management_link2}  xpath: (//li//span[text()='CRE Cost Mgmt.'])[2]
-${contract_payable_sub_menu_link}    xpath: (//a[@title='Contract Payables'])[2]
+${contract_payable_sub_menu_link}    xpath: //span[text()='CRE Cost Mgmt.']//following::li[@aria-label="Contract Payables"]
+#//li[@aria-label="Contract Payables"]/a
 
 ${mx_cre_bu_link}           xpath: (//a[@aria-label='MX CRE BU'])[1]
 ${mx_cre_bu_property_shell_header}   xpath: //span[text()='MX CRE BU - Home']
@@ -57,7 +58,7 @@ ${my_dashboard_link}    xpath: (//span[contains(@class,'draganddrop')])
 ${details_link}         xpath: //a[text()='Details']
 ${assessment_roll_#}    xpath: //textarea[contains(@id,'assess_roll')]
 
-${save_details_button}   xpath: //span[contains(@id,'detailsSaveButton')]
+${save_details_button}   xpath: //h1[text()[normalize-space()='Details']]/following::span[text()='Save'][1]
 ${dashboard_iframe}      xpath: //iframe[contains(@src,'/user/home/')]
 ${cre_portfolio_mgmt_collapsed}  xpath: //li[@aria-label='CRE Portfolio Mgmt.']//a[@aria-expanded="false"]
 

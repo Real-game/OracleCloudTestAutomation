@@ -6,6 +6,7 @@ Resource  ../Keywords/CommonKeywords.robot
 
 *** Keywords ***
 Click Browse Catalog Button
+    wait until page contains element    ${browse_catalog_link}    20s
     Wait And Click Element  ${browse_catalog_link}
     Sleep  10s
     wait until page contains  Catalog  20s  Catalog page not found

@@ -17,6 +17,7 @@ ${href_Hiring}  link:Hiring
 ${href_personal_information}  link:Personal Information
 ${href_my_client}   id:groupNode_workforce_management
 ${href_absences}   link:Absences
+${journeys_path}   xpath: //div[@title="Journeys" and @group="groupNode_workforce_management"]
 ${href_person_management}  link:Person Management
 
 ${href_showmore}  link:Show More
@@ -25,6 +26,7 @@ ${header}  xpath: //h1[text()="Manage Positions"]
 ${show_more}  xpath: //a[text()="Show More" and contains(@id,"workforce")]
 ${termination}  xpath: //h4[text()='Employment']//following::a[text()='Termination']
 
+${href_calculationcards_payroll}    xpath: //a[text()="Calculation Cards"]
 ${profile_downarrow}    xpath://a[@title="Settings and Actions Menu"]
 ${href_setup_maintenance}    xpath://a[text()="Setup and Maintenance"]
 ${navigator}  xpath: //a[contains(@class,'TabletNavigatorIcon')]
@@ -62,7 +64,7 @@ ${nvg_payroll}  xpath: //a[@title='Payroll']
 ${href_compensation}  link:Compensation
 ${performance_option}    link:Performance
 
-${href_career_and_performance}  link:Career and Performance
+${href_career_and_performance}  link:Performance and Development
 ${href_payroll}  xpath: //div[@title='Payroll']//a[text()='Payroll']
 ${href_enrollment}  xpath: //a[text()='Enrollment']
 ${href_pay}  xpath: //div[@title = "Pay"]
@@ -93,7 +95,7 @@ ${navigator_performance}  xpath: //span[text()='Performance']
 ${href_journeys}    link: Journeys
 
 ${href_current_jobs}  link:Current Jobs
-${navigator_career_performance}  xpath: //span[text()='Career and Performance']
+${navigator_career_performance}  xpath: //a[@title="Performance and Development"]
 ${mx_mand_vacc_rep}  xpath: //a[text()="MX Mandatory Vaccination Report"]
 
 ${nvg_career_and_performance}  xpath: //span[text()='Career and Performance']

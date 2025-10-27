@@ -20,7 +20,6 @@ def compare_lists(a_list: list, e_list: list):
             assert False
     assert True
 
-
 @keyword
 def check_text_in_list(text, itemslist):
     if text in itemslist:
@@ -29,7 +28,6 @@ def check_text_in_list(text, itemslist):
         BuiltIn().log_to_console(message=text + ' not in given list')
         # assert False
         assert False, text + 'Not in given list'
-
 
 @keyword
 def get_xpath_of_element(path):
@@ -43,13 +41,11 @@ def get_xpath_of_element(path):
     else:
         assert False, 'Path not supported ' + path
 
-
 @keyword
 def get_json(filepath: str):
     with open(Path(__file__).parent.parent.parent / Path(filepath)) as f:
         jsonFile = json.load(f)
     return jsonFile
-
 
 @keyword
 def get_current_date():
@@ -98,10 +94,6 @@ def extract_the_index_text(row_value,count,recurring_character):
 def extract_the_text(row_value,start_index,end_index):
     return row_value[start_index:end_index]
 
-
-
-
-
 # @keyword
 # def next_month_to_date():
 #     next_month = (datetime.date.today().month + 1) % 12 or 12
@@ -139,7 +131,8 @@ def days_in_month(month, year):
     if month in {'Jan', 'Mar', 'May', 'Jul', 'Aug', 'Oct', 'Dec'}:
         return 31
     if month == 'Feb':
-        if leap_year(year):
+        year_value = int(year)
+        if leap_year(year_value):
             return 29
         return 28
     return 30
@@ -159,3 +152,16 @@ def get_current_date_mm_dd_yyyy():
 def get_yesterday_date_mm_dd_yyyy():
     yesterday = date.today() - timedelta(days=1)
     return str(yesterday.strftime("%m/%d/%Y"))
+
+@keyword
+def get_yesterday_date_mmm_dd_yyyy():
+    yesterday = date.today() - timedelta(days=1)
+    return str(yesterday.strftime("%b/%d/%Y"))
+
+@keyword
+def get_current_date_mmm_dd_yyyy():
+    return str(date.today().strftime("%m-%d-%Y"))
+
+@keyword
+def get_current_date_mon_dd_yyyy():
+    return str(date.today().strftime("%b/%d/%Y"))

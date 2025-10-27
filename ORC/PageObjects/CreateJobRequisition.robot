@@ -32,6 +32,7 @@ Create a Requisition
     Sleep  3s
     Upload file  ${input_data2}[File Name]
     Save and close
+    Sleep  5s
 
 Upload file
     [Arguments]  ${file}
@@ -54,9 +55,8 @@ Filling details in How block
     Wait And Click Element   ${xpath_value}
     IF  "${input_data}[Use]" == "Position"
         Wait And Send Keys    ${pos_input_box}   ${input_data}[position_id]
-        Sleep  3s
-        ${xpath_position}=  Catenate  SEPARATOR=  //span[text()="${input_data}[position_id]"]
-        Wait And Click Element   ${xpath_position}
+        Sleep  5s
+        Wait And Click Element   ${selected_value}
         Sleep  2s
         Capture Page Screenshot
     ELSE IF  "${input_data}[Use]" == "Existing Requisition"
@@ -92,6 +92,7 @@ Filling details in Hiring Team block
         Sleep  3s
         END
     IF  "${HM_value}"!=""
+        Sleep    3s
         ${Hiring_manager}=  Get Element Attribute  ${HM_input_box}  value
         ${Alert}=  Run KEYWORD AND RETURN Status  should contain  ${Hiring_manager}  ${HM_value}
         Wait And Send Keys  ${HM_input_box}  ${HM_value}
@@ -138,8 +139,14 @@ Filling details in Requisition Structure block
     Capture page screenshot
 
 Save and close
-    Wait And Click Element  ${save_close_btn}
-    Sleep  1s
+    ${check}=  Run Keyword And Return Status    Wait Until Page Contains Element    ${save_close_btn}  20s
+    IF  '${check}'=='True'
+        Wait And Click Element  ${save_close_btn}
+        Capture Page Screenshot
+    ELSE
+        Wait And Click Element  xpath: //*[contains(@title,'ave and Close')]
+    END
+    Sleep    2s
     Capture Page Screenshot
 
 Review Basic info section
@@ -171,8 +178,8 @@ Review Requisition Structure section
 
 Add Details Info section
     Sleep  2s
-#    Wait And Set Text   ${work_contract_input}  No
-    Wait And Set Text    ${work_contract_input}    Yes - Short Term Contract
+    Wait And Set Text   ${work_contract_input}  No
+#    Wait And Set Text   ${work_contract_input}  Yes - Short Term Contract
     Press Keys	${work_contract_input}  ENTER
     Sleep  2s
     Wait And Click Element  ${minimum_salary_input}
@@ -333,7 +340,7 @@ Submit Job Requisition for an existing requisition by Reviewer
 Get Requisition Id
     ${text}=  Wait And Get Text  ${req_para}
     ${id}=  getIdFromName  ${text}
-    [Return]  ${id}
+    RETURN  ${id}
 
 Create Pipeline Requisition
     [Arguments]  ${input_data}  ${input_data2}

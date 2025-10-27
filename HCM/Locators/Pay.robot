@@ -2,9 +2,10 @@
 
 ${my_banking_information}    xpath://span[text()="Define and prioritize salary payments details, such as payment type, payment amount and bank accounts details."]
 ${add_bank_account}    xpath: //div[@title="Add Bank Account"]
-${enter_account_details}    xpath: (//label[text()="Account Number"]/following::input)[1]
+${enter_account_details}    xpath: //label[text()=' Account Number']/following::input[1]
 ${select_bank}    xpath: (//label[text()="Bank"]/following::input)[1]
-${select_bank_branch_code}    xpath: (//label[text()="Bank Branch"]/following::input)[1]
+${select_bank_branch_code}    xpath: (//label[text()='Branch Transit Number']/following::input)[1]
+#(//label[text()="Bank Branch"]/following::input)[1]
 ${select_recent_search_result}  xpath://table/tr[2]
 ${save_button}    xpath: //a[@accesskey="S"]
 ${warning_message}  xpath: //span[text()="Warning"]/following::span[1]
@@ -28,3 +29,8 @@ ${payslip_doc_link}     xpath: (//a[contains(@id,'atItr:0:atcl')])[1]
 ${search_icon}          xpath: //img[@title='Search']
 
 ${Warning_ok_delete}  xpath: //span[text()='O']
+
+${my_banking_info_header}    xpath: //h2[text()='My Banking Information']
+${payment_method_cannot_reorder}    xpath: //div[contains(@title,"Payment methods can't be reordered")]
+${reorder_path}  xpath:  //span[text()="Reorder"]
+${bank_payment_methods_list}  xpath:   //h2[text()='My Banking Information']/following::div[contains(@id,'ppmLi')]

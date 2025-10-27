@@ -30,10 +30,10 @@ Scenario: View & update an Owned Properties line item record
     Click on Owned Properties under CRE Master Log
     #Click on + Icon and Select Property Workspace  CANPA GUIDEWAY
     #Select Owned Properties form CRE Portfolio Mgmt
-    Select an existing owned Property   OWNED-02326
+    Select an existing owned Property   OWNED-02814
     Log  Step 3
     Switch to Owned property window
-#    Edit the owned property
-    Validate Property Use Block  MX Owned  Yes  Future Description  07/24/2023  Transitional Area Comments
+    Edit the owned property
+    Validate Property Use Block  MX Owned  Yes  Future Description    29/Apr/2025  Transitional Area Comments
     Submit Owned Property
     Sleep  10s

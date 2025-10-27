@@ -65,7 +65,10 @@ Get New Document Periods Name Locator Index
     ${count}=  get element attribute  ${document_period_table_row_count}  _rowcount
     IF  "${count}"!=1
         ${multiplier}=  Evaluate  ${count}-${1}
+#        For Mid Year Performance Document Creation - below line is the code
         ${skip_index}=  Evaluate  ${multiplier}*${6}
+#        For Annual Senior Manager Performance Document Creation - below line is the code
+#        ${skip_index}=  Evaluate  ${multiplier}*${7}
         ${index}=  Evaluate  ${skip_index}+${1}
     ELSE
         ${index}=  Evaluate  ${count}
@@ -105,7 +108,8 @@ Add Role In Questionnaires
     IF  '${check}'!='True'
         Wait And Click Element  ${questionnaires_role}
         Sleep  3s
-        Wait And Click Element  xpath: (//li[text()="${role}"])[${index}]
+#        Wait And Click Element  xpath: (//li[text()="${role}"])[${index}]
+        Wait And Click Element  xpath: (//li[text()="${role}"])[1]
     END
     Sleep  3s
     Capture Page Screenshot And Retry If Required

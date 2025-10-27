@@ -1,5 +1,6 @@
 *** Variables ***
-${requisition_info_input_text_box}      //h2[text()="Select Requisitions"]/following::input[@autocomplete="off"]
+${requisition_info_input_text_box}  xpath: //h2[text()="Select Requisitions"]/following::input[contains(@id,'ipsIs') and @autocomplete="off"]
+#//h2[text()="Select Requisitions"]/following::input[@autocomplete="off"]
 ${requisition_list}     xpath: //tr[contains(@id,'sIs::item')]/th/div
 ${save_and_close_button}   xpath: //*[contains(@class,'Save')]
 ${close_pop_up}             xpath: //a[contains(@id,'actwHm:cil5')]

@@ -33,7 +33,7 @@ Scenario: Quick Actions - Manual Hire
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
     ${common_data}=  readJson  ${common_json_path}
-    ${Last_Name}=  get_process_name  ${common_data}[New Hire Last Name]
+#    ${Last_Name}=  get_process_name  ${common_data}[New Hire Last Name]
     Log  Step 1 - 3
     Login Using  ${common_data}[HR Login]
     Log  Step 4
@@ -45,18 +45,21 @@ Scenario: Quick Actions - Manual Hire
     Log  Step 7
     Select an Action in hire an employee page
     Fill When and Why in Hire an employee page
-    Fill personal details in Hire an Employee page   ${Last_Name}   ${common_data}[New Hire First Name]    ${data}[Date of Birth]     ${data}[Gender]
+#    Fill personal details in Hire an Employee page   ${Last_Name}   ${common_data}[New Hire First Name]    ${data}[Date of Birth]     ${data}[Gender]
+    Fill personal details in Hire an Employee page   ${common_data}[New Hire Last Name]   ${common_data}[New Hire First Name]    ${data}[Date of Birth]     ${data}[Gender]
     Fill Addresses   ${data}[Address Type]  ${data}[Address Line 1]  ${data}[City]  ${data}[Postal Code]
     Fill Citizenship Info in Hire an employee page
-    Fill Assignment Details in Hire an employee page  ${common_data}[Position Code]
+    Fill Assignment Details in Hire an employee page  ${data}[Assignment Number]
     Fill Salary Details
-    Sleep  120s
+    Sleep  180s
     click on homepage
     Sleep  5s
     Go to my client group person management
     Sleep  2s
-    ${Person_number}=  Get Person Number in Person Management Page  ${Last_Name}  ${common_data}[New Hire First Name]
-    appendtojson  ${common_json_path}  New Hire Generated Last Name  ${Last_Name}
+#    ${Person_number}=  Get Person Number in Person Management Page  ${Last_Name}  ${common_data}[New Hire First Name]
+#    appendtojson  ${common_json_path}  New Hire Generated Last Name  ${Last_Name}
+    ${Person_number}=  Get Person Number in Person Management Page  ${common_data}[New Hire Last Name]  ${common_data}[New Hire First Name]
+    appendtojson  ${common_json_path}  New Hire Generated Last Name  ${common_data}[New Hire Last Name]
     appendtojson  ${common_json_path}  New Hire Person Number  ${Person_number}
     generatecsv  ${common_json_path}  ${common_csv_path}
 

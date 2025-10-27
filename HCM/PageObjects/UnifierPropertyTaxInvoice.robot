@@ -12,9 +12,9 @@ Click Create Property Tax Invoice Icon
     [Arguments]  ${property_shell}
     Sleep  5s
     Select Frame  ${property_tax_invoice_iframe}
-    Sleep  5s
+    Sleep  15s
     Wait And Click Element  ${create_prop_tax_invoice_btn}
-    Sleep  10s
+    wait until page contains element    ${business_origin_field_btn}    20s    Business Origin drop down field not present
     Wait And Click Element  ${business_origin_field_btn}
     Sleep  2s
     Wait And Click Element  xpath: //li//span[contains(text(),'${property_shell}')]

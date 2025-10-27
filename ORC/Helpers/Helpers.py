@@ -52,7 +52,7 @@ def formCandidateName(txt):
 
 @keyword
 def formsXpathForQuestions(temp,title):
-    result=temp[:20]+title+temp[20:]
+    result=temp[:14]+title+temp[14:]
     return result
 
 @keyword
@@ -78,14 +78,21 @@ def formXpath(temp,value):
     result=temp[:index+1]+value+temp[index+1:]
     return result
 
+# @keyword
+# def retainOTP(value):
+#     index=value.rfind(':')
+#     result=value[index+2:]
+#     list1=[]
+#     list1[:0]=result
+#     return list1
+
 @keyword
 def retainOTP(value):
-    index=value.rfind(':')
-    result=value[index+2:]
-    list1=[]
-    list1[:0]=result
+    # index=value.rfind(':')
+    # result=value[index+2:]
+    list1= list(value)
+    # list1[:0]=result
     return list1
-
 
 @keyword
 def generatejson(csvpath,jsonpath):

@@ -1,10 +1,10 @@
 {
     "LegislativeDataGroup": "CA Legislative Data Group",
     "FLowPattern": "Calculate Prepayments",
-    "PayrollFlow": "Auto_Test_Calculate Accruals Balances",
-    "ProcessStartDate": "01-Oct-2022",
-    "ProcessEndDate": "14-Oct-2022",
+    "PayrollFlow": "Auto_142025_Prepayments",
+    "ProcessStartDate": "21-Jun-2025",
+    "ProcessEndDate": "04-Jul-2025",
     "Payroll": "Biweekly",
     "Log Name": "FlowEssJobDefn",
-    "FLowPatternName": "Calculate PrePayments"
+    "FLowPatternName": "Calculate Prepayments"
 }

@@ -194,6 +194,8 @@ Select Contract Payables from CRE Cost Management
     END
 #    Wait and Click Element  ${cre_cost_management_link2}
     Sleep  5s
+#    scroll element into view  ${contract_payable_sub_menu_link}
+    Sleep  2s
     Wait and Click Element  ${contract_payable_sub_menu_link}
     Capture Page Screenshot
 

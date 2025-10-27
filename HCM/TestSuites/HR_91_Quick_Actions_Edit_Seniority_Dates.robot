@@ -41,6 +41,6 @@ Scenario: Quick Actions - Edit Seniority Dates
     Log  Step 7
     Click on Seniority Dates
     Log  Step 8
-    Search for a person  ${data}[Employee Name]
+    Search for a person  ${common_data}[Employee Login Name]
     Log  Step 9
     Select Recalculate Seniority Dates

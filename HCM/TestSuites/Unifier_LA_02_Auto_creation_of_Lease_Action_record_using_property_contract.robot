@@ -46,8 +46,8 @@ Auto create lease action record from Property contract
     Select Contract Rent Structure  ${contract_rent_structure}
     Select Status  ${status}
     Log  Step 4
-    ${today_date}=  Get Current Date MM DD YYYY
-    ${yesterday_date}=   Get Yesterday Date MM DD YYYY
+    ${today_date}=  Get Current Date MON DD YYYY
+    ${yesterday_date}=   get yesterday date mmm dd yyyy
     Input Original Contract Start Date  ${yesterday_date}
     Input Current Term Start Date  ${yesterday_date}
     Input Current Term Expiry Date  ${today_date}

@@ -11,7 +11,7 @@ Documentation  Re-run process for Generate chequw payments
 ...            Prerequisite:  Not applicable
 ...            Environment Specific Data:  Login User
 ...            Reusable Data:  Flow Pattern; Start Date; End Date; Payroll; Log Name; Organization Payment Method; Consolidation Group; Task Name; Start Number;End Number
-...            Dynamic Data: Payroll Flow should be unique and should not be used in past for each run
+...            Dynamic Data: Payroll Flow should be unique and should not be used in past for each run;Process Configuration Group get from roll back process in previous options
 
 *** Settings ***
 Suite Setup  Before Suite
@@ -57,7 +57,9 @@ Scenario: Re-run process for Generate chequw payments
     Log  Step 15
     Select Start Cheque Number  ${data}[Start Number]
     Log  Step 16
-    Select End Cheque Number  ${data}[End Number]
+#    Sleep  30s
+#    Select End Cheque Number  ${data}[End Number]
+#    Select Process Configuration Group  ${data}[Process Configuration Group]
     Log  Step 17
     Click Submit Button
     Check Successful Submission Status

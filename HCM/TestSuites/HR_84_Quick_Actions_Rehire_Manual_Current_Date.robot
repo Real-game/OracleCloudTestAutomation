@@ -37,7 +37,7 @@ Scenario: Quick Actions -Rehire Manual (Current Date)
     Log  Step 7
     Click Create Work Relationship Under Employment Section
     Log  Step 8 - 9
-    Advance Search For Person With Filters  ${data}[Person Number]  ${data}[Person Name]
+    Advance Search For Person With Filters  ${data}[Person Number]  ${data}[Person Name]  ${data}[Relationship Start Date]
     Log  Step 10
     Select Manage Info Checkbox
     Manage Info Continue Button

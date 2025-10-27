@@ -29,9 +29,10 @@ Click on Save and Close
     Capture Page Screenshot And Retry If Required
 
 Click on Edit Federal
+    Sleep  3s
     Wait And Click Element  ${edit_federal}
     Wait And Verify Page Contains Text  Federal Tax  20s  Federal Tax page not displayed
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Enter Additional Tax as

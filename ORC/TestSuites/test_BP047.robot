@@ -23,18 +23,23 @@ ${csv_path}  ./CSV/td_BP047.csv
 Scenario: Internal Job Application Flow
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    Log  Step 1 - 3
     Login Using  ${data}[Hiring Manager user]
+    Log  Step 4
     click on homepage
+    Log  Step 5
     Go to Current Jobs
-    Click on Search
+    Log  Step 6 - 7
     Search Job  ${data}[Job Id]
-    Sleep  10s
-    #Verify Job Details  ${data}[Min sal]  ${data}[Max sal]  ${data}[Job Type]
+    Log  Step 8
     Click on Apply
-#    Answer Questions  ${data}
-    Sleep  20s
+    Log  Step 9 - 13
+    Answer Questions  ${data}
+    Log  Step 14 - 15
     Upload Resume  ${data}[Resume Path]
+    Log  Step 16
     Sign Signature  ${data}[E-sign]
+    Log  Step 17 - 21
     Click on Submit Job Application
     Logout
 

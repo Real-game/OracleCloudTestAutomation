@@ -13,9 +13,7 @@ Documentation  Absence plan enrollment of a newly hired employee (HR)
 ...            Reusable Data: Not Applicable
 ...            Dynamic Data: Employee Hired Date is should be an hired date of an employee
 
-
 *** Settings ***
-
 Suite Setup  Before Suite
 Suite Teardown  After Suite
 Test Teardown  After Test
@@ -25,8 +23,8 @@ ${json_path}    ./TestData/td_ABS_TC001_Absence_plan_enrollment_of_newly_hired_e
 ${csv_path}  ./CSV/td_ABS_TC001_Absence_plan_enrollment_of_newly_hired_employee(HR).csv
 ${common_json_path}    ./TestData/Absence_common_test_data.json
 ${common_csv_path}  ./CSV/Absence_common_test_data.csv
-*** Test Cases ***
 
+*** Test Cases ***
 Scenario: Absence plan enrollment of a newly hired employee (HR)
     [Tags]  AbsenceHRTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}

@@ -32,7 +32,8 @@ Scenario: Present and Manage Offers ( Candiate offer response (Internal) )
     Sign Employee Signature  ${data}[Signature]
     Log  Step 7
     Click on Submit Accept Offer
-
+    Sleep    10s
+    Logout
 #    Search for Offer Notifications
 #    Log  Step 3 - 11
 #    Respond to Job Offer Internal  ${data}[Respond to Offer]  ${data}[Decline Reason]  ${data}[Comments]  ${data}[Employee Name]

@@ -9,7 +9,8 @@ ${effective_as_of_date_field}  xpath: //label[text()='Effective As-of Date']/par
 ${payroll_start_date}  xpath: (//table[@summary='Payroll Details']//td//span[contains(@id,'Date')])[2]
 
 ${payroll_realtionship_worker_assignment}  xpath: //span[text()='Payroll Relationship: Worker']/ancestor::tr/following-sibling::tr//a
-${payroll_details_no_data}  xpath: //table[@summary='Payroll Details']/parent::div[text()='No data to display.']
+${payroll_details_no_data}  xpath: //table[@summary='Payroll Details']/following-sibling::div/div[text()='No data to display.']
+#//table[@summary='Payroll Details']/parent::div[text()='No data to display.']
 ${payroll_details_create_button}  xpath: //a[@title='Create']
 ${payroll_duration_field}  xpath: //table[@summary='Payroll Details']//input
 ${save_button}  xpath: //button[text()='Save']
@@ -21,7 +22,9 @@ ${payroll_realtionship_worker_assignment_latest}  xpath: (//span[text()='Payroll
 ${relationship_type_value}  xpath: //label[contains(text(),'Relationship Type')]//parent::td//following-sibling::td//span
 ${search_person_left_side}  xpath: //div[text()='Search Person']
 ${Keywords_input}  xpath: //label[text()='Keywords']//parent::td//following-sibling::td//input
+${Search_input}  xpath: //input[contains(@id,'hp01Srh::content')]
 ${Search_keyword}  xpath: //button[@title='Search']
+${Search_1st_row}   xpath: //table/tr[2]
 ${action_button}  xpath: //img[@title='Actions']
 ${quick_pay}  xpath: //td[text()='QuickPay']
 ${simplified_quick_pay}  xpath: //td[text()='Simplified QuickPay']
@@ -63,7 +66,9 @@ ${display_value_dropdown}  xpath: //label[text()='Display Value']//parent::td//f
 ${amount_value_on_calc_value}  xpath: //label[text()='Amount']//parent::td//following-sibling::td//input
 ${edit_calc_value_ok}  xpath: //div[text()='Edit Calculation Values']//following::button[@accesskey='K']
 ${save_and_close_calc_component}  xpath: //span[text()='ave and Close']
-${involuntary_deduc_main_link}  xpath: //a[text()='Involuntary Deductions']
+${involuntary_deduc_main_link}  xpath: (//a[text()='Involuntary Deductions'])[1]
 ${calc_component_detail}  xpath: (//a[text()='Calculation Component Details'])[1]
 ${element_entries_scroller}  xpath: //div[contains(@id,'table1::scroller')]
 ${element_entry}  xpath: //a[text()='Element Entries']
+${involuntary_deduction_header}  xpath: //h1[contains(text(),"Involuntary Deductions")]
+${element_entries_header}   xpath:  //h1[text()="Element Entries"]

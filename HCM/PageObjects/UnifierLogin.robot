@@ -11,7 +11,9 @@ Resource  ../PageObjects/Commons.robot
 *** Keywords ***
 Unifier Login Using
     [Arguments]  ${user_id}
+    Set Log Level    NONE
     ${password} =  Get Password  ${user_id}
+    Set Log Level    INFO
     Wait Until Page Contains  Please use your Metrolinx Email Address to sign-in  300s  login Page is not displayed
     Login  ${unifier_username}  ${user_id}  ${unifier_password}  ${password}  ${unifier_sign_in}
     Log  User has signed in
@@ -19,8 +21,8 @@ Unifier Login Using
     Click Element  ${got_it_alert}
     Log  User has answered to the alert
     Sleep  8s
-    ${environment_select}=  Catenate  SEPARATOR=  //ul/li//span[contains(text(),'Train')]
-#    ${environment_select}=  Catenate  SEPARATOR=  //ul/li//span[contains(text(),'Stage')]
+#    ${environment_select}=  Catenate  SEPARATOR=  //ul/li//span[contains(text(),'Train')]
+    ${environment_select}=  Catenate  SEPARATOR=  //ul/li//span[contains(text(),'Stage')]
 #    ${environment_select}=  Catenate  SEPARATOR=  //ul/li//span[contains(text(),'Production')]
     Wait And Click Element  ${environment_select}
     Sleep  8s
@@ -29,8 +31,8 @@ Unifier Login Using
     Log  User has clicked the primavera Unifier application icon
     ${list}=  Get Window Handles
     Switch Window  ${list}[1]
-    Sleep  5s
-    Wait Until Page Contains Element  ${home_icon}  30s  Unifier landing page is not displayed
+    Sleep  10s
+    Wait Until Page Contains Element  ${home_icon}  40s  Unifier landing page is not displayed
     Log  User is taken to the landing page of Unifier
 
 Change to Proxy Connection

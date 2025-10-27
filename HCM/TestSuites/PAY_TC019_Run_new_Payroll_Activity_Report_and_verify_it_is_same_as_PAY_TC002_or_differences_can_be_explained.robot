@@ -50,7 +50,7 @@ Scenario: Run new Payroll Activity Report and verify it is same as PAY_TC002 or 
     Enter End Date as  ${data}[EndDate]
     Select Scope from dropdown  ${data}[Scope]
     Select Report Category from dropdown  ${data}[ReportCategory]
-    Select Payroll Relationship Group from dropdown  ${data}[Object Name]  #
+    Select Payroll Relationship Group from dropdown  ${data}[Object Name]
     Click on Submit
     Click refresh untill process status is completed  ${data}[FLowPattern]
     Wait And Click Element  xpath: //span[text()="${data}[FLowPattern]"]

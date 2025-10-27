@@ -28,31 +28,22 @@ ${csv_path}  ./CSV/td_BP005.csv
 Scenario: Internal Job Application Flow
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readjson  ${json_path}
-    Log  Step 1
+    Log  Step 1 - 3
     Login Using  ${data}[Login User]
-    Log  Step 2
-    click on homepage
-    Go to Current Jobs
-    Log  Step 3
-    Click on Search
     Log  Step 4
+    click on homepage
+    Log  Step 5
+    Go to Current Jobs
+    Log  Step 6 - 7
     Search Job  ${data}[Job Id]
-    Log  Step 5 - 7
-    Verify Job Details  ${data}[Min sal]  ${data}[Max sal]  ${data}[Job Type]
     Log  Step 8
     Click on Apply
-    Log  Step 9 - 10
-#    Answer Questions  ${data}
-    Sleep  60s
-    #manually select questions
-    Log  Step 11 - 12
+    Log  Step 9 - 13
+    Answer Questions  ${data}
+    Log  Step 14 - 15
     Upload Resume  ${data}[Resume Path]
-    Log  Step 13
+    Log  Step 16
     Sign Signature  ${data}[E-sign]
-    Log  Step 14
+    Log  Step 17 - 21
     Click on Submit Job Application
     Logout
-
-
-
-

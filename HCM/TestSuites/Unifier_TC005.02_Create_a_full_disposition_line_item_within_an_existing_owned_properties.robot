@@ -30,10 +30,10 @@ Scenario: Create a full disposition line item within an existing Owned Propertie
     #Select Owned Properties form CRE Portfolio Mgmt
     Click on home icon in landing Page
     Click on Owned Properties under CRE Master Log
-    Select an existing owned Property   OWNED-02326
+    Select an existing owned Property   OWNED-02814
     Log  Step 3
     Switch to Owned property window
     Edit the owned property
-    Edit Disposition type  FULL  OWNED-02326
+    Edit Disposition type  FULL  OWNED-02814
     Submit Owned Property
     Sleep  10s

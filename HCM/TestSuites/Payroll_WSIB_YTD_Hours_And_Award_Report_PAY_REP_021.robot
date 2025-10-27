@@ -80,13 +80,13 @@ Scenario: MX Payroll - WSIB YTD Hours and Award Report (PAY-REP-021)
     Log  Step 33 - 34
     Set Report Job Name And Click Button  ${data}[Job Name]  OK
     Sleep  10s
-    unselect frame
-    Log  Step 35
-    Click Analytics Home Option
-    Log  Step 35 - 36
-    Wait And Click Element  link: Report Job History
-    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
-    Capture page screenshot
+#    unselect frame
+#    Log  Step 35
+#    Click Analytics Home Option
+#    Log  Step 35 - 36
+#    Wait And Click Element  link: Report Job History
+#    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
+#    Capture page screenshot
 #    Verify Status Of Report Job And Select On Success  ${data}[Job Name]
 #    Download Report Of Given Format  EXCEL
     Sleep  20s

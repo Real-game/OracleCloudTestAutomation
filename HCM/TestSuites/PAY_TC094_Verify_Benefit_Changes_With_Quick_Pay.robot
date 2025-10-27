@@ -43,8 +43,8 @@ Scenario: Verify Benefit changes with Quick Pay
     Log  Step 11
     Check elements are checked
     Log  Step 12
-#    Click on Quick Pay Submit Button
-#    Log  Step 13 - 14
-#    Check Statement of earning
-#    Log  Step 15
-#    Click on Quick Pay Submit Button
+    Click on Quick Pay Submit Button
+    Log  Step 13 - 14
+    Check Statement of earning
+    Log  Step 15
+    Click on Quick Pay Submit Button

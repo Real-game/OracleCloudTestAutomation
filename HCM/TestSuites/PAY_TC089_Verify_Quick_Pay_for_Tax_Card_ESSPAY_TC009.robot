@@ -25,7 +25,7 @@ ${common_json_path}  ./TestData/Payroll_common_test_data.json
 ${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 *** Test Cases ***
 
-Scenario: Verify New Hire with Quick Pay
+Scenario: Verify Quick Pay for Tax Card (ESSPAY_TC009)
     [Tags]  PayrollTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
@@ -52,7 +52,7 @@ Scenario: Verify New Hire with Quick Pay
     Search and click on Person  ${data}[Person Number]
     Log  Step 15 - 16
     Payroll Submit Button
-    Sleep  60s
+    Sleep  100s
     Log  Step 17 - 18
     Payroll Submit Button
     Sleep  3s

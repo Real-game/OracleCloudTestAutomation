@@ -45,7 +45,7 @@ Scenario: Verify Absence - Employee with position change
     Select Accruals  ${data}[Accurals]
     Select date  ${data}[Date]
     Select Yes Button
-    Sleep  7s
+    Sleep  10s
     Log  Step 10
     Select Accruals Status  ${data}[Status]
     Click Plan Balances Go Arrow

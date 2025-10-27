@@ -37,7 +37,7 @@ Scenario: Prospect to Candidate
     Click on the Candidate Search link
     Search for the candidate    ${data}[Candidate Name]
     Select Add Requisition action to the search candidate
-    Add a requisition to the candidate  ${data}[Requisition ID]
+    Add a requisition to the candidate record  ${data}[Requisition ID]
     Select the candidate record  ${data}[Candidate Name]
     Click on the convert to prospect option in the candidate detail page
     click on homepage

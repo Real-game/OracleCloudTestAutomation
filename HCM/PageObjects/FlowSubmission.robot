@@ -123,6 +123,7 @@ Set Effective Date
     Capture Page Screenshot And Retry If Required
 
 Expand Output And Log Files
+    Sleep  10s
     Mouse Over  ${expand_output_and_log_file}
     Sleep  3s
     Wait And Click Element  ${expand_output_and_log_file}
@@ -212,4 +213,12 @@ Input Person Number
         Wait And Set Text  ${person_number_input}  ${person_number}
     END
     Sleep  1s
+    Capture Page Screenshot And Retry If Required
+
+Select Process Configuration Group
+    [Arguments]  ${group}
+    Wait And Set Text  ${process_configuration_group}  ${group}
+    Sleep  3s
+    Wait And Click Element  xpath: //span[text()="${group}"]
+    Sleep  2s
     Capture Page Screenshot And Retry If Required

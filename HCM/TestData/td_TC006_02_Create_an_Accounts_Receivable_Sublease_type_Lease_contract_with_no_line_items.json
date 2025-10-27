@@ -6,9 +6,9 @@
     "Contract Type": "LEASE",
     "Contract Rent Structure": "A/R",
     "Status": "Pending_Review",
-    "Original Contract Start Date": "04/25/2023",
-    "Current Term Start Date": "04/25/2023",
-    "Current Term Expiry Date": "10/31/2023",
+    "Original Contract Start Date": "26/Jun/2025",
+    "Current Term Start Date": "26/Jun/2025",
+    "Current Term Expiry Date": "Nov/30/2025",
     "Tenant Entity Type": "GRANTEE",
     "Landlord Entity Type": "GRANTOR"
 }

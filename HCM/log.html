@@ -5,16 +5,60 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 4.0.2 (Python 3.9.3 on win32)" name="Generator">
+<meta content="Robot Framework 7.3 (Python 3.9.13 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
-<style media="all" type="text/css">
+<style media="all">
+:root {
+    --text-color: black;
+    --background-color: white;
+    --primary-color: #ddd;
+    --secondary-color: #ccc;
+    --link-color: #15c;
+    --link-hover-color: #61c;
+    --highlight-color: #eee;
+    --target-color: #f9f9f9;
+    --pass-color: #97bd61;
+    --fail-color: #ce3e01;
+    --warn-color: #fed84f;
+    --pass-link-color: #098a09;
+    --warn-link-color: #927201;
+    --fail-link-color: #ce3e01;
+    --ascending-icon: url(data:image/gif;base64,R0lGODlhCwAJAKEAAAAAAH9/fwAAAAAAACH5BAEAAAIALAAAAAALAAkAAAIUlBWnFr3cnIr0WQOyBmvzp13CpxQAOw==);
+    --descending-icon: url(data:image/gif;base64,R0lGODlhCwAJAKEAAAAAAH9/fwAAAAAAACH5BAEAAAIALAAAAAALAAkAAAIUlAWnBr3cnIr0WROyDmvzp13CpxQAOw==);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+[data-theme="dark"] {
+    --text-color: #e2e1d7;
+    --background-color: #1c2227;
+    --primary-color: #26373b;
+    --secondary-color: #424f5a;
+    --link-color: #8cc4ff;
+    --link-hover-color: #bb86fc;
+    --highlight-color: #002b36;
+    --target-color: #1a252e;
+    --pass-link-color: #97bd61;
+    --warn-link-color: #fed84f;
+    --fail-link-color: #ff9b8f;
+    --ascending-icon: url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAJAgMAAACZCj6+AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAlQTFRFAAAAfn5+////f/cqYgAAAAN0Uk5TAP//RFDWIQAAACdJREFUeJxjYHBgYGAMYGBgDWFgEA1lAAOtVQwMXCsYGJgWADkNDAA78QP9oKr7vwAAAABJRU5ErkJggg==);
+    --descending-icon: url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAJAgMAAACZCj6+AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAlQTFRFAAAA////fn5+K6jOaAAAAAN0Uk5TAP//RFDWIQAAACdJREFUeJxjYHBgYGAMYGBgDWFgEA1lAAOtVQwMXCsYGJgWADkNDAA78QP9oKr7vwAAAABJRU5ErkJggg==);
+}
 /* Generic and misc styles */
 body {
     font-family: Helvetica, sans-serif;
     font-size: 0.8em;
-    color: black;
+    color: black; /* Fallback value */
+    color: var(--text-color);
     padding: 6px;
-    background: white;
+    background: white; /* Fallback value */
+    background: var(--background-color);
+    margin-left: 15px;
+}
+body[theme-toggled] {
+    transition: background 0.3s, background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 table {
     table-layout: fixed;
@@ -29,20 +73,37 @@ br {
     mso-data-placement: same-cell; /* maintain line breaks in Excel */
 }
 hr {
-    background: #ccc;
+    background: #ccc; /* Fallback value */
+    background: var(--secondary-color);
     height: 1px;
     border: 0;
 }
 a, a:link, a:visited {
     text-decoration: none;
-    color: #15c;
+    color: #15c; /* Fallback value */
+    color: var(--link-color);
 }
 a > img {
-    border: 1px solid #15c !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #15c !important; /* Fallback value */
+    border-color: var(--link-color) !important;
 }
 a:hover, a:active {
     text-decoration: underline;
-    color: #61c;
+    color: #61c; /* Fallback value */
+    color: var(--link-hover-color);
+}
+select {
+    background-color: white; /* Fallback value */
+    background-color: var(--background-color);
+    color: black; /* Fallback value */
+    color: var(--text-color);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--secondary-color);
+    border-radius: 4px;
 }
 .parent-name {
     font-size: 0.7em;
@@ -55,7 +116,7 @@ a:hover, a:active {
 #header {
     width: 65em;
     height: 3em;
-    margin: 6px 0;
+    margin: 20px 0 6px 0;
 }
 h1 {
     float: left;
@@ -83,14 +144,17 @@ h2 {
 }
 /* Status text colors -- !important allows using them in links */
 .fail {
-    color: #ce3e01 !important;
+    color: #ce3e01 !important; /* Fallback value */
+    color: var(--fail-link-color) !important;
     font-weight: bold;
 }
 .pass {
-    color: #098a09 !important;
+    color: #098a09 !important; /* Fallback value */
+    color: var(--pass-link-color) !important;
 }
 .skip {
-    color: #927201 !important;
+    color: #927201 !important; /* Fallback value */
+    color: var(--warn-link-color) !important;
     font-weight: bold;
 }
 .label {
@@ -98,8 +162,10 @@ h2 {
     font-size: 0.75em;
     letter-spacing: 1px;
     white-space: nowrap;
-    color: black;
-    background-color: #ddd;
+    color: black; /* Fallback value */
+    color: var(--text-color);
+    background-color: #ddd; /* Fallback value */
+    background-color: var(--primary-color);
     border-radius: 3px;
 }
 .label.debug, .label.trace, .label.error, .label.keyword {
@@ -109,15 +175,18 @@ h2 {
     font-weight: bold;
 }
 .label.pass {
-    background-color: #97bd61;
+    background-color: #97bd61; /* Fallback value */
+    background-color: var(--pass-color);
     color: #000 !important;
 }
 .label.fail, .label.error {
-    background-color: #ce3e01;
+    background-color: #ce3e01; /* Fallback value */
+    background-color: var(--fail-color);
     color: #fff !important;
 }
 .label.skip, .label.warn {
-    background-color: #fed84f;
+    background-color: #fed84f; /* Fallback value */
+    background-color: var(--warn-color);
     color: #000 !important;
 }
 /* Top right header */
@@ -146,7 +215,8 @@ h2 {
     padding: 0.3em 0;
     font-size: 0.9em;
     border-bottom-left-radius: 4px;
-    background: #ddd;
+    background: #ddd; /* Fallback value */
+    background: var(--primary-color);
 }
 /* Statistics table */
 .statistics {
@@ -156,15 +226,20 @@ h2 {
     margin-bottom: 1em;
 }
 .statistics tr:hover {
-    background: #f4f4f4;
+    background: #eee; /* Fallback value */
+    background: var(--highlight-color);
     cursor: pointer;
 }
 .statistics th, .statistics td {
-    border: 1px solid #ccc;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--secondary-color);
     padding: 0.1em 0.3em;
 }
 .statistics th {
-    background-color: #ddd;
+    background-color: #ddd; /* Fallback value */
+    background-color: var(--primary-color);
     padding: 0.2em 0.3em;
 }
 .statistics td {
@@ -200,27 +275,33 @@ th.stats-col-graph:hover {
 }
 /* Statistics graph */
 .graph, .empty-graph {
-    border: 1px solid #ccc;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--secondary-color);
     width: auto;
     height: 7px;
     padding: 0;
-    background: #aaa;
 }
 .empty-graph {
-    background: #eee;
+    background: #eee; /* Fallback value */
+    background: var(--highlight-color);
 }
 .pass-bar, .fail-bar, .skip-bar {
     float: left;
     height: 100%;
 }
 .fail-bar {
-    background: #ce3e01;
+    background: #ce3e01; /* Fallback value */
+    background: var(--fail-color);
 }
 .pass-bar {
-    background: #97bd61;
+    background: #97bd61; /* Fallback value */
+    background: var(--pass-color);
 }
 .skip-bar {
-    background: #fed84f;
+    background: #fed84f; /* Fallback value */
+    background: var(--warn-color);
 }
 /* Tablesorter - adapted from provided Blue Skin */
 .tablesorter-header {
@@ -230,30 +311,84 @@ th.stats-col-graph:hover {
     cursor: pointer;
 }
 .tablesorter-header:hover {
-    background-color: #ccc;
+    background-color: #ccc; /* Fallback value */
+    background-color: var(--secondary-color);
 }
 .tablesorter-headerAsc {
-    background-image: url(data:image/gif;base64,R0lGODlhCwAJAKEAAAAAAH9/fwAAAAAAACH5BAEAAAIALAAAAAALAAkAAAIUlBWnFr3cnIr0WQOyBmvzp13CpxQAOw==);
-    background-color: #ccc !important;
+    background-image: url(data:image/gif;base64,R0lGODlhCwAJAKEAAAAAAH9/fwAAAAAAACH5BAEAAAIALAAAAAALAAkAAAIUlBWnFr3cnIr0WQOyBmvzp13CpxQAOw==); /* Fallback value */
+    background-image: var(--ascending-icon);
+    background-color: #ccc !important; /* Fallback value */
+    background-color: var(--secondary-color) !important;
 }
 .tablesorter-headerDesc {
-    background-image: url(data:image/gif;base64,R0lGODlhCwAJAKEAAAAAAH9/fwAAAAAAACH5BAEAAAIALAAAAAALAAkAAAIUlAWnBr3cnIr0WROyDmvzp13CpxQAOw==);
-    background-color: #ccc !important;
+    background-image: url(data:image/gif;base64,R0lGODlhCwAJAKEAAAAAAH9/fwAAAAAAACH5BAEAAAIALAAAAAALAAkAAAIUlAWnBr3cnIr0WROyDmvzp13CpxQAOw==); /* Fallback value */
+    background-image: var(--descending-icon);
+    background-color: #ccc !important; /* Fallback value */
+    background-color: var(--secondary-color) !important;
 }
 .sorter-false {
     background-image: none;
     cursor: default;
 }
 .sorter-false:hover {
-    background-color: #ddd;
+    background-color: #ddd; /* Fallback value */
+    background-color: var(--primary-color);
+}
+#theme-toggle {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    padding: 4px;
+    z-index: 1000;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: var(--highlight-color);
+}
+[data-theme="dark"] .dark-mode-icon,
+[data-theme="light"] .light-mode-icon {
+    display: none;
+}
+[data-theme="dark"] .light-mode-icon,
+[data-theme="light"] .dark-mode-icon {
+    display: block;
+}
+@keyframes highlight {
+    0% {
+        background: var(--primary-color)
+    }
+    100% {
+        background: var(--target-color);
+    }
+}
+:target {
+    background: var(--target-color);
+    transition: background 0.3s;
+    animation: highlight 4s;
 }
 </style>
-<style media="all" type="text/css">
+<style media="all">
 /* Icons are from Open Iconic <https://useiconic.com/open/>.
    Licensed under the MIT License. */
+:root {
+    --icon-filter: invert(0);
+    --icon-highlight: var(--secondary-color);
+    --elapsed-color: #666;
+}
+/* @media (prefers-color-scheme: dark) { */
+[data-theme="dark"] {
+    --icon-filter: invert(1);
+    --icon-highlight: #a39990;
+    --elapsed-color: #999;
+}
 /* Containers */
 .suite, .test, #errors {
-    border: 1px solid #ccc;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--secondary-color);
+    border-width: 1px;
+    border-style: solid;
     padding: 0.3em 0.2em;
     margin: 0.2em 0;
 }
@@ -282,8 +417,10 @@ th.stats-col-graph:hover {
 }
 .element-header:hover {
     cursor: pointer;
-    background-color: #eee;
-    border-color: #ccc;
+    background-color: #eee; /* Fallback value */
+    background-color: var(--highlight-color);
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--secondary-color);
 }
 .element-header-toggle {
     position: absolute;
@@ -293,10 +430,14 @@ th.stats-col-graph:hover {
     background-position: center;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAQAAABKxSfDAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0JChSkZz20AAAAGklEQVQI12NgQAKMDKzInP8IDhOqMk4G7AAANQwBE427PYUAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0wIDB2Mmg4di0yaC04eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAzKSIgLz4KPC9zdmc+), none;
+    filter: var(--icon-filter);
     height: 10px;
     width: 10px;
     background-size: 6px 6px;
-    border: 1px solid #ccc;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--icon-highlight);
+    border-width: 1px;
+    border-style: solid;
     border-radius: 2px;
 }
 .closed > .element-header-toggle {
@@ -304,7 +445,8 @@ th.stats-col-graph:hover {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0zIDB2M2gtM3YyaDN2M2gydi0zaDN2LTJoLTN2LTNoLTJ6IiAvPgo8L3N2Zz4=), none;
 }
 .element-header:hover > .element-header-toggle {
-    background-color: #ccc;
+    background-color: #ccc; /* Fallback value */
+    background-color: var(--icon-highlight);
 }
 .element-header-right:hover ~ .element-header-toggle {
     background-color: transparent;
@@ -319,25 +461,36 @@ th.stats-col-graph:hover {
     padding: 3px;
     cursor: default;
 }
+.element-header .label {
+    margin-right: 0.5em;
+}
 .name {
     font-weight: bold;
+    white-space: pre-wrap;
+}
+.arg, .assign {
+    white-space: pre-wrap;
 }
 .elapsed {
     float: right;
-    color: #666;
+    color: #666; /* Fallback value */
+    color: var(--elapsed-color);
     padding-left: 1em;
 }
 .link {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHlJREFUGJVtzrEJwmAQBtCn6ASuIKTIBhY2gmghBiJYB1udwk10B8FJbKMBcQFbtbkfJHrVwfu+4/idJR64Y9H7E3higj5O3S8Y44ApLnjhnXCNGhV2yNGggDJwiC02gavUbpDFvscRo4QdXOMKDHBufz3HLYKzNn4AbSkV3fncGQYAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik01Ljg4LjAzYy0uMTguMDEtLjM2LjAzLS41My4wOS0uMjcuMS0uNTMuMjUtLjc1LjQ3YS41LjUgMCAxIDAgLjY5LjY5Yy4xMS0uMTEuMjQtLjE3LjM4LS4yMi4zNS0uMTIuNzgtLjA3IDEuMDYuMjIuMzkuMzkuMzkgMS4wNCAwIDEuNDRsLTEuNSAxLjVjLS40NC40NC0uOC40OC0xLjA2LjQ3LS4yNi0uMDEtLjQxLS4xMy0uNDEtLjEzYS41LjUgMCAxIDAtLjUuODhzLjM0LjIyLjg0LjI1Yy41LjAzIDEuMi0uMTYgMS44MS0uNzhsMS41LTEuNWMuNzgtLjc4Ljc4LTIuMDQgMC0yLjgxLS4yOC0uMjgtLjYxLS40NS0uOTctLjUzLS4xOC0uMDQtLjM4LS4wNC0uNTYtLjAzem0tMiAyLjMxYy0uNS0uMDItMS4xOS4xNS0xLjc4Ljc1bC0xLjUgMS41Yy0uNzguNzgtLjc4IDIuMDQgMCAyLjgxLjU2LjU2IDEuMzYuNzIgMi4wNi40Ny4yNy0uMS41My0uMjUuNzUtLjQ3YS41LjUgMCAxIDAtLjY5LS42OWMtLjExLjExLS4yNC4xNy0uMzguMjItLjM1LjEyLS43OC4wNy0xLjA2LS4yMi0uMzktLjM5LS4zOS0xLjA0IDAtMS40NGwxLjUtMS41Yy40LS40Ljc1LS40NSAxLjAzLS40NC4yOC4wMS40Ny4wOS40Ny4wOWEuNS41IDAgMSAwIC40NC0uODhzLS4zNC0uMi0uODQtLjIyeiIKICAvPgo8L3N2Zz4=), none;
+    filter: var(--icon-filter);
 }
 .expand {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAADtJREFUGJVjYCACKDAwMByA0ljFDjAwMPxnYGB4ABVQgLL/Q+VQBB6gseGmIivCkERXhFUSWRFOSawAAEl7E3uv1iMcAAAAAElFTkSuQmCC);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSA0IDQgNC00LTEuNS0xLjUtMi41IDIuNS0yLjUtMi41eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxKSIgLz4KPC9zdmc+), none;
+    filter: var(--icon-filter);
 }
 .collapse {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAC5JREFUGJVjYCARNEAxTsn/UIyhCFkSQxG6ThQ+C5IpjWhG1yNb4YDFTdjEMAEACi8Q++9Y9TAAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik00IDBsLTQgNCAxLjUgMS41IDIuNS0yLjUgMi41IDIuNSAxLjUtMS41LTQtNHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMSkiIC8+Cjwvc3ZnPg==), none;
+    filter: var(--icon-filter);
 }
 .expand, .collapse, .link {
     float: left;
@@ -349,7 +502,10 @@ th.stats-col-graph:hover {
     background-size: 8px 8px;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid #ccc;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--icon-highlight);
+    border-width: 1px;
+    border-style: solid;
     border-radius: 2px;
 }
 .link {
@@ -359,7 +515,8 @@ th.stats-col-graph:hover {
     visibility: visible;
 }
 .expand:hover, .collapse:hover, .link:hover {
-    background-color: #ccc;
+    background-color: #ccc; /* Fallback value */
+    background-color: var(--icon-highlight);
 }
 /* Messages and errors */
 .messages .time, .messages .message {
@@ -400,11 +557,16 @@ th.stats-col-graph:hover {
 .message-row:hover .select-message div {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0MOzhWKZQOAAAASUlEQVQY032PsRHAIAwDX9BkicD+W8UMEqegAQJWKZ/+3sLZJhFGQEZzNaIa4ibh66En867VNaIeoP5WppNuIGoAlOm3g5VC1AdYeQv1BZPRSgAAAABJRU5ErkJggg==);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0wIDB2MWg4di0xaC04em0wIDJ2MWg2di0xaC02em0wIDJ2MWg4di0xaC04em0wIDJ2MWg2di0xaC02eiIgLz4KPC9zdmc+), none;
-    border: 1px solid #ccc;
+    filter: var(--icon-filter);
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--icon-highlight);
+    border-width: 1px;
+    border-style: solid;
     border-radius: 2px;
 }
 .select-message:hover div {
-    background-color: #ccc;
+    background-color: #ccc; /* Fallback value */
+    background-color: var(--icon-highlight);
     cursor: pointer;
 }
 /* Message tables - these MUST NOT be combined together because otherwise
@@ -436,7 +598,7 @@ th.stats-col-graph:hover {
     cursor: default;
 }
 </style>
-<style media="print" type="text/css">
+<style media="print">
 body {
     background: white !important;
     padding: 0;
@@ -476,7 +638,7 @@ a:link, a:visited {
     background: #ddd !important;
 }
 </style>
-<style media="all" type="text/css">
+<style media="all">
 #javascript-disabled {
     width: 600px;
     margin: 100px auto 0 auto;
@@ -499,7 +661,7 @@ a:link, a:visited {
     font-style: italic;
 }
 </style>
-<style media="all" type="text/css">
+<style media="all">
 .doc > * {
     margin: 0.7em 1em 0.1em 1em;
     padding: 0;
@@ -511,14 +673,12 @@ a:link, a:visited {
     margin-top: 0.1em;
 }
 .doc table {
-    border: 1px solid #ccc;
     background: transparent;
     border-collapse: collapse;
     empty-cells: show;
     font-size: 0.9em;
 }
 .doc table th, .doc table td {
-    border: 1px solid #ccc;
     background: transparent;
     padding: 0.1em 0.3em;
     height: 1.2em;
@@ -528,24 +688,32 @@ a:link, a:visited {
     letter-spacing: 0.1em;
 }
 .doc pre {
+    border-radius: 2px;
     font-size: 1.1em;
     letter-spacing: 0.05em;
-    background: #f4f4f4;
+    background: #eee; /* Fallback value */
+    background: var(--highlight-color);
 }
 .doc code {
+    border-radius: 2px;
     padding: 0 0.2em;
     letter-spacing: 0.05em;
-    background: #eee;
+    background: #eee; /* Fallback value */
+    background: var(--highlight-color);
 }
 .doc li {
     list-style-position: inside;
     list-style-type: square;
 }
-.doc img {
-    border: 1px solid #ccc;
+.doc img, .doc table, .doc table th, .doc table td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc; /* Fallback value */
+    border-color: var(--secondary-color);
 }
 .doc hr {
-    background: #ccc;
+    background: #ccc; /* Fallback value */
+    background: var(--secondary-color);
     height: 1px;
     border: 0;
 }
@@ -557,6 +725,9 @@ function toggleSuite(suiteId) {
 }
 function toggleTest(testId) {
     toggleElement(testId, ['keyword']);
+    var test = window.testdata.findLoaded(testId);
+    if (test.status == "FAIL" || test.status == "SKIP")
+        expandFailed(test);
 }
 function toggleKeyword(kwId) {
     toggleElement(kwId, ['keyword']);
@@ -588,10 +759,10 @@ function drawCallback(element, childElement, childrenNames) {
     }
 }
 function expandSuite(suite) {
-    if (suite.status == "PASS")
-        expandElement(suite);
-    else
+    if (suite.status == "FAIL")
         expandFailed(suite);
+    else
+        expandElement(suite);
 }
 function expandElement(item, retryCount) {
     retryCount = typeof retryCount !== 'undefined' ? retryCount : 3;
@@ -620,7 +791,7 @@ function loadAndExpandElementIds(ids) {
     }
 }
 function expandFailed(element) {
-    if (element.status == "FAIL") {
+    if (element.status == "FAIL" || (element.type == "test" && element.status == "SKIP")) {
         window.elementsToExpand = [element];
         window.expandDecider = function (e) {
             return e.status == "FAIL";
@@ -844,7 +1015,6 @@ window.model = (function () {
         suite.populateSuites = createIterablePopulator('Suite');
         suite.childrenNames = ['keyword', 'suite', 'test'];
         suite.callWhenChildrenReady = function (callable) { callable(); };
-        suite.message = data.message;
         suite.children = function () {
             return suite.keywords().concat(suite.tests()).concat(suite.suites());
         };
@@ -935,6 +1105,7 @@ window.model = (function () {
             name: data.name,
             doc: data.doc,
             status: data.status,
+            message: data.message,
             times: data.times,
             id: data.parent ? data.parent.id + '-' + data.id : data.id
         };
@@ -955,7 +1126,6 @@ window.model = (function () {
                 return test.keywords();
         };
         test.tags = data.tags;
-        test.message = data.message;
         test.matchesTagPattern = function (pattern) {
             return containsTagPattern(test.tags, pattern);
         };
@@ -971,7 +1141,7 @@ window.model = (function () {
         kw.type = data.type;
         kw.template = 'keywordTemplate';
         kw.arguments = data.args;
-        kw.assign = data.assign + (data.assign ? ' =' : '');
+        kw.assign = data.assign + (data.assign ? ' =  ' : '');
         kw.tags = data.tags;
         kw.timeout = data.timeout;
         kw.populateKeywords = createIterablePopulator('Keyword');
@@ -1082,58 +1252,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1350,8 +1510,9 @@ window.testdata = function () {
     var _statistics = null;
     var LEVELS = ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FAIL', 'SKIP'];
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
-    var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'VAR', 'IF', 'ELSE IF', 'ELSE'];
-    var MESSAGE_TYPE = 8;
+    var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
+                         'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
+                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -1372,10 +1533,10 @@ window.testdata = function () {
                 elapsed];
     }
     function createMessage(element, strings) {
-        return model.Message(LEVELS[element[2]],
-                             util.timestamp(element[1]),
-                             strings.get(element[3]),
-                             strings.get(element[4]));
+        return model.Message(LEVELS[element[1]],
+                             util.timestamp(element[0]),
+                             strings.get(element[2]),
+                             strings.get(element[3]));
     }
     function parseStatus(stats) {
         return STATUSES[stats[0]];
@@ -1386,11 +1547,15 @@ window.testdata = function () {
         };
     }
     function createBodyItem(parent, element, strings, index) {
-        if (element[0] == MESSAGE_TYPE)
+        if (element.length < 5)
             return createMessage(element, strings);
-        return createKeyword(parent, element, strings, index);
+        var messages = util.filter(parent.children(), function (child) {
+            return child.type == 'message';
+        })
+        return createKeyword(parent, element, strings, index - messages.length);
     }
     function createKeyword(parent, element, strings, index) {
+        var status = element[8];
         var kw = model.Keyword({
             parent: parent,
             type: KEYWORD_TYPES[element[0]],
@@ -1406,7 +1571,12 @@ window.testdata = function () {
                 this.doc = function () { return doc; };
                 return doc;
             },
-            status: parseStatus(element[8], strings),
+            status: parseStatus(status),
+            message: function () {
+                var msg = status.length == 4 ? strings.get(status[3]) : '';
+                this.message = function () { return msg; };
+                return msg;
+            },
             times: model.Times(times(element[8])),
             isChildrenLoaded: typeof(element[9]) !== 'number'
         });
@@ -1617,6 +1787,20 @@ window.testdata = function () {
 }();
 </script>
 <script type="text/javascript">
+const lightModeIcon = `
+<svg class="light-mode-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+    viewBox="0 0 24 24" fill="var(--text-color)">
+    <rect fill="none" height="24" width="24" />
+    <path
+        d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0 c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2 c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1 C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06 c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41 l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41 c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36 c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z" />
+</svg>`
+const darkModeIcon = `
+<svg class="dark-mode-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+    viewBox="0 0 24 24" fill="var(--text-color)">
+    <rect fill="none" height="24" width="24" />
+    <path
+        d="M11.01,3.05C6.51,3.54,3,7.36,3,12c0,4.97,4.03,9,9,9c4.63,0,8.45-3.5,8.95-8c0.09-0.79-0.78-1.42-1.54-0.95 c-0.84,0.54-1.84,0.85-2.91,0.85c-2.98,0-5.4-2.42-5.4-5.4c0-1.06,0.31-2.06,0.84-2.89C12.39,3.94,11.9,2.98,11.01,3.05z" />
+</svg>`
 function removeJavaScriptDisabledWarning() {
     // Not using jQuery here for maximum speed
     document.getElementById('javascript-disabled').style.display = 'none';
@@ -1652,6 +1836,10 @@ function setTitle(suiteName, type) {
 function addHeader() {
     var generated = util.timestamp(window.output.generated);
     $.tmpl('<h1>${title}</h1>' +
+           '<button id=theme-toggle>' +
+             lightModeIcon +
+             darkModeIcon +
+           '</button>' +
            '<div id="generated">' +
              '<span>Generated<br>${generated}</span><br>' +
              '<span id="generated-ago">${ago} ago</span>' +
@@ -1663,6 +1851,7 @@ function addHeader() {
         ago: util.createGeneratedAgoString(generated),
         title: document.title
     }).appendTo($('#header'));
+    document.getElementById('theme-toggle')?.addEventListener('click', theme.onClick);
 }
 function addReportOrLogLink(myType) {
     var url;
@@ -1791,30 +1980,116 @@ function stopPropagation(event) {
     if (event.stopPropagation)
         event.stopPropagation();
 }
+const theme = function () {
+    const storageKey = 'theme-preference';
+    const urlParams = new URLSearchParams(window.location.search);
+    var storage;
+    var theme;
+    function init(givenStorage) {
+        storage = givenStorage;
+        theme = { value: getPreference() };
+        document.body.setAttribute('data-theme', theme.value);
+        reflectPreference();
+        window.matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', ({matches:isDark}) => {
+                theme.value = isDark ? 'dark' : 'light';
+                setPreference();
+            });
+        window.addEventListener('storage', ({key, newValue}) => {
+            if (key === storage.fullKey(storageKey)) {
+                theme.value = newValue === 'dark' ? 'dark' : 'light';
+                setPreference();
+            }
+        });
+    }
+    function getPreference() {
+        if (urlParams.has('theme')) {
+            var urlTheme = urlParams.get('theme') === 'dark' ? 'dark' : 'light';
+            storage.set(storageKey, urlTheme);
+            urlParams.delete('theme');
+            return urlTheme;
+        }
+        if (storage.get(storageKey))
+            return storage.get(storageKey) === 'dark' ? 'dark' : 'light';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function setPreference() {
+        storage.set(storageKey, theme.value);
+        reflectPreference();
+    }
+    function reflectPreference() {
+        document.body.setAttribute('data-theme', theme.value);
+        document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme.value);
+        const event = new Event('theme-change', {value: theme.value});
+        document.dispatchEvent(event);
+    }
+    function onClick() {
+        theme.value = theme.value === 'light' ? 'dark' : 'light';
+        document.body.setAttribute('theme-toggled', "");
+        setPreference();
+    }
+    return {init: init, getPreference: getPreference, setPreference: setPreference,
+        reflectPreference: reflectPreference, onClick: onClick};
+}();
+</script>
+<script type="text/javascript">
+storage = function () {
+    var prefix = 'robot-framework-';
+    var storage;
+    function init(user) {
+        if (user)
+            prefix += user + '-';
+        storage = getStorage();
+    }
+    function getStorage() {
+        // Use localStorage if it's accessible, normal object otherwise.
+        // Inspired by https://stackoverflow.com/questions/11214404
+        try {
+            localStorage.setItem(prefix, prefix);
+            localStorage.removeItem(prefix);
+            return localStorage;
+        } catch (exception) {
+            return {};
+        }
+    }
+    function get(key, defaultValue) {
+        var value = storage[fullKey(key)];
+        if (typeof value === 'undefined')
+            return defaultValue;
+        return value;
+    }
+    function set(key, value) {
+        storage[fullKey(key)] = value;
+    }
+    function fullKey(key) {
+        return prefix + key;
+    }
+    return {init: init, get: get, set: set, fullKey: fullKey};
+}();
 </script>
 <script type="text/javascript">
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,4,[],[0,0,11443],[],[[5,0,0,[],[0,9246,3,6],[]]],[[1,7,8,0,0,0,0,0,[1,3450,5616],[[0,9,10,0,11,12,13,0,[1,3451,0],[[8,3451,2,14]]],[5,15,0,0,0,0,0,0,[1,3451,5478],[[0,16,17,0,0,18,0,0,[1,3452,5477],[[0,19,10,0,20,21,0,0,[1,3452,5475],[[0,22,17,0,0,23,0,0,[1,3452,5475],[[0,24,10,0,25,26,27,0,[1,3453,0],[[8,3453,2,28]]],[0,29,10,0,30,31,0,0,[1,3453,1],[]],[0,29,10,0,30,32,0,0,[1,3454,0],[]],[0,29,10,0,30,33,0,0,[1,3454,0],[]],[0,29,10,0,30,34,0,0,[1,3455,0],[]],[0,29,10,0,30,35,0,0,[1,3455,0],[]],[0,29,10,0,30,36,0,0,[1,3455,1],[]],[0,29,10,0,30,37,0,0,[1,3456,0],[]],[0,29,10,0,30,38,39,0,[1,3456,1],[[8,3457,2,40]]],[0,41,42,0,43,44,0,0,[1,3457,5470],[[8,3457,2,45]]]]]]],[0,19,10,0,20,46,0,0,[1,8928,0],[]]]]]],[5,47,0,0,0,0,0,0,[3,8929,1],[[0,48,17,0,0,13,0,0,[3,8929,1],[]]]],[0,49,42,0,50,0,0,0,[1,8930,132],[]],[0,51,42,0,52,53,0,0,[1,9063,0],[]],[0,54,42,0,55,56,0,0,[1,9064,2],[]]]],[2,57,8,0,0,0,0,0,[1,9250,2193],[[0,58,17,0,0,0,0,0,[1,9251,2192],[[0,59,42,0,60,0,0,0,[1,9251,2192],[]]]]]]],[1,0,1,0]];
+window.output["suite"] = [1,2,3,0,[],[0,0,404822],[],[[4,0,0,[5,6],[0,41266,356861,7],[[0,8,9,0,10,11,0,0,[1,41266,0],[[41266,2,11]]],[0,12,13,0,0,14,0,0,[1,41266,208699],[[0,15,9,0,16,17,0,0,[1,41271,1],[]],[0,18,19,0,0,20,21,0,[1,41271,53],[]],[0,15,9,0,16,22,0,0,[1,41325,1],[]],[0,23,24,0,25,26,0,0,[1,41326,19349],[]],[0,27,28,0,0,29,0,0,[1,60675,1017],[[0,30,28,0,0,31,0,0,[1,60677,378],[[0,32,24,0,33,34,0,0,[1,60682,60],[]],[0,35,24,0,36,37,0,0,[1,60741,314],[[60741,2,38]]]]],[0,15,9,0,16,17,0,0,[1,61056,1],[]],[0,30,28,0,0,39,0,0,[1,61057,354],[[0,32,24,0,33,34,0,0,[1,61058,39],[]],[0,35,24,0,36,37,0,0,[1,61097,314],[]]]],[0,15,9,0,16,22,0,0,[1,61411,0],[]],[0,40,28,0,0,41,0,0,[1,61411,281],[[0,32,24,0,33,34,0,0,[1,61416,44],[]],[0,42,24,0,43,44,0,0,[1,61460,232],[[61460,2,45]]]]]]],[0,8,9,0,10,46,0,0,[1,61692,2],[[61692,2,46]]],[0,23,24,0,25,47,0,0,[1,61695,140147],[]],[0,42,24,0,43,48,0,0,[1,201843,289],[[201843,2,49]]],[0,8,9,0,10,50,0,0,[1,202132,2],[[202134,2,50]]],[0,51,9,0,52,53,0,0,[1,202135,8012],[[210146,2,54]]],[0,55,9,0,56,57,58,0,[1,210147,0],[[210147,2,59]]],[0,40,28,0,0,58,0,0,[1,210147,481],[[0,32,24,0,33,34,0,0,[1,210147,125],[]],[0,42,24,0,43,44,0,0,[1,210278,350],[[210278,2,60]]]]],[0,51,9,0,52,53,0,0,[1,210629,8003],[[218631,2,54]]],[0,23,24,0,25,61,0,0,[1,218632,41],[]],[0,42,24,0,43,62,0,0,[1,218673,1040],[[218673,2,63]]],[0,8,9,0,10,64,0,0,[1,219714,1],[[219715,2,64]]],[0,65,24,0,66,0,67,0,[1,219716,50],[[219766,2,68]]],[0,69,24,0,70,71,0,0,[1,219769,244],[]],[0,51,9,0,52,72,0,0,[1,220014,10002],[[230015,2,73]]],[0,74,24,0,75,76,0,0,[1,230017,19942],[]],[0,8,9,0,10,77,0,0,[1,249960,0],[[249960,2,77]]]]],[0,8,9,0,10,78,0,0,[1,249968,0],[[249968,2,78]]],[0,79,80,0,0,0,0,0,[1,249968,17040],[[0,81,24,0,82,0,0,0,[1,249968,6944],[[256912,2,83]]],[0,74,24,0,75,84,0,0,[1,256912,44],[]],[0,42,24,0,43,85,0,0,[1,256959,284],[[256961,2,86]]],[0,51,9,0,52,87,0,0,[1,257244,5021],[[262266,2,88]]],[0,81,24,0,82,0,0,0,[1,262268,4740],[[267007,2,89]]]]],[0,90,91,0,0,0,0,0,[1,267007,10386],[[0,92,9,0,93,94,95,0,[1,267007,54],[[0,74,24,0,75,96,0,0,[1,267007,52],[]],[267061,2,97]]],[5,98,0,0,0,0,0,0,[3,267062,4],[[0,74,24,0,75,99,0,0,[3,267063,0],[]],[0,51,9,0,52,100,0,0,[3,267066,0],[]],[0,42,24,0,43,101,0,0,[3,267066,0],[]],[0,81,24,0,82,0,0,0,[3,267066,0],[]]]],[0,51,9,0,52,72,0,0,[1,267066,10008],[[277073,2,73]]],[0,74,24,0,75,102,0,0,[1,277076,52],[]],[0,42,24,0,43,103,0,0,[1,277130,264],[[277130,2,104]]]]],[0,105,106,0,0,107,0,0,[1,277397,96275],[[0,51,9,0,52,108,0,0,[1,277401,20012],[[297413,2,109]]],[0,110,24,0,111,112,0,0,[1,297415,236],[[297415,2,113]]],[0,51,9,0,52,108,0,0,[1,297651,20001],[[317652,2,109]]],[0,32,24,0,33,114,0,0,[1,317653,70],[]],[0,42,24,0,43,115,0,0,[1,317724,557],[[317724,2,116]]],[0,51,9,0,52,72,0,0,[1,318281,10009],[[328290,2,73]]],[0,40,28,0,0,117,0,0,[1,328291,430],[[0,32,24,0,33,34,0,0,[1,328292,51],[]],[0,42,24,0,43,44,0,0,[1,328343,377],[[328346,2,118]]]]],[0,51,9,0,52,119,0,0,[1,328721,15014],[[343735,2,120]]],[0,32,24,0,33,121,0,0,[1,343737,60],[]],[0,81,24,0,82,0,0,0,[1,343797,2946],[[346743,2,122]]],[0,42,24,0,43,123,0,0,[1,346751,628],[[346754,2,124]]],[0,51,9,0,52,119,0,0,[1,347381,15015],[[362395,2,120]]],[0,55,9,0,56,125,126,0,[1,362399,1],[[362400,2,127]]],[0,51,9,0,52,128,0,0,[1,362400,3007],[[365407,2,129]]],[0,42,24,0,43,130,0,0,[1,365410,419],[[365411,2,131]]],[0,51,9,0,52,87,0,0,[1,365829,5007],[[370835,2,88]]],[0,81,24,0,82,0,0,0,[1,370835,1977],[[372812,2,132]]],[0,42,24,0,43,133,0,0,[1,372813,834],[[372814,2,134]]],[0,135,24,0,136,0,0,0,[1,373648,23],[]]]],[0,137,138,0,0,0,0,0,[1,373678,5328],[[0,51,9,0,52,87,0,0,[1,373679,5014],[[378692,2,88]]],[0,65,24,0,66,0,67,0,[1,378693,21],[[378714,2,139]]],[0,69,24,0,70,140,0,0,[1,378716,290],[]]]],[0,141,138,0,0,142,0,0,[1,379007,9002],[[0,32,24,0,33,143,0,0,[1,379008,4776],[]],[0,42,24,0,43,144,0,0,[1,383784,258],[[383785,2,145]]],[0,55,9,0,56,146,126,0,[1,384044,1],[[384045,2,147]]],[0,42,24,0,43,130,0,0,[1,384046,249],[[384047,2,148]]],[0,81,24,0,82,0,0,0,[1,384297,3712],[[388009,2,149]]]]],[0,150,138,0,0,151,0,0,[0,388009,5777],[[0,32,24,0,33,152,0,0,[1,388009,71],[]],[0,35,24,0,36,153,0,0,[1,388080,283],[[388080,2,154]]],[0,35,24,0,36,155,0,0,[1,388363,270],[[388363,2,156]]],[0,35,24,0,36,157,0,0,[1,388633,307],[[388635,2,158]]],[0,35,24,0,36,159,0,0,[1,388944,304],[[388945,2,160]]],[0,35,24,0,36,161,0,0,[1,389249,547],[[389249,2,162]]],[0,81,24,0,82,0,0,0,[0,389796,3990],[[393590,3,164],[393590,5,165]]]]],[0,166,138,0,0,167,0,0,[3,393787,1],[]],[0,168,138,0,0,169,0,0,[3,393788,1],[]],[0,170,138,0,0,171,0,0,[3,393789,1],[]],[0,172,138,0,0,0,0,0,[3,393790,1],[]],[0,51,9,0,52,87,0,0,[3,393791,0],[]],[0,173,24,0,174,175,0,0,[3,393792,0],[]],[2,176,177,0,0,0,0,0,[0,393794,4331],[[5,178,0,0,0,0,0,0,[0,393794,4327],[[0,179,9,0,180,81,0,0,[0,393797,4324],[[0,81,24,0,82,0,0,0,[0,393797,4324],[[398049,3,164],[398058,5,182]]]]]]],[5,183,0,0,0,0,0,0,[3,398121,4],[[0,184,9,0,185,186,0,0,[3,398121,0],[]],[0,179,9,0,180,187,0,0,[3,398121,0],[]],[0,188,24,0,189,0,0,0,[3,398125,0],[]]]]]]]]],[[1,190,177,0,0,0,0,0,[1,6335,34932],[[0,191,9,0,192,193,194,0,[1,6336,0],[[6336,2,195]]],[5,178,0,0,0,0,0,0,[1,6336,34918],[[0,196,28,0,0,197,0,0,[1,6336,34918],[[0,198,9,0,199,200,0,0,[1,6336,34917],[[0,201,28,0,0,202,0,0,[1,6336,34917],[[0,203,9,0,204,205,206,0,[1,6336,0],[[6336,2,207]]],[0,208,9,0,209,210,0,0,[1,6336,0],[]],[0,208,9,0,209,211,0,0,[1,6336,0],[]],[0,208,9,0,209,212,0,0,[1,6336,0],[]],[0,208,9,0,209,213,0,0,[1,6336,0],[]],[0,208,9,0,209,214,0,0,[1,6336,0],[]],[0,208,9,0,209,215,0,0,[1,6336,0],[]],[0,208,9,0,209,216,0,0,[1,6336,0],[]],[0,208,9,0,209,217,0,0,[1,6342,1],[]],[0,208,9,0,209,218,219,0,[1,6343,0],[[6343,2,220]]],[0,221,24,0,222,223,0,0,[1,6343,34910],[[6343,2,224]]]]]]],[0,198,9,0,199,225,0,0,[1,41254,0],[]]]]]],[5,183,0,0,0,0,0,0,[3,41255,0],[[0,226,28,0,0,194,0,0,[3,41255,0],[]]]],[0,227,24,0,228,0,0,0,[1,41255,0],[]],[0,229,24,0,230,231,0,0,[1,41255,0],[]],[0,232,24,0,233,72,0,0,[1,41255,11],[]]]],[2,234,177,0,0,0,0,0,[1,398136,6686],[[0,235,28,0,0,0,0,0,[1,398144,6677],[[0,236,24,0,237,0,0,0,[1,398146,6675],[]]]]]]],[1,0,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*DESCOPED HR 17 Transfer an employee","*C:\\Azure Repo\\OracleCloudTestAutomation\\hcm\\TestSuites\\DESCOPED_HR_17_Transfer_an_employee.robot","*TestSuites/DESCOPED_HR_17_Transfer_an_employee.robot","eNpdUO1qwzAMfBW9wf7XpdAv2GArJWkfQE2UIBZLnu0M8vZz4zTN+sPYPunupFu7zcWjhIY8oMDRuk4HIjh78vTTc+BIKzhrulkFKq0JjvLLXsWSRCgdVdxwBQeMuIL3Aj61ZYFrIG+evH3imaf6qbe3ZFhQH/DW0UTO5SxL1Z1ntnU9CmAH2xC4zaYf0qj5QpaYDnyhYJvURrTEDv2Q33u1jiTgOEFCTEE4ioAnpz6G3JY84MA+OU74zL6b5SY4DIJ2XnOOrIyY+hNIo3jyadTPZfN//2m2HQYOj8/Wai/x2ViSsHqOAxQo32aHvk07srRwFY6v5SmmBTyOsleJHtM+i/Fm7Cj1C3IZ3OKX9zBnr04D1XO8J7S0zKrIWY3wI6v1m9v8Ad/U2MM=","eNp9Uk1rwkAQ/StzEKJQ8V4Q/IQKVSTRk/QwdSdxaXZ22V3BIP73bjZqa9M2kBzem3nz5k02FtnlZAEZ5sqUuiKCPnTOC3EJ35cUXnUhGbaObA00NYrYQ0Z7LzV/oaFzdVTvTeFYCFnTWMLYOVlw7Flwrmt2iZJ9eGGJjEUY3xAng/7wDIOBM8g7Tyff7Q2TDEu0VfL2Bz3VyhA7rKeFos45JYwTwZLR1rt/xYNPmEkbdoG0KY8aQbQ23OqVbI5+NzIl7umgS0F2mAjRV0r1q/AkIUcBex2Xc92RFE+JNDOf9G7GNEOuLWyuuddhrLWLUcFUC3oAMmKprfQVpMgfNTVBWwRpyQVsWfpfKq5n+cbM0EfZabBlMSyaebS+Dc+D9Ra4qcwj0CwRJ8W7wASddK2IfmTgs3GTwdpqox2J++VXqOj6wzwe4s7cbnH5BCvG9Js=","*Test case contains no keywords.","*Before Suite","*SetupAndTeardown","*Get Variable Value","*BuiltIn","*<p>Returns variable value or <code>default\x3c/code> if the variable does not exist.\x3c/p>","*${SUITE NAME}","*${file_name}","*${file_name} = DESCOPED HR 17 Transfer an employee","*'${local_execution_flag}'=='True'","*Launch Browser","*CommonKeywords","*${URL}, ${local_execution_browser}","*Run Keyword If","*<p>Runs the given keyword with the given arguments, if <code>condition\x3c/code> is true.\x3c/p>","*'${Browser}' == 'Chrome', Launch Chrome, ${URL}","*Launch Chrome","*${URL}","*Evaluate","*<p>Evaluates the given expression in Python and returns the result.\x3c/p>","*sys.modules['selenium.webdriver'].ChromeOptions(), sys, selenium.webdriver","*${ChromeOptions}","*${ChromeOptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000026FB08FBC40&gt;","*Call Method","*<p>Calls the named method of the given object with the provided arguments.\x3c/p>","*${ChromeOptions}, add_argument, --disable-extensions","*${ChromeOptions}, add_argument, --incognito","*${ChromeOptions}, add_argument, --disable-notifications","*${ChromeOptions}, add_argument, --disable-popup-blocking","*${ChromeOptions}, add_argument, --ignore-certificate-errors","*${ChromeOptions}, add_argument, --ignore-ssl-errors","*${ChromeOptions}, add_experimental_option, useAutomationExtension, ${FALSE}","*${ChromeOptions}, to_capabilities","*${Options}","*${Options} = {'browserName': 'chrome', 'version': '', 'platform': 'ANY', 'goog:chromeOptions': {'useAutomationExtension': False, 'extensions': [], 'args': ['--disable-extensions', '--incognito', '--disable-notific...","*Open Browser","*Selenium2Library","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${URL}, Chrome, desired_capabilities=${Options}","eNqdy8ENwyAMAMBVrHx4YdRnqjSfDtAZHDAhEsHIJu362aH3v0/ndrQdNpWfsYJ7F5WTHQyBjYzh0gpuISjK+TWVMbo9Q6iyH81zGdEn/s7eiCxTV0kPzIQSDUUpVo5VroRRzmn9/y6BVoc3WZc8kQ==","*'${Browser}' == 'Firefox', Launch Firefox, ${URL}","*'${sauce_execution_flag}'=='True'","*Launch HCM","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Set Screenshot Directory","*<p>Sets the directory for captured screenshots.\x3c/p>","*./Screenshots","*Set Selenium Timeout","*<p>Sets the timeout that is used by various keywords.\x3c/p>","*10s","*After Suite","*End Web Test","*Close All Browsers","*<p>Closes all open browsers and resets the browser cache.\x3c/p>","*Calling method '_start_suite' of listener 'DataDriver' failed: IndexError: list index out of range"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Unifier TC017 00 Create A Board Order","*C:\\Users\\senthil.n.thangaraj\\PycharmProjects\\git\\hcm\\testsuites\\Unifier_TC017_00_Create_A_Board_Order.robot","*testsuites/Unifier_TC017_00_Create_A_Board_Order.robot","*Scenario: Create board orders","*BoardOrderTestCase","*ModifyData","eNqN001v1DAQBuAz+RVz21aRVraT+CMShyJVwIE9sFs4IA6OPW5CU7tyvOzuv8dpAfVCwjGZx+94EvsmpTh0x4S3MYbYwmYXPB4uT7iB0P1Ak6DXE/gA+g+EDXoTLG6K4macAiTU0YaTB6eHEW1b7ML+aPqvg89vb88Gn9IQfAufcJr0PbZz2JQBnJ5FC0nHe0y/H0GPEbW9gBnDhLZwMTzC0T/4uQO+7PGEHfwc8JSTErhw9LYAuNrn/NwIBu9CC6bPC/EtremWbEWlyJYydl3skzYPKWqDbfHmPaYP2tsRv2Ac3IARvpEzOQvnONbCKseaUhIuxPf/sJJkK7jM9mqXJ7w8dmG8fq0aSVjnFuoZ1PTfdU5kJ3GhzhSzbGk9ZVgt9DdKCLJU142u1r6F7iQVtqyIFOJ5mhXNWKWz5lXV1KvaVsw0ZUWV5Hw1W7g6D1xSKbiq13HHiCsZ5Y1aT0aGWJeUilrwdVwR5WasqFrFRlEtM+ZyPknv9ISHfr4QH/2QDn2+CH91R7myrFG2ZHPs5zTeTRhfdD7mMb2SUqF2QpZ1/r2/AKqrPh8=","*Log","*BuiltIn","*<p>Logs the given message with the given level.\x3c/p>","*Step 1","*Unifier Login Using","*UnifierLogin","*V-ACC-Senthil.Thangaraj@metrolinx.com","*Set Log Level","*<p>Sets the log threshold to the specified level.\x3c/p>","*NONE","*Get Password","*Helpers","*${user_id}","*${password}","*INFO","*Wait Until Page Contains","*Selenium2Library","*<p>Waits until <code>text\x3c/code> appears on the current page.\x3c/p>","*Please use your Metrolinx Email Address to sign-in    300s    login Page is not displayed","*Login","*CommonKeywords","eNpTqS7Ny0zLTC2KLy1OLcpLzE2tVQAClWoQNz4zBcaDKipILC4uzy+CCaNxYaqKM9Pz4jPzagEizyGY","*Wait And Set Text","*${txt_userid}    ${user_id}","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*${locator}    20","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${locator}    ${value}","*Typing text 'V-ACC-Senthil.Thangaraj@metrolinx.com' into text field 'xpath: //input[@id='okta-signin-username']'.","*${txt_pass}    ${password}","*Wait And Click Element","*${btn_submit}","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*${locator}","*Clicking element 'xpath: //input[@value='Sign In']'.","*User has signed in","*Cookies on Primavera Portal    150s    Cookies Alert is not displayed","*${got_it_alert}","*Clicking element 'xpath: //button[@title='Accept']'.","*User has answered to the alert","*Sleep","*<p>Pauses the test executed for the given time.\x3c/p>","*8s","*Slept 8 seconds.","*Catenate","*<p>Catenates the given items together and returns the resulted string.\x3c/p>","*SEPARATOR=    //ul/li//span[contains(text(),'Stage')]","*${environment_select}","*${environment_select} = //ul/li//span[contains(text(),'Stage')]","*Clicking element '//ul/li//span[contains(text(),'Stage')]'.","*Primavera Unifier    150s    Primavera Unifier app is not displayed","*${primavera_unifier_icon}","*Clicking element 'xpath: //img[@alt='Primavera Unifier']'.","*User has clicked the primavera Unifier application icon","*Get Window Handles","*<p>Returns all child window handles of the selected browser as a list.\x3c/p>","*${list}","*${list} = ['7DA82794926CF3429D84D279A1FDBA98', 'C63C0894E6DFCA258013A51AB2D8D261']","*Switch Window","*<p>Switches to browser window matching <code>locator\x3c/code>.\x3c/p>","*${list}[1]","*10s","*Slept 10 seconds.","*Wait Until Page Contains Element","*<p>Waits until the element <code>locator\x3c/code> appears on the current page.\x3c/p>","*${home_icon}    40s    Unifier landing page is not displayed","*User is taken to the landing page of Unifier","*Step 2","*Click on home icon in landing Page","*UnifierLanding","*Capture Page Screenshot","*<p>Takes a screenshot of the current page and embeds it into a log file.\x3c/p>","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"Screenshots/selenium-screenshot-5523.png\"><img src=\"Screenshots/selenium-screenshot-5523.png\" width=\"800px\">\x3c/a>","*${home_icon}    60s    Home icon is not displayed","*${home_icon}","*Clicking element 'xpath: //a[@aria-label='Home']'.","*5s","*Slept 5 seconds.","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"Screenshots/selenium-screenshot-5524.png\"><img src=\"Screenshots/selenium-screenshot-5524.png\" width=\"800px\">\x3c/a>","*Click on Board Orders under CRE Master Log","*UnifierHome","*Run Keyword And Return Status","*<p>Runs the given keyword with given arguments and returns the status as a Boolean value.\x3c/p>","*Wait Until Page Contains Element    ${board_orders_link}    60s    board orders link is not displayed","*${check}","*${board_orders_link}    60s    board orders link is not displayed","*${check} = True","*'${check}'=='False'","*${cre_master_log_link}    120s    CRE Master Log link is not displayed in the Unifier home page","*30s","*${cre_master_log_link}","*${board_orders_link}    60s    Board orders link is not displayed","*${board_orders_link}","*Clicking element 'xpath: //span[text()='Board Orders']'.","*Click on Create board orders button","*UnifierBoardOrders","*PROP-00002 : CANPA GUIDEWAY","*20s","*Slept 20 seconds.","*Select Frame","*<p>Sets frame identified by <code>locator\x3c/code> as the current frame.\x3c/p>","*${board_order_frame}","*Selecting frame 'xpath: //iframe[@class='qaframe'][@title='Home Content']'.","*${create_board_order_button}    30s    Create board orders button is not displayed","*${create_board_order_button}","*Clicking element 'xpath: //span[text()='Create']//preceding::oj-button[@id='new-btn-other']'.","*xpath: //div[@id=\"createdlgbody\"]","*Clicking element 'xpath: //div[@id=\"createdlgbody\"]'.","*15s","*Slept 15 seconds.","*${select_business_process_origin_drop_down}    60s    Select business origin drop down is not displayed","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"Screenshots/selenium-screenshot-5525.png\"><img src=\"Screenshots/selenium-screenshot-5525.png\" width=\"800px\">\x3c/a>","*${select_business_process_origin_drop_down}","*Clicking element 'xpath:(//span[text()='Select Business Process Origin']/parent::b/parent::label/parent::div/parent::oj-label/following-sibling::oj-select-single)[1]'.","*SEPARATOR=    //span[text()='${business_origin_drop_down_value}']","*${xpath}","*${xpath} = //span[text()='PROP-00002 : CANPA GUIDEWAY']","*3s","*Slept 3 seconds.","*xpath:${xpath}","*Clicking element '<a href=\"xpath://span[text()='PROP-00002\">xpath://span[text()='PROP-00002\x3c/a> : CANPA GUIDEWAY']'.","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"Screenshots/selenium-screenshot-5526.png\"><img src=\"Screenshots/selenium-screenshot-5526.png\" width=\"800px\">\x3c/a>","*${create_new_board_order_record_button}","*Clicking element 'xpath: (//span[contains(@id,'createNewRec')])[1]'.","*Unselect Frame","*<p>Sets the main frame as the current frame.\x3c/p>","*Switch to board order window","*UnifierCreateNewBoardOrders","*${list} = ['7DA82794926CF3429D84D279A1FDBA98', 'C63C0894E6DFCA258013A51AB2D8D261', '5BB313ACEB52A99EA482168FBE4292E1']","*${list}[2]","*Update board order Status","*Active","*${board_order_status_drop_down}    60s    Board order status drop down is not displayed","*${board_order_status_drop_down}","*Clicking element 'xpath: (//label[text()=\"Status\"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//a)[1]'.","*SEPARATOR=    //li/div[text()='${board_order_status_value}']","*${xpath} = //li/div[text()='Active']","*Clicking element '<a href=\"xpath://li/div[text()='Active\">xpath://li/div[text()='Active\x3c/a>']'.","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"Screenshots/selenium-screenshot-5527.png\"><img src=\"Screenshots/selenium-screenshot-5527.png\" width=\"800px\">\x3c/a>","*Validate board order details","*Entity12    89977    Oct/22/2025    889899    Payment structure comments","*${applicable_board_entity_input}    60s    Board order status drop down is not displayed","*${applicable_board_entity_input}    ${application_board_entity_value}","*Typing text 'Entity12' into text field 'xpath: (//label[text()=\"Applicable Board Entity\"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//input)[1]'.","*${board_order_number_input}    ${board_order_number_value}","*Typing text '89977' into text field 'xpath: (//label[text()=\"Board Order #\"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//input)[1]'.","*${date_of_agreement_input}    ${date_of_agreement_value}","*Typing text 'Oct/22/2025' into text field 'xpath: (//label[text()=\"Date of Agreement\"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//input)[1]'.","*${board_order_file_number_input}    ${board_order_file_number_value}","*Typing text '889899' into text field 'xpath: (//label[text()=\"Board Order File # (if appl.)\"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//input)[1]'.","*${comments_on_payment_structure_input}    ${comments_on_payment_structure_value}","*Typing text 'Payment structure comments' into text field 'xpath: (//label[text()=\"Comments on Payment Structure (if appl.)\"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//textarea)[1]'.","*s1-t1-k9-k7","eNqN001v1DAQBuAz+yvm1laRVv6KPyJxgQMgBEJs4YI4OPa4iZrayHFI99/jLQj1QsIxep+Z0Tj2ezyvKXu4em1/lCUjfLJ3CCeXEeM8pHIFLi2Th5gK9Ah5iZAiBDtOFXfwAee5FnQ1h3lxA6xj9GntoNh8h+XPJ9gpo/VncFOa0R9CTg+wxPuY1giYc8odrNjDzxHXp0khLdEfAK5Ptf9YB44xpA7cUAvxJRX0SI6KG3KkjN0cTsW6+5Ktw+7w4g2Wtzb6Cb9iHsOIGb6RR/KoQpAolDeBtY0mUqnv/2E1qVZJXe31x7rh+aFP081z1WrC+rCRVyDov3NJdK9xI2eGebZVTxnyjfnOKEW2cttavncWttdU+YYTrdTTNjuaMW6rlpy3Yld7zlzbcGq0lLu9VRB14YZqJY3Yxz0joWFUtma/MzJE0VCqhJL7mBMTLthQs4udoVZXLPXlJr2yM94OlwfxLo7ldqgP4a/uqTSetcY37NL2c5m+zJh/63rNc3kmtUEblG5E/b2/ABB4Lms=","*AttributeError: 'NoneType' object has no attribute 'encode'","*Validate board order parties information details","*party 1    party 2    party 3    party 4","*Validate Location Information block","*location description    5000    7000    WESTON","*Validate board order requirements","*CONTR-01430    board order requirement text","*Submit the board order","*Page Should Not Contain","*<p>Verifies the current page does not contain <code>text\x3c/code>.\x3c/p>","*Errors and Warnings","*After Test","*SetupAndTeardown","*'${local_execution_flag}'=='True'","*Run Keyword If Test Failed","*<p>Runs the given keyword with the given arguments, if the test failed.\x3c/p>","*s1-t1-k16-k1-k1-k1","eNqN00tP3DAQB/Bz91PMERRp5Vf8iMQFCbUc4NCl5YA4OPaYjQh25Xib5dvXS6uKCwlHa37zt8aP27Q7uP39EH2ar44Of5UhxQ5ucJrsE3YQE0wVwPwmOig2P2H5twQ7ZrT+FdyYJvSbkNMLHOJzTHMEzDnlDmbs4feAc00qENIh+g3A2a7m141giCF14Pa1ES+ooFuyVdyQLWXsfLMr1j2XbB12my9fsXyz0Y/4E/MQBszwQI7kqEKQKJQ3gbWNJlKpx09YTapVUld7dlsnfH3p03j+XrWasD4s1CsQ9OO6JLrXuFBnhnm21E8Z8oX9nVGKLNVta/naWdheU+UbTrRSb9OsaMa4rVpy3opV7TlzbcOp0VKuZqsg6sAN1UoasY57RkLDqGzNejIyRNFQqoSS65gTE07YULOKnaFWVyz16SVd2gnv9qcPcR2HcrevH+G/7qk0nrXGN+wU+72MPybMf3V95rm8k9qgDUo3ol7vH7FuINc=","*'${sauce_execution_flag}'=='True'","*Run Keyword If Test Passed","*<p>Runs the given keyword with the given arguments, if the test passed.\x3c/p>","*Execute Javascript    sauce:job-result=passed","*Execute Javascript    sauce:job-result=failed","*Close Browser","*<p>Closes the current browser.\x3c/p>","*Before Suite for Unifier Test","*Get Variable Value","*<p>Returns variable value or <code>default\x3c/code> if the variable does not exist.\x3c/p>","*${SUITE NAME}","*${file_name}","*${file_name} = Unifier TC017 00 Create A Board Order","*Launch Browser","*${Unifier_URL}    ${local_execution_browser}","*Run Keyword If","*<p>Runs the given keyword with the given arguments, if <code>condition\x3c/code> is true.\x3c/p>","*'${Browser}' == 'Chrome'    Launch Chrome    ${URL}","*Launch Chrome","*${URL}","*Evaluate","*<p>Evaluates the given expression in Python and returns the result.\x3c/p>","*sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver","*${ChromeOptions}","*${ChromeOptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000016249715460&gt;","*Call Method","*<p>Calls the named method of the given object with the provided arguments.\x3c/p>","*${ChromeOptions}    add_argument    --disable-extensions","*${ChromeOptions}    add_argument    --start-maximized","*${ChromeOptions}    add_argument    --incognito","*${ChromeOptions}    add_argument    --disable-notifications","*${ChromeOptions}    add_argument    --disable-popup-blocking","*${ChromeOptions}    add_argument    --ignore-certificate-errors","*${ChromeOptions}    add_argument    --ignore-ssl-errors","*${ChromeOptions}    add_experimental_option    useAutomationExtension    ${FALSE}","*${ChromeOptions}    to_capabilities","*${Options}","*${Options} = {'browserName': 'chrome', 'pageLoadStrategy': &lt;PageLoadStrategy.normal: 'normal'&gt;, 'goog:chromeOptions': {'useAutomationExtension': False, 'extensions': [], 'args': ['--disable-extensions', '--start-m...","*Open Browser","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${URL}    Chrome    options=${ChromeOptions}","*Opening browser 'Chrome' to base url '<a href=\"https://ca1.unifier.oraclecloud.com/prolinx/train\">https://ca1.unifier.oraclecloud.com/prolinx/train\x3c/a>'.","*'${Browser}' == 'Firefox'    Launch Firefox    ${URL}","*Launch HCM","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Set Screenshot Directory","*<p>Sets the directory for captured screenshots.\x3c/p>","*./Screenshots","*Set Selenium Timeout","*<p>Sets the timeout that is used by various keywords.\x3c/p>","*After Suite","*End Web Test","*Close All Browsers","*<p>Closes all open browsers and resets the browser cache.\x3c/p>"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:11","fail":1,"id":"s1","label":"DESCOPED HR 17 Transfer an employee","name":"DESCOPED HR 17 Transfer an employee","pass":0,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:05:57","fail":1,"label":"All Tests","pass":0,"skip":0}],[{"elapsed":"00:05:57","fail":1,"label":"BoardOrderTestCase","pass":0,"skip":0},{"elapsed":"00:05:57","fail":1,"label":"ModifyData","pass":0,"skip":0}],[{"elapsed":"00:06:45","fail":1,"id":"s1","label":"Unifier TC017 00 Create A Board Order","name":"Unifier TC017 00 Create A Board Order","pass":0,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [[8,3449,4,61]];
+window.output["errors"] = [[393590,3,164,163],[398049,3,164,181]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1681756990800;
+window.output["baseMillis"] = 1761311236480;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 11463;
+window.output["generated"] = 405967;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -1824,7 +2099,7 @@ window.settings = {"defaultLevel":"INFO","minLevel":"INFO","reportURL":"report.h
 </script>
 <title></title>
 </head>
-<body>
+<body data-theme="dark">
 <div id="javascript-disabled">
   <h1>Opening Robot Framework log failed</h1>
   <ul>
@@ -1834,12 +2109,13 @@ window.settings = {"defaultLevel":"INFO","minLevel":"INFO","reportURL":"report.h
   </ul>
 </div>
 <script type="text/javascript">removeJavaScriptDisabledWarning();</script>
-
 <div id="header"></div>
 <div id="statistics-container"></div>
 
 <script type="text/javascript">
 $(document).ready(function() {
+    storage.init();
+    theme.init(storage);
     try {
         var topsuite = window.testdata.suite();
     } catch (error) {
@@ -1847,6 +2123,7 @@ $(document).ready(function() {
         return;
     }
     initLayout(topsuite.name, 'Log');
+    theme.reflectPreference();
     addStatistics();
     addErrors();
     addExecutionLog(topsuite);
@@ -1887,25 +2164,6 @@ function drawErrorsRecursively(errors, target) {
         // Errors may have moved scroll position. Resetting location re-scrolls.
         if (window.location.hash)
             window.location.replace(window.location.hash);
-        highlightLinkTarget();
-    }
-}
-
-function highlightLinkTarget() {
-    if (window.location.hash) {
-        var target = $(window.location.hash);
-        highlight(target);
-    }
-}
-
-function highlight(element, color) {
-    if (color === undefined)
-        color = 242;
-    if (color < 255) {
-        element.css({'background-color': 'rgb('+color+','+color+','+color+')'});
-        setTimeout(function () { highlight(element, color+1); }, 300);
-    } else {
-        element.css({'background-color': ''});
     }
 }
 
@@ -1921,9 +2179,8 @@ function makeElementVisible(id) {
         util.map(ids, expandElementWithId);
         if (ids.length) {
             expandFailed(window.testdata.findLoaded(util.last(ids)));
-            window.location.hash = '';
             window.location.hash = id;
-            highlightLinkTarget();
+            document.getElementById(id).scrollIntoView();
         }
     });
 }
@@ -1947,7 +2204,7 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr class="row-${$item.index}">
-    <td class="stats-col-name" title="{{html doc}}">
+    <td class="stats-col-name" title="${doc}">
       <div class="stat-name">
         <span>{{html label}}</span>
         {{if info}}(${info}){{/if}}
@@ -2120,15 +2377,16 @@ function addExecutionLog(main) {
     <div class="element-header closed" onclick="toggleKeyword('${id}')">
       <div class="element-header-left" title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
         <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label keyword ${status.toLowerCase()}">${type}</span>
-        <span>{{html assign}}</span>
+        <span class="label ${status.toLowerCase()}">${type}</span>
+        <span class="assign">{{html assign}}</span>
         <span class="name"><span class="parent-name">{{html libname}}{{if libname}} . {{/if}}</span>{{html name}}</span>
+        &nbsp;
         <span class="arg">{{html arguments}}</span>
       </div>
       <div class="element-header-right" onclick="stopPropagation(event)">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this keyword" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" title="Link to this item" href="#${id}" onclick="makeElementVisible('${id}')"></a>
       </div>
       <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
@@ -2156,6 +2414,12 @@ function addExecutionLog(main) {
           <th>Start / End / Elapsed:</th>
           <td>${times.startTime} / ${times.endTime} / ${times.elapsedTime}</td>
         </tr>
+        {{if message()}}
+        <tr>
+          <th>Message:</th>
+          <td class="message">{{html message()}}</td>
+        </tr>
+        {{/if}}
       </table>
     </div>
   </div>
@@ -2178,6 +2442,7 @@ function addExecutionLog(main) {
   <div id="log-level-selector">
   Log level:
     <select onchange="logLevelSelected(this.options[selectedIndex].value)">
+      <option value="3">WARN</option>
       <option value="2">INFO</option>
       <option value="1">DEBUG</option>
       {{if showTrace()}}<option value="0">TRACE</option>{{/if}}

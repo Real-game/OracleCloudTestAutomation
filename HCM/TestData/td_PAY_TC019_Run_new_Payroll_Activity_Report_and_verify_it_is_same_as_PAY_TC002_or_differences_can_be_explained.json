@@ -1,11 +1,11 @@
 {
     "LegislativeDataGroup": "CA Legislative Data Group",
-    "FLowPattern": "MLX Payroll Activity Report",
+    "FLowPattern": "MLX Periodic Payroll Activity Report",
     "PayrollFlow": "Auto_Test_MLX_Payroll Activity_Report",
-    "StartDate": "11-Dec-2021",
-    "EndDate": "04-Jan-2022",
+    "StartDate": "21-Jun-2025",
+    "EndDate": "04-Jul-2025",
     "Scope": "Detail",
-    "ReportCategory": "MLX Payroll Activity Reports",
+    "ReportCategory": "MLX Periodic Payroll Activity Report",
     "Log Name": "FlowEssJobDefn",
     "Object Name": "Autotest_06368"
 }

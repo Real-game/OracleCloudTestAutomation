@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_DC08_Data_Creation_For_Mandatory_Vaccination_Reports_For_A
 *** Test Cases ***
 
 Scenario: Data Creation for Mandatory Vaccination Reports for an Employee
-    [Tags]  BenefitsTestCase  ModifyData  22D-NoData
+    [Tags]  BenefitsTestCase  ModifyData
     generatejson    ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

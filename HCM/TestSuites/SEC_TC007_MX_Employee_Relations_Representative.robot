@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC007_MX_Employee_Relations_Representative.csv
 
 *** Test Cases ***
 Scenario: Security Testing - MX Employee Relations Representative
-    [Tags]  SecurityTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  Read Only
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3

@@ -25,7 +25,7 @@ ${common_csv_path}  ./CSV/Absence_common_test_data.csv
 
 *** Test Cases ***
 Scenario: HR Absence Reports
-    [Tags]  AbsenceHRTestCase  ModifyData  DryRun
+    [Tags]  AbsenceHRTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
@@ -47,6 +47,6 @@ Scenario: HR Absence Reports
     Select And Open Report  ${data}[Report Name]
     Log  Step 15 - 16
     Click Ok Button
-    wait until element is visible  xpath: //a[text()="Export"]  120s
+    wait until element is visible  xpath: //a[text()="Export"]  150s
     Sleep  2s
     Capture Page Screenshot And Retry If Required

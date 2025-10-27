@@ -1,5 +1,7 @@
 *** Settings ***
 Library           Selenium2Library
+Library  ../Helpers/Mailosaur.py    ${API_KEY}
+Library  ../Helpers/Helpers.py
 Library         DateTime
 Library           String
 Resource  ../Keywords/CommonKeywords.robot
@@ -12,13 +14,19 @@ Documentation  Is in Robot work
 
 ${mail_URL}  https://accounts.google.com/signin/v2/identifier?service=mail&passive=1209600&osid=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&flowName=GlifWebSignIn&flowEntry=ServiceLoginn
 ${mailinator_URL}  https://www.mailinator.com
+${inboxes_URL}    https://inboxes.com/
 ${public_inbox}  xpath: //a[text()="Public Inbox"]
+${get_my_inbox}   xpath: //button[text()="Get my first inbox!"]
+${add_inbox_value}    xpath: (//button[text()="Add Inbox"])[1]
 ${inbox_address}  xpath: //input[@id="inbox_field"]
+${username_address}    xpath://input[@placeholder="Enter username"]
 ${btn_go}  xpath: (//button[contains(text(),"GO")])[2]
 ${otp_mail}  xpath: (//td[contains(text(),"Confirm your identity")])[1]
 ${offer_mail}  xpath: (//td[contains(text(),"Your job offer for the")])[1]
 ${respond_to_job_offer}  xpath: //a[contains(text(),"Respond to Job Offer")]
 ${respond_to_additional_info}  xpath: //a/span[contains(text(),"Provide Additional Info")]
+${domain_select}    xpath://input[@placeholder="Enter username"]/following-sibling::select
+${domain_value}    xpath: //input[@placeholder="Enter username"]/following-sibling::select/child::option[text()='blondmail.com']
 
 *** Keywords ***
 Email Verification
@@ -42,7 +50,7 @@ Email Verification
     ${text} =  Get Text  //body
     ${c}=    Get Lines Containing String    ${text}   one-time pass code
     Switch Window  ${list}[0]
-    [Return]  ${c}
+    RETURN    ${c}
 
 Mailinator Email Verification
     [Arguments]  ${email}
@@ -55,7 +63,31 @@ Mailinator Email Verification
     ${c}=    Get Lines Containing String    ${txt}   one-time pass code
     ${list}=  Get Window Handles
     Switch Window  ${list}[0]
-    [Return]  ${c}
+    RETURN    ${c}
+
+#Inboxes Email Verification
+#    [Arguments]  ${email}
+##    Open Inboxes Mailbox  ${email}
+#    ${list}=  Get Window Handles
+#    Switch Window  ${list}[1]
+#    Sleep    2s
+#    scroll element into view    ${otp_mail}
+##    ${element}=    Get WebElement    ${otp_mail}
+##    Execute JavaScript    arguments[0].scrollIntoView(true);
+#    ${checker1}=  RUN KEYWORD And Return Status  Wait And Click Element  ${otp_mail}
+#    IF  '${checker1}' == 'True'
+#        Execute JavaScript    window.scrollTo(0, 500);
+#        Wait And Click Element  ${otp_mail}
+#    END
+#    Sleep  20s
+#    scroll element into view    xpath: (//font)[1]
+##    select frame   id:html_msg_body
+#    ${txt} =  Get Text  xpath: (//font)[1]
+#    Log  ${txt}
+#    ${c}=    Get Lines Containing String    ${txt}   one-time pass code
+#    ${list}=  Get Window Handles
+#    Switch Window  ${list}[0]
+#    RETURN    ${c}
 
 Open Mailinator Mailbox
     [Arguments]  ${email}
@@ -68,6 +100,32 @@ Open Mailinator Mailbox
     Wait And Set Text  ${inbox_address}  ${mail_id}
     Wait And Click Element  ${btn_go}
     Sleep  2s
+
+#Open Inboxes Mailbox
+#    [Arguments]  ${email}
+#    ${mail_id}=  Get Mail  ${email}
+#    Execute Javascript   window.open('${inboxes_URL}');
+#    ${list}=  Get Window Handles
+#    Switch Window  ${list}[1]
+#    Sleep    5s
+#    reload page
+#    Sleep    5s
+#    reload page
+#    wait until page contains element    ${get_my_inbox}    20s
+#    Wait And Click Element  ${get_my_inbox}
+#    Sleep  2s
+#    Wait And Set Text  ${username_address}  ${mail_id}
+#    Sleep    2s
+#    Wait And Click Element    ${domain_select}
+#    Sleep    2s
+#    Wait And Click Element    ${domain_value}
+#    Sleep    2s
+#    Wait And Click Element  ${add_inbox_value}
+#    Sleep  2s
+#    capture page screenshot
+#    Sleep    10s
+#    ${list}=  Get Window Handles
+#    Switch Window  ${list}[0]
 
 Email Verification E2E
     [Arguments]  ${email}
@@ -90,7 +148,7 @@ Email Verification E2E
     ${text} =  Get Text  //body
     ${c}=    Get Lines Containing String    ${text}   one-time pass code
     Switch Window  ${list}[1]
-    [Return]  ${c}
+    RETURN    ${c}
 
 Mailinator Respond to Job Offer
     [Arguments]  ${email}
@@ -181,7 +239,7 @@ Respond to Offer
     Wait And Click Element   xpath://span[@class="il"]
     ${text} =  Get Text  //body
     ${c}=    Get Lines Containing String    ${text}   one-time pass code
-    [Return]  ${c}
+    RETURN    ${c}
 
 Search for schedule Interview mail
     Sleep  3s
@@ -288,3 +346,47 @@ Mailinator Respond to Additional Info Required
     Sleep  10s
     Wait until page contains element  ${personal_info_header}  20s  Personal Info Page is not displayed
     Capture Page Screenshot
+
+Get OTP Details
+    [Arguments]    ${mail}
+#    ${TEST_EMAIL_ADDRESS} =    Catenate  SEPARATOR=   ${mail}@${SERVER_DOMAIN}
+    ${MESSAGE}=     Mailosaur.find_email   ${SERVER_ID}    ${mail}
+    Mailosaur.subject_should_equal    ${MESSAGE}      Confirm your identity
+#    log to console    ${MESSAGE}
+    ${msg} =    Mailosaur.message body    ${MESSAGE}
+#    log to console    ${msg}
+    ${otp}=    Mailosaur.get otp from mail    ${MESSAGE}
+    log to console  OTP: ${otp}
+    [Return]    ${otp}
+
+Get Link from Mail
+    [Arguments]    ${mail}   ${email_subject}   ${link_message}
+    ${MESSAGE}=     Mailosaur.find emails    ${SERVER_ID}    ${mail}   ${email_subject}
+    Mailosaur.subject_should_equal    ${MESSAGE}   ${email_subject}
+#    log to console    ${MESSAGE}
+    ${msg} =    Mailosaur.message body    ${MESSAGE}
+    log to console    ${msg}
+    ${link_href} =    Mailosaur.get html link by text    ${MESSAGE}    ${link_message}
+    log to console    ${link_href}
+    [Return]    ${link_href}
+
+Mailosaur select Job Offer
+    [Arguments]  ${email}
+    ${inputs}=  Get WebElements  ${otp_inputs}
+    ${text}=  Get OTP Details  ${email}
+    log to console    ${text}
+    ${otp}=  retainOTP  ${text}
+    FOR  ${i}  IN RANGE  0  6
+        ${checker1}=  Run Keyword And Return Status  Wait And Set Text  ${inputs}[${i}]  ${otp}[${i}]
+        IF  '${checker1}'=='False'
+            ${inputs}=  Get WebElements  ${otp_inputs}
+            Wait And Set Text  ${inputs}[${i}]  ${otp}[${i}]
+        END
+    END
+    ${inputs}=  Get WebElements  ${otp_inputs}
+    FOR  ${i}  IN RANGE  0  6
+        Wait And Set Text  ${inputs}[${i}]  ${otp}[${i}]
+    END
+    Wait And Click Element  ${verify_btn}
+    Sleep  10s
+

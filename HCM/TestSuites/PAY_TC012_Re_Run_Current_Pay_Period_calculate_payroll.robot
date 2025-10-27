@@ -34,7 +34,7 @@ Scenario: Re-run 'Calculate Payroll' by running process - after rollback
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
     ${common_data}=  readJson  ${common_json_path}
-    ${payroll_flow}=  get_process_name  ${data}[PayrollFlow]
+#    ${payroll_flow}=  get_process_name  ${data}[PayrollFlow]
     Log  Step 1-3
     Login Using  ${common_data}[Login User]
     click on homepage
@@ -44,7 +44,8 @@ Scenario: Re-run 'Calculate Payroll' by running process - after rollback
     Click Submit a Flow
     Select Legislative data group as  ${data}[LegislativeDataGroup]
     Enter Flow Pattern Value and search  ${data}[FLowPattern]
-    Enter Payroll flow as  ${payroll_flow}
+    Enter Payroll flow as   ${data}[PayrollFlow]
+#    Enter Payroll flow as  ${payroll_flow}
     Select Payroll from dropdown  ${data}[Payroll]
     #Select Payroll Period from dropdown  ${data}[PayrollPeriod]
     Select Payroll Period Value from dropdown  ${data}[PayrollPeriod]

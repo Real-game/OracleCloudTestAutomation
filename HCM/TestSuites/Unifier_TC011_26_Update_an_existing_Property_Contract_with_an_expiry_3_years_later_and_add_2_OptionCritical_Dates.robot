@@ -36,13 +36,13 @@ Scenario: Update an existing Property Contract with an expiry 3 years later and 
     Log  Step 5
     Select Options and Critical Date Section and Click Add
     Log  Step 6
-    Input Option Details  ${data}[Short Description]  ${data}[Contract Option Type]  ${data}[No Earlier Notice Date]  ${data}[No Later Than Notice Date]  ${data}[Effective Renewal Extension Date]
+    Input Option Details  ${data}[Short Description]  ${data}[Contract Option Type]  ${data}[No Earlier Notice Date]  ${data}[No Later Than Notice Date]  ${data}[Effective Renewal Extension Date]  ${data}[option_status]
     Log  Step 7
     Save Option Critical Date Line Item  ${data}[Contract Option Type]
     Log  Step 8
     Select Options and Critical Date Section and Click Add
     Log  Step 9
-    Input Option Details  ${data}[Short Description2]  ${data}[Contract Option Type2]  ${data}[No Earlier Notice Date2]  ${data}[No Later Than Notice Date2]  ${data}[Effective Renewal Extension Date2]
+    Input Option Details  ${data}[Short Description2]  ${data}[Contract Option Type2]  ${data}[No Earlier Notice Date2]  ${data}[No Later Than Notice Date2]  ${data}[Effective Renewal Extension Date2]  ${data}[option_status]
     Log  Step 10
     Save Option Critical Date Line Item  ${data}[Contract Option Type2]
     Log  Step 11

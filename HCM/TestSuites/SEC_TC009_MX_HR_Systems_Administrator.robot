@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC009_MX_HR_Systems_Administrator.csv
 
 *** Test Cases ***
 Scenario: MX HR Systems Administrator
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3
@@ -94,7 +94,7 @@ Scenario: MX HR Systems Administrator
     Search And Select Person  ${data}[Person Number]
     Wait And Verify Page Contains Text  Assignment  20s  Employment Info page not found
     Capture Page Screenshot And Retry If Required
-    Sleep  3s
+    Sleep  5s
     Click Back Arrow
     Wait And Verify Page Contains Text  My Client Groups  20s  Home page not found
 

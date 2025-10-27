@@ -32,7 +32,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 
 Scenario: Screen Applicants ( Recruiters screens the candidate in Candidate Selection process )
-    [Tags]  ExternalNewHire  April19
+    [Tags]  ExternalNewHire
     generatejson  ${csv_path}  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}
     appendtojson  ${json_path}  Requisition ID  ${prerequisites_data}[RequisitionId]

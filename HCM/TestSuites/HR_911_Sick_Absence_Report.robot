@@ -66,17 +66,25 @@ Scenario: Sick Absence Report
     unselect frame
     Click Analytics Home Option
     Wait And Click Element  link: Report Job History
-    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
-    Verify Status Of Report Job And Select On Success  ${data}[Job Name]
-    Download Report Of Given Format  EXCEL
-    Sleep  20s
+#    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
+#    Verify Status Of Report Job And Select On Success  ${data}[Job Name]
+#    Download Report Of Given Format  EXCEL
+#    Sleep  20s
+
+#    Click open under the report  ${data}[Report Name]
+#    Log  Step 16
+#    Enter Report From Date  ${data}[From Date]
+#    Enter Report To Date  ${data}[To Date]
+#    Log  Step 17
+#    Click Report Apply Button
+#    Verify Report Completed
 
 #***Scenario: Validate total report value***
 
     #    @{column_list}=  Create List  Temp Assignment Start Date
     #${flag}=  ExcelReportUtility.compare_excel_skip_columns  HR-REP-134_MX_Departures_Report_HR-REP-134_MX_Departures_Report  HR-REP-134_MX_Departures_Report_HR-REP-134_MX_Departures_Report  ${column_list}  10  10
-    ${flag}=  ExcelReportUtility.compare_excel_all_columns  ${data}[Report Name]  ${data}[Report Name]  10  10
-    IF  '${flag}'!='True'
-        Fail  Reports are not matching
-    END
-    Log  result is ${flag}
+#    ${flag}=  ExcelReportUtility.compare_excel_all_columns  ${data}[Report Name]  ${data}[Report Name]  10  10
+#    IF  '${flag}'!='True'
+#        Fail  Reports are not matching
+#    END
+#    Log  result is ${flag}

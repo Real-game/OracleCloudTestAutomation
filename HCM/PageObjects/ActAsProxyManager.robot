@@ -119,14 +119,14 @@ Search Person Name
     [Arguments]  ${person_name}
     Wait And Set Text  ${name_search_field}  ${person_name}
     Wait And Click Element  ${name_search_button}
-    Sleep  5s
+    Sleep  15s
     Wait And Verify Page Contains Text  ${person_name}  20s  Person Name found
 
 Get Worksheet Column Index
     [Arguments]  ${column_name}
     ${xpath} =  Catenate  SEPARATOR=  //span[text()='${column_name}']/ancestor::th
     ${index_num} =  Get Element Attribute  ${xpath}  _d_index
-    [RETURN]  ${index_num}
+    RETURN  ${index_num}
 
 Check Eligibility Status
     ${col_index} =   Get Worksheet Column Index  Eligibility Status
@@ -136,7 +136,7 @@ Check Eligibility Status
     IF  "${egibility_status_val}" == "Eligible"
         Log  Employee is eligible
     ELSE
-        Log  Employee is eligible
+        Log  Employee is not eligible
     END
     Capture Page Screenshot And Retry If Required
 
@@ -267,6 +267,7 @@ Input Total Increase Override and Proration overide Values
     ${xpath} =  Catenate  SEPARATOR=  //span[text()='Increase % Override']/ancestor::th//following::table[@summary='Worksheet']//td[${increase_override_col_index}]
     #Wait And Click Element  ${xpath}
     scroll element into view  ${xpath}
+    wait and click element    ${xpath}
     Sleep  4s
     ${xpath} =  Catenate  SEPARATOR=  //span[text()='Increase % Override']/ancestor::th//following::table[@summary='Worksheet']//td[${increase_override_col_index}]//input
     Wait And Set Text  ${xpath}  ${total_increase_override_val}
@@ -276,6 +277,7 @@ Input Total Increase Override and Proration overide Values
     ${xpath} =  Catenate  SEPARATOR=  //span[text()='Proration % Override']/ancestor::th//following::table[@summary='Worksheet']//td[${proration_override_col_index}]
     #Wait And Click Element  ${xpath}
     scroll element into view  ${xpath}
+    Wait And Click Element  ${xpath}
     Sleep  4s
     ${xpath} =  Catenate  SEPARATOR=  //span[text()='Proration % Override']/ancestor::th//following::table[@summary='Worksheet']//td[${proration_override_col_index}]//input
     Wait And Set Text  ${xpath}  ${proration_override_val}
@@ -290,6 +292,8 @@ Input Total Increase Override and Proration overide Values
         Click Element  ${ft_salary_xpath}
     END
     Sleep  5s
+    Wait And Click Element  ${base_salary_xpath}
+    Sleep  2s
     ${ft_salary_after_value} =  Get Text  ${ft_salary_xpath}
     ${base_salary_after_value} =  Get Text  ${base_salary_xpath}
     Should Not Be Equal  ${ft_salary_after_value}  ${ft_salary_value}  New Annualized Full Time Salary has not changed based on the changes in Increase % Override and Proration % Override

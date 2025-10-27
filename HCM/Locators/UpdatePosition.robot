@@ -1,7 +1,7 @@
 *** Variables ***
 
 ${Edit_button}  xpath://a[@title="Edit"]
-${Edit_action}  xpath://div[@class='x1jp']/table/tbody/tr/td[@class='xnz']
+#${Edit_action}  xpath://table[contains(@id,"ScrollContent")]//td
 ${get_effective_date_selected}  xpath://input[@placeholder='dd-mmm-yyyy']
 ${action_reason}  xpath:(//label[text()='Action Reason'])[3]/following::input
 ${ok_button}  xpath://button[@accesskey='K']//span[1]

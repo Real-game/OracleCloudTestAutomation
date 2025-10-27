@@ -1,10 +1,13 @@
 *** Settings ***
+Resource  ../Helpers/Config.robot
+Library  ../Helpers/Helpers.py
+Library   ../Helpers/Mailosaur.py    ${API_KEY}
 Resource  ../Keywords/CommonKeywords.robot
 Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/ExternalSiteHomepage.robot
 
 *** Settings ***
-Suite Setup  Before Suite
+#Suite Setup  Before Suite
 Suite Teardown  After Suite
 Test Teardown  After Test
 
@@ -23,6 +26,10 @@ Scenario: Present and Manage Offers (Candidate offer response (External))
 #    generatecsv  ${json_path}  ${csv_path}
 #    generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
-#    Authentication for Job Offer  ${data}[Email]  ${data}[Action on Offer]  ${data}[Full Name]  ${data}[Decline Reason]
+
+    ${responds_to_job} =    Get Link from Mail    ${data}[Email]  ${data}[Email Subject]    ${data}[Link Message]
+    Open Browser    ${responds_to_job}    ${BROWSER}
+    Maximize Browser Window
+    Sleep    5s
     Take action on Job Offer  ${data}[Email]  ${data}[Action on Offer]  ${data}[Full Name]  ${data}[Decline Reason]
     Sleep  10s

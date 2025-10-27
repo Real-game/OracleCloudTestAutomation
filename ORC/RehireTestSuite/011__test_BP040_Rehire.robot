@@ -33,6 +33,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 #Transfer or Promotion - Permanent Union to Permanent Union
 #Transfer
 #Promotion
+#Temporary Assignment
 *** Test Cases ***
 
 Scenario: Present and Manage Offers ( Create an offer for external candidate )

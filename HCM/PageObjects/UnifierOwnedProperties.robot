@@ -34,8 +34,20 @@ Select an existing owned Property
     ${list}=   Get Window Handles
     Switch Window  ${list}[1]
     Sleep  4s
-    Wait Until Element Is Visible  xpath: (//iframe[contains(@src,'/studio/')])[1]  40s  Frame is not displayed
-    Select frame  xpath: (//iframe[contains(@src,'/studio/')])[1]
+    ${checker}=  run keyword and return status    Wait Until Element Is Visible  xpath: (//iframe[contains(@src,'/studio/')])[1]  40s  Frame is not displayed
+    IF  '${checker}'=='False'
+        ${checker2}=  run keyword and return status    Wait Until Element Is Visible  xpath: (//iframe[contains(@src,'/master_log/')])[1]  40s  Frame2 is not displayed
+        IF  '${checker2}'=='True'
+            Sleep  2s
+            Select frame  xpath: (//iframe[contains(@src,'/master_log/')])[1]
+        END
+        Capture Page Screenshot And Retry If Required
+    ELSE
+        Sleep  2s
+        Select frame  xpath: (//iframe[contains(@src,'/studio/')])[1]
+    END
+#    Wait Until Element Is Visible  xpath: (//iframe[contains(@src,'/studio/')])[1]  40s  Frame is not displayed
+#    Select frame  xpath: (//iframe[contains(@src,'/studio/')])[1]
     Sleep  10s
     ${owned_property_record_xpath}=  Catenate  SEPARATOR=  //a[text()='${owned_property_record_number_value}']
     Wait Until Element Is Visible  xpath: ${owned_property_record_xpath}  40s  Owned property record is not listed
@@ -57,7 +69,7 @@ Extract the copied owned property number
     Wait Until Element Is Visible  ${copied_owned_property_number_input}  150s
     Scroll Element Into View  ${copied_owned_property_number_input}
     ${copy_record_number}=   Get Element Attribute  ${copied_owned_property_number_input}  innerHTML
-    [return]  ${copy_record_number}
+    RETURN  ${copy_record_number}
 
 Select an existing owned property line item
     [Arguments]   ${owned_property_record_number_value}

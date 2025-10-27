@@ -7,7 +7,7 @@ Resource  ../Keywords/CommonKeywords.robot
 *** Keywords ***
 click on homepage
     click element  ${icon_home}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot
 
 
@@ -54,9 +54,15 @@ Go to my team create job requisition
 
 Go to Current Jobs
     Wait And Click Element  ${href_CJ}
+    Sleep    10s
+    ${check}=  Run keyword and Return Status  wait until element is visible    xpath: //h1[text()='Interests']    20s
+    IF  '${check}'=='True'
+        wait and click element    xpath: (//button[text()="Cancel"])[1]
+        Sleep  5s
+    END
     Wait Until Page Contains  Opportunity Marketplace  40s  Opportunity Marketplace page is not displayed
 #    Wait Until Element Contains  ${header}  Current Jobs
-    Wait Until Element Contains  ${header_SA}  Opportunity Marketplace
+    Wait Until Element Contains  ${header_SA}  Opportunity Marketplace    50s
     Capture Page Screenshot
 
 Go to my client group questions
@@ -135,6 +141,8 @@ Review Offer and Take Action
     END
     Sleep  5s
     Wait And Click Element  ${submit_offer_approval}
+    Sleep    5s
+    capture page screenshot
 #    Switch Window  ${handles}[0]
 
 Click on Notifications Icon
@@ -458,9 +466,11 @@ Go to me Journeys
 
 Go to my client groups show more
     wait and click element  ${href_my_client}
-    Mouse Over  ${mcg_show_more}
-    Click Link  ${mcg_show_more}
     Sleep  3s
+    Mouse Over  ${mcg_show_more}
+    Sleep  2s
+    Click Link  ${mcg_show_more}
+    Sleep  5s
     Capture Page Screenshot
 
 Click on Pending Employees
@@ -469,6 +479,7 @@ Click on Pending Employees
     Capture Page Screenshot
 
 Click on Manage Job Offers
+    wait until page contains element  ${Manage_job_offer}  10s
     Scroll element into view  ${Manage_job_offer}
     Wait And Click Element  ${Manage_job_offer}
     ${checker}=  RUN KEYWORD And Return Status  Wait until Element Contains  ${header}  Job Offers
@@ -623,11 +634,17 @@ Click on Submitted Applications
     Sleep  2s
     Wait Until Page Contains Element    ${Submitted_applications}  20s   Submitted applications not visible
     Wait And Click Element    ${Submitted_applications}
-    Sleep  3s
-    Wait And Click Element    ${applied_job}
-    Sleep  2s
+    Sleep    5s
+    wait until page contains element    ${dropdown_offer_view}    20s
+#    Wait And Click Element    ${applied_job}
+    Sleep    5s
+    scroll element into view    ${dropdown_offer_view}
+    Sleep  5s
     Wait And Click Element    ${dropdown_offer}
-    Sleep  3s
+    Sleep  5s
+    execute javascript  window.scrollBy(0,350)
+#    window.scrollTo(0,document.body.scrollHeight)
+    scroll element into view    ${view_offer}
     Wait And Click Element   ${view_offer}
     Capture Page Screenshot
 
@@ -639,10 +656,15 @@ Click on Accept button
 Sign Employee Signature
     [Arguments]  ${sign}
     Wait And Send Keys  ${sign_Empname}  ${sign}
+    Sleep    5s
+    wait and click element    xpath: //*[text()='Provide signature']
+    Sleep    3s
     Capture Page Screenshot
 
 Click on Submit Accept Offer
     Wait And Click Element  ${sub_offerbutton}
+    Sleep    5s
+    element should be visible    xpath: //*[text()="Congratulations! You accepted this job offer"]
     Capture Page Screenshot
 
 Go to my client group person management
@@ -665,4 +687,4 @@ Get Person Number in Person Management Page
     Wait Until Page Contains Element  xpath: ${Person_number_xpath}  20s  Person Details is not there
     scroll element into view  ${Person_number_xpath}
     ${person_num_value}=  get text  ${Person_number_xpath}
-    [return]  ${person_num_value}
+    RETURN  ${person_num_value}

@@ -5,7 +5,7 @@ Resource  ../PageObjects/Login.robot
 Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/EvaluatePerformance.robot
 Resource  ../PageObjects/Performance.robot
-Documentation  MManagers are unable to delete the performance document(goals)
+Documentation  Managers are unable to delete the performance document(goals)
 ...            Prerequisite:  TC01_Employee_Self_Evaluation.robot
 ...            Environment Specific Data:  Login User and Person Name
 ...            Reusable Data:  Review Period; Document; Action; Action Menu

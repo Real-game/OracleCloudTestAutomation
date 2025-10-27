@@ -71,7 +71,8 @@ ${yes_detail_property_contaminated_input}     xpath: (//label[text()="Details if
 ${estimated_remediation_cost_input}     xpath: (//label[text()="Est. Remediation Costs"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//textarea)[1]
 ${outstanding_environment_claim_input}     xpath: (//label[text()="Outstanding Env. Claim"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//textarea)[1]
 ${additional_comments_input}     xpath: (//label[text()="Additional Comments"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//textarea)[1]
-${save_environmental_condition_button}    xpath: (//span[text()='Save'])[4]
+${save_environmental_condition_button}    xpath: //oj-button[contains(@class,'save')]//span[text()='Save']
+#(//span[text()='Save'])[4]
 
 ${remediation_restoration_clause_drop_down}     xpath: (//label[text()="Remediation/Restoration Clause"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//a)[1]
 ${remediation_restoration_type_drop_down}     xpath: (//label[text()="Remediation/Restoration Type"]/parent::div/parent::oj-label/parent::div/parent::div/following-sibling::div//a)[1]

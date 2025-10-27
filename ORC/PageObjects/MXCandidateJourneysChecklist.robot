@@ -61,7 +61,7 @@ Reassign a open task
     Click Element  ${reassign_save_button}
     Sleep  4s
     Wait Until Page Contains  ${reassignee_name_value}
-    [Return]  ${reassigned_task_name}
+    RETURN  ${reassigned_task_name}
 
 Remove a open task
     Sleep  4s

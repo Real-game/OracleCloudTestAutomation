@@ -1,5 +1,7 @@
 *** Variables ***
-${open_journeys}    xpath: //span[@aria-label='Open']
+${open_journeys}    xpath://div[contains(@aria-label,"Open")]
+#//span[text()='Open']
+#//span[@aria-label='Open']
 ${tasks_list}       xpath: //ul[@aria-label='Tasks']//li[@role='row']
 ${completed_task_list}    xpath: //span[contains(@class,'ico-check')]
 
@@ -12,3 +14,5 @@ ${reports_radio_overlay}  xpath: //div[@id='assigned-journey-filter-popup_layer_
 
 ${assigned_journey_tasks_list}       xpath: //ul[@aria-label='Employee tasks']//li[contains(@id,'ui')]
 ${cultural_census_task_list}       xpath: //div[text()='Metrolinx Cultural Census']
+${jouneys_input}    xpath: //input[@aria-label="Search by person name"]
+${journeys_search}    xpath: //button[@aria-label="Search by person name"]

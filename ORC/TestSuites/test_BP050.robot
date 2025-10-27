@@ -31,7 +31,7 @@ Scenario: Internal Job Application Flow
     Login Using  ${data}[Hiring Manager user]
     click on homepage
     Go to Current Jobs
-    Click on Search
+#    Click on Search
     Search for the job and click on actions  ${data}[Job Id]
     Click on Refer An Employee option
     Refer an Employee   ${data}[Employee Title]  ${data}[Notes]
@@ -39,7 +39,7 @@ Scenario: Internal Job Application Flow
     Sleep  10s
     Click on Jobs Done button
     Click on Referral tab
-    Verify the submitted referral  ${data}[Job Id]   ${data}[Candidate Name]
+    Verify the submitted referral  ${data}[Job Id]   ${data}[Employee Title]
     click on homepage
     Logout
 

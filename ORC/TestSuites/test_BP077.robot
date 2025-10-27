@@ -14,8 +14,8 @@ Documentation  Transfer Internal Employee (Internal Candidate #1)
 *** Settings ***
 
 Suite Setup  Before Suite
-#Suite Teardown  After Suite
-#Test Teardown  After Test
+Suite Teardown  After Suite
+Test Teardown  After Test
 
 *** Variables ***
 ${json_path}    ./TestData/td_BP077.json

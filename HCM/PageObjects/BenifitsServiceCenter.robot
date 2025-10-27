@@ -31,6 +31,7 @@ Set Relationship Start Date
     Capture Page Screenshot And Retry If Required
 
 Click Submit Button
+    Sleep    5s
     Wait And Click Element  ${submit_button}
     Sleep  7s
     Capture Page Screenshot And Retry If Required

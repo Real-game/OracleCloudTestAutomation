@@ -7,8 +7,8 @@ Resource  ../PageObjects/JobRequisitions.robot
 Resource  ../PageObjects/JobRequisitionOverview.robot
 Resource  ../PageObjects/JobApplications.robot
 Resource  ../PageObjects/CandidatePage.robot
-Documentation  Recruiter checks duplicate candidates
-...            Prerequisite:  Multiple Requsitions ID's should be created
+Documentation  Hiring manager reject offer and redraft offer
+...            Prerequisite:  offer should be created for candidate
 ...            Environment Specific Data:  Login User
 ...            Reusable Data:  Requisition ID;Candidate;Notification Action;Recruiter Username;
 ...            Dynamic Data:  Requisition ID;Candidate

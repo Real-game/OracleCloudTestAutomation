@@ -7,9 +7,15 @@ Resource  ../Locators/UpdatePosition.robot
 *** Keywords ***
 
 Click On Edit Then Update Position
+    [Arguments]   ${value}
+    Sleep    5s
+    wait and click element    xpath:(//a[text()="Position Details"])[1]
+    Sleep    3s
     wait and click element  ${Edit_button}
     Sleep  2s
-    Select Required Value  ${Edit_action}   Update
+    ${Edit_action_xpath}=  Catenate  SEPARATOR=  //table[contains(@id,'ScrollContent')]//td[text()='${value}']
+    Wait And Click Element   ${Edit_action_xpath}
+#    Select Required Value  ${Edit_action}   Update
     Sleep  5s
     Capture Page Screenshot
 

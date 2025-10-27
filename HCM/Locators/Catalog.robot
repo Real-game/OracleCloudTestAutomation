@@ -110,7 +110,7 @@ ${report_pay_period_input_search}  xpath: //button[contains(@id,'To_div_input_se
 ${report_pay_period_input_search_result_ok}  xpath: //button[text()='OK']
 
 ${report_layout}  xpath: //select[@aria-labelledby="outputLayout"]
-${report_layout_excel}  xpath: //select[@aria-labelledby="outputLayout"]/option[text()='Excel']
+${report_layout_excel}  xpath: //select[@aria-labelledby="outputLayout"]/option[text()='Variance by Value - Excel']
 ${notification_tab}  xpath: //div[@id="tab_notification"]/div[1]/div[8]/a
 ${notificacation_mail}  xpath: //input[@aria-labelledby="labelNotifyByEmail"]
 ${email_notification}  xpath: //input[@id="notify_to"]

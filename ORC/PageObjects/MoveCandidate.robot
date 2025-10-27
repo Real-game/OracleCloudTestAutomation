@@ -35,6 +35,7 @@ Select State Reject
 Click on Save
     Wait And Click Element  ${save_btn}
     Wait Until Page Contains  Details
+    Sleep    5s
     Capture Page Screenshot
 
 Select Phase

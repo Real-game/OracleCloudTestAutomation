@@ -101,7 +101,8 @@ Click Send and Select Workflow Action in Contract Payable
     Wait Until Element Is Visible  ${workflow_actions_btn}  60s  Workflow Actions page is not displayed
     Click Required Element  ${workflow_actions_btn}
     Sleep  2s
-    Click Required Element  xpath: //li/div[text()='${workflow_action}']
+#    Click Required Element  xpath: //li/div[text()='${workflow_action}']
+    wait and click element    xpath: //li/div[text()='${workflow_action}']
     Sleep  1s
     Capture page screenshot
     Click Required Element  ${workflow_actions_send_btn}

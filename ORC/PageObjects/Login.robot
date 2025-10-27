@@ -11,8 +11,10 @@ Resource  ../PageObjects/Commons.robot
 *** Keywords ***
 Login Using
     [Arguments]  ${user_id}
+    Set Log Level    NONE
     ${password} =  Get Password  ${user_id}
-    Log To Console  Password:${password}
+    Set Log Level    INFO
+#    Log To Console  Password:${password}
 #    Wait Until Loading  60
     Login  ${txt_userid}  ${user_id}  ${txt_pass}  ${password}  ${btn_submit}
 #    Wait Until Loading  60

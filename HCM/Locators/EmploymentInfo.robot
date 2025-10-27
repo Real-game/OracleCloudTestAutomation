@@ -22,4 +22,5 @@ ${additional_assigment_section_header}  xpath: //h2[text()='Additional Assignmen
 ${direct_reports_section_header}  xpath: //h2[text()='Direct Reports']
 ${employment_history_section_header}  xpath: //h2[text()='Employment History']
 
-${back_button}  xpath: //a[@title='Done']
+${back_button}  xpath: //a[@title='Back']
+#//a[@title='Done']

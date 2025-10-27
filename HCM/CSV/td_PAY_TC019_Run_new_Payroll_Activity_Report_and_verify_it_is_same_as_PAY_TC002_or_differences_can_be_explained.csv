@@ -1,2 +1,2 @@
 LegislativeDataGroup,FLowPattern,PayrollFlow,StartDate,EndDate,Scope,ReportCategory,Log Name,Object Name
-CA Legislative Data Group,MLX Payroll Activity Report,Auto_Test_MLX_Payroll Activity_Report,11-Dec-2021,04-Jan-2022,Detail,MLX Payroll Activity Reports,FlowEssJobDefn,Autotest_06368
+CA Legislative Data Group,MLX Periodic Payroll Activity Report,Auto_Test_MLX_Payroll Activity_Report,21-Jun-2025,04-Jul-2025,Detail,MLX Periodic Payroll Activity Report,FlowEssJobDefn,Autotest_06368

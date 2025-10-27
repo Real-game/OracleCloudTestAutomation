@@ -13,18 +13,23 @@ Select User Defined Reports Frame
 
 Open Property Tax Invoices
     Wait And Click Element  ${search_button}
-    Wait And Set Text  ${report_name_search_field}  Property Tax Invoice
+    Wait And Set Text  ${report_name_search_field}  CRE: Property Tax Invoice
     Sleep  3s
-    Double Click Element  ${property_tax_invoice_link}
+    capture page screenshot
+    Double Click Element  ${property_tax_invoice_links}
+    Sleep    5s
     Capture Page Screenshot
 
 Select Excel Radio Button
     #Unselect Frame
     Wait And Click Element  ${excel_radio_button}
+    Sleep  5s
     Capture Page Screenshot
 
 Input Vendor Name and Vendor ID
     [Arguments]  ${vendor_name}  ${vendor_ID}
+    Sleep  5s
+    Scroll element into view  ${vendor_name_field}
     Wait And Set Text  ${vendor_name_field}  ${vendor_name}
     Wait And Set Text  ${vendor_id_field}  ${vendor_ID}
     Capture Page Screenshot
@@ -47,13 +52,16 @@ Open Occupancy Report
     Wait And Set Text  ${report_name_search_field}  Occupancy Report
     Sleep  3s
     Double Click Element  ${occupancy_report_link}
+    Sleep    5s
     Capture Page Screenshot
 
 Open Utility Bills Report
     Wait And Click Element  ${search_button}
-    Wait And Set Text  ${report_name_search_field}  Bills Report
+#    Wait And Set Text  ${report_name_search_field}  Bills Report
+    Wait And Set Text  ${report_name_search_field}  Utility Bills
     Sleep  3s
     Double Click Element  ${utility_bills_report_link}
+    Sleep    5s
     Capture Page Screenshot
 
 Select Record Count
@@ -66,6 +74,7 @@ Open AR Payment Variance Report
     Wait And Set Text  ${report_name_search_field}  Report (A/R)
     Sleep  3s
     Double Click Element  ${payment_variance_a_r_link}
+    Sleep    5s
     Capture Page Screenshot
 
 Validate Report Title

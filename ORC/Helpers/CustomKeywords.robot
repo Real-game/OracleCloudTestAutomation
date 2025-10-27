@@ -27,6 +27,6 @@ Get Value From Field
     [Arguments]  ${field}
     ${name}=  Get Name From Name Selector  ${field}
     ${return}=  Execute Javascript  document.getElementsByName('${name}')[0].value
-    [Return]  ${return}
+    RETURN    ${return}
 
 

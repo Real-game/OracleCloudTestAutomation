@@ -10,11 +10,11 @@ View Document Types
     [Arguments]  ${doc_type}
     Sleep  2s
     Wait And Click Element  ${remove_payroll_filter}
-    Sleep  2s
+    Sleep  5s
     Wait And Click Element  ${remove_expired_filter}
-    Sleep  2s
+    Sleep  5s
     Wait And Click Element  ${href_show_filters}
-    Sleep  2s
+    Sleep  5s
     #Wait And Click Element  ${doc_type_drop_down}
     #Wait And Input Text From Input   ${doc_type_input}  ${doc_type}
     Sleep  1s

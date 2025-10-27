@@ -50,5 +50,6 @@ Scenario: Terminate Employees Benefits in benefits Enrollment
     Log  Step 13
     Verify Termination Event in Evaluated Life Events
     Log  Step 14
+    Sleep  50s
     Click Benefit Plan and Verify End Date
 

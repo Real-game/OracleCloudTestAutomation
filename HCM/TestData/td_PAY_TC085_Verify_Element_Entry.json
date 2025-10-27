@@ -1,8 +1,9 @@
 {
-    "Login User": "raghavi.uthayakumar@accenture.com",
+    "Login User": "senthil.n.thangaraj@accenture.com",
     "Person Number": "06368",
     "Parent Action1": "Compensation",
     "Child Action1": "View Compensation History",
     "Parent Action2": "Payroll",
-    "Child Action2": "Element Entries"
+    "Child Action2": "Element Entries",
+    "Overall Salary": "168,964.00"
 }

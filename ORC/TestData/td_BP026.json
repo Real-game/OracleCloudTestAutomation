@@ -1,13 +1,13 @@
 {
     "Recruiter Username": "KIANM",
-    "Requisition_ID": "105417",
-    "Candidate": "Centen, Ravneet Kaur ()",
-    "Offer Action": "Edit Offer",
-    "Employee Start Date": "10-May-23",
+    "Requisition_ID": "113771",
+    "Candidate": "Lehal, Oronde ()",
+    "Offer Action": "Create Job Offer",
+    "Employee Start Date": "08-Aug-25",
     "Employee Type": "Employee",
     "Assignment Status": "Active - Payroll Eligible",
     "Proposed Person Type": "Employee",
-    "Assistant Hiring Manager": "",
+    "Hiring Manager": "Ann marie Arshad",
     "HRBP": "",
     "Collaborator": "",
     "Payroll": "Biweekly",
@@ -19,9 +19,10 @@
     "Contract Start Date": "",
     "Contract End Date": "",
     "Offer Letter": "New Hire",
-    "Expiration Date": "25-Nov-23",
+    "Expiration Date": "25-Nov-28",
     "Action": "Add Pending Worker",
     "Contract Type": "",
     "Union Dues Retention": "",
-    "OMERS": "Yes - OMERS Mandatory"
+    "OMERS": "Yes - OMERS Mandatory",
+    "Sync from Position": "No"
 }

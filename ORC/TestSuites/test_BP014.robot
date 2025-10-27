@@ -34,7 +34,8 @@ Scenario: Plan Recruiting requisition view verification
     Logout
     Login Using  ${data}[Second hiring manager user]
     click on homepage
-    Go to my team hiring
+#    Go to my team hiring
+    Click Link  ${href_Hiring}
     Search for the absence of requisition id  ${data}[Requisition ID from the other hiring manager]
     Element Should Be Visible   ${no_search_result}
     Logout

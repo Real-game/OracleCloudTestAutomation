@@ -19,7 +19,7 @@ Search employee in person management
     Wait And Click Element  ${absence_option}
     Wait And Click Element  ${absence_records}
     Wait And Verify Page Contains Text  Manage Absences and Entitlements   20s  Person Management Manage Absences and Entitlements Page is not displayed
-    Sleep  2s
+    Sleep  20s
     capture page screenshot and retry if required
 
 Search employee number in person management
@@ -185,7 +185,7 @@ Search Person in person management
     END
     Sleep  3s
     Wait and click element  ${search_button}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Select Person With Assignment Status As Active Payroll Eligible
@@ -196,8 +196,11 @@ Select Person With Assignment Status As Active Payroll Eligible
 
 Select action Dropdown
     [Arguments]  ${action}  ${action_value}
+    Sleep  5s
     Scroll Element Into View  ${action_dropdown}
+    Sleep  2s
     Wait And Click Element  ${action_dropdown}
+    Sleep  2s
     ${dropdown_xpath}=  Catenate   SEPARATOR=  //tr[contains(@id,'table1:am2')]//following-sibling::td[text()='${action}']
     ${checker}=  Run Keyword and Return Status  Wait And Verify Page Contains Text  ${action}  10s  Given Action is not displayed in the page
     IF  '${checker}'=='False'
@@ -210,7 +213,7 @@ Select action Dropdown
         ${xpath_value}=  Catenate   SEPARATOR=  //table[contains(@id,'table1:am2')]//td[text()='${action_value}']
         Wait And Click Element  ${xpath_value}
     END
-    Sleep  5s
+    Sleep  10s
     Capture Page Screenshot And Retry If Required
 
 Select Effective Date
@@ -404,7 +407,7 @@ Select date
 
 Select Accruals Status
     [Arguments]  ${status}
-    Sleep  5s
+    Sleep  10s
     Mouse Over  ${plan_balances_status}
     ${checker}=  Run Keyword and Return Status  Wait And Click Element  ${plan_balances_status}
     IF  '${checker}'=='False'
@@ -528,6 +531,7 @@ Verify Employment Assignment Edit Menu
 
 Search Person Number and Click Actions
     [Arguments]  ${number}
+    Sleep    2s
     Click Element  ${href_person_management}
     Wait And Verify Page Contains Text  Person Management: Search   20s  Person Management page is not displayed
     Capture Page Screenshot And Retry If Required
@@ -619,6 +623,8 @@ Verify Enrollment End date has Value
     FOR  ${i}  IN RANGE  1  ${count}
         Sleep  2s
         ${end_date_xpath}=  Catenate  SEPARATOR=  //div[contains(@id,'r3:0:AT2:_ATp:ATt2::db')]/table[1]/tbody[1]/tr[${i}]/td[6]/span[1]
+        scroll element into view    ${end_date_xpath}
+        Sleep    2s
         mouse over  ${end_date_xpath}
         element should be visible  ${end_date_xpath}
         Sleep  3s
@@ -663,7 +669,7 @@ Check Absence Plan Present in Plan participation
 
 Click Person Information
     Wait And Click Element  ${personal_information}
-    Sleep  2s
+    Sleep  3s
     Capture Page Screenshot And Retry If Required
 
 Check Date Of Birth has Value
@@ -673,8 +679,8 @@ Check Date Of Birth has Value
     Capture Page Screenshot And Retry If Required
 
 Check Social Insurance Number has value
-    scroll element into view  ${sin_number_value}
     Wait And Verify Page Contains Element  ${sin_number_value}  20s  Social Insurance Number has not displayed
+    scroll element into view  ${sin_number_value}
     Sleep  2s
     Capture Page Screenshot And Retry If Required
 
@@ -751,7 +757,9 @@ Fetch Assignment Status
 Verify Termination date is visible
     [Arguments]  ${number}
     ${date}=  Get Current Date Dd Mmm Yyyy
-    ${termination_date_xpath}=  Catenate  SEPARATOR=  (//span[text()='${number}'])[2]/preceding::span[text()='${date}']
+    Sleep    5s
+#    ${termination_date_xpath}=  Catenate  SEPARATOR=  //span[text()='${number}']/preceding::span[text()='${date}']
+    ${termination_date_xpath}=  Catenate  SEPARATOR=  //span[text()='${number}']/following::span[text()='${date}']
     scroll element into view  ${termination_date_xpath}
     ELEMENT SHOULD BE VISIBLE  ${termination_date_xpath}
     Sleep  2s
@@ -772,10 +780,11 @@ Click Include terminated Work relationship and set effective date And Search Per
 
 Check Employee Assignment Status has Inactive
     [Arguments]  ${number}
-    ${assignment_status_option}=  Catenate  SEPARATOR=  (//span[text()='${number}'])[2]/preceding::span[text()='Inactive - Payroll Eligible']
+    ${assignment_status_option}=  Catenate  SEPARATOR=  //span[text()='Inactive - Payroll Eligible']/preceding::span[text()='${number}']
+#    (//span[text()='${number}'])[2]/preceding::span[text()='Inactive - Payroll Eligible']
     scroll element into view  ${assignment_status_option}
     element should be visible  ${assignment_status_option}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Get Person Number in Person Management Page
@@ -822,14 +831,19 @@ Get Home Address text under Personal Info
     Log to console  city: ${city_name}[2]
     ${city_name}=  getCityName  ${city_name}[2]
     Log to console  City Name: ${city_name}
+    ${city_name}=  String.Split String  ${city_name}
+    Log to console  city: ${city_name}[0]
+    ${city_name}=  Get From List    ${city_name}    0
+    log to console    ${city_name}
     Capture Page Screenshot And Retry If Required
-    [return]  ${city_name}
+    RETURN    ${city_name}
 
 Verify Warning message and click Yes
     ${checker}=  Run Keyword and Return Status  element should be visible  ${wanringYes}
     IF  '${checker}'=='True'
         click element  ${wanringYes}
     END
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Search employee number with job in person management

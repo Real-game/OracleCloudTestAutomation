@@ -4,7 +4,7 @@ Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/Login.robot
 Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/Compensation.robot
-Resource  ../PageObjects/WorkForceCompensation.robot
+Resource  ../PageObjects/WorkforceCompensation.robot
 Resource  ../PageObjects/WorkForceCompensationPlans.robot
 Resource  ../PageObjects/ManageBudgets.robot
 Documentation  Allocate Workforce Compensation - Manage Budgets - Distribute Initial Budget
@@ -42,7 +42,7 @@ Scenario: Allocate Workforce Compensation - Manage Budgets - Distribute Initial 
     Log  Step 7
     Click on Act as Proxy Manager
     Log  Step 8
-    Select the Manager To Act as Proxy Manager  ${data}[Manager Name]
+    Select the Manager To Act as Proxy Manager  ${common_data}[Proxy Manager Name]
     Log  Step 9
     Click on Manage Budgets
     Log  Step 10

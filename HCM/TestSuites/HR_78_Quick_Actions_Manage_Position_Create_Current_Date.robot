@@ -28,7 +28,7 @@ ${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 *** Test Cases ***
 
 Scenario: HR Specialist create Position - Quick Actions
-    [Tags]  CoreHRTestCase  ModifyData  22D-NoData
+    [Tags]  CoreHRTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}

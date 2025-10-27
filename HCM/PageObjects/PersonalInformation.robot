@@ -13,25 +13,27 @@ Click My Contact Information
 
 Click Communication Edit Icon
     wait and click element  ${href_edit_number}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot
 
 Select Type
     [Arguments]  ${type}
-    Wait And Send Keys  ${href_type}  ${type}
-    Sleep  3s
+    Wait And Click Element  ${href_type}
+    Sleep  2s
+    Wait And Click Element  xpath: //li[text()="${type}"]
+    Sleep  5s
     Capture Page Screenshot
 
 Enter Area Code
     [Arguments]  ${area_code}
     Wait And Set Text  ${href_area_code}  ${area_code}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot
 
 Enter Number
     [Arguments]  ${number}
     Wait And Set Text  ${href_number}  ${number}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot
 
 Click Adderess Edit Icon
@@ -59,7 +61,7 @@ Enter Address2
 
 Click Submit
     wait and click element  ${hsubmit_button}
-    Sleep  3s
+    Sleep  15s
     Capture Page Screenshot
 
 Click Family And Emergency Contacts
@@ -116,7 +118,7 @@ Select Relationship Start Date
 
 Submit Contact Information
     Wait And Click Element  ${href_emergency_details_submit}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot
 
 Click Employment Info Page

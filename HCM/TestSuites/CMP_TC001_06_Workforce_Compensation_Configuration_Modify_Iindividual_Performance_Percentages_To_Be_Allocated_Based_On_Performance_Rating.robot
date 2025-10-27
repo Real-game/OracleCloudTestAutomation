@@ -26,7 +26,7 @@ ${common_csv_path}  ./CSV/PFP_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Workforce Compensation - Configuration - Modify Individual Performance Percentages To Be Allocated based On Performance Rating
-    [Tags]  PFPTestCase  ModifyData  22D-NoData
+    [Tags]  PFPTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}

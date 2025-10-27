@@ -30,7 +30,7 @@ Scenario: Create a remediation line item within an existing Owned Properties
     #Select Owned Properties form CRE Portfolio Mgmt
     Click on home icon in landing Page
     Click on Owned Properties under CRE Master Log
-    Select an existing owned Property   OWNED-02326
+    Select an existing owned Property   OWNED-02814
     Log  Step 3
     Switch to Owned property window
     Edit the owned property

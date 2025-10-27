@@ -32,14 +32,20 @@ Scenario: Additional Information Provided for Candidate (Candidate provide perso
     ${data}=  readJson  ${json_path}
 
     Log  Step 1 - 15
-    Mailinator Respond to Additional Info Required  ${data}[Email]
+    ${additional_info_req} =    Get Link from Mail    ${data}[Email]  ${data}[Email Subject]  ${data}[Link Message]
+    Open Browser    ${additional_info_req}    ${BROWSER}
+    Maximize Browser Window
+    Sleep    5s
+    Mailosaur select Job Offer    ${data}[Email]
     Log  Step 16 - 18
     Select Date of Birth Value under Personal Info  ${data}[Date of Birth]
     Log  Step 19 - 23
-    Enter National Identifier details under Personal Info  ${data}[Social Insurance Number]
+    Enter National Identifier details under Personal Info  ${data}[Social Insurance Number]    Canada
     Log  Step 24 - 25
     Select Gender value under Personal Info  ${data}[Gender]
-    Log  Step 26
+    Log  Step 26 - 27
+    Select Marital Status under Personal Info    ${data}[Marital Status]
+    Log  Step 28
     Enter E-Signature under Personal Info  ${data}[First Name]  ${data}[Last Name]
-    Log  Step 27 - 28
+    Log  Step 29 - 30
     Click Submit Button under Personal Info

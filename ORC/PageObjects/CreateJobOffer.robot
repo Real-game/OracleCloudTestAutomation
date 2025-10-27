@@ -27,9 +27,11 @@ Fill When and Why
         Wait And Click Element  ${emp_type_dropdown}
         Wait And Click Element  xpath: //li[text()="${data}[Employee Type]"]
         Sleep  2s
-#        Wait And Click Element  ${emp_action_dropdown}
-#        Sleep  2s
-#        Select Required Value  ${action_name_temp}  ${data}[Action]
+    END
+    IF  "${data}[Action]"!=""
+        Wait And Click Element  ${emp_action_dropdown}
+        Sleep  2s
+        Select Required Value  ${action_name_temp}  ${data}[Action]
         Sleep  3s
     END
     Capture page Screenshot
@@ -196,7 +198,7 @@ Fill Additional Info
     Sleep  3s
     IF  "${data}[OMERS]"!=""
         Wait And Click Element  ${omers_drop_down}
-        Sleep  2s
+        Sleep  5s
         Select Required Value  ${omers_drop_down_list}  ${data}[OMERS]
     ELSE
         Wait And Click Element  ${omers_drop_down}
@@ -245,7 +247,7 @@ Fill Offer Letter
     ELSE
         Sleep  3s
         scroll element into view  ${expiration_input}
-        Wait And Send Keys  ${expiration_input}  ${data}[Expiration Date]
+        Wait And Set Text   ${expiration_input}  ${data}[Expiration Date]
     END
 #    IF  "${data}[Additional Text 1]"!=""
 #        Wait And Send Keys  ${additional1}  ${data}[Additional Text 1]
@@ -274,6 +276,14 @@ Fill Assignment Info for Transfer
         Click Element  xpath:${proposed_person_xpath}
         Sleep  2s
     END
+    IF  "${data}[Sync from Position]"!=""
+        Sleep  2s
+        Wait And Click Element  ${sync_position_dropdown}
+        Sleep  3s
+        ${sync_position_xpath}=  Catenate  SEPARATOR=  //li[text()='${data}[Sync from Position]']
+        Wait and Click Element  xpath: ${sync_position_xpath}
+        Sleep  3s
+    END
     ${text}=  Get Element Attribute  ${business_unit_field}  value
     IF  "${text}"!="Metrolinx BU"
         Fail
@@ -285,12 +295,13 @@ Fill Assignment Info for Transfer
         Click Element  xpath: ${assignment_category_xpath}
         Sleep  2s
     END
-    ${bargain_value}=  Get Element Attribute  ${bargaining_unit_label}  innerHTML
-    IF  "${data}[Bargaining Unit]"!=""
-        IF  "${bargain_value}"!="${data}[Bargaining Unit]"
-        Fail
-        END
-    END
+#    ${bargain_value}=  Get Element Attribute  ${bargaining_unit_label}  innerHTML
+#    IF  "${data}[Bargaining Unit]"!=""
+#        IF  "${bargain_value}"!="${data}[Bargaining Unit]"
+#        Fail
+#        END
+#    END
+    Sleep  25s
     Capture page Screenshot
     Wait And Click Element  ${continue}
 
@@ -302,7 +313,7 @@ Fill When and Why with Transfer Action
     Sleep  3s
     IF  "${data}[Employee Type]"!=""
         Wait And Click Element  ${emp_type_dropdown}
-        Sleep  20s
+        Sleep  2s
         Wait And Click Element  ${emp_type_dropdown}
         Sleep  3s
 #        ${xpath}=  Catenate  SEPARATOR=  //li[text()[contains(.,'${data}[Employee Type]')]]

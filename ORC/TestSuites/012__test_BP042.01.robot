@@ -31,7 +31,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 
 Scenario: Present and Manage Offers ( Recruiter accepts Offer behalf of candidate)
-    [Tags]  ExternalNewHire  April19
+    [Tags]  ExternalNewHire
     generatejson  ${csv_path}  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}
     appendtojson  ${json_path}  Requisition_ID  ${prerequisites_data}[RequisitionId]

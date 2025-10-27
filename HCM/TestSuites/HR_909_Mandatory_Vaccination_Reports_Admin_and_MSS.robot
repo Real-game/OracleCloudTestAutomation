@@ -27,7 +27,7 @@ ${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Mandatory Vaccination Reports (Admin and MSS)
-    [Tags]  CoreHRTestCase  ReadOnly  ReportDemo
+    [Tags]  CoreHRTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}

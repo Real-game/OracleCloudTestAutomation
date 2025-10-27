@@ -33,10 +33,12 @@ Scenario: Refer a Job (Employee)
     Login Using  ${data}[Hiring Manager user]
     click on homepage
     Go to Current Jobs
-    Click on Search
+#    Click on Search
+#    Search Job    ${data}[Job Id]
     Search for the job and click on actions  ${data}[Job Id]
     Click on Refer A candidate option
     Refer a Candidate   ${data}[Email Address]   ${data}[Candidate Title]   ${data}[Candidate First Name]   ${data}[Candidate Last Name]    ${data}[Mobile Number Code]  ${data}[Mobile Number Prefix]  ${data}[Mobile Number Suffix]
+    Upload Resume    ${data}[File]
     Submit the candidate referral
     Logout
 

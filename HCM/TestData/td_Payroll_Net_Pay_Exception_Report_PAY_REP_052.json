@@ -1,6 +1,7 @@
 {
     "Folder Name": "PAY-REP-052_MX Payroll Net Pay Exception Report",
     "Report Name": "MX_PAYROLL_NET_PAY_EXCEPTION_REPORT",
-    "Pay Period": "9 2023 Biweekly",
-    "Job Name": "MX Payroll Net Pay Exception Report Job"
+    "Pay Period": "14 2025 Biweekly",
+    "Job Name": "MX Payroll Net Pay Exception Report Job",
+    "Notification mail": "senthil.n.thangaraj@accenture.com"
 }

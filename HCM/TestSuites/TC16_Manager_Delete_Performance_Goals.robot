@@ -50,4 +50,5 @@ Scenario: Manager deletes Performance Goals of his direct report
     Select Warning Yes Button
     Sleep  5s
     Log  Step 14
-    page should not contain  ${data}[Goal Name]
+    page should not contain element  xpath: //a[text()="${data}[Goal Name]"]
+#    page should not contain  ${data}[Goal Name]

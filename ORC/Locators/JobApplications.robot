@@ -20,7 +20,7 @@ ${send_button}    xpath: //span[text()[contains(.,'Send')]]
 ${collect_feedback_link}    xpath: //td[text()[contains(.,'Collect Feedback')]]
 ${add_respondent_input}         xpath: //input[contains(@id,'Srh::content')]
 ${load_items}  xpath://a[text()="Load More Items"]
-${back}  xpath://*[name()="svg" and @aria-label="Done"]
+${back}  xpath://*[name()="svg" and @aria-label="Back"]
 ${candidate_search_box}  xpath: //input[@placeholder='Candidate Name or Number']
 ${search_icon}  xpath: //img[@title='Search']
 

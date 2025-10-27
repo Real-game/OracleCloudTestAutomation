@@ -7,7 +7,7 @@ Resource  ../PageObjects/CurrentJobs.robot
 
 Documentation  HR - Employee checks Internal Career Site - ESS
 ...            Prerequisite:  Not Applicable
-...            Environment Specific Data:  Login User
+...            Environment Specific Data:  Employee Login
 ...            Reusable Data:  Not Applicable
 ...            Dynamic Data:  Not Applicable
 
@@ -18,16 +18,17 @@ Suite Teardown  After Suite
 Test Teardown  After Test
 
 *** Variables ***
-${json_path}    ./TestData/td_HR_914_HR_Employee_Checks_Internal_Career_Site_ESS.json
-${csv_path}  ./CSV/td_HR_914_HR_Employee_Checks_Internal_Career_Site_ESS.csv
+${common_json_path}    ./TestData/Core_HR_common_test_data.json
+${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
+
 *** Test Cases ***
 
 Scenario: HR - Employee checks Internal Career Site - ESS
     [Tags]  CoreHRTestCase  ReadOnly
-    generatejson  ${csv_path}  ${json_path}
-    ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Employee Login]
     Log  Step 4
     click on homepage
     Log  Step 5
@@ -35,7 +36,7 @@ Scenario: HR - Employee checks Internal Career Site - ESS
     Log  Step 6
     Click on Current Jobs
     Log  Step 7
-    Click Search button on Current jobs page
-    Log  Step 8
+#    Click Search button on Current jobs page
+#    Log  Step 8
     Verify job posted in jobs page
 

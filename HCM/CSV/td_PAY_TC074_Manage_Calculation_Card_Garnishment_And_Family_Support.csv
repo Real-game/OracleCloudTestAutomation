@@ -1,2 +1,2 @@
-﻿Person Number,Calculation Card Name,Calculation Component Name 1,Reference Code 1,Calculation Component Name 2,Reference Code 2,Display Name on Value 1,Amount,Display Name on Value 2
-06368,Involuntary Deductions,Garnishment,Garnishment,Family Support,Family Support,Court Order Amount,10,Child Support Order Amount
+﻿Payroll Group1,Person Number,Calculation Card Name,Calculation Component Name 1,Reference Code 1,Calculation Component Name 2,Reference Code 2,Display Name on Value 1,Amount,Display Name on Value 2,Payroll Group2
+Calculation Cards,06368,Involuntary Deductions,Garnishment,Garnishment,Family Support,Family Support,Court Order Amount,10,Child Support Order Amount,Element Entries

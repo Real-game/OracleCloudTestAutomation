@@ -8,7 +8,7 @@ Resource  ../Keywords/CommonKeywords.robot
 
 Select Overall Salary
     Wait And Click Element  ${overall_salary}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Click Salary Details in Salary History
@@ -30,13 +30,14 @@ Get Salary History End Date Value
         END
     END
     Log  ${end_date_value}
-    [Return]  ${end_date_value}
+    capture page screenshot
+    RETURN  ${end_date_value}
 
 Get Effective End Date Value
     mouse over  ${salary_effective_end_date}
     ${end_date_value}=  get text  ${salary_effective_end_date}
     Log  ${end_date_value}
-    [return]  ${end_date_value}
+    RETURN  ${end_date_value}
 
 Check Salary History Future value
     [Arguments]  ${end_date_value}
@@ -74,4 +75,4 @@ Check Salary basis has value
 Extract overall salary value
     Wait Until Page Contains  Overall Salary  30s  Overall salary page is not displayed
     ${overall_salary_value}=  Get Element Attribute  ${overall_salary_value}  innerHTML
-    [return]  ${overall_salary_value}
+    RETURN  ${overall_salary_value}

@@ -38,3 +38,5 @@ ${end_cheque_number_input}  xpath:(//label[text()="End Cheque Number"]/following
 ${output_log_file_expand_option}  xpath: //h2[text()='Output and Log Files']//parent::div//parent::td//following-sibling::td//img[@title='Expand']
 
 ${person_number_input}  xpath: //label[text()='Person']/preceding-sibling::input
+
+${process_configuration_group}  xpath: //div[label[text()='Process Configuration Group']]//following-sibling::div//input[@aria-label='Process Configuration Group']

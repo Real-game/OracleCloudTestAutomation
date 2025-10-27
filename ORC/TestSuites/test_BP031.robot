@@ -1,5 +1,7 @@
 *** Settings ***
+Resource  ../Helpers/Config.robot
 Library  ../Helpers/Helpers.py
+Library   ../Helpers/Mailosaur.py    ${API_KEY}
 Resource  ../Keywords/CommonKeywords.robot
 Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/ExternalSiteHomepage.robot
@@ -26,14 +28,15 @@ Scenario: Manage Application (Candidate application status & personal info updat
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 2 - 3
+#    Open Inboxes Mailbox    ${data}[Email]
     Click on Manage Profile
-    Login with email  ${data}[Email]
+    Login with Mailosaur mail  ${data}[Email]
     Log  Step 4
-    Go back to career site
-    Log  Step 5 - 6
-    Click on Manage Profile
-    Log  Step 7
-    Show menu options and select  ${data}
+#    Go back to career site
+#    Log  Step 5 - 6
+#    Click on Manage Profile
+#    Log  Step 7
+    Select Edit Personal Info  ${data}
     Log  Step 8
     Click on Update
 

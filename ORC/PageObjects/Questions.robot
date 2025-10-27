@@ -33,7 +33,7 @@ Click on Search
 
 Select Question and Click on Edit
     [Arguments]  ${value}
-    Wait And Click Element  ${questionlibrary_dropdown}
+#    Wait And Click Element  ${questionlibrary_dropdown}
     Sleep  5s
     ${status}=  Run Keyword And Return Status  Page Should Not Contain  No data to display.
 #    IF  "${status}"!="True"
@@ -45,7 +45,13 @@ Select Question and Click on Edit
     IF  "${status}"=="True"
         Wait And Click Element  ${edit_btn}
 #        Wait Until Page Contains  Edit Question
-        Wait Until Element is visible   ${edit_question_header}     20s     Edit Question page not displayed
+        Sleep    3s
+        Wait until element is visible    ${edit_question_warning_header}    10s
+        Sleep    2s
+        Wait And Click Element    ${create_new_version_question}
+        Sleep    2s
+        Wait And Click Element    ${update_question_OK}
+#        Wait Until Element is visible   ${edit_question_header}     20s     Edit Question page not displayed
         Capture Page Screenshot
     ELSE
         Capture page Screenshot

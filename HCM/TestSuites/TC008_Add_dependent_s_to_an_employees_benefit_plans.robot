@@ -43,8 +43,9 @@ Scenario: Add dependent(s) to an employees benefit plans.
     Log  Step 9
     Click Add Behind Peoples
     Log  Step 10
-    ${unique_last_name}=  get_process_name  ${data}[Last Name]
-    Enter Last Name  ${unique_last_name}
+#    ${unique_last_name}=  get_process_name  ${data}[Last Name]
+    Enter Last Name  ${data}[Last Name]
+#    ${unique_last_name}
     Log  Step 11
     Select Relation  ${data}[Relationship]
     Log  Step 12
@@ -52,4 +53,5 @@ Scenario: Add dependent(s) to an employees benefit plans.
     Set Relationship Start Date  ${current_date}
     Log  Step 13
     Click Submit Button
-    Veify Submitted Dependent Details  ${unique_last_name}
+    Veify Submitted Dependent Details    ${data}[Last Name]
+#    ${unique_last_name}

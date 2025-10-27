@@ -19,6 +19,7 @@ Click Add Under Bank Account
 
 Add Account Number
     [Arguments]  ${acc_number}
+    Sleep    5s
     Mouse Over  ${enter_account_details}
     Wait And Set Text  ${enter_account_details}  ${acc_number}
     Sleep  3s
@@ -74,6 +75,8 @@ Select Warning Ok
     Capture Page Screenshot And Retry If Required
 
 Click Add Under My Banking Information
+    scroll element into view    ${add_my_banking_information}
+    Sleep  2s
     Wait And Click Element  ${add_my_banking_information}
     Sleep  5s
     Capture Page Screenshot And Retry If Required
@@ -138,7 +141,7 @@ Click Delete Button
 Click on Tax Credit Information
     Wait And Click Element  ${tax_credit_information}
     Wait And Verify Page Contains Text  Tax Credit Information  20s  Tax Credit Information page not displayed
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Click on My Payslips
@@ -173,3 +176,17 @@ Click Warning Ok for Delete record
     Wait And Click Element  ${Warning_ok_delete}
     Sleep  5s
     Capture Page Screenshot And Retry If Required
+
+Verify Presence Of My Banking Information
+    Wait Until Page Contains Element  ${my_banking_info_header}  20s  My Banking Information Header is not visible
+    scroll element into view    ${my_banking_info_header}
+    Sleep    2s
+    Capture Page Screenshot
+
+Verify Add Banking Information should not Present
+    wait until page does not contain element    ${add_my_banking_information}  20s  Add Banking Information is visible
+    Capture Page Screenshot
+
+Verify Presence Of Reorder Option
+    Wait Until Page Contains Element  ${reorder_path}  20s  Reorder Banking Information is not visible
+    Capture Page Screenshot

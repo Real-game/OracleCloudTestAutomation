@@ -87,14 +87,21 @@ ${scheduled_processes}  xpath: //a[text()="Scheduled Processes"]
 ${personal_details}  xpath: //a[text()="Personal Details"]
 ${personal_details_name}  xpath: (//div[@title="Personal Details"]/following::span)[1]
 
-${Submitted_applications}  xpath: //span[text()="Submitted Applications"]
+${Submitted_applications}  xpath: //span[contains(text(),'Submitted Applications')]
 #//span[contains(@title,"Submitted Applications")]//parent::a
 ${applied_job}      xpath: //a[contains(@id,'opptyAppliedTabBar-jobsTab-tab')]
-${dropdown_offer}  xpath: //span[contains(@aria-label, 'Show Details')]
-${view_offer}  xpath: //oj-button//span[text()="View Offer"]
-${accept_offer}  xpath:  //a/span[text()='Accept']
-${sign_Empname}  xpath: //span/input[contains(@id,'aeo1Sh:aeo1Inp::content')]
-${sub_offerbutton}  xpath: //a/span/span[text()='m']
+${dropdown_offer_view}    xpath: //span[text()[normalize-space()='Offer Sent']]//following::span[contains(@title, 'details')]
+#//span[text()[normalize-space()='Offer Sent']]/following::span[@slot='startIcon'][1]
+#(//span[text()[normalize-space()='Offer Sent']]/following::span)[3]
+${dropdown_offer}  xpath:  //span[text()[normalize-space()='Offer Sent']]//following::span[contains(@title, 'details')]
+#//span[text()[normalize-space()='Offer Sent']]/following::span[contains(@aria-label, 'Details')]
+${view_offer}  xpath: (//span[text()="View Offer"])[1]
+${accept_offer}  xpath:  (//span[contains(@id,'primaryAction')]//span[contains(text(),'Accept')])[1]
+#//a/span[text()='Accept']
+${sign_Empname}  xpath: //oj-input-text//child::span[text()="Full Name"]
+#//span/input[contains(@id,'aeo1Sh:aeo1Inp::content')]
+${sub_offerbutton}  xpath: (//span[text()='Submit'])[1]
+#//a/span/span[text()='m']
 
 ${href_absences}   link:Absences
 ${href_person_management}  link:Person Management

@@ -53,6 +53,7 @@ Scenario: Manager transfers Performance document of his direct report
     Sleep  5s
     Wait And Verify Page Contains Text  Performance  20s  Performance page not found
     Logout
+    Sleep    3s
     #Validation
     Log  Step 12-13
     Login Using  ${data}[Manager Login User]

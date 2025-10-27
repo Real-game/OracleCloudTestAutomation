@@ -218,10 +218,11 @@ Select HR-REP-108 Folder
 
 Extract the report content
     [Arguments]  ${iframe_path}
-    Select frame  xpath: //iframe[contains(@id,'${iframe_path}')][2]
     Sleep  20s
+    Select frame  xpath: //iframe[contains(@id,'${iframe_path}')]
+    Sleep  30s
     ${text}=  Get Element Attribute  xpath: //body/pre  innerHTML
-    [return]  ${text}
+    RETURN  ${text}
 
 Set Effective End Date And Click Apply
     [Arguments]  ${date}
@@ -282,7 +283,7 @@ Select Folder
     capture page screenshot
 
 Set Termination Start and End Date
-    [Arguments]  ${start_date}    ${end_date}
+    [Arguments]  ${start_date}  ${end_date}
     select frame  ${general_object_editor_frame}
     Sleep  3s
     Wait And Set Text  ${termination_start_date_input}  ${start_date}
@@ -423,7 +424,7 @@ Select More Action On Report
 
 Select Schedule Report Job Tab
     [Arguments]  ${tab}
-#    Sleep  60s
+    Sleep  60s
     IF  "${tab}"=="Output"
         Wait And Click Element  xpath: (//a[text()="General"]/following::a[text()="${tab}"])[1]
     END
@@ -462,7 +463,7 @@ Set Report Job Name And Click Button
     Wait And Set Text  ${report_job_name}  ${report_name}
     Sleep  3s
     Wait And Click Element  xpath: //button[@id="submitDiv_button"]
-    Sleep  3s
+    Sleep  10s
     Capture Page Screenshot And Retry If Required
 
 Set Termination Start Date
@@ -721,7 +722,7 @@ Select Pay Period for Report Run in PAY costing allocation
     Sleep  2s
     Wait And Set Text  ${report_pay_period_input}   ${period}
     Sleep  2s
-    Wait And Click Element  ${report_pay_period_input_search}
+    Wait And Click Element  ${report_pay_period_input_search_052}
     Sleep  5s
     ${report_pay_period_input_search_result}=  Catenate   SEPARATOR=  //div[contains(@id,'paramsP_PERIOD_NAME_div_input_searchDialog_searchResults')]/div[contains(text(),'${period}')]
     Sleep  2s

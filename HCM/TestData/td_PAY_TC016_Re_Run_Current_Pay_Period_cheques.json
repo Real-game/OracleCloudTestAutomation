@@ -1,11 +1,12 @@
 {
     "Flow Pattern": "Generate Cheque Payments",
-    "Payroll Flow": "test4",
+    "Payroll Flow": "Auto_142025_Cheque",
     "Payroll": "Biweekly",
     "Log Name": "Make Check Payments",
     "Organization Payment Method": "Cheque",
     "Consolidation Group": "Metrolinx Consolidation Group",
     "Task Name": "Generate Cheque Payments",
-    "Start Number": "1212121212",
-    "End Number": "3434343434"
+    "Start Number": "1",
+    "End Number": "3434343434",
+    "Process Configuration Group": "Payroll_Process_Threads"
 }

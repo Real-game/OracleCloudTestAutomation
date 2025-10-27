@@ -130,8 +130,8 @@ Validate Expropriation Details block
 
 Submit Owned Property
     Wait And Click Element  ${submit_owned_property_button}
-    Sleep  5s
-    Capture Page Screenshot
+    Sleep  10s
+#    Capture Page Screenshot
 
 Switch to Owned property window
     Sleep  5s
@@ -192,9 +192,12 @@ Click on Add environmental condition button
 Add environmental condition line item without restoration clause
     [Arguments]  ${li_description_value}   ${property_contaminated_value}  ${yes_details_value}  ${estimated_remediation_cost_value}  ${outstanding_environment_claim_value}  ${additional_comments_value}
     Wait Until Element Is Visible  ${li_short_description_input}  60s  LI short description in Environmental condition tab is not displayed
+    Sleep  5s
     Input Text  ${li_short_description_input}  ${li_description_value}
+    Sleep  3s
     Click Element  ${property_contaminated_drop_down}
     ${property_contaminated_xpath}=   Catenate  SEPARATOR=   //li//div[text()='${property_contaminated_value}']
+    Sleep  2s
     Click Element  xpath: ${property_contaminated_xpath}
     Sleep  4s
     Input Text  ${yes_detail_property_contaminated_input}  ${yes_details_value}
@@ -249,7 +252,9 @@ Click on Add property reservation button
 Add Occupancy Term Info
     [Arguments]  ${occupancy_start_date_value}  ${occupancy_end_date_value}
     Wait Until Element Is Visible  ${occupancy_term_start_date_input}  60s  Add button in Environmental condition tab is not displayed
+    Sleep  3s
     Input Text  ${occupancy_term_start_date_input}  ${occupancy_start_date_value}
+    Sleep  3s
     Input Text  ${occupancy_term_end_date_input}  ${occupancy_end_date_value}
     Sleep  5s
     Capture Page Screenshot
@@ -273,7 +278,7 @@ Extract the record number from confirmation Notification
     ${extracted_record_number_with_space}=  Replace String  ${record_number_complete_text}  has been created successfully.  ${EMPTY}
     ${extracted_record_number}=  Remove String  ${extracted_record_number_with_space}  ${SPACE}
     Capture Page Screenshot
-    [return]  ${extracted_record_number_with_space}
+    RETURN  ${extracted_record_number_with_space}
 
 Select OK in Confirmation Notification
     Wait And Click Element  ${ok_button_confirmation_window}
@@ -282,6 +287,7 @@ Copy owned property to another property shell
     [Arguments]  ${property_name_value}
     Select Yes in the copy drop down
     Search for property shell  ${property_name_value}
+    Sleep    3s
     Select the property shell from the search results  ${property_name_value}
 
 Select Yes in the copy drop down
@@ -305,6 +311,7 @@ Search for property shell
 Select the property shell from the search results
     [Arguments]  ${property_name_value}
     ${property_shell_xpath}=  Catenate  SEPARATOR=  //div[text()[contains(.,'${property_name_value}')]]
+    Sleep  6s
     Click Element  xpath: ${property_shell_xpath}
     Capture Page Screenshot
     Wait And Click Element  ${select_button}

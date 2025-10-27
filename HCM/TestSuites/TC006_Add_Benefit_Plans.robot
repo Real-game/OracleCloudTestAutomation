@@ -44,7 +44,7 @@ Scenario: Add Benefit Plans in benefits Enrollment
     Log  Step 9
     Verify Event in Detected State  New Hire
     Verify Event in Detected State  Salary Change
-#    Verify Event in Detected State  Transfer
+    Verify Event in Detected State  Transfer
     Log  Step 10
     Click Actions and Select an Action  Evaluate Life Events
     Log  Step 11

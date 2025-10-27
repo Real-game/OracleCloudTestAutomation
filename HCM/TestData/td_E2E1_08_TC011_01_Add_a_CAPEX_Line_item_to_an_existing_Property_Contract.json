@@ -1,7 +1,7 @@
 {
     "Login User": "V-ACC-Senthil.Thangaraj@metrolinx.com",
     "Property Workspace Name": "155 CORNWALL ROAD",
-    "Contract Name": "Auto_TestP4",
+    "Contract Name": "First Iteration 12",
     "Contract Area Type": "Land",
     "Unit of Measure": "SQM",
     "Doc of Area": "25",
@@ -11,8 +11,8 @@
     "Rollup Area": "Yes",
     "Payment before HST": "340",
     "Payment Frequency": "Monthly",
-    "Start Date": "04/26/2023",
-    "End Date": "10/30/2023",
+    "Start Date": "Jun/26/2025",
+    "End Date": "Jul/30/2026",
     "Overhold Payment": "Yes",
     "Escalation Method": "None",
     "Next Payment Due Day": "4",
@@ -23,7 +23,7 @@
     "Vendor Site ID": "216916",
     "CAPEX-OPEX": "CAPEX",
     "Asset Category": "Land-Sec 30 Exprop",
-    "Location": "8718",
+    "Location": "9999",
     "Expenditure Org Name": "Finance",
     "Expenditure Type": "Advances"
 }

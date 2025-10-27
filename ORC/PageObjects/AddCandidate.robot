@@ -38,7 +38,7 @@ Add a unique Candidate
     Clear Element Text   ${legal_first_name}
     Input Text  ${legal_first_name}     ${candidate_name_with_timestamp}
     Input Text  ${legal_last_name}     ${test_data}[Candidate Last Name]
-    ${email_address_value}=  Catenate   SEPARATOR=	 abc7890  ${time}    @mailinator.com
+    ${email_address_value}=  Catenate   SEPARATOR=	 abc7890  ${time}    @${server_domain}
     Input Text  ${email_address}     ${email_address_value}
     Sleep  3s
     Input Text  ${country_code}  ${test_data}[country code]

@@ -19,7 +19,6 @@ ${csv_path}  ./CSV/td_BP066.csv
 *** Test Cases ***
 
 Scenario: Candidate Pool, Talent Community (Candidate Pool)
-    [Tags]  ExternalNewHire  Demo
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1
@@ -31,7 +30,7 @@ Scenario: Candidate Pool, Talent Community (Candidate Pool)
     Click on Candidate Pools
     Log  Step 4 - 10
     Create Candidate Pool  ${data}[Pool Name]  ${data}[Ownership Type]  ${data}[Owner Name]  ${data}[Location]  ${data}[Job Family]
-    Sleep  20s
+    Sleep  40s
     Search for Talent Pool  ${data}[Pool Name]
     Log  Step 11
     Mark Pool

@@ -36,6 +36,7 @@ Scenario: Candidate Application Submission
     Show menu options and select With Application Submission  ${data}
     Click on Update
     Log  Withdraw an existing application
+    Select My Application for Status Change
     Change Status  ${data}[Requisition_ID To Withdraw]
     Sleep  3s
     Go back to career site
@@ -43,6 +44,7 @@ Scenario: Candidate Application Submission
     Sleep  10s
     Click on Apply Now
     Sleep  10s
-    Fill Personal Info  ${data}
+    Select Agree on Terms and Condition page
+    Fill Personal Info for second application  ${data}
     Click on Submit Application
     Sleep  10s

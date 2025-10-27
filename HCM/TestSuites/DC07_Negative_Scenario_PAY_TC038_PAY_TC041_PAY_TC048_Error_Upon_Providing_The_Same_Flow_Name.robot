@@ -27,7 +27,7 @@ ${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Calculate Retro With Duplicate Payroll Flow Name
-    [Tags]  PayrollTestCase  22D-NoData
+    [Tags]  PayrollTestCase
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
@@ -35,6 +35,7 @@ Scenario: Calculate Retro With Duplicate Payroll Flow Name
     Log  Step 1-3
     Login Using  ${common_data}[Login User]
     Log  Step 4-5
+    click on homepage
     Click on Payroll from Navigator
     Log  Step 6
     Click Submit A Flow

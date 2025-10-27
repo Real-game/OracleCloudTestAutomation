@@ -1,7 +1,8 @@
 *** Settings ***
 Library  String
+Library  Selenium2Library
 Library   ../Keywords/CommonKeywords.py
-Library    FakerLibrary
+#Library    FakerLibrary
 Library    AutoItLibrary
 Library    DateTime
 #Library    ConvertDate
@@ -19,7 +20,7 @@ Launch Chrome
     [Arguments]  ${URL}
     ${ChromeOptions} =     Evaluate     sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${ChromeOptions}     add_argument    --disable-extensions
-    #Call Method    ${ChromeOptions}     add_argument    --start-maximized
+    Call Method    ${ChromeOptions}     add_argument    --start-maximized
     Call Method    ${ChromeOptions}     add_argument    --incognito
     Call Method    ${ChromeOptions}     add_argument    --disable-notifications
     Call Method    ${ChromeOptions}     add_argument    --disable-popup-blocking
@@ -27,7 +28,8 @@ Launch Chrome
     call Method    ${ChromeOptions}     add_argument    --ignore-ssl-errors
     Call Method    ${ChromeOptions}     add_experimental_option      useAutomationExtension    ${FALSE}
     ${Options}=     Call Method         ${ChromeOptions}    to_capabilities
-    Open Browser  ${URL}  Chrome    desired_capabilities=${Options}
+    Open Browser  ${URL}  Chrome    options=${ChromeOptions}
+#    desired_capabilities=${Options}
 
 
 Launch Firefox
@@ -37,13 +39,13 @@ Launch Firefox
 Launch HCM
     [Arguments]  ${file_name}
     ${sauce_url}=  createSauceURL  ${sauce_username}  ${sauce_access_key}
-    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${sauce_execution_resolution}  ${file_name}
+    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${sauce_execution_screenResolution}  ${file_name}
     Open browser  ${URL}  remote_url=${sauce_url}   desired_capabilities=${cap}
 
 Launch HCM Analytics
     [Arguments]  ${file_name}
     ${sauce_url}=  createSauceURL  ${sauce_username}  ${sauce_access_key}
-    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion} ${sauce_execution_platformName} ${sauce_execution_resolution} ${file_name}
+    ${cap}=  getCapabilities  ${sauce_execution_browserName}  ${sauce_execution_browserVersion}  ${sauce_execution_platformName}  ${sauce_execution_screenResolution}  ${file_name}
     Open browser  ${URL_Analytics}  remote_url=${sauce_url}   desired_capabilities=${cap}
 
 End Web Test
@@ -52,7 +54,9 @@ End Web Test
 Login
     [Arguments]  ${txt_userid}  ${user_id}  ${txt_pass}  ${password}  ${btn_submit}
     Wait And Set Text  ${txt_userid}  ${user_id}
+    Set Log Level    NONE
     Wait And Set Text  ${txt_pass}  ${password}
+    Set Log Level    INFO
     Wait And Click Element  ${btn_submit}
 
 Logout
@@ -111,14 +115,14 @@ Wait And Get Text
     [Arguments]  ${field}
     Wait Until Element Is Visible  ${field}  10
     ${text}=  Get Text  ${field}
-    [return]  ${text}
+    RETURN  ${text}
 
 
 Wait And Get Value
     [Arguments]  ${field}
     Wait Until Element Is Visible  ${field}  10
     ${value}=  Get Value  ${field}
-    [return]  ${value}
+    RETURN  ${value}
 
 
 Assert Field Value
@@ -145,7 +149,7 @@ Assert Field Value from clipboard
 FakerLibrary Words Generation
     ${word}=    FakerLibrary.Unix Time
     Log To Console    words: ${word}
-    [return]  ${word}
+    RETURN  ${word}
 
 Attach File
     [Arguments]  ${file}
@@ -277,12 +281,12 @@ Get incremented Date
     [Arguments]  ${days}
     ${incremented_date}=   DateTime.Get Current Date    increment=${days} days
     ${incremented_date} =  Convert Date  ${incremented_date}  result_format=%d/%m/%Y
-    [return]  ${incremented_date}
+    RETURN  ${incremented_date}
 
 Get Text Count with tag
     [Arguments]  ${tag}  ${text}
     ${count}=  get element count  xpath: //${tag}\[text()="${text}"]
-    [Return]  ${count}
+    RETURN  ${count}
 
 Wait And Verify Text Value
     [Arguments]  ${element}  ${expected_text_value}
@@ -334,7 +338,7 @@ Verify the element presence
             Exit For Loop
         END
     END
-    [return]  ${check}
+    RETURN  ${check}
 
 Wait and clear and send keys
     [Arguments]  ${field}  ${value}
@@ -347,3 +351,13 @@ Wait and clear and send keys
     Sleep  2s
     Scroll element into view  ${field}
     Wait Then delete And Set Text  ${field}  ${value}
+
+Wait Then Click And Clear And Set Text
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  10
+    Click Element  ${field}
+    Press Keys	${field}  CTRL+a
+    Sleep    1s
+    Press Keys	${field}  DELETE
+    Sleep  1s
+    Input Text  ${field}  ${value}

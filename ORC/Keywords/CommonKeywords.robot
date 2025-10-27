@@ -1,7 +1,7 @@
 *** Settings ***
 Library  String
 Library   ../Keywords/CommonKeywords.py
-Library    FakerLibrary
+#Library    FakerLibrary
 Library  AutoItLibrary
 Library  OperatingSystem
 Resource  ../Locators/Logout.robot
@@ -24,9 +24,9 @@ Launch Chrome
 #    call Method    ${ChromeOptions}     add_argument    --ignore-certificate-errors
 #    call Method    ${ChromeOptions}     add_argument    --ignore-ssl-errors
     Call Method    ${ChromeOptions}     add_experimental_option      useAutomationExtension    ${FALSE}
-    ${Options}=     Call Method         ${ChromeOptions}    to_capabilities
-    Open Browser  ${URL}  Chrome    desired_capabilities=${Options}
-
+#    ${Options}=     Call Method         ${ChromeOptions}    to_capabilities
+#    Open Browser  ${URL}  Chrome    desired_capabilities=${Options}
+    Open Browser  ${URL}  Chrome    options=${ChromeOptions}
 
 Launch Firefox
     [Arguments]  ${URL}
@@ -57,14 +57,23 @@ Launch ORC ExternalSite
 Login
     [Arguments]  ${txt_userid}  ${user_id}  ${txt_pass}  ${password}  ${btn_submit}
     Wait And Set Text  ${txt_userid}  ${user_id}
+    Set Log Level    NONE
     Wait And Set Text  ${txt_pass}  ${password}
+    Set Log Level    INFO
     Sleep  2s
     Click Element  ${btn_submit}
     Capture Page Screenshot
 
 Logout
-    Wait And Click Element  ${profile_downarrow}
+    ${check}=    run keyword and return status   element should be visible    ${profile_downarrow}
+    IF  "${check}"=="True"
+        Wait And Click Element  ${profile_downarrow}
+    ELSE
+        Wait And Click Element    xpath: //oj-avatar
+    END
+    Sleep    2s
     Wait And Click Element  ${btn_signout}
+    Sleep    2s
     ${check}=  Run Keyword And Return Status  Page Should Contain  Warning
     IF  ${check}==True
         ${check1}=  Run Keyword And Return Status  Wait And Click Element  xpath://button[text()="Yes"]
@@ -119,7 +128,9 @@ Wait Then Click And Set Text
     [Arguments]  ${field}  ${value}
     Wait Until Element Is Visible  ${field}  10
     Click Element  ${field}
+    Sleep    1s
     Press Keys	${field}  CTRL+a
+    Sleep    1s
     Press Keys	${field}  BACKSPACE
     Sleep  1s
     Input Text  ${field}  ${value}
@@ -134,14 +145,14 @@ Wait And Get Text
     [Arguments]  ${field}
     Wait Until Element Is Visible  ${field}  10
     ${text}=  Get Text  ${field}
-    [return]  ${text}
+    RETURN    ${text}
 
 
 Wait And Get Value
     [Arguments]  ${field}
     Wait Until Element Is Visible  ${field}  10
     ${value}=  Get Value  ${field}
-    [return]  ${value}
+    RETURN    ${value}
 
 
 Assert Field Value
@@ -168,7 +179,7 @@ Assert Field Value from clipboard
 FakerLibrary Words Generation
     ${word}=    FakerLibrary.Unix Time
     Log To Console    words: ${word}
-    [return]  ${word}
+    RETURN    ${word}
 
 
 Attach File
@@ -188,6 +199,7 @@ Attach File
 
 Select Required Value
     [Arguments]  ${xpath}  ${value}
+    Sleep  2s
     ${matching_elements}=  Get WebElements   ${xpath}
     FOR  ${element}  IN  @{matching_elements}
         ${text}=    Get Text  ${element}
@@ -197,6 +209,14 @@ Select Required Value
         END
     END
 
+Select Required Value which contains Text
+    [Arguments]  ${xpath}  ${value}
+    ${matching_elements}=  Get WebElements   ${xpath}
+    FOR  ${element}  IN  @{matching_elements}
+        ${text}=    Get Element Attribute  ${element}  innerHTML
+        Run Keyword If    '${value}' in '${text}'    Click Element    ${element}
+        Run Keyword If    '${value}' in '${text}'    Exit For Loop
+    END
 
 Select Required Value with Text
     [Arguments]  ${xpath}  ${value}
@@ -215,3 +235,23 @@ Wait And Verify Page Contains Text
     IF  '${checker}' == 'False'
         Wait Until Page Contains    ${text}  ${time_out}  ${error_message}
     END
+
+Wait Then delete And Set Text
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  10
+    Click Element  ${field}
+    Press Keys	${field}  DELETE
+    Sleep  1s
+    Wait And Send Keys  ${field}  ${value}
+
+Wait and clear and send keys
+    [Arguments]  ${field}  ${value}
+    Wait Until Element Is Visible  ${field}  10
+    Click Element  ${field}
+    Press Keys	${field}  CTRL+a
+    Press Keys	${field}  BACKSPACE
+    Sleep  1s
+    Input text  ${field}  ${value}
+    Sleep  2s
+    Scroll element into view  ${field}
+    Wait Then delete And Set Text  ${field}  ${value}

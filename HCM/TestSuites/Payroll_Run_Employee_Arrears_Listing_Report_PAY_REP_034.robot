@@ -80,15 +80,15 @@ Scenario: Run_Employee_Arrears_Listing_Report_PAY_REP_034
     Log  Step 33 - 34
     Set Report Job Name And Click Button  ${data}[Job Name]  OK
     Sleep  10s
-    unselect frame
-    Log  Step 35
-    Click Analytics Home Option
-    Log  Step 35 - 36
-    Wait And Click Element  link: Report Job History
-    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
+#    unselect frame
+#    Log  Step 35
+#    Click Analytics Home Option
+#    Log  Step 35 - 36
+#    Wait And Click Element  link: Report Job History
+#    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
 #    Verify Status Of Report Job And Select On Success  ${data}[Job Name]
 #    Download Report Of Given Format  EXCEL
-    Sleep  20s
+#    Sleep  20s
     Capture page screenshot
 
 #    ${flag}=  ExcelReportUtility.compare_excel_all_columns  ${data}[Report Name]  ${data}[Report Name]  10  10

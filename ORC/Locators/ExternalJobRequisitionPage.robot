@@ -1,4 +1,5 @@
 *** Variables ***
 ${email_input}  xpath://input[@name="primary-email"]
-${checkbox}  xpath://div[input[@type="checkbox"]]/div/span
-${next_btn}  xpath://button[text()="Next"]
+${checkbox}  xpath: //input[@type="checkbox"]/following-sibling::span/span[1]
+${next_btn}  xpath: //button[@title="Next"]
+#//button[@type="submit"]

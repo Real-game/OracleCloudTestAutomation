@@ -6,8 +6,6 @@ Resource  ../PageObjects/Login.robot
 Library  ../Helpers/Helpers.py
 Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/FlowSubmission.robot
-Resource  ../PageObjects/Payroll.robot
-
 Resource  ../PageObjects/SubmitPayrollFlow.robot
 Resource  ../PageObjects/Payroll.robot
 Documentation  Calculate Payroll

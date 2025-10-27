@@ -13,6 +13,7 @@ Select the Manager To Act as Proxy Manager
     Capture Page Screenshot and Retry If Required
     ${manager_xpath}=   Catenate  SEPARATOR=  //li[text()='  ${manager_name}  ']
     Click Element  xpath: ${manager_xpath}
+    Sleep    5s
     Wait Until Page Contains  Manage Budgets  20s  Manage Budgets page is not displayed
     Capture Page Screenshot and Retry If Required
 

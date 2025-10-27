@@ -2,8 +2,9 @@
 ${employment_search}  xpath: //input[@placeholder='Search for a Person']
 ${inactive_checkbox}  xpath://label[text()="Inactive"]
 ${calender_icon}  xpath://a[@title="Select Date"]
-${select_current_date}  xpath://td[@class="x11x p_AFSelected"]
-
+#${select_current_date}  xpath://td[@class="x11x p_AFSelected"]
+${set_date}  xpath: //input[@placeholder="dd-mmm-yyyy"]
+${set_date_ok}  xpath: //input[@placeholder="dd-mmm-yyyy"]//following::button[text()="OK"][1]
 ${checkbox_work_relationship}  xpath://span[text()='Work Relationship Info']
 ${checkbox_payroll_details}  xpath://span[text()='Payroll Details']
 ${checkbox_salary}  xpath://span[text()='Salary']

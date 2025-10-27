@@ -30,6 +30,7 @@ To update the GL Code and Cost center Field in CRE Master Log
     Log  Step 7
     Change to Proxy Connection
     Log	 Step 8 - 9
+    Click on home icon in landing Page
     Click on CRE Master Log and select Property Contracts
     Switch to Property Contract Frame
     Log  Step 10 - 13

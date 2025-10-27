@@ -9,7 +9,7 @@ Resource  ../PageObjects/UpdatePositionReview.robot
 Documentation  HR Specialist Update Position - Quick Actions
 ...            Prerequisite:  HR-78
 ...            Environment Specific Data:  HR Login
-...            Reusable Data:  Action Reason; Regular or Temporary; Full Time or Part Time
+...            Reusable Data:  Action Reason; Regular or Temporary; Full Time or Part Time; Edit Action
 ...            Dynamic Data:  Position Name; Position Code
 
 *** Settings ***
@@ -40,7 +40,7 @@ Scenario: HR Specialist Update Position - Quick Actions
     Search Position By Name And Code  ${common_data}[Position Name]  ${common_data}[Position Code]
     Log  Step 9
     Select Position By Name  ${common_data}[Position Name]
-    Click On Edit Then Update Position
+    Click On Edit Then Update Position     ${data}[Edit Action]
     Log  Step 10
     Check Effective Date
     Log  Step 11-12

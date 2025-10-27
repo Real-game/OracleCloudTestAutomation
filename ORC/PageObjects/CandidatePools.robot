@@ -16,6 +16,8 @@ Create Candidate Pool
         Wait And Set Text  ${cp_owner_input}  ${oname}
         Sleep  3s
         Wait And Click Element  ${cp_selected_value}
+        Sleep    2s
+        capture page screenshot
     END
     Wait And Click Element  ${cp_checkbox}
     Wait Until Page Contains  Location
@@ -24,9 +26,12 @@ Create Candidate Pool
     Wait And Click Element  ${cp_selected_value}
     Wait And Set Text  ${cp_jobfamily}  ${jobfamily}
     Sleep  1s
+    capture page screenshot
     Wait And Click Element  ${cp_selected_value}
     Wait And Click Element  ${cp_save}
     Wait Until Page Contains  Pools
+    Sleep    5s
+    capture page screenshot
 
 
 Search for Talent Pool
@@ -40,8 +45,8 @@ Mark Pool
     ${count}=  Get Element Count    ${cp_star}
     Sleep  3s
     IF  ${count}==1
-       Wait And Click Element  ${cpp_star}
-       Sleep  2s
+       Wait And Click Element  ${cp_star}
+       Sleep  5s
        Capture Page Screenshot
     ELSE IF  ${count}>1
         Log To Console  Pools found with same name
@@ -56,8 +61,8 @@ Action On Pool
     ${count}=  Get Element Count    ${cp_dots}
     IF  ${count}==1
        Wait And Click Element  ${cp_dots}
-       Sleep  2s
-       ${cp_temp}=  Catenate  SEPARATOR=  //td[text()='${action}']
+       Sleep  5s
+       ${cp_temp}=  Catenate  SEPARATOR=  //table[contains(@id,'actMn')]//td[text()='${action}']
        Wait And Click Element  ${cp_temp}
        IF  "${action}"=="Inactivate"
          Sleep  2s

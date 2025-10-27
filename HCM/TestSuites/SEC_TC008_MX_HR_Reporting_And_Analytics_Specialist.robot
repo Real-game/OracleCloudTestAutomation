@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC008_MX_HR_Reporting_And_Analytics_Specialist.csv
 
 *** Test Cases ***
 Scenario: MX HR Reporting and Analytics Specialist
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

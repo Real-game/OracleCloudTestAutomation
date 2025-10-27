@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC011_MX_Talent_Aquistion_Representative.csv
 *** Test Cases ***
 
 Scenario: MX Talent Aquistion Representative
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3

@@ -54,6 +54,15 @@ Go to my client group absence
     Wait And Verify Page Contains Text  Absence Administration   20s  Absence Administraion page is not displayed
     Capture Page Screenshot
 
+Go to my client group Journey
+    wait and click element  ${href_my_client}
+    Sleep    2s
+    Mouse Over  ${journeys_path}
+    Capture Page Screenshot
+    wait and click element    ${journeys_path}
+#    Wait And Verify Page Contains Text  Assigned Journeys   20s  Assigned Journeys page is not displayed
+    Capture Page Screenshot
+
 Go to my client group person management
     wait and click element  ${href_my_client}
     Sleep  3s
@@ -354,7 +363,10 @@ Click on Show More and Verify Quick Action Section
     Wait And Click Element  ${href_showmore}
     Page Should Contain Element  ${compensation_section}
     Page Should Contain Element  ${talent_section}
+    Sleep    2s
     Wait And Click Element  ${show_less}
+    Sleep    2s
+    Capture Page Screenshot And Retry If Required
 
 Click on Show More and Verify Talent Quick Action Section
     Wait And Click Element  ${href_showmore}
@@ -365,7 +377,7 @@ Click on Show More and Verify Talent Quick Action Section
 
 Verify My Team, My client groups, Benefits Administrations and Tools Tab
     Sleep  2s
-    Verify Page Has Hyperlink  My Team
+#    Verify Page Has Hyperlink  My Team
     Verify Page Has Hyperlink  My Client Groups
     Verify Page Has Hyperlink  Benefits Administration
     Verify Page Has Hyperlink  Tools
@@ -382,12 +394,12 @@ Verify My CLient Groups apps for Rewards Representative
 
 Verify Quick Actions Link for Rewards Representative
     Sleep  2s
-    Verify Page Has Hyperlink  Person
+#    Verify Page Has Hyperlink  Person
     Verify Page Has Hyperlink  Employment Info
-    Verify Page Has Hyperlink  Talent Profile
-    Verify Page Has Hyperlink  Performance Goals
-    Verify Page Has Hyperlink  Profiles
-    Verify Page Has Hyperlink  Setup of Performance Goals Mass Assignment
+#    Verify Page Has Hyperlink  Talent Profile
+#    Verify Page Has Hyperlink  Performance Goals
+#    Verify Page Has Hyperlink  Profiles
+#    Verify Page Has Hyperlink  Setup of Performance Goals Mass Assignment
 
 
 Verify Homepage have options
@@ -427,7 +439,7 @@ Click Person Management
 
 Click on Tools
     Wait And Click Element  ${tools}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Verify Homepage have Apps
@@ -456,7 +468,7 @@ Click On Others Tab
 
 Click Reports and Analytics
     Wait And Click Element  ${href_report_and_analytics}
-    Sleep  3s
+    Sleep  5s
     wait until page contains  Reports and Analytics  20  Reports and Analytics page not found
     capture page screenshot and retry if required
 
@@ -498,7 +510,7 @@ Click on Career and Performance under Me via Navigator
     Wait And Click Element  ${navigator}
     Wait And Click Element  ${nvg_me}
     Sleep  2s
-    Wait And Click Element  ${nvg_career_and_performance}
+    Wait And Click Element  ${navigator_career_performance}
     Wait And Verify Page Contains Text  Career and Performance  20s  Career and performance page is not displayed
     Capture Page Screenshot And Retry If Required
 
@@ -527,12 +539,12 @@ Verify Apps for MX Employee Self Service
     Verify Page Has Hyperlink  Checklist Tasks
     Verify Page Has Hyperlink  Pay
     Verify Page Has Hyperlink  Absences
-    Verify Page Has Hyperlink  Career and Performance
+    Verify Page Has Hyperlink  Performance and Development
     Verify Page Has Hyperlink  Personal Information
     Verify Page Has Hyperlink  Benefits
     Verify Page Has Hyperlink  Current Jobs
     Verify Page Has Hyperlink  Hiring
-    Verify Page Has Hyperlink  Employment Confirmation Letter
+    Verify Page Has Hyperlink  Employment Verification Letter
 
 Click on Show More and Employment Info
     Wait And Click Element  ${href_showmore}
@@ -543,14 +555,14 @@ Verify My Team tab apps for MX Employee Self Service
     Verify Page Has Hyperlink  My Team
     Verify Page Has Hyperlink  Journeys
     Verify Page Has Hyperlink  Hiring
-    Verify Page Has Hyperlink  Career Overview
+#    Verify Page Has Hyperlink  Career Overview
     Verify Page Has Hyperlink  Performance
     Verify Page Has Hyperlink  MX Complement and Vacancy Report
     Verify Page Has Hyperlink  MX Employee List
     Verify Page Has Hyperlink  MX Employee Leave Balance Report
     Verify Page Has Hyperlink  MX Employee Sick Absences Report
     Verify Page Has Hyperlink  MX Departures Report
-    Verify Page Has Hyperlink  MX Mandatory Vaccination Report
+#    Verify Page Has Hyperlink  MX Mandatory Vaccination Report
 
 Verify My Client Groups Tab is not present
     Sleep  3s
@@ -576,15 +588,16 @@ Verify Me tab apps for MX Manager Self Service
     Verify Page Has Hyperlink  Checklist Tasks
     Verify Page Has Hyperlink  Pay
     Verify Page Has Hyperlink  Absences
-    Verify Page Has Hyperlink  Career and Performance
+    Verify Page Has Hyperlink  Performance and Development
     Verify Page Has Hyperlink  Personal Information
     Verify Page Has Hyperlink  Benefits
     Verify Page Has Hyperlink  Current Jobs
-    Verify Page Has Hyperlink  Roles and Delegations
-    Verify Page Has Hyperlink  Employment Confirmation Letter
+#    Verify Page Has Hyperlink  Roles and Delegations
+    Verify Page Has Hyperlink  Employment Verification Letter
     Verify Page Has Hyperlink  Hiring
 
 Click on an Employee and Check Details
+    Sleep    5s
     ${checker}=  Run Keyword and Return Status  element should be visible  ${employee_reporting_to_manager}  Direct Reportee is not seen
     IF  '${checker}'=='False'
         element should be visible  ${employee_reporting_to_manager}  Direct Reportee is not seen

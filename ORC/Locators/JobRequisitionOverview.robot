@@ -10,7 +10,7 @@ ${warning_message}                      xpath: //div[contains(@id,'actwHm')]//di
 ${warning_message_yes_button}           xpath: //span[text()="Yes"]
 ${warning_message_no_button}            xpath: //span[text()="No"]
 ${resume_job_requisition}               xpath: //tr[@title='Resume Job Requisition']
-${back_button}                          xpath: //a[@title='Done']
+${back_button}                          xpath: //a[@title='Back']
 ${reopen_job_requisition}               xpath: //tr[@title='Reopen Job Requisition']
 ${close_pop_up}                         xpath: //a[contains(@id,'actwHm:cil5')]
 ${interview_btn}                        xpath://div[text()="Interviews"]

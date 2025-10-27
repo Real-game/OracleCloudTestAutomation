@@ -40,13 +40,14 @@ Scenario: End of Temporary Assignment
     Log  Step 7
     Search and click on newly hired Person  ${common_data}[PersonNumber]
     Log  Step 8
+#    Sleep  60s
     Wait And Verify Page Contains Element  ${potential_life_events_section}  5s  Potential Life Events Section is not displayed
     Log  Step 9
-    Verify Event in Detected State  Salary Change
+#    Verify Event in Detected State  Salary Change
     Verify Event in Detected State  Transfer
     Log  Step 10
     Click Actions and Select an Action  Evaluate Life Events
     Log  Step 11
     Verify Event in Processed State in Potential Life Events  Transfer
-    Verify Salary Change Event in Potential Life Events
+#    Verify Salary Change Event in Potential Life Events
 

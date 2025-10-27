@@ -14,8 +14,8 @@ Refer an Employee
     Sleep  3s
     Wait Until Element Is Visible  ${search_result}  20  Search result is not displayed
     Click Element  ${search_result}
-    Sleep  2s
-    Click Element  ${continue_button}
+    Sleep  5s
+#    Click Element  ${continue_button}
     Wait Until Element Is Visible  ${textarea_input}  20
     Scroll Element Into View  ${textarea_input}
     Click Element  ${textarea_input}
@@ -29,6 +29,6 @@ Submit the Employee referral
     Scroll Element Into View  ${submit_button}
     Click Element  ${submit_button}
     Sleep  5s
-    Wait Until Page Contains  Jobs  20  Jobs page is not displayed
+    Wait Until Page Contains  Job Info  20  Job Info Page is not displayed
     Capture Page Screenshot
 

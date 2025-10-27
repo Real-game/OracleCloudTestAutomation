@@ -8,7 +8,7 @@ ${convert_prospect_action_dropdown}     xpath: //div[@title='Prospect Candidate 
 ${convert_prospect_link}     xpath: //tr[@title='Convert Prospect']
 ${warning_yes_button}       xpath: //div[contains(@id,'hm2:PSEcil2')]/a
 ${close_pop_up}             xpath: //a[contains(@id,'actwHm:cil5')]
-${back_button}                          xpath: //a[@title='Done']
+${back_button}              xpath: //a[@title='Back']
 ${interactions_link}        xpath: //div[text()[contains(.,'Interactions')]]
 ${interactions_drop_down_selection}     xpath: //a[contains(@id,'drop')]
 ${interactions_drop_down_list}      xpath:  //li

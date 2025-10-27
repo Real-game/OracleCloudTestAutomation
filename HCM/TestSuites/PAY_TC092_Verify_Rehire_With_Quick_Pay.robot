@@ -39,6 +39,7 @@ Scenario: Verify Re-hire with Quick Pay
     Log  Step 7 - 8
     Enter Person number and search in Keywords field  ${data}[Person Number]
     Log  Step 9 - 10
+    Sleep  30s
     Click Simplified Quick Pay under Action button
     Log  Step 11
     Check elements are checked

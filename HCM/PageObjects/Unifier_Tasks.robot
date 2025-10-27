@@ -67,7 +67,9 @@ Select Existing Contract Payable
 Search for the record number
     [Arguments]  ${record_number_value}
     Click Required Element  ${search_record_icon}
+    Sleep  2s
     Click Required Element  ${record_number_input_field}
+    Sleep  2s
     Input Text  ${record_number_input_field}  ${record_number_value}
     Sleep  2s
     Click Required Element  ${apply_button}

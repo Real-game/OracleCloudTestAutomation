@@ -18,6 +18,7 @@ Take Action on Job Offer
 #    Search for Job Offer
 #    Wait Then Click And Set Text  ${jo_search}  ${reqid}
     Wait And Click Element   ${jo_search}
+    Sleep  2s
     Wait And Set Text    ${jo_search}  ${reqid}
     Sleep  5s
     Wait And Click Element  ${jo_search_img}
@@ -37,7 +38,7 @@ Take Action on Job Offer
                 Sleep  5s
                 Wait And Click Element  ${jo_warn_yes}
                 Sleep  5s
-                Wait Until Page Contains  Change Assignment
+                Wait Until Page Contains  Change Assignment  20s
                 Sleep  5s
                 Select Sections to change
                 Sleep  5s
@@ -66,15 +67,54 @@ Take Action on Job Offer
                 Wait And Click Element  ${jo_warn_yes}
                 Wait Until Page Contains  Change Assignment
                 Select Sections to change
+                Sleep  5s
                 Change When and Why  ${data}
+                Sleep  5s
                 Change Assignment  ${data}
+                Sleep  5s
                 Change Additional Info  ${data}
+                Sleep  5s
                 Change Managers  ${data}
                 Sleep  5s
+                Change Payroll
+                Sleep  5s
                 Change Salary  ${data}
+                Sleep  5s
                 Change Compensation
+                Sleep  5s
                 Add Reports
+                Sleep  5s
                 Add Comments  ${data}
+                Sleep  5s
+                Submit changes
+            END
+            IF  "${value}"=="Temporary Assignment"
+                Wait Until Page Contains  Warning
+                Sleep  5s
+                Wait And Click Element  ${jo_warn_yes}
+                Sleep  5s
+                Wait Until Page Contains  Add Assignment  20s
+                Sleep  5s
+                Select Sections to change
+                Sleep  5s
+                Change When and Why for Temporary Assignment    ${data}
+                Sleep  5s
+                Change Assignment  ${data}
+                Sleep  5s
+                Change Additional Info  ${data}
+                Sleep  5s
+                Change Managers  ${data}
+                Sleep  5s
+                Change Payroll
+                Sleep  5s
+                Change Salary  ${data}
+                Sleep  5s
+                Change Compensation
+                Sleep  5s
+                Add Reports
+                Sleep  5s
+                Add Comments  ${data}
+                Sleep  5s
                 Submit changes
             END
         ELSE
@@ -90,15 +130,27 @@ Take Action on Job Offer
                         Wait Until Page Contains  Warning
                         Wait And Click Element  ${jo_warn_yes}
                         Wait Until Page Contains  Change Assignment
+                        Sleep  5s
                         Select Sections to change
+                        Sleep  5s
                         Change When and Why  ${data}
+                        Sleep  5s
                         Change Assignment  ${data}
+                        Sleep  5s
                         Change Additional Info  ${data}
+                        Sleep  5s
                         Change Managers  ${data}
+                        Sleep  5s
+                        Change Payroll
+                        Sleep  5s
                         Change Salary  ${data}
+                        Sleep  5s
                         Change Compensation
+                        Sleep  5s
                         Add Reports
+                        Sleep  5s
                         Add Comments  ${data}
+                        Sleep  5s
                         Submit changes
                     END
                     IF  "${value}"=="Promotion"
@@ -106,14 +158,54 @@ Take Action on Job Offer
                         Wait And Click Element  ${jo_warn_yes}
                         Wait Until Page Contains  Change Assignment
                         Select Sections to change
+                        Sleep  5s
                         Change When and Why  ${data}
+                        Sleep  5s
                         Change Assignment  ${data}
+                        Sleep  5s
                         Change Additional Info  ${data}
+                        Sleep  5s
                         Change Managers  ${data}
+                        Sleep  5s
+                        Change Payroll
+                        Sleep  5s
                         Change Salary  ${data}
+                        Sleep  5s
                         Change Compensation
+                        Sleep  5s
                         Add Reports
+                        Sleep  5s
                         Add Comments  ${data}
+                        Sleep  5s
+                        Submit changes
+                    END
+                    IF  "${value}"=="Temporary Assignment"
+                        Wait Until Page Contains  Warning
+                        Sleep  5s
+                        Wait And Click Element  ${jo_warn_yes}
+                        Sleep  5s
+                        Wait Until Page Contains  Add Assignment  20s
+                        Sleep  5s
+                        Select Sections to change
+                        Sleep  5s
+                        Change When and Why for Temporary Assignment  ${data}
+                        Sleep  5s
+                        Change Assignment  ${data}
+                        Sleep  5s
+                        Change Additional Info  ${data}
+                        Sleep  5s
+                        Change Managers  ${data}
+                        Sleep  5s
+                        Change Payroll
+                        Sleep  5s
+                        Change Salary  ${data}
+                        Sleep  5s
+                        Change Compensation
+                        Sleep  5s
+                        Add Reports
+                        Sleep  5s
+                        Add Comments  ${data}
+                        Sleep  5s
                         Submit changes
                     END
                     Exit For Loop

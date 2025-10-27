@@ -54,5 +54,6 @@ Scenario: Check and Merge Duplicates of an Employee Profile
     Select Application  ${data}[Candidate Name]
     Log  Step 6
     Click on Actions and Select  ${data}
+    Sleep    30s
     Select Ex-Employee Duplicates and Merge
     Logout

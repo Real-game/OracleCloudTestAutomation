@@ -85,6 +85,8 @@ Fill Assignment Details in Hire an employee page
     ${pos_xpath}=  Catenate  SEPARATOR=  //li[contains(text(),'${position_name}')]
     Wait And Click Element  xpath: ${pos_xpath}
     Sleep  5s
+    scroll element into view    ${next_button}
+    Sleep    2s
     Wait And Click Element  ${next_button}
     Sleep  5s
 

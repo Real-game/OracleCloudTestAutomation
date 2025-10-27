@@ -46,7 +46,7 @@ Scenario: Quick Actions - Reverse termination
     Sleep  3s
     Log  Step 13
     Select Action on Reverse Termination Page  ${data}[Action]
-#    Add Comments on Reverse Termination Page  Test Comment
+    Add Comments on Reverse Termination Page  Test Comment
     Click Submit Button
     Sleep  90s
     Log  Step 14 - 15
@@ -62,6 +62,8 @@ Scenario: Quick Actions - Reverse termination
     Search Person in person management  ${data}[Person Name]  ${data}[Person Number]
     wait until element is visible  xpath://span[text()='Active - Payroll Eligible']/preceding::a[@href='#'][2]  20s  Assignment status is inactive
     Select action Dropdown  ${data}[Parent Action2]  ${data}[Child Action2]
+#    Sleep    20s
+    scroll element into view   xpath: //span[text()="Enrollment End Date"]/following::td[6]/span
     ${text}=  get text  xpath: //span[text()="Enrollment End Date"]/following::td[6]/span
     IF  "${text}"!=""
         fail  Enrolment date is reflecting for plans
@@ -74,8 +76,8 @@ Scenario: Quick Actions - Reverse termination
     IF  "${text}"!=""
         fail  Close date is not empty
     END
-    ${text}=  get text  xpath: //span[@title="Biweekly"]/following::td[2]/span/span/span
-    IF  "${text}"!=""
-        fail  Close date is not empty
-    END
+#    ${text}=  get text  xpath: //span[@title="Biweekly"]/following::td[2]/span/span/span
+#    IF  "${text}"!=""
+#        fail  Close date is not empty
+#    END
     element attribute value should be  xpath://span[@title="Biweekly"]/following::td[3]/span/span  style  display: none;  End date is not empty

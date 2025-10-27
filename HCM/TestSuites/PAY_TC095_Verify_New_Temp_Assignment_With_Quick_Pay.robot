@@ -38,8 +38,10 @@ Scenario: Verify new Temp Assignment with Quick Pay
     Click Search Person on Left Side Panel
     Log  Step 7 - 8
     Enter Person number and search in Keywords field  ${data}[Person Number]
+    Sleep  30s
     Log  Step 9 - 10
     Click Simplified Quick Pay under Action button
+#    Sleep  30s
     Log  Step 11
     Check elements are checked
     Log  Step 12

@@ -31,8 +31,10 @@ Scenario: Create board orders
     Click on Create board orders button   PROP-00002 : CANPA GUIDEWAY
     Switch to board order window
     Update board order Status  Active
-    Validate board order details  Entity1  89977  07/24/2023  889899  Payment structure comments
+    Validate board order details  Entity12  89977  Oct/22/2025  889899  Payment structure comments
     Validate board order parties information details   party 1  party 2  party 3  party 4
     Validate Location Information block   location description  5000  7000  WESTON
     Validate board order requirements  CONTR-01430  board order requirement text
     Submit the board order
+    Sleep    5s
+    page should not contain    Errors and Warnings

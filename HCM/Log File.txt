@@ -1,0 +1,59 @@
+This is log file containing all the differences found in the comparision.
+First File Path : MX_PAYROLL_NET_PAY_EXCEPTION_REPORT
+Second File Path : test_MX_PAYROLL_NET_PAY_EXCEPTION_REPORT
+
+
+----------------Starting Comparision---------------
+Number of rows are different in both the sheet for : Sheet1
+Mismatch found at row 19243 column 3 : 
+		 Before value : Gross Pay
+		 After value : Gross Pay1
+Mismatch found at row 19249 column 3 : 
+		 Before value : Dependant Life
+		 After value : Dependant Lifes
+Mismatch found at row 19254 column 3 : 
+		 Before value : Supplemental Life
+		 After value : Regular Hours Hours Worked
+Mismatch found at row 19254 column 4 : 
+		 Before value : None
+		 After value : 36.25
+Mismatch found at row 19254 column 5 : 
+		 Before value : 13.23
+		 After value : None
+Mismatch found at row 19254 column 6 : 
+		 Before value : None
+		 After value : 72.5
+Mismatch found at row 19254 column 7 : 
+		 Before value : 13.23
+		 After value : None
+Mismatch found at row 19254 column 8 : 
+		 Before value : None
+		 After value : 36.25
+Mismatch found at row 19254 column 9 : 
+		 Before value : 0.0
+		 After value : None
+Mismatch found at row 19255 column 1 : 
+		 Before value : None
+		 After value : 72626
+Mismatch found at row 19255 column 2 : 
+		 Before value : None
+		 After value : Samanvay Fermin
+Mismatch found at row 19255 column 3 : 
+		 Before value : None
+		 After value : Supplemental Life
+Mismatch found at row 19255 column 5 : 
+		 Before value : None
+		 After value : 13.23
+Mismatch found at row 19255 column 7 : 
+		 Before value : None
+		 After value : 13.23
+Mismatch found at row 19255 column 9 : 
+		 Before value : None
+		 After value : 0
+Extra row found at Row : 19257
+
+
+-----------------Comparision complete!--------------------
+
+Compared File Name : Compared File.xlsx
+Log File Path : Log File.txt

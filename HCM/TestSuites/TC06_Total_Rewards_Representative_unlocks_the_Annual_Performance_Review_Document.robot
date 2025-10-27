@@ -15,13 +15,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_TC06_Total_Rewards_Representative_unlocks_the_Annual_Performance_Review_Document.json
 ${csv_path}  ./CSV/td_TC06_Total_Rewards_Representative_unlocks_the_Annual_Performance_Review_Document.csv
+${common_json_path}  ./TestData/PMP_Talent_common_test_data.json
+${common_csv_path}  ./CSV/PMP_Talent_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Total Rewards Specialist unlocks Annual Performance Review Document
+    [Tags]  PMPTalentTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Rewards Representative]
+    Login Using  ${common_data}[Rewards Representative]
     Log  Step 4
     click on homepage
     Go To My Client Group

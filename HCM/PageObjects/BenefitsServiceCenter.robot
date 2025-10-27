@@ -1,7 +1,7 @@
 *** Settings ***
 Library  Selenium2Library
 Library  ../Helpers/Helpers.py
-Library  ../Keywords/CommonKeywords.py
+Library  ../HCM/Keywords/CommonKeywords.py
 Resource  ../Locators/BenefitsServiceCenter.robot
 Resource  ../Keywords/CommonKeywords.robot
 
@@ -45,7 +45,7 @@ Select Enrollment plan for Override
     Wait And Click Element  ${override_enrollment}
     Wait And Verify Page Contains Element  ${coverage_start_date}  10s  Coverage Start Date is not displayed
     Capture Page Screenshot And Retry If Required
-    [return]  ${plan_number}
+    RETURN  ${plan_number}
 
 Enter Coverage Start Date
     [Arguments]  ${date}
@@ -96,6 +96,7 @@ Enter Person Number and Click on Advanced Search
 Check Inactive Assigment Status Checkbox and Click Person
     [Arguments]  ${personnumber}
     Wait And Click Element  ${show_filters_button}
+    Sleep    5s
     Wait And Click Element  ${assignment_status_Inactive_checkbox}
     Sleep  20s
     ${checker}=  RUN KEYWORD And Return Status  Wait And Click Element  xpath: //span[text()='${personnumber}']/parent::div/parent::div/preceding-sibling::div//a
@@ -212,7 +213,7 @@ Fetch Dependent
     END
     capture page screenshot
     #${dependent_name} =  Get Text  ${detected_xpath}
-    [Return]  ${dependent_name}
+    RETURN  ${dependent_name}
 
 Click on Dental Benefit Plan and Verify Dependent name and number
     [Arguments]  ${dependent_name}  ${dependent_person_number}

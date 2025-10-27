@@ -1,2 +1,2 @@
 LegislativeDataGroup,FLowPattern,PayrollFlow,Payroll,PayrollPeriod,RunType,Log Name,Object Name
-CA Legislative Data Group,Calculate Payroll,Auto_Test_ReRun_Calculate Payroll2,Biweekly,22 2022 Biweekly | 2022-10-01 | 2022-10-14,Regular,FlowEssJobDefn,Autotest_06368
+CA Legislative Data Group,Calculate Payroll,Auto_ReRun_Calculate Payroll 022025,Biweekly,14 2025 Biweekly | 2025-06-21 | 2025-07-04,Regular,FlowEssJobDefn,Autotest_06368

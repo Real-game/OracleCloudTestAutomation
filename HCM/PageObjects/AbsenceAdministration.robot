@@ -7,8 +7,8 @@ Resource  ../Locators/AbsenceAdministration.robot
 *** Keywords ***
 
 Click on schedule and monitor absence process
-    click element   ${schedule_monitor_process}
-    Sleep  3s
+    Wait And Click Element   ${schedule_monitor_process}
+    Sleep  5s
     wait until page contains  Submit Jobs  20s  Submit jobs section is not displayed
     Capture Page Screenshot And Retry If Required
     Log To Console  Navigated to Schedule and Monitor Absence Process page.
@@ -43,7 +43,7 @@ Add a Absence Record
     Click Element  xpath: ${reason_xpath}
     Sleep  5s
     Click Element  ${submit_button}
-    Wait Until Page Contains  Confirmation  25s  Confirmation pop up is displayed
+    Wait Until Page Contains  Confirmation  45s  Confirmation pop up is not displayed
     Capture Page Screenshot
     Click Element  ${ok_button}
     Wait Until Page Contains  Manage Absences and Entitlements  20s  Manage Absences and Entitlements page is not displayed

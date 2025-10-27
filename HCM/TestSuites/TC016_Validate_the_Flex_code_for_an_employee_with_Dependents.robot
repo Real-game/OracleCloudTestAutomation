@@ -8,7 +8,7 @@ Resource  ../PageObjects/ReportsAndAnalytics.robot
 Resource  ../PageObjects/Catalog.robot
 Resource  ../PageObjects/BenefitsServiceCenter.robot
 
-Documentation  Validate the File Format
+Documentation  Validate the FleX Code for an Employee with Dependent
 ...            Prerequisite: TC015
 ...            Environment Specific Data:  Login User(Benefits_common_test_data.csv)
 ...            Reusable Data:  Person Number(Benefits_common_test_data.csv), Report Name(Benefits_common_test_data.csv)
@@ -27,7 +27,7 @@ ${common_json_path}  ./TestData/Benefits_common_test_data.json
 ${common_csv_path}  ./CSV/Benefits_common_test_data.csv
 
 *** Test Cases ***
-Scenario: Validate the file format
+Scenario: Validate the FleX Code for an Employee with Dependent
     [Tags]  Benefits  ReadOnly
 #    generatejson  ${csv_path}  ${json_path}
 #    ${data}=  readJson  ${json_path}

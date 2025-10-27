@@ -34,7 +34,7 @@ Scenario: Re-run 'Calculate prepayments' after rollback
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
     ${common_data}=  readJson  ${common_json_path}
-    ${payroll_flow}=  get_process_name  ${data}[PayrollFlow]
+#    ${payroll_flow}=  get_process_name  ${data}[PayrollFlow]
     Log  Step 1-3
     Login Using  ${common_data}[Login User]
     click on homepage
@@ -44,10 +44,12 @@ Scenario: Re-run 'Calculate prepayments' after rollback
     Click Submit a Flow
     Select Legislative data group as  ${data}[LegislativeDataGroup]
     Enter Flow Pattern Value and search  ${data}[FLowPattern]
-    Enter Payroll flow as  ${payroll_flow}
+#    Enter Payroll flow as  ${payroll_flow}
+    Enter Payroll flow as   ${data}[PayrollFlow]
     #Enter Effective Date as  ${data}[EffectiveDate]
     Enter Process Start and End Date  ${data}[ProcessStartDate]  ${data}[ProcessEndDate]
     Select Payroll from dropdown  ${data}[Payroll]
+    Sleep  60s
     Click on Submit
     Click refresh untill process status is completed  ${data}[FLowPatternName]
     Wait And Click Element  xpath: //span[text()="${data}[FLowPatternName]"]

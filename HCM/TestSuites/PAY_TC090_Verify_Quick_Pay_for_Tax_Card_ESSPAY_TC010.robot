@@ -6,8 +6,8 @@ Resource  ../PageObjects/HomePage.robot
 Library  ../Helpers/Helpers.py
 Resource  ../PageObjects/ViewCompensationHistory.robot
 Resource  ../PageObjects/Payroll.robot
-Documentation  Verify Quick Pay for Tax Card (ESSPAY_TC008)
-...            Prerequisite: ESSPAY_TC008
+Documentation  Verify Quick Pay for Tax Card (ESSPAY_TC010)
+...            Prerequisite: ESSPAY_TC010
 ...            Environment Specific Data:  Login User; Person Number
 ...            Reusable Data: Not applicable
 ...            Dynamic Data: Not applicable
@@ -19,13 +19,13 @@ Suite Teardown  After Suite
 Test Teardown  After Test
 
 *** Variables ***
-${json_path}    ./TestData/td_PAY_TC090_Verify_Quick_Pay_for_Tax_Card_ESSPAY_TC008.json
-${csv_path}  ./CSV/td_PAY_TC090_Verify_Quick_Pay_for_Tax_Card_ESSPAY_TC008.csv
+${json_path}    ./TestData/td_PAY_TC090_Verify_Quick_Pay_for_Tax_Card_ESSPAY_TC010.json
+${csv_path}  ./CSV/td_PAY_TC090_Verify_Quick_Pay_for_Tax_Card_ESSPAY_TC010.csv
 ${common_json_path}  ./TestData/Payroll_common_test_data.json
 ${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 *** Test Cases ***
 
-Scenario: Verify New Hire with Quick Pay
+Scenario: Verify Quick Pay for Tax Card (ESSPAY_TC010)
     [Tags]  PayrollTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
@@ -44,7 +44,7 @@ Scenario: Verify New Hire with Quick Pay
     Log  Step 9 - 10
     Click Calculation Cards under Action button
     Log  Step 11
-    Click Tax Credit Information and check Total Claim Amount  Federal  ${data}[Federal Total Claim Amount]
+    Click Tax Credit Information and check Total Claim Amount  Regional  ${data}[Total Claim Amount]
     Log  Step 12
     Click on Payroll from Navigator
     Wait And Click Element  link: Simplified QuickPay

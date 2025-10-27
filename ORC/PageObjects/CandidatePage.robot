@@ -14,10 +14,10 @@ Click on Actions and Select
         Select State  ${data}[Move to State]
         Click on Save
         Wait And Click Element  ${actions_btn}
-        Sleep  3s
+        Sleep  2s
         ${xpath_value}=  Catenate  SEPARATOR=  //td[text()[contains(.,'  ${data}[Offer Action]  ')]]
         Click Element  xpath: ${xpath_value}
-        Sleep  3s
+        Sleep  13s
         Capture Page Screenshot
         Handle Warning  ${data}[Option on Warning]
     ELSE IF  "${data}[Offer Action]"=="Add Interaction"
@@ -29,6 +29,7 @@ Click on Actions and Select
         Capture Page Screenshot
         Set Interaction Type  ${data}[Interaction Type]
     ELSE IF  "${data}[Offer Action]"=="Create Job Offer"
+        Sleep    5s
         Wait And Click Element  ${actions_btn}
         Sleep  3s
         ${xpath_value}=  Catenate  SEPARATOR=  //td[text()[contains(.,'  ${data}[Offer Action]  ')]]
@@ -37,6 +38,7 @@ Click on Actions and Select
         Wait Until Page Contains  Create Job Offer
         Capture Page Screenshot
     ELSE IF  "${data}[Offer Action]"=="Edit Offer"
+        Sleep  5s
         Wait And Click Element  ${actions_btn}
         Sleep  3s
         ${xpath_value}=  Catenate  SEPARATOR=  //td[text()[contains(.,'  ${data}[Offer Action]  ')]]
@@ -78,7 +80,7 @@ Click on Actions and Select
         Click Element  xpath: ${xpath_value}
         Sleep  3s
         Wait And Click Element  ${warning_yes}
-        Wait Until Page Contains  Confirmation  300s
+        Wait Until Page Contains  Confirmation  350s
         Capture Page Screenshot
     ELSE IF  "${data}[Offer Action]"=="Preview Offer"
         Sleep  10s
@@ -102,14 +104,14 @@ Click on Actions and Select
         Select Required Value  ${actions_table}  ${data}[Offer Action]
         Sleep  3s
         Capture Page Screenshot
-    ELSE IF  "${data}[Offer Action]"=="Move to HR"
-        Wait And Click Element  ${actions_btn}
-        Sleep  3s
-        Select Required Value  ${actions_table}  ${data}[Offer Action]
-        Sleep  3s
-        Wait And Click Element  ${warning_yes}
-        Wait Until Page Contains  Confirmation  50s
-        Capture Page Screenshot
+#    ELSE IF  "${data}[Offer Action]"=="Move to HR"
+#        Wait And Click Element  ${actions_btn}
+#        Sleep  3s
+#        Select Required Value  ${actions_table}  ${data}[Offer Action]
+#        Sleep  3s
+#        Wait And Click Element  ${warning_yes}
+#        Wait Until Page Contains  Confirmation  50s
+#        Capture Page Screenshot
     END
 
 Click on Activity Button

@@ -5,6 +5,8 @@ Resource  ../PageObjects/Login.robot
 Library  ../Helpers/Helpers.py
 Library  ../Helpers/Excel_Helpers.py
 Library  ../Helpers/ExcelReportUtility.py
+Library  ../Helpers/Excel_Utility.py
+Library  ../Helpers/Excel_Utility1.py
 Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/ReportsAndAnalytics.robot
 Resource  ../PageObjects/Catalog.robot
@@ -69,7 +71,8 @@ Scenario: MX Payroll Net Pay Exception Report (PAY-REP-052)
     Log  Step 27
     Verify Save Output Check Box
     Log  Step 28
-    Select Report Layout as Excel
+    Sleep    30s
+#    Select Report Layout as Excel
     Log  Step 29
     Select Schedule Report Job Tab  Schedule
     Log  Step 30
@@ -79,18 +82,27 @@ Scenario: MX Payroll Net Pay Exception Report (PAY-REP-052)
     Log  Step 32 - 33
     Set Report Job Name And Click Button  ${data}[Job Name]  OK
     Sleep  10s
-    unselect frame
-    Log  Step 34
-    Click Analytics Home Option
-    Log  Step 35 - 36
-    Wait And Click Element  link: Report Job History
-    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
+#    unselect frame
+#    Log  Step 34
+#    Click Analytics Home Option
+#    Log  Step 35 - 36
+#    Wait And Click Element  link: Report Job History
+#    select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
 #    Verify Status Of Report Job And Select On Success  ${data}[Job Name]
 #    Download Report Of Given Format  EXCEL
-    Sleep  20s
+#    Sleep  20s
     Capture page screenshot
 
-#    ${flag}=  ExcelReportUtility.compare_excel_mine_all_columns  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  7  7
+#Download the reports manually after scheduled batch completed successfully, Then run the below code for Excel comparison.
+#    ${flag}=  compare_two_excels  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  test_MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  7
+#    IF  '${flag}'!='True'
+#        Fail  Reports are not matching
+#    END
+#    Log  result is ${flag}
+
+#    ${flag}=  compare_excel_all_columns  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  test_MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  7
+#    ${flag}=  comparess_excel_rows  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  test_MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  differing_rows
+#    ${flag}=  comparee_excels  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT  MX_PAYROLL_NET_PAY_EXCEPTION_REPORT1
 #    IF  '${flag}'!='True'
 #        Fail  Reports are not matching
 #    END

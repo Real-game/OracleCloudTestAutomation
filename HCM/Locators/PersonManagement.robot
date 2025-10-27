@@ -69,7 +69,7 @@ ${home_address_update}  xpath: //a[contains(@id,'editAddressDropDown::popEl')]//
 ${home_address_line1}  xpath: //label[text()='Address Line 1']//following::input[contains(@id,'inputText17')]
 ${home_address_line2}  xpath: //label[text()='Address Line 2']//following::input[contains(@id,'inputText18')]
 ${termination_date_label}  xpath: //label[text()='Termination Date']
-${termination_date}  xpath: //label[text()='Termination Date']/following::td[@class='xv5 xk7'][1]
+${termination_date}  xpath: //label[text()='Termination Date']/following::td[1]
 ${done}  xpath: //button[@accesskey='o' and text()='D']
 ${correct}  xpath: //td[@class='xnw' and text()='Correct']
 ${click_ok}  xpath: (//button[@_afrpdo='ok'])[1]
@@ -151,3 +151,4 @@ ${vacation_adjustment_date}  xpath: (//label[text()='Vacation Entitlement Adjust
 ${person_employment}  xpath: //h4[text()='Employment']//following::a[text()='Person']
 ${home_address}  xpath: //label[text()='Home Address']//parent::td//following-sibling::td//span
 ${wanringYes}  xpath: (//div[text()='Warning'])[2]/following::button[text()='Yes']
+${href_person_management}  link:Person Management

@@ -90,15 +90,15 @@ Select Action Reason Value
 
 Click Next Button
     Wait And Click Element  ${next_button}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Select Element Posting Date
     [Arguments]  ${element_posting_date}
     Wait And Click Element  ${element_posting_date_drodown}
-    Sleep  3s
+    Sleep  5s
     Wait And Click Element  xpath: //li[text()="${element_posting_date}"]
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Select Mark Assignment As Processed

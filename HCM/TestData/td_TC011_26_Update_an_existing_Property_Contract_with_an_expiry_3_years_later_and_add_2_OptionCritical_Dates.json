@@ -1,15 +1,16 @@
 {
-    "Login User": "V-ACC-Vijay.Hulagur@metrolinx.com",
+    "Login User": "V-ACC-Senthil.Thangaraj@metrolinx.com",
     "Property Workspace Name": "155 CORNWALL ROAD",
-    "Contract Name": "Auto_TestP4",
+    "Contract Name": "First Iteration 12",
     "Short Description": "Option/Critical Line Item Details First",
     "Contract Option Type": "EXTENSION",
-    "No Earlier Notice Date": "09/21/2022",
-    "No Later Than Notice Date": "10/25/2025",
-    "Effective Renewal Extension Date": "09/20/2023",
+    "No Earlier Notice Date": "Jun/26/2025",
+    "No Later Than Notice Date": "25/Oct/2025",
+    "Effective Renewal Extension Date": "30/Jun/2025",
     "Short Description2": "Option/Critical Line Item Details Second",
     "Contract Option Type2": "PARKING",
-    "No Earlier Notice Date2": "09/25/2022",
-    "No Later Than Notice Date2": "10/11/2025",
-    "Effective Renewal Extension Date2": "09/24/2023"
+    "No Earlier Notice Date2": "Jun/26/2025",
+    "No Later Than Notice Date2": "10/Nov/2025",
+    "Effective Renewal Extension Date2": "11/Oct/2025",
+    "option_status": "AVAILABLE"
 }

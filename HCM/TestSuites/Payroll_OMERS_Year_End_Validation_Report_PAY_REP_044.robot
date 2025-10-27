@@ -60,6 +60,7 @@ Scenario: Run Payroll OMERS Year End Validation Report (PAY-REP-044)
     Sleep  2s
     Log  Step 17 - 24
     Select Pay Period From and To Report Run  ${data}[Pay Period from]  ${data}[Pay Period to]
+    Sleep  40s
     Log  Step 25
     select frame  xpath: //iframe[contains(@id,"generalObjectEditor")]
     Log  Step 26

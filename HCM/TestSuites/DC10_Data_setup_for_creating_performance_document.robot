@@ -19,10 +19,11 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_DC10_Data_setup_for_creating_performance_document.json
 ${csv_path}  ./CSV/td_DC10_Data_setup_for_creating_performance_document.csv
-
+#New Annual PMP - Senior Managers (FY23-24 Onwards)
+#MX Mid-Year Check-In 2023 Onwards
 *** Test Cases ***
 Scenario: Data setup for creating performance document
-    [Tags]  PMPTalentTestCase  ModifyData  22D-NoData
+    [Tags]  PMPTalentTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3
@@ -42,7 +43,8 @@ Scenario: Data setup for creating performance document
     Add Document Period Name  ${data}[Document Period Name]
     Add Document Review Period  ${data}[Review Period]
     Add Document Period Short Name  ${data}[Short Name]
-    IF  "${data}[Document Template]"=="MX Mid-Year Check-In NEW"
+#    IF  "${data}[Document Template]"=="MX Mid-Year Check-In NEW"
+    IF  "${data}[Document Template]"=="MX Mid-Year Check-In 2023 Onwards"
         Log  Step 14 - 17
         Click Add Icon In Questionnaires For The Period
         Add Role In Questionnaires  ${data}[Role1]
@@ -54,5 +56,6 @@ Scenario: Data setup for creating performance document
         Log  Step 21
     END
     Click Save And Close Performance Template
+    Sleep    5s
     wait until page does not contain  Error  10s  Error Displayed
 

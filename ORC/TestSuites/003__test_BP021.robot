@@ -30,7 +30,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 
 Scenario: Post Job Requisition
-    [Tags]  ExternalNewHire  April19
+    [Tags]  ExternalNewHire
     generatejson  ${csv_path}  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}
     appendtojson  ${json_path}  Requisition ID  ${prerequisites_data}[RequisitionId]

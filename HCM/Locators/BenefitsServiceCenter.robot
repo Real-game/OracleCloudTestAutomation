@@ -22,7 +22,7 @@ ${potential_life_event_dropdown}  xpath: //input[@value='Select a value']
 ${potential_life_event_save_close_button}  xpath: //a[@accesskey='S']
 ${potential_life_events_actions_button}  xpath: //h2[text()='Potential Life Events']//following::span[text()='Actions'][1]
 ${potential_life_events_termination_Detected}  xpath: //div[@title='Potential Life Events']//span[text()='Termination']/ancestor::tr[1]//span[contains(text(),'Detected')]
-${back_button}  xpath: //a[@title='Done']
+${back_button}  xpath: //a[@title='Back']
 
 ${evaluated_life_events_salary_change}  xpath: //div[@title='Evaluated Life Events']//span[text()='Salary Change']
 ${evaluated_life_events_processed_closed}  xpath: //div[@title='Evaluated Life Events']//span[contains(text(),'Processed and closed')]
@@ -54,8 +54,8 @@ ${effective_as_of_date_field}  xpath: //label[text()='Effective As-of Date']/pre
 ${edit_first_enroll}  xpath: (//div[@title='Edit'])[1]
 ${checkbox_second_enroll}  xpath: (//input[@type='checkbox'])[2]/following-sibling::label
 ${single_ftu_checkbox_first_enroll}  xpath: (//span[contains(text(),'Single ')])[1]/preceding::input[1]/following-sibling::label
-${family_ftu_checkbox_first_enroll}  xpath: (//span[contains(text(),'Family - ATU FT')])[1]/preceding::input[1]
-${family_ftu_checkbox_select_first_enroll}  xpath: (//span[contains(text(),'Family - ATU FT')])[1]/preceding::input[1]/following-sibling::label
+${family_ftu_checkbox_first_enroll}  xpath: (//span[contains(text(),'Family')])[1]/preceding::input[1]
+${family_ftu_checkbox_select_first_enroll}  xpath: (//span[contains(text(),'Family')])[1]/preceding::input[1]/following-sibling::label
 ${continue_button_enroll}  xpath: //a/span[text()='Continue']
 ${submit_button_enroll}  xpath: //a/span[text()='Sub']
 ${confirmation_enroll}  xpath: //span[text()='Confirmation']

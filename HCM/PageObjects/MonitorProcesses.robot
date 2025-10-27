@@ -116,9 +116,10 @@ Monitor Status Of Given Process Name
 
 Monitor Status Of Given Process Id
     [Arguments]  ${process_id}
+    Wait And Verify Page Contains Text  Manage Scheduled Processes  20s  Manage Scheduled Processes page not found
     Wait And Click Element  ${status_refresh_button}
     Sleep  5s
-    FOR  ${i}  IN RANGE  30
+    FOR  ${i}  IN RANGE  50
         mouse over  xpath: (//span[text()='${process_id}']/following::span[1])[1]
         ${Status}=  Run Keyword and Return Status  ELEMENT SHOULD CONTAIN  xpath: (//span[text()='${process_id}']/following::span[1])[1]  Succeeded
         Log to console  Status : ${Status}

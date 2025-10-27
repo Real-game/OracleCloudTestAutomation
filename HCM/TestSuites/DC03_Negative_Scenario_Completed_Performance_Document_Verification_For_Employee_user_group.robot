@@ -11,7 +11,6 @@ Documentation  Check Performance Document in Completed Status for Employee
 ...            Reusable Data: Current Task
 ...            Dynamic Data: Review Period and Review Section
 
-
 *** Settings ***
 Suite Setup  Before Suite
 Suite Teardown  After Suite
@@ -23,7 +22,7 @@ ${csv_path}  ./CSV/td_DC03_Negative_Scenario_Completed_Performance_Document_Veri
 
 *** Test Cases ***
 Scenario: Negative Scenario to check Active Performance Document
-    [Tags]  NegativeTestCase  ReadOnly  22D-NoData
+    [Tags]  NegativeTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3

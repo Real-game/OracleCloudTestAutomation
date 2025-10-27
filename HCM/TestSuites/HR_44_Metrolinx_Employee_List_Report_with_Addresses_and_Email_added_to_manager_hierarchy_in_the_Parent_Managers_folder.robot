@@ -26,7 +26,7 @@ ${common_csv_path}  ./CSV/Core_HR_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Metrolinx Employee List Report with Addresses and Email (added to manager hierarchy in the Parent Managers folder)
-    [Tags]  CoreHRTestCase  ReadOnly  DryRun
+    [Tags]  CoreHRTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
@@ -50,8 +50,8 @@ Scenario: Metrolinx Employee List Report with Addresses and Email (added to mana
     Click Ok Button
     wait until element is visible  xpath: //a[text()="Export"]  120s
     Sleep  2s
-    ${count1}=  Get Text Count with tag  td  Full Time
-    ${count2}=  Get Text Count with tag  td  Part Time
+    ${count1}=  Get Text Count with tag  td  Regular Full Time
+    ${count2}=  Get Text Count with tag  td  Regular Part Time
     ${count}=  evaluate  ${count1}+${count2}
     Log  Row count:${count}
     IF  "${count}"=="0"

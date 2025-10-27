@@ -27,7 +27,7 @@ Select Application
 #    END
     FOR  ${element}  IN  @{matching_elements}
         ${text}=    Get Text  ${element}
-        ${status}=  Run Keyword And Return Status  Should Contain  ${text}  ${candidate_name}
+        ${status}=  Run Keyword And Return Status  should be equal    ${text}  ${candidate_name}
         IF  '${status}'=='True'
             Wait And Click Element  ${element}
             Wait Until Page Contains Element  xpath: //div[text()='Details']  20s

@@ -5,12 +5,12 @@ Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/Login.robot
 Library  ../Helpers/Helpers.py
 Resource  ../PageObjects/HomePage.robot
-Resource  ../PageObjects/Payroll.robot
 Resource  ../PageObjects/FlowSubmission.robot
-Documentation  Clculate Retro
+Resource  ../PageObjects/Payroll.robot
+Documentation  Calculate Retro
 ...            Prerequisite:  Not applicable
 ...            Environment Specific Data:  Login User
-...            Reusable Data:  Flow Pattern, Start Date, End Date, Payroll, Log Name
+...            Reusable Data:  Flow Pattern; Start Date; End Date; Payroll; Log Name
 ...            Dynamic Data: Payroll Flow should be unique and should not be used in past for each run
 
 
@@ -22,14 +22,19 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PAY_TC038_Calculate_Retro.json
 ${csv_path}  ./CSV/td_PAY_TC038_Calculate_Retro.csv
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 
 *** Test Cases ***
-Scenario: Clculate Retro
+Scenario: Calculate Retro
     [Tags]  PayrollTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
+#    ${payroll_flow}=  get_process_name  ${data}[Payroll Flow]
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Login User]
     Log  Step 4-5
     Click on Payroll from Navigator
     Log  Step 6
@@ -60,4 +65,5 @@ Scenario: Clculate Retro
     Download Log File  ${data}[Log Name]  ${process_id}
     ${log_data}=  readLogFile  ${user_home}\\Downloads\\${process_id}.log
     Log To Console  ${log_data}
-    should contain  ${log_data}  ${process_id}
+    should contain  ${log_data}   ${data}[Payroll Flow]
+#    should contain  ${log_data}  ${process_id}

@@ -44,6 +44,6 @@ Scenario: Employee deletes a Performance Goal
     Delete Goal  ${data}[Goal Name]
     Log  Step 10
     Select Warning Yes Button
-    Sleep  5s
+    Sleep  10s
     Log  Step 11
-    page should not contain  ${data}[Goal Name]
+    page should not contain element  xpath: //a[text()="${data}[Goal Name]"]

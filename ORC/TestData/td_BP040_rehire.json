@@ -1,8 +1,8 @@
 {
-    "Requisition_ID": "105417",
-    "Candidate": "Antonio, VRAJ ()",
-    "Offer Action": "Create Job Offer",
-    "Employee Start Date": "18-Jul-2023",
+    "Requisition_ID": "107648",
+    "Candidate": "tester1, john ()",
+    "Offer Action": "Edit Offer",
+    "Employee Start Date": "19-Dec-2023",
     "Employee Type": "Employee",
     "Assignment Status": "Active - Payroll Eligible",
     "Proposed Person Type": "Employee",
@@ -14,11 +14,11 @@
     "Internal Documents": "Test_PDF_File",
     "Contract Start Date": "",
     "Contract End Date": "",
-    "Offer Letter": "New Hire",
-    "Expiration Date": "25-Nov-2023",
+    "Offer Letter": "Temporary Assignment",
+    "Expiration Date": "25-Dec-2024",
     "Contract Type": "",
     "Union Dues Retention": "",
     "OMERS": "Yes - OMERS Mandatory",
-    "Action": "Add Pending Worker",
+    "Action": "Temporary Assignment",
     "Sync from Position": "No"
 }

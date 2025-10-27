@@ -1,2 +1,2 @@
-${Id};${Login_User}
-1;V-ACC-Vijay.Hulagur@metrolinx.com
+${Id};${Login_User};${record_number_value};${status_value};${customer_number_value};${customer_id_value};${customer_name_value};${profile_class_value};${site_name_value};${site_id_value};${address_1_value};${city_value};${province_value};${postal_code_value};${country_value};${site_purpose_value};${site_payment_value};${site_currency_value}
+1;V-ACC-Senthil.Thangaraj@metrolinx.com;101288;Active;P-1453;101288;THE CANADIAN LOUDSPEAKER CORPORATION;REALTY;37054;9223;C/O BISCEGLIA & ASSOCIATES PROFESSIONAL CORPORATION;CONCORD;ON;L4K 4L6;CA;BILL_TO;Term for chargeback or debit memo;CAD

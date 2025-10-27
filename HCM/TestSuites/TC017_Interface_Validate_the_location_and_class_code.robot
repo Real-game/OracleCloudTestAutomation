@@ -7,7 +7,7 @@ Library  ../Helpers/Helpers.py
 Resource  ../PageObjects/ReportsAndAnalytics.robot
 Resource  ../PageObjects/Catalog.robot
 Resource  ../PageObjects/PersonManagement.robot
-Documentation  Validate the File Format
+Documentation  Validate the location and class code
 ...            Prerequisite: TC015
 ...            Environment Specific Data:  Login User(Benefits_common_test_data.csv)
 ...            Reusable Data:  Person Number(Benefits_common_test_data.csv),Report Name(Benefits_common_test_data.csv), On Data
@@ -26,7 +26,7 @@ ${common_json_path}  ./TestData/Benefits_common_test_data.json
 ${common_csv_path}  ./CSV/Benefits_common_test_data.csv
 
 *** Test Cases ***
-Scenario: Validate the file format
+Scenario: Validate the location and class code
     [Tags]  Benefits  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}

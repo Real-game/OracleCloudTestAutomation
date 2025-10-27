@@ -1,5 +1,6 @@
 {
-    "Person Number": "06392",
+    "Payroll Group1": "Calculation Cards",
+    "Person Number": "06368",
     "Calculation Card Name": "Involuntary Deductions",
     "Calculation Component Name 1": "Garnishment",
     "Reference Code 1": "Garnishment",
@@ -7,5 +8,6 @@
     "Reference Code 2": "Family Support",
     "Display Name on Value 1": "Court Order Amount",
     "Amount": "10",
-    "Display Name on Value 2": "Child Support Order Amount"
+    "Display Name on Value 2": "Child Support Order Amount",
+    "Payroll Group2": "Element Entries"
 }

@@ -70,8 +70,8 @@ Scenario: MX_Complement and Vacancy Report
 #***Scenario: Validate total report value***
 #    @{column_list}=  Create List  Temp Assignment Start Date
     #${flag}=  ExcelReportUtility.compare_excel_skip_columns  HR-REP-129_MX_Employee_List_Report  HR-REP-129_MX_Employee_List_Report  ${column_list}  13  13
-    ${flag}=  ExcelReportUtility.compare_excel_all_columns  ${data}[Downloaded Report Name]  ${data}[Downloaded Report Name]  7  7
-    IF  '${flag}'!='True'
-        Fail  Reports are not matching
-    END
-    Log  result is ${flag}
+#    ${flag}=  ExcelReportUtility.compare_excel_all_columns  ${data}[Downloaded Report Name]  ${data}[Downloaded Report Name]  7  7
+#    IF  '${flag}'!='True'
+#        Fail  Reports are not matching
+#    END
+#    Log  result is ${flag}

@@ -1,9 +1,9 @@
 {
     "LegislativeDataGroup": "CA Legislative Data Group",
     "FLowPattern": "Calculate Payroll",
-    "PayrollFlow": "Auto_Test_ReRun_Calculate Payroll2",
+    "PayrollFlow": "Auto_ReRun_Calculate Payroll 022025",
     "Payroll": "Biweekly",
-    "PayrollPeriod": "22 2022 Biweekly | 2022-10-01 | 2022-10-14",
+    "PayrollPeriod": "14 2025 Biweekly | 2025-06-21 | 2025-07-04",
     "RunType": "Regular",
     "Log Name": "FlowEssJobDefn",
     "Object Name": "Autotest_06368"

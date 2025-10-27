@@ -4,7 +4,7 @@
 ${href_my_contact_information}  xpath://span[text()='My Contact Information']
 
 ${href_edit_number}  xpath://img[@title="Edit Phone Details"]
-${href_type}  xpath://label[text()='Type']/following::input[1]
+${href_type}  xpath://label[text()='Type']/following::a[1]
 ${href_area_code}  xpath://label[text()='Area Code']/following::input[1]
 ${href_number}  xpath://label[text()='Number']/following::input[1]
 ${hsubmit_button}  xpath://div[@title='Submit']

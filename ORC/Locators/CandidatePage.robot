@@ -26,7 +26,7 @@ ${details_btn}  xpath://div[text()="Details"]
 ${warning_yes}  xpath://a[span[text()="Yes"]]
 ${preview_offer_title}   xpath: //h1[text()[contains(.,'Preview Offer')]]
 ${Attach_img}   xpath: //span[text()='Drag files here or click to add attachment']
-${go_back}  xpath://*[name()="svg" and @aria-label="Done"]
+${go_back}  xpath://*[name()="svg" and @aria-label="Back"]
 ${sm_continue}  xpath://button[@title="Continue"]
 ${sm_use_dropdown}  xpath://div[label[text()="Use"]]/following-sibling::div//a
 ${sm_mail_area}  xpath://body[@contenteditable="true"]

@@ -24,7 +24,7 @@ ${common_csv_path}  ./CSV/PFP_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Allocate Workforce Compensation - Verify custom alerts - Salary continuance employee - should not give increase
-    [Tags]  PFPTestCase  ModifyData  22D-NoData
+    [Tags]  PFPTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}

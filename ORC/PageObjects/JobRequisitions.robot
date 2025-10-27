@@ -46,14 +46,12 @@ Select exact requsition
         Log To Console  Requisition with ${search} id not found!
     END
 
-
 Clear Hiring Filter
     ${status}=  Run Keyword And Return Status  element should be visible  ${filter}
     IF  "${status}"=="True"
         Wait And Click Element  ${filter}
         Sleep  3s
     END
-
 
 Verify requisition status
     [Arguments]  ${req_status}
@@ -66,7 +64,6 @@ Click on the Requisition title
     [Arguments]  ${req_id}
     Search for requisition id  ${req_id}
     Wait Until Element Is Visible  ${detail_link}  90s  Element is not visible
-
 
 Click on the Candidate Search link
     Sleep  3s
@@ -101,7 +98,6 @@ Click on Pending Notification
     Close Window
     Switch Window  ${handles}[0]
 
-
 Select an open posted requisition
     [Arguments]    ${test_data}
     Wait Until Element Is Visible  ${show_filter_link}  20
@@ -131,7 +127,7 @@ Search for the presence of requisition id
     Clear Hiring Filter
     Wait And Send Keys  ${input_search}   ${req_id}
     Wait And Click Element  ${btn_search}
-    Sleep  5s
+    Sleep  10s
     ${requisition_title}=  Get Element Attribute  ${req_title}  title
     Log To Console  Requisition title is ${requisition_title}
     Should Contain   ${requisition_title}   ${req_id}

@@ -11,10 +11,11 @@ Search By Employee Number
     [Arguments]  ${number}
     Sleep  5s
     Click Element  ${search_number}
-    Input Text  ${search_number}  ${number}
     Sleep  2s
+    Input Text  ${search_number}  ${number}
+    Sleep  3s
     Wait and click element  ${search_button}
-    Sleep  5s
+    Sleep  6s
     ${employee_xpath}=  Catenate  SEPARATOR=  (//span[text()='Active - Payroll Eligible']//parent::td/preceding-sibling::td//span[text()='${number}']//parent::td/preceding-sibling::td//a)[1]
     ${checker}=  Run Keyword and Return Status  Click Element  xpath: ${employee_xpath}
     IF  '${checker}'=='False'

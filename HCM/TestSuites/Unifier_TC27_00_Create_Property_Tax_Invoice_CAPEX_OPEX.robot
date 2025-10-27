@@ -21,12 +21,12 @@ ${json_path}    ./TestData/td_TC27_00_Create_Property_Tax_Invoice_CAPEX_OPEX.jso
 ${csv_path}  ./CSV/td_TC27_00_Create_Property_Tax_Invoice_CAPEX_OPEX.csv
 
 *** Test Cases ***
-Create Property Tax Invoice CAPEX OPEX with - ${ID} ${Login_User} ${Property_Workspace_Name} ${Metrolinx_Property_Name} ${Roll_Number} ${Invoice_Number} ${Receipt_Date} ${Ref_Owned_Property} ${Vendor_ID} ${Vendor_Site_ID} ${Assessment_Year} ${Education_Levy} ${Total_Annual_Property_Tax} ${Property_Tax_Amount_per_Invoice} $CAPEX-OPEX} ${Project} ${Asset_Category} ${Location} ${Expenditure_Org_Name} ${Expenditure_Type} ${Business_Line} ${Cost_Center} ${GL_Code_Combo} ${Subject_PIN} ${Process_Date}
+Create Property Tax Invoice CAPEX OPEX with - ${ID} ${Login_User} ${Property_Workspace_Name} ${Metrolinx_Property_Name} ${Roll_Number} ${Invoice_Number} ${Receipt_Date} ${Ref_Owned_Property} ${Vendor_ID} ${Vendor_Site_ID} ${Assessment_Year} ${Education_Levy} ${Total_Annual_Property_Tax} ${Property_Tax_Amount_per_Invoice} ${CAPEX_OPEX} ${Project} ${Asset_Category} ${Location} ${Expenditure_Org_Name} ${Expenditure_Type} ${Business_Line} ${Cost_Center} ${GL_Code_Combo} ${Subject_PIN} ${Process_Date}
     [Tags]  PropertyTaxInvoice  ModifyData
 
 *** Keywords ***
 Create Property Tax Invoice
-    [Arguments]  ${ID}  ${Login_User}  ${Property_Workspace_Name}  ${Metrolinx_Property_Name}  ${Roll_Number}  ${Invoice_Number}  ${Receipt_Date}  ${Ref_Owned_Property}  ${Vendor_ID}  ${Vendor_Site_ID}  ${Assessment_Year}  ${Education_Levy}  ${Total_Annual_Property_Tax}  ${Property_Tax_Amount_per_Invoice}  $CAPEX-OPEX}  ${Project}  ${Asset_Category}  ${Location}  ${Expenditure_Org_Name}  ${Expenditure_Type}  ${Business_Line}  ${Cost_Center}  ${GL_Code_Combo}  ${Subject_PIN}  ${Process_Date}
+    [Arguments]  ${ID}  ${Login_User}  ${Property_Workspace_Name}  ${Metrolinx_Property_Name}  ${Roll_Number}  ${Invoice_Number}  ${Receipt_Date}  ${Ref_Owned_Property}  ${Vendor_ID}  ${Vendor_Site_ID}  ${Assessment_Year}  ${Education_Levy}  ${Total_Annual_Property_Tax}  ${Property_Tax_Amount_per_Invoice}  ${CAPEX_OPEX}  ${Project}  ${Asset_Category}  ${Location}  ${Expenditure_Org_Name}  ${Expenditure_Type}  ${Business_Line}  ${Cost_Center}  ${GL_Code_Combo}  ${Subject_PIN}  ${Process_Date}
     Log  Step 1
     Unifier Login Using  ${Login_User}
     Log  Step 2
@@ -52,9 +52,9 @@ Create Property Tax Invoice
     Input Total Annual Property Tax  ${Total_Annual_Property_Tax}
     Input Property Tax Amount Per Invoice  ${Property_Tax_Amount_per_Invoice}
     Log  Step 9
-    Select CAPEX-OPEX option  ${CAPEX-OPEX}
+    Select CAPEX-OPEX option  ${CAPEX_OPEX}
     Log  Step 10
-    IF  "${CAPEX-OPEX}" == "CAPEX"
+    IF  "${CAPEX_OPEX}" == "CAPEX"
         Select Value from Advanced Search  Project  ${Project}
         Input EBS Number  ${Asset_Category}
         Select Value from Advanced Search  Asset Category  ${Asset_Category}
@@ -62,7 +62,7 @@ Create Property Tax Invoice
         Select Value from Advanced Search  Expenditure Org Name  ${Expenditure_Org_Name}
         Select Value from Advanced Search  Expenditure Type  ${Expenditure_Type}
     END
-    IF  "${CAPEX-OPEX}" == "OPEX"
+    IF  "${CAPEX_OPEX}" == "OPEX"
         Select Value from Advanced Search  Business Line  ${Business_Line}
         Select Value from Advanced Search  Cost Center  ${Cost_Center}
         Select Value from Advanced Search  GL Code Combo  ${GL_Code_Combo}

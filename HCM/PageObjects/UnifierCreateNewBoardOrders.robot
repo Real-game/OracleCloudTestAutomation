@@ -37,7 +37,7 @@ Validate board order parties information details
 Submit the board order
     Click Element  ${submit_board_order}
     Capture Page Screenshot
-    Sleep  10s
+    Sleep  20s
 
 Switch to board order window
     Sleep  5s
@@ -65,7 +65,7 @@ Validate board order requirements
     Input Text  ${record_number_search_input}  ${property_contract_id_value}
     Sleep  3s
     Click Element  ${search_board_order_apply}
-    Sleep  3s
+    Sleep  5s
     ${record_xpath}=  Catenate  SEPARATOR=  //div[contains(text(),'${property_contract_id_value}')]
     Click Element   xpath: ${record_xpath}
     Sleep  3s

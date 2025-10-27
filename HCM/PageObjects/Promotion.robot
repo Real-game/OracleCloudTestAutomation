@@ -3,6 +3,7 @@ Library  Selenium2Library
 Library  ../Helpers/Helpers.py
 Resource  ../Keywords/CommonKeywords.robot
 Resource  ../Locators/Promotion.robot
+Resource  ../Locators/Transfer.robot
 
 *** Keywords ***
 
@@ -64,11 +65,30 @@ Select Position On Promotion Page
 
 Select Salary Adjustment Percentage
     [Arguments]  ${salary_percentage}
-    Wait And Click Element  ${adjustment_percentage}
-    Sleep  2s
-    Wait Then delete And Set Text  ${adjustment_percentage}  ${salary_percentage}
-    Sleep  2s
-    Wait And Click Element  xpath: (//label[text()='Adjustment Percentage'])[1]
+    IF  "${salary_percentage}"!=""
+        Wait And Click Element  ${salary_value}
+        Sleep  3s
+        Wait And Click Element  ${salary_header}
+        Sleep  2s
+        scroll element into view  ${salary_header}
+        ${check}=  Run Keyword and Return Status  Wait and clear and send keys  ${salary_value}  ${salary_percentage}
+        IF  '${check}'=='False'
+            Sleep  3s
+            Wait And Click Element  ${salary_header}
+            Sleep  3s
+            scroll element into view   ${salary_header}
+            Sleep  3s
+            Wait Then delete And Set Text  ${salary_value}  ${salary_percentage}
+        END
+        Sleep  2s
+        Capture Page Screenshot And Retry If Required
+    END
+    Capture Page Screenshot And Retry If Required
+#    Wait And Click Element  ${adjustment_percentage}
+#    Sleep  2s
+#    Wait Then delete And Set Text  ${adjustment_percentage}  ${salary_percentage}
+#    Sleep  2s
+#    Wait And Click Element  xpath: (//label[text()='Adjustment Percentage'])[1]
     Sleep  2s
     Continue
     Sleep  2s

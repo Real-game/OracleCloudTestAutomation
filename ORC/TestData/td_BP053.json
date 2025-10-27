@@ -1,10 +1,10 @@
 {
-    "Requisition ID": "105416",
-    "Email": "orctestsn@mailinator.com",
+    "Requisition ID": "110815",
+    "Email": "orctest123n@mailinator.com",
     "Title": "Mr.",
     "First Name": "Pipeline",
     "Last Name": "Requisition",
-    "Country Code": "(Canada)",
+    "Country Code": "+1 (Canada)",
     "Phone Number": "416-999-0003",
     "Country": "Canada",
     "Address": "789 Fake Street",
@@ -22,7 +22,8 @@
     "vaccinated": "Yes",
     "Persons with Disabilities": "No",
     "Gender Identity": "Man",
-    "Candidate Name": "Test, Auto ()",
+    "Candidate Name": "Requisition, Pipeline ()",
     "Do you have valid work visa?": "Yes",
-    "Source type": "Metrolinx Career Site"
+    "Source type": "Metrolinx Career Site",
+    "maximum number of days you are willing to go into the office": "2 days"
 }

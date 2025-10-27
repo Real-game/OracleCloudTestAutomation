@@ -11,7 +11,8 @@ ${click_here_button}    xpath: //button[text()="Click Here"]
 ${edit_button}    xpath: //div[@title="Edit Basic Info"]
 ${status_dropdown}    xpath: //label[text()='Status']/parent::div/following-sibling::div//a
 ${save_button}    xpath: //span[text()="Save"]
-${back_arrow}    xpath: //a[@title="Done"]
+${participant_save_button}    xpath: //div[@title="Save"]
+${back_arrow}    xpath: //a[@title="Back"]
 
 ${comment_input_box}    xpath: //div[@aria-label="Editor editing area: main"]/p
 ${iframe_disaster_recovery_project}    xpath: (//a[text()="Disaster Recovery Project"]/following::iframe[@class="cke_wysiwyg_frame cke_reset"])[1]
@@ -46,7 +47,7 @@ ${iframe_manager_comments_overall_feedback}    xpath: (//label[text()="Manager C
 
 ${click_here_performance_goals}    xpath: (//a[text()="Performance Goals"]/following::span[text()="Click Here"])[1]
 
-${click_here_performance_management_process_stage}    xpath: (//h2[text()="Performance Management Process Stage"]/following::span[text()="Click Here"])[1]
+${click_here_performance_management_process_stage}    xpath: (//h2[text()="Performance Management Process"]/following::span[text()="Click Here"])[1]
 
 ${click_here_competencies}    xpath: (//a[text()="Competencies"]/following::span[text()="Click Here"])[1]
 ${competencies_manager_rating}    xpath: //label[text()="Manager Competency Rating"]
@@ -61,9 +62,9 @@ ${add_button}  xpath: //span[text()='Add']
 ${goal_plan_dropdown}  xpath: //label[text()='Goal Plan']//following::a[contains(@id,'gp1Sel')]
 #${goal_plan_value}  xpath: //ul[contains(@id,'sh:gp1Sel')]//following::li[@class='x1n6' or @class='x1n6 p_AFSelected']
 
-${goal_name_input}  xpath: //label[text()='Goal Name']//following::input[contains(@id,'sh:gn1Inp')]
+${goal_name_input}  xpath: //label[text()='Goal Statement']//following::input[contains(@id,'sh:gn1Inp')]
 
-${goal_description}  xpath: //label[text()='Description']//following::textarea[contains(@id,'sh:dsc1Inp')]
+${goal_description}  xpath: //label[contains(text(),'Actions and measures of success')]//following::textarea[contains(@id,'sh:dsc1Inp')]
 
 ${goal_start_date}  xpath: //label[text()='Start Date']//following::input[contains(@id,'sh:st1Dt')]
 
@@ -91,14 +92,14 @@ ${message_to_participant}  xpath: //label[text()='Message to Participants']//fol
 ${submit_send_request}  xpath: //span[text()='it']
 
 ${show_additional_info}  xpath: //a[text()='Show Additional Info']
-${click_here}  xpath: //h2[text()='Performance Management Process Stage']//following::div[contains(@id,'pd07Pse:pd04Btn')]//a[@role='button']
+${click_here}  xpath: //h2[text()='Performance Management Process']//following::div[contains(@id,'pd07Pse:pd04Btn')]//a[@role='button']
 ${met_with_manager_dropdown}  xpath: //a[contains(@id,'dc_soc1::drop')]
 ${iframe_provide_performance_comments}  xpath: //iframe[@class='cke_wysiwyg_frame cke_reset']
 ${comments_text_box}  xpath: //div[@aria-label="Editor editing area: main"]/p
 ${manager_comments_expand}  xpath: //h2[contains(text(),'Manager Comments')]//following::a/img[@title='Expand']
-${checkin_comments}  xpath: //label[text()='Please provide your check-in comments here.']//preceding-sibling::div
+${checkin_comments}  xpath: //label[text()='Please provide your check-in comments here.']//following::p[1]
 
-${did_you_meet_dropdown}  xpath: //span[text()='Did you meet with the employee for a mid-year review to discuss progress towards goals? If yes, please indicate the day and month of meeting.']/following::input[1]
+${did_you_meet_dropdown}  xpath: //label[text()='Did you meet with the employee for a mid-year review to discuss progress towards goals? If yes, please indicate the day and month of meeting.']/following::input[1]
 
 ${check_in_date_input}  xpath: //input[@placeholder="dd-mmm-yyyy"]
 ${load_more_option}  xpath: //a[text()='Load More Items']

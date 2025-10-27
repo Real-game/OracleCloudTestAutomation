@@ -19,7 +19,7 @@ Search And Select Person
 
 Select Continue
     Wait And Click Element  ${continue_button}
-    Sleep  5s
+    Sleep  3s
     capture page screenshot
 
 Fill The Details In When and Why

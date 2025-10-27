@@ -43,5 +43,5 @@ Select Payroll Process value
 
 Select Submit
     Wait And Click Element  ${submit_option}
-    Sleep  5s
+    Sleep  15s
     Capture Page Screenshot

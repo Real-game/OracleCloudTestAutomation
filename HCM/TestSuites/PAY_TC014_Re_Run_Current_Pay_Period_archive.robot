@@ -49,6 +49,7 @@ Scenario: Re-run 'Archive Periodic Payroll results' by submitting a flow
     Set Process End Date  ${common_data}[End Date]
     Log  Step 12
     Select Payroll  ${data}[Payroll]
+    Sleep  30s
     Log  Step 13
     Click Submit Button
     Check Successful Submission Status

@@ -36,16 +36,16 @@ Scenario: End Date must be equal or greater than start date in Owned Property li
     Validate Property Information block  OPEX  Owned
     Validate Title Information block   Jayapal  Raghavi  Premkumar  78780
     Validate Address Information block  East Street  Toronto
-    Validate Property Use Block  MX Owned  Yes  Future Description  07/25/2023  Transitional Area Comments
+    Validate Property Use Block  MX Owned  Yes  Future Description  Apr/28/2025  Transitional Area Comments
     Validate PIN Mileage Survey Block  01010101  02020202  Survey plans value  5000  Mileage Comments
     Validate Area Calculation Block   Land  Yes  2400  3  2  Area comments
-    Validate building demolitions block  07/25/2023  Demolition Comments
-    Validate property disposed details block   FULL  07/25/2023  70000  2400  Disposition details  MPM Company
+    Validate building demolitions block  Apr/28/2025  Demolition Comments
+    Validate property disposed details block   FULL  Apr/28/2025  70000  2400  Disposition details  MPM Company
     Validate Expropriation Details block  Yes  Yes  Yes  Section 24  Expropriation Comments
     Click on Property Reservation tab
     Click on Add property reservation button
-    ${today_date}=  Get Current Date MM DD YYYY
-    ${yesterday_date}=   Get Yesterday Date MM DD YYYY
+    ${today_date}=  Get Current Date MON DD YYYY
+    ${yesterday_date}=   get yesterday date mmm dd yyyy
     Add Occupancy Term Info  ${today_date}  ${yesterday_date}
     Add Project/Activity Details Info   property description  REVENUE  5000   3000  400
     Sleep  10s

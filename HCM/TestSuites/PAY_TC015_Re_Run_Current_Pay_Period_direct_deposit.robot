@@ -54,6 +54,8 @@ Scenario: Re-Run process of Direect Deposit for current pay period
     Select Payroll  ${data}[Payroll]
     Log  Step 14
     Select Consolidation Group  ${data}[Consolidation Group]
+#    Sleep  30s
+#    Select Process Configuration Group  ${data}[Process Configuration Group]
     Log  Step 15
     Click Submit Button
     Check Successful Submission Status

@@ -47,7 +47,7 @@ Scenario: Workforce Compensation - Standard Functionality - Run Batch Processes 
     Log  Step 10
     Select Plan  ${common_data}[Plan]
     Log  Step 11
-    Select Cycle  ${common_data}[Cycle]
+    Select Cycle  ${common_data}[Cycle_plan]
     Log  Step 12
     Select Action Value  ${data}[Action]
     Log  Step 13
@@ -83,7 +83,7 @@ Scenario: Workforce Compensation - Standard Functionality - Run Batch Processes 
     ${process_id}=  Get And Return Process Id
     Click Ok To Confirm
     Log  Step 24
-    Click Monitor Process Button
+#    Click Monitor Process Button
     Monitor Status Of Given Process Id  ${process_id}
     click on homepage
     Sleep  3s

@@ -5,12 +5,12 @@ Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/Login.robot
 Library  ../Helpers/Helpers.py
 Resource  ../PageObjects/HomePage.robot
-Resource  ../PageObjects/Payroll.robot
 Resource  ../PageObjects/FlowSubmission.robot
+Resource  ../PageObjects/Payroll.robot
 Documentation  Calculate Payroll
 ...            Prerequisite:  Not applicable
 ...            Environment Specific Data:  Login User
-...            Reusable Data:  Flow Pattern, Todays Date, Payroll, Log Name
+...            Reusable Data:  Flow Pattern; Todays Date; Payroll; Log Name
 ...            Dynamic Data: Payroll Flow should be unique and should not be used in past for each run
 
 *** Settings ***
@@ -22,15 +22,19 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PAY_TC048_Calculate_Accruals_Seeded_Absence_Process.json
 ${csv_path}  ./CSV/td_PAY_TC048_Calculate_Accruals_Seeded_Absence_Process.csv
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Submit flow for 'Calculate Accruals'
     [Tags]  PayrollTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
-    ${payroll_flow}=  get_process_name  ${data}[Payroll Flow]
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
+#    ${payroll_flow}=  get_process_name  ${data}[Payroll Flow]
     Log  Step 1-3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Login User]
     Log  Step 4-5
     Click on Payroll from Navigator
     Log  Step 6
@@ -40,11 +44,12 @@ Scenario: Submit flow for 'Calculate Accruals'
     Log  Step 8
     Search And Select Specific Flow Pattern  ${data}[Flow Pattern]
     Log  Step 9
-    Set Payroll Flow  ${payroll_flow}
+    Set Payroll Flow    ${data}[Payroll Flow]
+#    ${payroll_flow}
     Log  Step 10
     Set Effective Date  ${data}[Todays Date]
     Log  Step 11
-    #Input Person Number  ${data}[Person Number]
+    Input Person Number  ${data}[Person Number]
     Select Payroll  ${data}[Payroll]
     Log  Step 12
     Click Submit Button

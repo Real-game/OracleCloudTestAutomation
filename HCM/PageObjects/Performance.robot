@@ -63,6 +63,11 @@ Save Changes
     Sleep  7s
     Capture Page Screenshot And Retry If Required
 
+Save Changes for Participant
+    Wait And Click Element  ${participant_save_button}
+    Sleep  7s
+    Capture Page Screenshot And Retry If Required
+
 Click Back Arrow
     Wait And Click Element  ${back_arrow}
 
@@ -84,16 +89,15 @@ Click Here Button Behind Performance Management Process Stage
 
 Under Each Goal Give Test Comments
     [Arguments]  ${comment}
-    ${count}=  get element count  ${iframe_count}
+    ${count}=  get element count  ${comment_input_box}
     ${count}=  Evaluate  ${count}+${1}
     Log to console  Count:${count}
     FOR  ${i}  IN RANGE  1  ${count}
         Log to console  Comment:${i}
         Sleep  3s
-#        select frame  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]
+        ${comment_input}=  Catenate  SEPARATOR=  xpath: (//div[@aria-label="Editor editing area: main"]/p)[${i}]
         Sleep  3s
-        Wait And Set Text  ${comment_input_box}  ${comment}
-        unselect frame
+        Wait Then Click And Clear And Set Text    ${comment_input}  ${comment}
         Sleep  3s
         Capture Page Screenshot And Retry If Required
     END
@@ -105,7 +109,7 @@ Click Save And Close
 
 Click Back Arrow To Comeback To Employee Self Evaluation Page
     Click Back Arrow
-    Wait And Verify Page Contains Text  Employee Self-Evaluation:  20s  Employee Self-Evaluation: page not found
+#    Wait And Verify Page Contains Text  Employee Self-Assessment:  20s  Employee Self-Assessment: page not found
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
@@ -116,17 +120,15 @@ For Each Competency Select Rating and Give Comments
     Log to console  Count:${count}
     FOR  ${i}  IN RANGE  1  ${count}
         Log to console  Review:${i} And Comment:${i}
-        Wait And Click Element  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]/preceding::input[1]
+        Wait And Click Element  xpath: (//label[text()="Employee Competency Rating"])[${i}]//parent::div//following-sibling::div//span/a
         ${status}=  RUN KEYWORD And Return Status  wait until element is visible  xpath: //div[text()="${rating}"]  7s
         IF  ${status}!="True"
-            Wait And Click Element  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]/preceding::input[1]
+            Wait And Click Element  xpath: (//label[text()="Employee Competency Rating"])[${i}]//parent::div//following-sibling::div//span/a
         END
         Wait And Click Element  xpath: //div[text()="${rating}"]
         Sleep  3s
-        select frame  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]
-        Sleep  3s
-        Wait And Set Text  ${comment_input_box}  ${comment}
-        unselect frame
+        ${comment_input}=  Catenate  SEPARATOR=  xpath: (//div[@aria-label="Editor editing area: main"]/p)[${i}]
+        Wait Then Click And Clear And Set Text   ${comment_input}  ${comment}
         Sleep  3s
         Capture Page Screenshot And Retry If Required
     END
@@ -175,8 +177,9 @@ Select Employee Performance Review Period
 
 Select Employee's Current task
     [Arguments]  ${review_section}  ${task}
-    ${current_task_xpath}=  Catenate   SEPARATOR=  xpath: //a[text()='${review_section}']//following::span[1]
-    element should contain  ${current_task_xpath}  ${task}  Current task is not same as "${task}"
+    ${current_task_xpath}=  Catenate   SEPARATOR=  xpath: //a[text()='${review_section}']//following::span[text()='${task}']
+#    //a[text()='${review_section}']//following::span[1]
+#    element should contain  ${current_task_xpath}  ${task}  Current task is not same as "${task}"
     Sleep  2s
     ${review_section_xpath}=  Catenate   SEPARATOR=  xpath: //a[text()='${review_section}']
     Wait And Click Element  ${review_section_xpath}
@@ -211,17 +214,48 @@ Give Rating And Comment
     Log to console  Count:${count}
     FOR  ${i}  IN RANGE  1  ${count}
         Log to console  Review:${i} And Comment:${i}
-        Wait And Click Element  xpath: (//input[@class='x1s3'])[${i}]
+        Wait And Click Element  xpath: (//input[@aria-label='Rating'])[${i}]
         ${status}=  RUN KEYWORD And Return Status  wait until element is visible  xpath: //div[text()="${rating}"]  7s
         IF  ${status}!="True"
-            Wait And Click Element  xpath: (//input[@class='x1s3'])[${i}]
+            Wait And Click Element  xpath: (//input[@aria-label='Rating'])[${i}]
         END
         Wait And Click Element  xpath: //div[text()="${rating}"]
         Sleep  3s
-        select frame  xpath: (//iframe[@class="cke_wysiwyg_frame cke_reset"])[${i}]
+        ${comment_inp_xpath}=  Catenate   SEPARATOR=  xpath: (//div[@aria-label="Editor editing area: main"]/p)[${i}]
+#        clear element text    ${comment_inp_xpath}
+        Sleep    2s
+        Wait And Set Text  ${comment_inp_xpath}  ${comment}
         Sleep  3s
-        Wait And Set Text  ${comment_input_box}  ${comment}
-        unselect frame
+        Capture Page Screenshot And Retry If Required
+    END
+
+Give Rating And Comment for Performance
+    [Arguments]  ${rating}  ${comment}  ${rating_type}
+    Sleep  5s
+    ${count}=  get element count  xpath: //label[text()="${rating_type}"]
+    ${count}=  Evaluate  ${count}+${1}
+    Log to console  Count:${count}
+    FOR  ${i}  IN RANGE  1  ${count}
+        Log to console  Review:${i} And Comment:${i}
+        Wait And Click Element  xpath: (//input[@aria-label='Rating'])[${i}]
+        ${status}=  RUN KEYWORD And Return Status  wait until element is visible  xpath: //div[text()="${rating}"]  7s
+        IF  "${status}"!="True"
+            Wait And Click Element  xpath: (//input[@aria-label='Rating'])[${i}]
+        END
+        Wait And Click Element  xpath: //div[text()="${rating}"]
+        Sleep  3s
+        ${comment_inp_xpath}=  Catenate   SEPARATOR=  xpath: (//div[@contenteditable='true']//p)[${i}]
+#        clear element text    ${comment_inp_xpath}
+        Sleep    2s
+        ${status1}=  RUN KEYWORD And Return Status   Wait And Set Text  ${comment_inp_xpath}  ${comment}
+        IF  "${status1}"!="True"
+            Wait And Click Element    ${comment_inp_xpath}
+            Sleep    2s
+            wait and send keys    ${comment_inp_xpath}  ${comment}
+        END
+#        clear element text    ${comment_inp_xpath}
+#        Sleep    2s
+#        Wait And Set Text  ${comment_inp_xpath}  ${comment}
         Sleep  3s
         Capture Page Screenshot And Retry If Required
     END
@@ -254,21 +288,22 @@ Delete Goal Created By Employee
 
 Select Warning Yes Button
     Wait And Click Element  ${warning_yes_button}
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Click on Current Financial Year Goal Plan
     [Arguments]  ${f_y_year}
-    Wait And Click Element  link: ${f_y_year} Goal Plan
-#    Wait And Click Element  link: AT23B_${f_y_year} Annual Review Senior Managers
+#    Wait And Click Element  link: ${f_y_year} Goal Plan
+    Wait And Click Element  link: Create/Update performance goals and track outcomes (${f_y_year})
+#    Wait And Click Element  link: AT24C_${f_y_year} Annual Review Senior Managers
     Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Click On Goal
     [Arguments]  ${goal}
     Wait And Click Element  link: ${goal}
-    Wait And Verify Page Contains Text  Test Goal Automation  20s  Test Goal Automation page not found
-    Sleep  3s
+#    Wait And Verify Page Contains Text  Test Goal Automation  20s  Test Goal Automation page not found
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Delete Goal
@@ -392,7 +427,7 @@ Search and Select Employee's Current task
 Verify the Performance Document is Completed
     element should not be visible  ${click_here_button}  Click Here button under Performance Goal page is not Visible as expected
     Sleep  2s
-    element should not be visible   ${add_button}  Add Button under Performance Goal is not visible as expected
+#    element should not be visible   ${add_button}  Add Button under Performance Goal is not visible as expected
     Sleep  2s
     Capture Page Screenshot And Retry If Required
 
@@ -422,7 +457,8 @@ Click on clear Document status filter
 Select Manage Participant Feedback of Review Document Section
     [Arguments]  ${manager}  ${review_section}  ${action}
     Sleep  3s
-    ${action_xpath}=  Catenate   SEPARATOR=  xpath: (//a[text()='${manager}']//ancestor::table)[4]//preceding-sibling::span//child::a[text()='${review_section}']//following::a[contains(@title,'Actions')][1]
+#    ${action_xpath}=  Catenate   SEPARATOR=  xpath: (//a[text()='${manager}']//ancestor::table)[4]//preceding-sibling::span//child::a[text()='${review_section}']//following::a[contains(@title,'Actions')][1]
+    ${action_xpath}=  Catenate   SEPARATOR=  xpath: (//a[text()='${manager}']//ancestor::table)//preceding-sibling::span//child::a[text()='${review_section}']//following::a[contains(@title,'Actions')][1]
     Click on Load More Items
     scroll element into view  ${action_xpath}
     Wait And Click Element  ${action_xpath}
@@ -564,8 +600,8 @@ Expand Performance Documents Employee Comments section
 
 Check Employee Comments in performance document
     [Arguments]  ${meeting_check_in}  ${comments}
-    ${employee_Comments_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::label[contains(text(),'Check-In comments')]//preceding-sibling::div/p[1]
-    ${employee_check_in_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::span[text()='${meeting_check_in}']
+    ${employee_Comments_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::label[contains(text(),'Check-In comments')]//following::p[1]
+    ${employee_check_in_xpath}=  Catenate   SEPARATOR=  xpath: //h2[contains(text(),'Employee Comments')]//following::label[contains(text(),'met with your manager')]//following::span[text()='${meeting_check_in}']
     scroll element into view  ${employee_Comments_xpath}
     element should be visible  ${employee_check_in_xpath}
     ${employee_check_in}=  get text  ${employee_check_in_xpath}

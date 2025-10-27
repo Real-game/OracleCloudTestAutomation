@@ -42,7 +42,7 @@ ${employee_action_drop_down}   xpath: //a[contains(@id,'aidis')]
 ${transfer_option}     xpath: //div[text()='Transfer']
 ${transfer_offer_option}    xpath: //span[text()[contains(.,'Transfer OR Promotion - Contract to Permanent')]]
 ${emp_action_dropdown}  xpath://div[label[text()="Action"]]/following-sibling::div/span//a
-${action_name_temp}  xpath: //label[text()="Action"]/following::table[@role="grid"]
+${action_name_temp}  xpath: //label[text()="Action"]/following::table[@role="grid"]//div
 ${omers_drop_down}     xpath: //a[@title='Search: Is the OMERS clause required?']
 #${omers_drop_down_option_no}   xpath: (//div[contains(@id,'Iteratoromers')]//span[text()[contains(.,'No')]])[1]
 ${omers_drop_down_option_no}   xpath:  (//div[contains(@id,'Iteratoromers')]//span[text()[contains(.,'OMERS clause not required')]])[1]

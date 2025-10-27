@@ -30,13 +30,15 @@ Scenario: Create owned properties
     Click on Owned Properties under CRE Master Log
     Click on Create Owned Properties button  PROP-00002 : CANPA GUIDEWAY
     Validate Property Information block  OPEX  Owned
-    Validate Title Information block   Jayapal  Raghavi  Premkumar  78780
+    Validate Title Information block   Test  David  Weisse  78780
     Validate Address Information block  East Street  Toronto
-    Validate Property Use Block  MX Owned  Yes  Future Description  07/24/2023  Transitional Area Comments
+    Validate Property Use Block  MX Owned  Yes  Future Description  Oct/22/2025  Transitional Area Comments
     Validate PIN Mileage Survey Block  01010101  02020202  Survey plans value  5000  Mileage Comments
     Validate Area Calculation Block   Land  Yes  2400  3  2  Area comments
-    Validate building demolitions block  07/24/2023  Demolition Comments
-    Validate property disposed details block   FULL  07/24/2023  70000  2400  Disposition details  MPM Company
+    Validate building demolitions block  Oct/22/2025  Demolition Comments
+    Validate property disposed details block   FULL  Oct/22/2025  70000  2400  Disposition details  MPM Company
     Validate Expropriation Details block  Yes  Yes  Yes  Section 24  Expropriation Comments
     Submit Owned Property
     Sleep  10s
+    page should not contain    Errors and Warnings
+    Capture Page Screenshot And Retry If Required

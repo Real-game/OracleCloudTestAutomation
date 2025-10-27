@@ -62,3 +62,11 @@ After Test
             Close Browser
     END
 
+Before Suite for EBS
+    ${file_name}=  Get Variable value  ${SUITE NAME}
+    Launch Browser  ${Ebs}  ${local_execution_browser}
+    MAXIMIZE BROWSER WINDOW
+    Set Screenshot Directory  ./Screenshots
+    Sleep    10s
+    Set Selenium Timeout    10s
+

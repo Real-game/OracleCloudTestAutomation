@@ -29,7 +29,7 @@ Scenario: Employee-Creates Performance Goals
     ${data}=  readJson  ${json_path}
     generatejson  ${common_csv_path}  ${common_json_path}
     ${common_data}=  readJson  ${common_json_path}
-    ${goal_name}=  get_process_name  ${data}[Goal Name]
+#    ${goal_name}=  get_process_name  ${data}[Goal Name]
     Log  Step 1-3
     Login Using  ${common_data}[Employee Login]
     Log  Step 4
@@ -47,7 +47,8 @@ Scenario: Employee-Creates Performance Goals
     Log  Step 9
     Select Goal Plan under Basic Info  ${data}[Goal Plan]
     Log  Step 10
-    Enter Goal Name under Basic Info  ${goal_name}
+    Enter Goal Name under Basic Info  ${data}[Goal Name]
+#    ${goal_name}
     Log  Step 11
     Enter Goal Description under Basic Info  ${data}[Goal Description]
     Log  Step 12
@@ -61,5 +62,6 @@ Scenario: Employee-Creates Performance Goals
     Log  Step 16
     Click Save And Close
     Log  Step 17
-    Verify New Performance Goal Added  ${goal_name}  ${data}[Goal Description]  ${data}[Goal Status]
+    Verify New Performance Goal Added  ${data}[Goal Name]  ${data}[Goal Description]  ${data}[Goal Status]
+#    Verify New Performance Goal Added  ${goal_name}  ${data}[Goal Description]  ${data}[Goal Status]
     Logout From Profile

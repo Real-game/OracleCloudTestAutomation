@@ -35,7 +35,8 @@ Scenario: Collaborators ( Collaborator edits a requisition )
     Log  Step 4
     click on homepage
     Log  Step 5 - 6
-    And Go to my team hiring
+#    And Go to my team hiring
+    Go to hiring
     Log  Step 7 - 10
     Search for requisition id  ${data}[Requisition ID]
     Log  Step 11

@@ -23,7 +23,7 @@ ${csv_path}  ./CSV/td_SEC_TC022_MX_Employee_Self_Service.csv
 
 *** Test Cases ***
 Scenario: Security Testing - MX Employee Self Service
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  Read Only
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1 - 3
@@ -31,7 +31,7 @@ Scenario: Security Testing - MX Employee Self Service
     Log  Step 4
     click on homepage
     Log  Step 5
-    #Verify Me and Tools Tab
+#    Verify Me and Tools Tab
     Log  Step 6
     Verify Apps for MX Employee Self Service
     Log  Step 7 - 8

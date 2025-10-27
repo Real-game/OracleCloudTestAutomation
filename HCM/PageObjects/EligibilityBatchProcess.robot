@@ -72,7 +72,7 @@ Get And Return Process Id
     Log  Confirmation Message: ${text}
     ${id}=  getProcessId  ${text}
     Log  Process ID is ${id}
-    [Return]  ${id}
+    RETURN  ${id}
 
 Click Monitor Process Button
     Wait And Click Element  ${monitor_process_button}

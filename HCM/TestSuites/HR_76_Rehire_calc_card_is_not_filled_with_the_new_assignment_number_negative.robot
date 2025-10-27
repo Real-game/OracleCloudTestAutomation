@@ -4,6 +4,7 @@ Resource  ../Helpers/SetupAndTeardown.robot
 Resource  ../PageObjects/Login.robot
 Resource  ../PageObjects/HomePage.robot
 Resource  ../PageObjects/CalculationCards.robot
+Resource  ../PageObjects/CreateWorkRelationship.robot
 Documentation  Add duplicate calculation card to assignment number
 ...            Prerequisite:  HR_76_Rehire_calc_card_is_not_filled_with_the_new_assignment_number
 ...            Environment Specific Data:  HR Login; Person Number (Use same which is used in HR_76)
@@ -36,7 +37,8 @@ Scenario: Add duplicate calculation card to assignment number
     Go to my client groups show more
     Click Calculation Cards Under Employment Section
     Log  Step 7 - 8
-    Search And Select Person  ${data}[Person Number]
+    Advance Person Search With Date Filters  ${data}[Person Number]  ${data}[Person Name]  ${data}[Start Date]
+#    Search And Select Person  ${data}[Person Number]
     Log  Step 9
     Click Tax Credit Information
     Log  Step 10 - 11

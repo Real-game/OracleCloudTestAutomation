@@ -82,19 +82,19 @@ Select Status
 Input Original Contract Start Date
     [Arguments]  ${date}
     Wait And Set Text  ${original_contract_start_date}  ${date}
-    Sleep  1s
+    Sleep  2s
     Capture page screenshot
 
 Input Current Term Start Date
     [Arguments]  ${date}
     Wait And Set Text  ${current_term_start_date}  ${date}
-    Sleep  1s
+    Sleep  2s
     Capture page screenshot
 
 Input Current Term Expiry Date
     [Arguments]  ${date}
     Wait And Set Text  ${current_term_expiry_date}  ${date}
-    Sleep  1s
+    Sleep  2s
     Capture page screenshot
 
 Select Tenant Entity Type
@@ -595,6 +595,7 @@ Select the created property contract
     END
     Sleep  300s
     ${property_contract_xpath}=  Catenate  SEPARATOR=   //div[text()='${property_contract_name}']/ancestor::tr//a
+    wait until element is visible   ${property_contract_xpath}  60s
     Click Required Element  xpath: ${property_contract_xpath}
     Sleep  10s
     ${list}=  Get Window Handles
@@ -607,13 +608,13 @@ Extract the auto created contract payable record number
     Scroll Element Into View  ${payable_record_number}
     ${record_number}=  Get Element Attribute  ${payable_record_number}  innerHTML
     Close Window
-    [return]  ${record_number}
+    RETURN  ${record_number}
 
 Extract the reference property contract number
     Wait Until Element Is Visible  ${contract_number}  60s  Payable record number is not displayed
     Scroll Element Into View  ${contract_number}
     ${property_contract_number}=  Get Element Attribute  ${contract_number}  innerHTML
-    [return]  ${property_contract_number}
+    RETURN  ${property_contract_number}
 
 Copy property contract to another property shell
     [Arguments]  ${property_name_value}
@@ -668,7 +669,7 @@ Extract the copied property contract number
     Scroll Element Into View  ${copied_owned_property_number_input}
     Wait Until Element Is Visible  ${copied_owned_property_number_input}  150s
     ${copy_record_number}=   Get Element Attribute  ${copied_owned_property_number_input}  innerHTML
-    [return]  ${copy_record_number}
+    RETURN  ${copy_record_number}
 
 Extract the record number from confirmation Notification
     Wait Until Element Is Visible  ${record_created_notification_message}  60s
@@ -676,7 +677,7 @@ Extract the record number from confirmation Notification
     ${extracted_record_number_with_space}=  Replace String  ${record_number_complete_text}  has been created successfully.  ${EMPTY}
     ${extracted_record_number}=  Remove String  ${extracted_record_number_with_space}  ${SPACE}
     Capture Page Screenshot
-    [return]  ${extracted_record_number_with_space}
+    RETURN  ${extracted_record_number_with_space}
 
 Select OK in Confirmation Notification
     Wait And Click Element  ${ok_button_confirmation_window}
@@ -701,7 +702,7 @@ Extract the auto created contract receivable record number and payment amount
     Scroll Element Into View  ${payment_amount_line_item}
     ${payment_amount_value}=  Get Element Attribute  ${payment_amount_line_item}  innerHTML
     Close Window
-    [return]  ${record_number}  ${payment_amount_value}
+    RETURN  ${record_number}  ${payment_amount_value}
 
 Input Option Status
     [Arguments]  ${option_status_value}
@@ -721,7 +722,7 @@ Extract lease action record number
     ${text_value}=  Get Element Attribute  ${lease_action_record_number}  innerHTML
     Capture Page Screenshot
     Close Window
-    [return]  ${text_value}
+    RETURN  ${text_value}
 
 Click on Search and select record number
     [Arguments]  ${record}
@@ -823,7 +824,12 @@ Select Payment Setup record line
             Wait And Click Element  ${record_xpath}
             Exit For Loop
         END
-        Execute JavaScript    window.document.getElementById('580grid-scroller-vertical-rowsets_1').scrollBy(0,200)
+        Execute JavaScript  document.querySelector("body > div:nth-child(3) > div:nth-child(3) > div:nth-child(2) > oj-switcher:nth-child(2) > oj-defer:nth-child(2) > detail-tab:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > unifier-log:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(17)").scrollBy(0,200)
+#        window.document.evaluate("//div[@id='594grid-scroller-vertical-rowsets_1']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollBy(0, 200)
+#        window.document.getElementById('594grid-scroller-vertical-rowsets_1').scrollBy(0, 200)
+
+#        Execute JavaScript    window.document.getElementById('594grid-scroller-vertical-rowsets_1').scrollBy(0,200)
+#        window.document.getElementById('622grid-scroller-vertical-rowsets_1').scrollBy(0,200)
     END
 #    Wait And Click Element  ${record_xpath}
     Sleep  3s

@@ -1,6 +1,6 @@
 {
-    "Review Period": "FY22-23 Review Period",
-    "Review Section": "Automation23B_FY22-23 Mid-Year Check-In",
+    "Review Period": "FY24-25 Review Period",
+    "Review Section": "AT25B_FY24-25 Mid Review Senior Managers",
     "Goal Name": "uptest automation",
     "Goal Description": "uptest",
     "Goal Status": "In progress",
@@ -9,7 +9,7 @@
     "Message": "test message",
     "Participant Comment": "Good job with Automation",
     "Participant Login User": "David.weisse",
-    "Test Comment": "his is test comment",
+    "Test Comment": "This is test comment",
     "Meeting Option": "Yes, I met with the employee",
     "Met With Manager": "Yes, I met with the manager",
     "Employee Check in Comments": "testing"

@@ -56,16 +56,16 @@ HR Specialist Temp Assignment Start
     Log  Step 13-14
     Select Position On Assignment Page  ${Assignment Status}  ${Position ID}
     Log  Step 15
-#    continue
-#    Log  Step 16-17
-#    Select Payroll Details  ${Tax Reporting Unit}  ${Time Card Required}
-#    Log  Step 18
-#    continue
-#    Log  Step 19-22
-#    Select Salary Details  ${Salary Basics}  ${Salary Amount}
-#    Log  Step 23
-#    continue
-#    Log  Step 24
+    continue
+    Log  Step 16-17
+    Select Payroll Details  ${Tax Reporting Unit}  ${Time Card Required}
+    Log  Step 18
+    continue
+    Log  Step 19-22
+    Select Salary Details  ${Salary Basics}  ${Salary Amount}
+    Log  Step 23
+    continue
+    Log  Step 24
     Submit Details
     page should not contain  Error
     Wait And Verify Page Contains Text  My Client Groups  120s  Failed to submit

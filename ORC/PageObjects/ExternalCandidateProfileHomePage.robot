@@ -20,16 +20,22 @@ Change Status
                 Exit For Loop
             END
         END
-        Sleep  2s
+        Sleep  3s
         Wait And Click Element  ${withdraw_btn}
+        Sleep    2s
         Capture Page Screenshot
         Wait And Click Element  ${withdraw_popup}
+        Sleep    5s
+        capture page screenshot
     END
 
 Delete Profile
     [Arguments]  ${value}
+    Wait And Click Element  ${info_n_alerts}
+    Sleep  2s
     IF  "${value}"=="Yes"
         Wait And Click Element  ${delete_profile}
+        Sleep    2s
         Capture Page Screenshot
         Wait And Click Element  ${delete_popup}
     END
@@ -37,7 +43,7 @@ Delete Profile
 
 Go back to career site
     Wait And Click Element  ${back_external_site}
-    Wait Until Page Contains  View All Jobs
+    Wait Until Page Contains  All Jobs
     Capture Page Screenshot
 
 Show menu options and select
@@ -75,8 +81,9 @@ Update Personal Information
         Fill Country Code  ${data}[Country Code]
     END
     IF  "${data}[Phone Number]"!=""
-        Wait Then Click And Set Text  ${phoneno}  ${data}[Phone Number]
-        Capture Page Screenshot
+        Fill Phone Number    ${data}[Phone Number]
+#        Wait Then Click And Set Text  ${phoneno}  ${data}[Phone Number]
+#        Capture Page Screenshot
     END
 
 Click on Update
@@ -88,7 +95,7 @@ Click on Update
 Get Profile Name
     Wait Until Page Contains  Back to career site
     ${name}=  Get Text  ${profile_name}
-    [Return]  ${name}
+    RETURN  ${name}
 
 Select Slot
     [Arguments]  ${value}
@@ -123,16 +130,20 @@ Click on Show More Active Applications
 
 Show menu options and select With Application Submission
     [Arguments]  ${data}
-    Wait And Click Element  ${menu_options}
+#    Wait And Click Element  ${menu_options}
+#    Sleep  2s
+#    ${matching}=  Get WebElements  ${menu_temp}
+#    FOR  ${e}  IN  @{matching}
+#        ${title}=  Get Element Attribute  ${e}  title
+#        IF  "${title}"=="${data}[Menu Option]"
+#            Wait And Click Element  ${e}
+#            Exit For Loop
+#        END
+#    END
+    Wait And Click Element  ${info_n_alerts}
     Sleep  2s
-    ${matching}=  Get WebElements  ${menu_temp}
-    FOR  ${e}  IN  @{matching}
-        ${title}=  Get Element Attribute  ${e}  title
-        IF  "${title}"=="${data}[Menu Option]"
-            Wait And Click Element  ${e}
-            Exit For Loop
-        END
-    END
+    Wait And Click Element    ${edit_personal_info}
+    Sleep    5s
     IF  "${data}[Menu Option]"=="Edit Personal Information"
         Sleep  5s
         Wait Until Element Contains  ${ver}  Please enter your contact information.
@@ -152,10 +163,29 @@ Update Personal Information With Application Submission
     IF  "${data}[Updated Last Name]"!=""
         Fill Last Name  ${data}[Updated Last Name]
     END
-    IF  "${data}[Updated Country Code]"!=""
-        Fill Country Code  ${data}[Updated Country Code]
-    END
+#    IF  "${data}[Updated Country Code]"!=""
+#        Fill Country Code  ${data}[Updated Country Code]
+#    END
     IF  "${data}[Updated Phone Number]"!=""
-        Wait Then Click And Set Text  ${phoneno}  ${data}[Updated Phone Number]
-        Capture Page Screenshot
+        Fill Phone Number    ${data}[Updated Phone Number]
+#        Wait Then Click And Set Text  ${phoneno}  ${data}[Updated Phone Number]
+#        Capture Page Screenshot
     END
+
+Select Edit Personal Info
+    [Arguments]  ${data}
+    Wait And Click Element  ${info_n_alerts}
+    Sleep  2s
+    Wait And Click Element    ${edit_personal_info}
+    Sleep    5s
+    IF  "${data}[Menu Option]"=="Edit Personal Information"
+        Sleep  5s
+        Wait Until Element Contains  ${ver}  Please enter your contact information.
+        Capture Page Screenshot
+        Update Personal Information  ${data}
+    END
+
+Select My Application for Status Change
+    Wait And Click Element    ${my_application}
+    Sleep    3s
+    capture page screenshot

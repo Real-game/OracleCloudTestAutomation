@@ -11,7 +11,7 @@ Search And Select Person
     Wait And Send Keys  ${search_input_person_name}  ${emp_value}
     Sleep  3s
     Wait And Click Element  link: Advanced Search:${emp_value}
-    Sleep  5s
+    Sleep  30s
     IF  "${assignment_value}"!=""
         Wait And Send Keys  ${search_input_assignment_number}  ${assignment_value}
         Sleep  5s

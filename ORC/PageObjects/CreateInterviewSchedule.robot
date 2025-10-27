@@ -9,7 +9,7 @@ Update Basic Information
     IF  "${temp}"!=""
         Wait And Click Element  ${temp_hov}
         Select Required Value  ${list}  ${temp}
-        Sleep  10s
+        Sleep  30s
         Capture Page Screenshot
         Wait And Click Element  ${cis_continue_btn}
         Sleep  2s

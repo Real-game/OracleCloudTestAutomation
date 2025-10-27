@@ -8,8 +8,8 @@ Resource  ../PageObjects/EvaluatePerformance.robot
 Resource  ../PageObjects/Performance.robot
 Documentation  Manager Check-In
 ...            Prerequisite:  TC121
-...            Environment Specific Data:  Login User and Employee Name
-...            Reusable Data:  Test Comment,Meeting Option
+...            Environment Specific Data:  Manager Login(PMP_Talent_common_test_data.csv); Employee Name(PMP_Talent_common_test_data.csv)
+...            Reusable Data:  Test Comment;Meeting Option
 ...            Dynamic Data:  Review Section
 
 *** Settings ***
@@ -20,18 +20,22 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_TC124_Manager_Updates_Goals_In_Mid_Year_Document.json
 ${csv_path}  ./CSV/td_TC124_Manager_Updates_Goals_In_Mid_Year_Document.csv
+${common_json_path}  ./TestData/PMP_Talent_common_test_data.json
+${common_csv_path}  ./CSV/PMP_Talent_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Manager Check-In
     [Tags]  PMPTalentTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[LoginUser]
+    Login Using  ${common_data}[Manager Login]
     Log  Step 4 - 5
     Click on Performance under My Team via Navigator
     Log  Step 6
-    Search For Person  ${data}[Employee Name]
+    Search For Person  ${common_data}[Employee]
     Select Document  ${data}[Review Section]
     Log  Step 7
     Click Here Button Behind Performance Management Process Stage

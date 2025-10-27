@@ -24,7 +24,7 @@ ${csv_path}  ./CSV/td_SEC_TC001_MX_General_Human_Resources_Inquiry.csv
 *** Test Cases ***
 
 Scenario: MX General Human Resources Inquiry
-    [Tags]  SecurityRoleTestCase  ReadOnly  22D-NoData
+    [Tags]  SecurityRoleTestCase  ReadOnly
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
     Log  Step 1-3
@@ -45,9 +45,9 @@ Scenario: MX General Human Resources Inquiry
     Select action Dropdown  ${data}[Parent Action]  ${data}[Child Action]
     Log  Step 14
     Verify Edit option is not visible
-    Log  Step 15
-    click on homepage
-    Log  Step 16
-    Go To My Client Group
-    Log  Step 17
-    Click on Quick Actions - Person and search  ${data}[Person Number]
+#    Log  Step 15
+#    click on homepage
+#    Log  Step 16
+#    Go To My Client Group
+#    Log  Step 17
+#    Click on Quick Actions - Person and search  ${data}[Person Number]

@@ -31,7 +31,7 @@ ${common_csv_path}  ./CSV/td_User_Details.csv
 *** Test Cases ***
 
 Scenario: Hire and Enable Resources (Move the external candidate to HR)
-    [Tags]  ExternalNewHire  April19
+    [Tags]  ExternalNewHire
     generatejson  ${csv_path}  ${json_path}
     ${prerequisites_data}=  readJson  ${prerequisites_json_path}
     appendtojson  ${json_path}  Requisition Id  ${prerequisites_data}[RequisitionId]
@@ -57,5 +57,7 @@ Scenario: Hire and Enable Resources (Move the external candidate to HR)
     Select Application  ${data}[Candidate]
     Log  Step 12 - 15
     Click on Actions and Select  ${data}
+    click on homepage
+    wait until page contains element    ${href_my_client}    20s
     Logout
 

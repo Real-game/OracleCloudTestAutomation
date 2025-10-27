@@ -19,7 +19,7 @@ Search and click on Person
     Wait And Set Text  ${search_text_box}  ${personnumber}
     Sleep  2s
     Wait And Click Element  xpath: //div[text() = "${personnumber}"]
-    Sleep  3s
+    Sleep  5s
     Wait And Verify Page Contains Text  Payroll Relationship  20s  Payroll Relationships not found
     Capture Page Screenshot And Retry If Required
 
@@ -28,7 +28,10 @@ Select Effective As on Date
     ${check}=  Run Keyword And Return Status  Wait And Set Text  ${effective_as_of_date_field}  ${start_date_value}
     IF  '${check}'=='False'
         Wait And Set Text  ${effective_as_of_date_field}  ${start_date_value}
+        Sleep    3s
     END
+    Sleep    3s
+    Capture Page Screenshot And Retry If Required
 
 Click on Assigment under Payroll Relationship:Worker
     [Arguments]  ${duration}
@@ -116,6 +119,7 @@ Click Search Person on Left Side Panel
     Capture Page Screenshot And Retry If Required
 
 Payroll Submit Button
+    Wait And Verify Page Contains Element  ${submit_button}  60s  Submit button not displayed
     Wait And Click Element  ${submit_button}
     Sleep  3s
     Capture Page Screenshot And Retry If Required
@@ -131,7 +135,7 @@ Enter Person number and search in Keywords field
 Click Simplified Quick Pay under Action button
     scroll element into view  ${action_button}
     Wait And Click Element  ${action_button}
-    Sleep  2s
+    Sleep  5s
     Wait And Click Element  ${quick_pay}
     Sleep  2s
     Wait And Click Element  ${simplified_quick_pay}
@@ -144,7 +148,7 @@ Click on Quick Pay Submit Button
     Capture Page Screenshot And Retry If Required
 
 Check Statement of earning
-    Wait And Verify Page Contains Element  ${statement_of_earning}  150s  Statement of Earnings for an employee is not displayed
+    Wait And Verify Page Contains Element  ${statement_of_earning}  180s  Statement of Earnings for an employee is not displayed
     Sleep  2s
     Capture Page Screenshot And Retry If Required
 
@@ -231,8 +235,9 @@ Click Involuntary Deduction
     Capture Page Screenshot And Retry If Required
 
 Click Add button for Calculation Component
+    Wait Until Element Is Visible   ${add_calculation_component}    20s     Add button not visible
     Wait And Click Element  ${add_calculation_component}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Select Calculation Component
@@ -244,12 +249,13 @@ Select Calculation Component
     Wait And Set Text  ${reference_code}  ${code}
     Sleep  2s
     Wait And Click Element  ${ok_button}
-    Sleep  10s
+    Sleep  30s
     Capture Page Screenshot And Retry If Required
 
 Select Order Amount Payee in Calculation Component Detail
-    Sleep  5s
+    Sleep  10s
     scroll element into view  ${calc_component_detail}
+    Sleep  3s
     Wait And Click Element  ${calc_component_detail}
     Sleep  2s
     scroll element into view  ${order_amount_payee_dropdown}
@@ -298,8 +304,11 @@ Select Save and Close on Calculation Component page
     Capture Page Screenshot And Retry If Required
 
 Click Involuntary Deduction on Calculation Card
+    Wait Until Element Is Visible   ${involuntary_deduc_main_link}      20s     Involuntary Deduction option not displayed
+    Scroll Element Into view    ${involuntary_deduc_main_link}
     Wait And Click Element  ${involuntary_deduc_main_link}
-    Sleep  3s
+    Sleep  5s
+    Wait Until Element Is Visible   ${involuntary_deduction_header}     60s     Involuntary deduction header not displayed
     Capture Page Screenshot And Retry If Required
 
 Click Element Entries under Action button
@@ -311,9 +320,10 @@ Click Element Entries under Action button
 
 Check Calculation Component present in Element Entries
     [Arguments]  ${component_name1}  ${component_name2}
+    Wait Until Element Is Visible   ${element_entries_header}  20s  Element entries page not displayed
     Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
     Sleep  2s
-    Execute JavaScript    window.document.getElementById('_FOpt1:_FOr1:0:_FONSr2:0:_FOTr1:2:ph1:r2:0:AT1:_ATp:table1::scroller').scrollBy(0,400)
+    Execute JavaScript    window.document.getElementById('_FOpt1:_FOr1:0:_FONSr2:0:MAnt2:1:ph1:r7:0:AT1:_ATp:table1::scroller').scrollBy(0,400)
     Sleep  10s
     ${component_value1}=  Catenate  SEPARATOR=  //a[text()='${component_name1}']
     ${component_value2}=  Catenate  SEPARATOR=  //a[text()='${component_name2}']
@@ -335,4 +345,12 @@ Search Person and Click for Element Entries
     Wait And Click Element  xpath: //div[text() = "${number}"]
     Sleep  3s
     Wait And Verify Page Contains Text  Element Entries  20s  Element Entries not found
+    Capture Page Screenshot And Retry If Required
+
+Enter Person number and select first row
+    [Arguments]  ${number}
+    Wait And Set Text  ${Search_input}  ${number}
+    Sleep  2s
+    Wait And Click Element  ${Search_1st_row}
+    Sleep  5s
     Capture Page Screenshot And Retry If Required

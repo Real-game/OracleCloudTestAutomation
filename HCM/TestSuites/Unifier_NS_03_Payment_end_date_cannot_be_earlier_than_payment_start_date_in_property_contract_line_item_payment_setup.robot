@@ -44,10 +44,12 @@ Validate error message of Current term Expiry Date cannot be earlier than Origin
     Select Contract Rent Structure  ${contract_rent_structure}
     Select Status  ${status}
     Log  Step 4
-    ${today_date}=  Get Current Date MM DD YYYY
-    ${yesterday_date}=   Get Yesterday Date MM DD YYYY
+    ${today_date}=  Get Current Date MON DD YYYY
+    ${yesterday_date}=   get yesterday date mmm dd yyyy
     Input Original Contract Start Date  ${today_date}
+    Sleep  2s
     Input Current Term Start Date  ${yesterday_date}
+    Sleep  3s
     Input Current Term Expiry Date  ${today_date}
     Log  Step 5
     Select Tenant Entity Type  ${tenant_entity_type}
@@ -57,7 +59,8 @@ Validate error message of Current term Expiry Date cannot be earlier than Origin
     Click on Payment Setup tab
     Click on Add payment setup button
     Validate General Payment Setup information   ${CRE_process_rent_value}  ${contract_rent_structure}  ${tax_classification_value}  ${capex_opex_value}  ${li_short_description_value}
-    Validate Payment General setup block  ${rent_category_value}  ${payment_type_value}  ${payment_amount_before_hst_value}  ${payment_frequency_value}  ${today_date}  ${payment_end_date_value}  ${proration_method_value}
+    Validate Payment General setup block  ${rent_category_value}  ${payment_type_value}  ${payment_amount_before_hst_value}  ${payment_frequency_value}  ${today_date}  ${yesterday_date}  ${proration_method_value}
+#    Validate Payment General setup block  ${rent_category_value}  ${payment_type_value}  ${payment_amount_before_hst_value}  ${payment_frequency_value}  ${today_date}  ${payment_end_date_value}  ${proration_method_value}
 #    Validate Customer Payer Information block
 #    Validate OPEX Codes block  ${organization_id}
     Select Value from Advanced Search  Vendor ID  ${Vendor_ID}

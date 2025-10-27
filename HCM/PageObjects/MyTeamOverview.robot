@@ -7,7 +7,7 @@ Resource  ../Locators/MyTeamOverview.robot
 *** Keywords ***
 Select Employee By Name
     [Arguments]  ${value}
-    Sleep  2s
+    Sleep  5s
     Click Element  ${search_text_box_my_team}
     Input Text  ${search_text_box_my_team}  ${value}
     Sleep  2s
@@ -47,6 +47,8 @@ Click Save
 Expand Attachments and Edit
     [Arguments]  ${file}
     Wait And Click Element  ${attachment_dropdown}
+    Sleep  2s
+    Scroll element into view  ${edit_option}
     Wait And Click Element  ${edit_option}
     Sleep  2s
     Upload file  ${file}
@@ -95,7 +97,7 @@ Select The Employee By Name
 Click On Compensation
     Wait And Click Element  ${compensation}
     Wait Until Page Contains  Compensation   20s   Compensation page is not displayed
-    Sleep  3s
+    Sleep  5s
     Capture Page Screenshot
 
 Verify Compensation page
@@ -119,6 +121,7 @@ Click on Employment Info Performance
 
 Get Compensation page Info
     Wait Until Page Contains  Current Salary  20s  Current Salary option is not displayed in Compensation page
+    Sleep    5s
     ${salary}=  Wait And Get Text  ${current_salary_value}
     Log  Current Salary : ${current_salary_value}
     Capture Page Screenshot

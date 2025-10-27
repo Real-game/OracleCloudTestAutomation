@@ -23,15 +23,18 @@ Test Teardown  After Test
 *** Variables ***
 ${json_path}    ./TestData/td_PAY_TC072_Verify_Absence_Employee_With_Vacation_Elector.json
 ${csv_path}  ./CSV/td_PAY_TC072_Verify_Absence_Employee_With_Vacation_Elector.csv
+${common_json_path}  ./TestData/Payroll_common_test_data.json
+${common_csv_path}  ./CSV/Payroll_common_test_data.csv
 
 *** Test Cases ***
 Scenario: Verify Absence - Employee with Vacation Elector
     [Tags]  PayrollAbsenceTestCase  ModifyData
     generatejson  ${csv_path}  ${json_path}
     ${data}=  readJson  ${json_path}
-
+    generatejson  ${common_csv_path}  ${common_json_path}
+    ${common_data}=  readJson  ${common_json_path}
     Log  Step 1 - 3
-    Login Using  ${data}[Login User]
+    Login Using  ${common_data}[Login User]
     Log  Step 4 - 6
     click on Nevigator
     Select On Tools
@@ -53,10 +56,11 @@ Scenario: Verify Absence - Employee with Vacation Elector
     Log  Step 15
     Select And Open Report  ${data}[Report Name]
     Log  Step 16 - 17
-    ${current_date}=  get_current_date_dd_mmmm_yyyy
+    ${current_date}=  get_current_date_mmm_dd_yyyy
     Sleep  20s
     Set Effective End Date And Click Apply  ${current_date}
     Sleep  20s
+    Sleep  500s
     ${text}  Extract the report content  xdo:docframe0
 
     ## extracting the person number from the generated report

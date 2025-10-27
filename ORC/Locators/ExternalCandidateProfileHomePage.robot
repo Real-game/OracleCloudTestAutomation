@@ -1,12 +1,12 @@
 *** Variables ***
 ${reqids}  xpath://span[contains(@data-bind,'application.jobId')]
-${status_hovers}  xpath://li//div[1]/span[2]
+${status_hovers}  xpath://li//div[1]/button/span[2]
 ${underconsideration_btn}  xpath://span[text()="Under Consideration"]
 ${withdraw_btn}  xpath://a[text()="Withdraw Application"]
 ${withdraw_popup}  xpath://span/span[text()="Withdraw Application"]
 ${delete_profile}  xpath://button[text()="Delete My Profile"]
 ${delete_popup}  xpath://span[text()="Delete My Profile"]
-${back_external_site}  xpath://span[text()="Back to career site"]
+${back_external_site}  xpath://button[@title='Close']//span[1]
 ${menu_options}  xpath://button[@title="Show menu options"]
 ${menu_temp}  xpath://button[@title="Show menu options"]/following-sibling::ul/li//button
 ${phoneno}  xpath://input[@placeholder="Phone number"]
@@ -18,3 +18,7 @@ ${confirm_slot}  xpath://button[contains(@data-bind,"openSchedule")]
 ${eph_schedule_interview}  xpath://span[text()="Schedule Interview"]/ancestor::button
 ${active_show_more}  xpath://show-more-active-applications//button
 ${profile_update_message}  xpath: //div[text()="Your profile was updated"]
+
+${info_n_alerts}    xpath: //*[text()="Info and Alerts"]
+${edit_personal_info}    xpath: //button[text()="Edit Personal Information"]
+${my_application}    xpath: //span[text()="My Applications"]

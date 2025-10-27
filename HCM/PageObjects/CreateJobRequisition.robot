@@ -78,4 +78,4 @@ Get Requisition Id
     Sleep  3s
     Capture Page Screenshot And Retry If Required
     ${id}=  getIdFromName  ${text}
-    [Return]  ${id}
+    RETURN  ${id}

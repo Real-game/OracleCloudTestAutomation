@@ -6,17 +6,23 @@ Resource  ../Locators/CreateWorkRelationship.robot
 
 *** Keywords ***
 Advance Search For Person With Filters
-    [Arguments]  ${emp_number}  ${emp_name}
+    [Arguments]  ${emp_number}  ${emp_name}  ${date}
     Wait And Send Keys  ${employment_search}  ${emp_number}
     Sleep  3s
     Wait And Click Element  link: Advanced Search:${emp_number}
     wait until page contains  Hide Filters  20s
+#    Sleep  20s
+    Sleep  3s
+    Wait And Set Text  ${set_date}  ${date}
+    Sleep  3s
+    Wait And Click Element  ${set_date_ok}
+    Sleep  3s
     Wait And Click Element  ${inactive_checkbox}
     Sleep  3s
 #    Wait And Click Element  ${calender_icon}
 #    Sleep  3s
 #    Wait And Click Element  ${select_current_date}
-    Sleep  3s
+    Sleep  30s
     mouse over  link: ${emp_name}
     Wait And Click Element  link: ${emp_name}
     Wait Until Page Contains  What info do you want to manage?  20s  What info do you want to manage? page not found
@@ -189,3 +195,19 @@ Click Next
     Wait And Click Element  ${next_button}
     Sleep  3s
     Capture Page Screenshot
+
+Advance Person Search With Date Filters
+    [Arguments]  ${emp_number}  ${emp_name}  ${date}
+    Wait And Send Keys  ${employment_search}  ${emp_number}
+    Sleep  3s
+    Wait And Click Element  link: Advanced Search:${emp_number}
+    wait until page contains  Hide Filters  20s
+    Sleep  3s
+    Wait And Set Text  ${set_date}  ${date}
+    Sleep  3s
+    Wait And Click Element  ${set_date_ok}
+    Sleep  5s
+    mouse over  link: ${emp_name}
+    Wait And Click Element  link: ${emp_name}
+    Sleep  3s
+    capture page screenshot

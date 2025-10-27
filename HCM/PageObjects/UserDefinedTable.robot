@@ -37,12 +37,12 @@ Click a search result
 
 Select Edit option
     Wait And Click Element  ${edit_option_button}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Select Next option
     Wait And Click Element  ${next_option_button}
-    Sleep  2s
+    Sleep  5s
     Capture Page Screenshot And Retry If Required
 
 Select Pencil icon to edit

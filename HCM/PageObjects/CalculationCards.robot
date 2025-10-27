@@ -38,7 +38,6 @@ Click Add Under Association Details
     Sleep  3s
     Capture Page Screenshot And Retry If Required
 
-
 Fill Association Details
     [Arguments]  ${date}  ${assignment}
     Wait And Set Text  ${change_start_date}  ${date}

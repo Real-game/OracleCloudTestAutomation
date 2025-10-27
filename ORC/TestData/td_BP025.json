@@ -1,10 +1,10 @@
 {
     "Recruiter user": "KIANM",
-    "Requisition ID": "105416",
-    "Candidate Last Name": "Pipeline",
+    "Requisition ID": "113772",
+    "Candidate Last Name": "Greek",
     "Message Use": "Blank Message",
-    "Recipient Name": "kate CAMPBELL",
-    "Email subject": "Review candidate application for job requisition ID 105416",
-    "Candidate Name": "Requisition, Pipeline",
-    "Email body": "Hello Auto,\n\nPlease review below candidate application for job requisition ID 103035.\n\nCandidate Name: ${CandidateDisplayName} \nCandidate Number: ${CandidateNumber} \nCandidate Status: ${CandidateStatus} \n\nThank you."
+    "Recipient Name": "Harsuminder Ching",
+    "Email subject": "Review candidate application for job requisition ID 113772",
+    "Candidate Name": "Watson, Greek",
+    "Email body": "Hello Auto,\n\nPlease review below candidate application for job requisition ID 110813.\n\nCandidate Name: ${CandidateDisplayName} \nCandidate Number: ${CandidateNumber} \nCandidate Status: ${CandidateStatus} \n\nThank you."
 }
